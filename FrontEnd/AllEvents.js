@@ -8,7 +8,7 @@ fetch('http://127.0.0.1:8000/KickIt/home')
    for(i=0;i<data.data.length;i++){
     const div=document.createElement('div')
     const eventName=document.createElement('h2')
-      eventName.innerHTML=data.data[i].eventName
+      eventName.innerHTML=data.data[i].activity
       eventName.className="event-name"
      div.className='event-details'
     
@@ -16,11 +16,11 @@ fetch('http://127.0.0.1:8000/KickIt/home')
     
      const eventDate=document.createElement('p')
      eventDate.className="event-date"
-     eventDate.innerHTML=`Date : ${data.data[i].Date}`
+     eventDate.innerHTML=`Date : ${data.data[i].date}`
      div.appendChild(eventDate)
 
      const eventTime=document.createElement('p')
-     eventTime.innerHTML=`Time : ${data.data[i].Time}`
+     eventTime.innerHTML=`Time : ${data.data[i].time}`
      div.appendChild(eventTime)
     document.body.appendChild(div)
    }
