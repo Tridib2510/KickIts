@@ -9,7 +9,7 @@
 <body>
     <div class="taskbar">
         <div class="start-menu">
-         
+          
         </div>
         <div class="auth-buttons">
             <button class="login-btn">Login</button>
@@ -17,6 +17,12 @@
         </div>
     </div>
    
-            <script src="AllEvents.js"></script>
+    <!-- Move search bar outside of taskbar div -->
+    <div class="search-container">
+        <input type="text" id="search-bar" placeholder="Search events...">
+        <button id="search-button">Search</button>
+    </div>
+   
+    <script src="AllEvents.js"></script>
 </body>
 </html>
