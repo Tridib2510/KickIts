@@ -55,11 +55,11 @@ if(data.status && data.status=='fail'){
             data:data.data[a]
          })
       }
-      fetch('http://127.0.0.1:8000/KickIt/getEventDetails',options)
+      fetch('https://kickits-1.onrender.com/KickIt/getEventDetails',options)
       .then(res=>res.json())
       .then(data=>console.log(data))
       .catch(err=>console.log(err))
-       window.location.href="file:///C:/Users/Tridib%20Roy%20Chowdhury/OneDrive/Desktop/CODING/KickIts/FrontEnd/EventDetails.html"//New concept
+       window.location.href="EventDetails.html"//New concept
    })
     document.body.appendChild(Events)
    }
