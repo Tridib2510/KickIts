@@ -12,6 +12,8 @@ dotenv.config({path:'config.env'})
 const router=require('./Routes/eventRoutes')
 const path=require('path')
 
+app.use(cors())
+
 const AppError=require('./utils/appError')
 const errorController = require('./Controller/errorController')
 const ErrorController=('./Controller/errorController')

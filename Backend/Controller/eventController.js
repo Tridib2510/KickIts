@@ -92,3 +92,18 @@ exports.createEvent=catchAsync(async(req,res,next)=>{
  return res.redirect(`http://127.0.0.1:8000/KickIt/home/${req.cookies.token}/`)
    
 })
+let store
+exports.eventDetails=catchAsync(async(req,res,next)=>{
+   req.header('Access-Control-Allow-Origin', '*');
+    store=req.body
+   
+    
+
+})
+
+exports.getEventDetails=catchAsync(async(req,res,next)=>{
+ 
+   return res.status(200).json({
+      store
+   })
+})
