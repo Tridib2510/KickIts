@@ -70,20 +70,48 @@ if(data.status && data.status=='fail'){
 
 helper('')
 
+const Choose=document.getElementsByClassName('custom-btn')
+
+Choose[0].addEventListener('click',()=>{
+   const b=document.getElementById('search-bar')
+   b.placeholder="venue"
+})
+Choose[1].addEventListener('click',()=>{
+   const b=document.getElementById('search-bar')
+   b.placeholder="activity"
+})
+Choose[2].addEventListener('click',()=>{
+   const b=document.getElementById('search-bar')
+   b.placeholder="Creator"
+})
+
 const button=document.getElementById('search-button').addEventListener('click',()=>{
   let text=''
   arr=[]
-   const b=document.getElementById('search-bar').value
-   b.placeholder='hello'
-   if(b!='') text=`?activity=${b}`
+   const b=document.getElementById('search-bar')
+ 
+   //b.placeholder='hello'
+   
+   if(b!='' && b.value!=''){
+      console.log(b.placeholder)
+   
+      text=`?${b.placeholder}=${b.value}`
+   
+   
+   }
+   
+   
+   
+   
    if(document.body.events===true){
-      console.log('hello')
+    
       document.body.removeChild(Events)
    }
    
    index=[]
    console.log(text)
    helper(text)
+   b.placeholder="Search events..."
    
 
 })

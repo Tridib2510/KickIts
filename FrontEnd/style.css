@@ -138,3 +138,23 @@ background-image: url('https://m.media-amazon.com/images/I/81NE5bSsUML._AC_UF894
     justify-content: center; /* Center the container horizontally */
     margin: 60px auto; /* Adjust the top and bottom margin as needed */
 }
+.buttons-container {
+    display: flex;
+    justify-content: center; /* Center the buttons horizontally */
+    margin: 20px 0; /* Add some margin above and below the buttons */
+}
+
+.custom-btn {
+    background-color:green;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin: 0 10px; /* Add some space between the buttons */
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+}
+
+.custom-btn:hover {
+    background-color: #0056b3;
+}
