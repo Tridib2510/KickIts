@@ -8,7 +8,7 @@ let Events=document.createElement('div')
 function helper(text){
    
 Events=document.createElement('div')
-fetch(`https://ki-8ew8.onrender.com/KickIt/home${text}`,{
+fetch(`https://kickits-1.onrender.com/KickIt/home${text}`,{
    credentials:"include"
 })
 .then(res=>res.json())
@@ -57,7 +57,7 @@ if(data.status && data.status=='fail'){
             data:data.data[a]
          })
       }
-      fetch('https://ki-8ew8.onrender.com/KickIt/getEventDetails',options)
+      fetch('https://kickits-1.onrender.com/KickIt/getEventDetails',options)
       .then(res=>res.json())
       .then(data=>console.log(data))
       .catch(err=>console.log(err))
