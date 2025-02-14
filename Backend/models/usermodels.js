@@ -51,7 +51,7 @@ Schema.pre('save',async function(next){
 
   this.password=await bcrypt.hash(this.password,4)
 
-  this.confirmPassword=undefined
+  this.confirm_password=undefined
   next()
 })
 
