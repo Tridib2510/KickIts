@@ -117,4 +117,8 @@ const button=document.getElementById('search-button').addEventListener('click',(
    
 
 })
+
+const signUpbutton=document.getElementById('signup-btn').addEventListener('click',()=>{
+   window.location.href='SignUpPage.html'
+})
 console.log(arr.length)
