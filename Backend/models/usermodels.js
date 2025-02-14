@@ -5,7 +5,7 @@ const bcrypt=require('bcryptjs')
 
 
 const Schema=new mongoose.Schema({
-    name:{
+    username:{
         type:String,
         recquired:[true,'Name is recquired'],
         lowercase:true
@@ -26,7 +26,7 @@ const Schema=new mongoose.Schema({
       required:[true,'Please provide a password'],
       minlength:8
     },
-    confirmPassword:{
+    confirm_password:{
       type:String,
       
       required:[true,'password need to be confirmed'],

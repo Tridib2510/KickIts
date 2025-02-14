@@ -20,7 +20,8 @@ const Schema=new mongoose.Schema({
     },
     "sports":{
         type:String
-    }
+    },
+    
 
 
 })

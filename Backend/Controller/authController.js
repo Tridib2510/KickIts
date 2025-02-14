@@ -13,14 +13,14 @@ exports.getLogin=catchAsync(async(req,res,next)=>{
 })
 
 exports.signUp=catchAsync(async(req,res,next)=>{
-  
+   console.log(req.body)
     const newUser=await usermodel.create(req.body)
 
     const token=jwt.sign({id:newUser._id},process.env.JWT_SECRET,{
         expiresIn:process.env.JWT_EXPIRES_IN
     })
-    console.log('hello bro')
-    res.cookie('token', token, { httpOnly: true, secure: true, sameSite: 'None' });
+   
+    res.cookie('token', token);
 
     
    

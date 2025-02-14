@@ -13,8 +13,9 @@ const userModel=require('../models/usermodels')
 const ApiFeature=require('../utils/ApiFeature')
 
 exports.getAllEvents=catchAsync(async (req,res,next)=>{
-  
-  res.header('Access-Control-Allow-Origin', '*');
+   console.log(req.cookies)
+   res.header('Access-Control-Allow-Origin', req.headers.origin);
+   res.header('Access-Control-Allow-Credentials', 'true');
    let id
    if(req.cookies.token===undefined){
       id='default'
