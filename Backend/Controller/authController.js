@@ -13,18 +13,17 @@ exports.getLogin=catchAsync(async(req,res,next)=>{
 })
 
 exports.signUp=catchAsync(async(req,res,next)=>{
-   console.log(req.body)
+ 
     const newUser=await usermodel.create(req.body)
 
     const token=jwt.sign({id:newUser._id},process.env.JWT_SECRET,{
         expiresIn:process.env.JWT_EXPIRES_IN
     })
    
-    res.cookie('token', token);
-
+    res.cookie('token', token, { httpOnly: true,secure:true,sameSite: 'None'});//The option is very very import for cross site cookie transfer
     
    
-     res.status(200).json({
+    res.status(200).json({
         status:"success",
         token
     })

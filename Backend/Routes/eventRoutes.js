@@ -41,6 +41,8 @@ router.route('/login').post(authController.login)
 
 router.route('/logout').get(authController.logOut)
 
-router.route('/getEventDetails').post(eventController.eventDetails).get(eventController.getEventDetails)
+router.route('/getEventDetails').patch(eventController.eventDetails).get(eventController.getEventDetails)
+
+router.route('/getUser').get(userController.getUserDetails)
 
 module.exports=router

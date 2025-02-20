@@ -6,16 +6,34 @@ const jwt=require('jsonwebtoken')
 const eventEmitter = new EventEmitter();
 const catchAsync=require('../utils/catchAsync')
 const AppError=require('../utils/appError')
-
+const cloudinary=require('cloudinary').v2
 
 const eventModel=require('../models/eventmodels')
 const userModel=require('../models/usermodels')
 const ApiFeature=require('../utils/ApiFeature')
 
+
+cloudinary.config({
+   cloud_name:'dsloz7tfz',
+   api_key:'916935817685145',
+   api_secret:'cJPKjcD8v7IKw_dUMqU_paF8gyM'
+ });
+
 exports.getAllEvents=catchAsync(async (req,res,next)=>{
-   console.log(req.cookies)
-   res.header('Access-Control-Allow-Origin', req.headers.origin);
-   res.header('Access-Control-Allow-Credentials', 'true');
+
+   const options = {
+      use_filename: true,
+      unique_filename: false,
+      overwrite: true,
+    };
+
+   // cloudinary.uploader.upload('https://e0.365dm.com/21/05/1600x900/skysports-lionel-messi-barcelona_5390329.jpg?20210522073558',(err,result)=>{
+   //    console.log(result)
+   // });
+
+   
+
+  
    let id
    if(req.cookies.token===undefined){
       id='default'
@@ -41,6 +59,7 @@ const event=new ApiFeature(eventModel,req.query).filter()
    }
    else{
       return res.status(200).json({
+         token:req.cookies.token,
          data
       })
    }
@@ -95,16 +114,36 @@ exports.createEvent=catchAsync(async(req,res,next)=>{
 })
 let store
 exports.eventDetails=catchAsync(async(req,res,next)=>{
-   req.header('Access-Control-Allow-Origin', '*');
-    store=req.body
-   
+   console.log('hello bro')
+ 
+  
+   const id=req.cookies.token
+ const a=(req.body.data)._id
+
+  console.log(a)
+  console.log(a._id)
+   const decode=jwt.verify(id,process.env.JWT_SECRET)
+   //console.log(decode)
+   const user=await userModel.findByIdAndUpdate(decode.id,{currentEvent:a})
+  
+   return res.status(200).json({
+      user
+   })
     
 
 })
 
 exports.getEventDetails=catchAsync(async(req,res,next)=>{
- 
+  
+   const id=req.cookies.token
+   const decode=jwt.verify(id,process.env.JWT_SECRET)
+   const user=await userModel.findById(decode.id)
+   
+   const currentEvent=user.currentEvent
+
+  const event=await eventModel.findById(currentEvent)
+
    return res.status(200).json({
-      store
+      event
    })
 })

@@ -2,22 +2,39 @@ const express=require('express')
 const cors=require('cors')
 
 const app=express()
+//This is ver important to allow patch post etch to allow headers along with credentials
+app.use(cors({
+    origin: (origin, callback) => {
+      callback(null, origin)
+    },
+    credentials: true
+  }))
+
+app.options('*', (req, res) => {
+    res.header('Access-Control-Allow-Origin', req.headers.origin)
+    res.header('Access-Control-Allow-Credentials', 'true')
+    res.header('Access-Control-Allow-Methods', 'GET,POST,PUT,DELETE,OPTIONS')
+    res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization')//This is the most important to allow Content-Type and Authorization headers to be included easily
+    res.sendStatus(204)
+  })
 
 const dotenv=require('dotenv')
 
 const bodyParser=require('body-parser')
+app.use(express.json()); 
 
 dotenv.config({path:'config.env'})
 
 const router=require('./Routes/eventRoutes')
 const path=require('path')
 
-app.use(cors())
+
 
 const AppError=require('./utils/appError')
 const errorController = require('./Controller/errorController')
 const ErrorController=('./Controller/errorController')
 const cookieParser=require('cookie-parser')
+const fileUpload=require('express-fileupload')
 
 app.set("view engine","ejs")
 

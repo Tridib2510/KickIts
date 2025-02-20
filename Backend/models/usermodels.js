@@ -39,7 +39,11 @@ const Schema=new mongoose.Schema({
       type:String,
       default:"default.png"
     },
-    matchesPlayed:Number
+    matchesPlayed:Number,
+    currentEvent:{
+      type:String,
+      default:'none'
+    }
 })
 
 
