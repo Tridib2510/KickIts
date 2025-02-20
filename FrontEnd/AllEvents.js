@@ -26,6 +26,7 @@ fetch(`https://kickits-1.onrender.com/KickIt/home${text}`,{
 .then(res=>res.json())
 .then(data=>{
 
+if(text==''){
     if(data.token){
       buttons.removeChild(signUp)
       buttons.removeChild(login)
@@ -37,6 +38,7 @@ fetch(`https://kickits-1.onrender.com/KickIt/home${text}`,{
       buttons.removeChild(logout)
       buttons.removeChild(MyEvents)
     }
+   }
 if(data.status && data.status=='fail'){
    document.body.events=false
 }
