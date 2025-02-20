@@ -1,11 +1,11 @@
 
 
-const socket=io('http://127.0.0.1:3000')
+const socket=io('https://kickits-chatapp.onrender.com/')
 //const name=prompt('Enter your name')
 // event=prompt('Connect to which event')
 
 
-fetch('http://127.0.0.1:8000/KickIt/getUser',{credentials:'include'})
+fetch('https://kickits-1.onrender.com/KickIt/getUser',{credentials:'include'})
 .then(res=>res.json())
 .then(data=>events(data.user.username,data.user.currentEvent
 ))
