@@ -20,7 +20,7 @@ const MyEvents=document.getElementById('MyEvents')
 function helper(text){
    
 Events=document.createElement('div')
-fetch(`http://127.0.0.1:8000/KickIt/home${text}`,{
+fetch(`https://kickits-1.onrender.com/KickIt/home${text}`,{
    credentials:"include"
 })
 .then(res=>res.json())
@@ -30,7 +30,7 @@ fetch(`http://127.0.0.1:8000/KickIt/home${text}`,{
       buttons.removeChild(signUp)
       buttons.removeChild(login)
       logout.addEventListener('click',()=>{
-         window.location.href="http://127.0.0.1:8000/KickIt/logout"
+         window.location.href="https://kickits-1.onrender.com/KickIt/logout"
       })
     }
     else{
@@ -83,7 +83,7 @@ if(data.status && data.status=='fail'){
       data:data.data[a]
   })
      }
-      fetch('http://127.0.0.1:8000/KickIt/getEventDetails',options)
+      fetch('https://kickits-1.onrender.com/KickIt/getEventDetails',options)
       .then(res=>res.json())
       .then(data=>{
       

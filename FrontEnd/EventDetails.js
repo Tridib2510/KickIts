@@ -1,4 +1,4 @@
-fetch('http://127.0.0.1:8000/KickIt/getEventDetails',{
+fetch('https://kickits-1.onrender.com/KickIt/getEventDetails',{
     credentials:'include'
 })
 .then(res=>res.json())
@@ -17,7 +17,7 @@ fetch('http://127.0.0.1:8000/KickIt/getEventDetails',{
     date.innerHTML=data.event.date
     const chat=document.getElementById('Chat')
     chat.addEventListener('click',()=>{
-        window.location.href="../ChatAppPractice/index.html"
+        window.location.href="https://kickits-chatapp-frontend.onrender.com/"
     })
     console.log(data)
 })
