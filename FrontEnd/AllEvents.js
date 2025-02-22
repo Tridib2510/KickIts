@@ -87,7 +87,7 @@ if(data.status && data.status=='fail'){
       data:data.data[a]
   })
      }
-      fetch('http://127.0.0.1:8000/KickIt/getEventDetails',options)
+      fetch('https://kickits-1.onrender.com/KickIt/getEventDetails',options)
       .then(res=>res.json())
       .then(data=>{
       
