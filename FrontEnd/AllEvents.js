@@ -159,7 +159,7 @@ createEvent.addEventListener('click',()=>{
    window.location.href='createEvents.html'
 })
 const loginbutton=document.getElementById('login-btn').addEventListener('click',()=>{
-   window.location.href='login.html'
+   window.location.href='Login.html'
 })
 
 
