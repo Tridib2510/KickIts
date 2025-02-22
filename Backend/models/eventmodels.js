@@ -9,18 +9,31 @@ const Schema=new mongoose.Schema({
     "eventName":{
         type:String
     },
-    "eventAddress":{
+    "activity":{
         type:String
     },
-    "totalPlayers":{
-        type:Number
+    "venue":{
+        type:String
     },
-    "club":{
+    "date":{
+        type:Date
+    },
+    "time":{
         type:String
     },
     "sports":{
         type:String
     },
+    "Description":{
+        type:String
+    },
+    
+"playersRequired":{
+   type:Number
+},
+"createdBy":{
+  type:String
+}
     
 
 

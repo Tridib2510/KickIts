@@ -88,7 +88,7 @@ exports.getCreateEvent=catchAsync(async(req,res,next)=>{
 exports.createEvent=catchAsync(async(req,res,next)=>{
 
    const decode=jwt.verify(req.cookies.token,process.env.JWT_SECRET)
-   
+   console.log(req.body)
    const id=decode.id
 
    const user=await userModel.findById(id)
@@ -99,17 +99,13 @@ exports.createEvent=catchAsync(async(req,res,next)=>{
      }
    const body=req.body
 
-   const data={
-      "eventName":(req.body.eventName),
-      "eventAddress":req.body.eventAddress,
-      "totalPlayers":req.body.totalPlayers,
-      "sports":req.body.sports.toLowerCase(),
-      "club":user.club
-   }
+   
   
-  await eventModel.create(data)
+  await eventModel.create(req.body)
   
- return res.redirect(`http://127.0.0.1:8000/KickIt/home/${req.cookies.token}/`)
+ return res.status(200).json({
+   "status":"success"
+ })
    
 })
 let store
@@ -127,14 +123,14 @@ exports.eventDetails=catchAsync(async(req,res,next)=>{
    const user=await userModel.findByIdAndUpdate(decode.id,{currentEvent:a})
   
    return res.status(200).json({
-      user
+    status:"success"
    })
     
 
 })
 
 exports.getEventDetails=catchAsync(async(req,res,next)=>{
-  
+  console.log('Test case 2')
    const id=req.cookies.token
    const decode=jwt.verify(id,process.env.JWT_SECRET)
    const user=await userModel.findById(decode.id)
