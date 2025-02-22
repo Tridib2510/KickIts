@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Event</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('https://w7.pngwing.com/pngs/239/755/png-transparent-kids-playing-sports.png');
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .signup-container {
+            background-color: #fff;
+            padding: 40px 50px; /* Adjust the padding as needed */
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 500px;
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Center elements horizontally */
+           
+        }
+        .signup-container h2 {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .signup-container input,
+        .signup-container textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            text-align: left; /* Align text to the left */
+            padding-left: 10px; /* Add padding to shift the text */
+        }
+        .signup-container button {
+            width: 100%;
+            padding: 10px;
+            background-color: #28a745;
+            border: none;
+            border-radius: 4px;
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .signup-container button:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+    <div class="signup-container">
+        <h2>Create Event</h2>
+    
+            <input type="text" id="EventName" placeholder="Event Name" required>
+            <input type="text" id="activity" placeholder="Activity" required>
+            <input type="text" id="venue" placeholder="Venue" required>
+            <input type="date" id="date" placeholder="Date" required>
+            <input type="time" id="time" placeholder="Time" required>
+            <input type="number" id="playersRequired" placeholder="Players Required" required>
+            <textarea id="description" placeholder="Description" required></textarea>
+            <button id='createEvent'type="submit">Create</button>
+       
+    </div>
+    <script src="./createEvents.js"></script>
+</body>
+</html>

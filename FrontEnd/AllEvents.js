@@ -15,6 +15,7 @@ const logout=document.getElementById('Logout')
 
 const MyEvents=document.getElementById('MyEvents')
 
+const createEvent=document.getElementById('createEvent')
 
 
 function helper(text){
@@ -37,6 +38,7 @@ if(text==''){
     else{
       buttons.removeChild(logout)
       buttons.removeChild(MyEvents)
+      buttons.removeChild(createEvent)
     }
    }
 if(data.status && data.status=='fail'){
@@ -85,7 +87,7 @@ if(data.status && data.status=='fail'){
       data:data.data[a]
   })
      }
-      fetch('https://kickits-1.onrender.com/KickIt/getEventDetails',options)
+      fetch('http://127.0.0.1:8000/KickIt/getEventDetails',options)
       .then(res=>res.json())
       .then(data=>{
       
@@ -151,6 +153,9 @@ const button=document.getElementById('search-button').addEventListener('click',(
 
 const signUpbutton=document.getElementById('signup-btn').addEventListener('click',()=>{
    window.location.href='SignUpPage.html'
+})
+createEvent.addEventListener('click',()=>{
+   window.location.href='createEvents.html'
 })
 console.log(arr.length)
 

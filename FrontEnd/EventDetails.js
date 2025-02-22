@@ -3,10 +3,11 @@ fetch('https://kickits-1.onrender.com/KickIt/getEventDetails',{
 })
 .then(res=>res.json())
 .then(data=>{
+    console.log(data)
     const eventName=document.getElementById('profile-name')
-    eventName.innerHTML=data.event.activity
+    eventName.innerHTML=data.event.eventName
     const creator=document.getElementById('creator')
-    creator.innerHTML=data.event.createdBy
+    creator.innerHTML=data.event.activity
     const EventDetails=document.getElementById('EventDetails')
     EventDetails.innerHTML=data.event.Description
     const playersRequired=document.getElementById('players-required')
