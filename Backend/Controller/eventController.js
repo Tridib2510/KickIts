@@ -87,9 +87,10 @@ exports.createEvent=catchAsync(async(req,res,next)=>{
    const decode=jwt.verify(req.cookies.token,process.env.JWT_SECRET)
    console.log(req.body)
    const id=decode.id
-
-   const user=await userModel.findById(id)
    
+   const user=await userModel.findById(id)
+   req.body.createdBy=user.username
+   console.log(req.body)
    if(!user){
       
       return next(new AppError('Not found by this Id',404))
@@ -107,7 +108,7 @@ exports.createEvent=catchAsync(async(req,res,next)=>{
 })
 let store
 exports.eventDetails=catchAsync(async(req,res,next)=>{
-   console.log('hello bro')
+  
  
   
    const id=req.cookies.token
@@ -127,7 +128,7 @@ exports.eventDetails=catchAsync(async(req,res,next)=>{
 })
 
 exports.getEventDetails=catchAsync(async(req,res,next)=>{
-  console.log('Test case 2')
+
    const id=req.cookies.token
    const decode=jwt.verify(id,process.env.JWT_SECRET)
    const user=await userModel.findById(decode.id)
