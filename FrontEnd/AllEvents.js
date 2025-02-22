@@ -55,7 +55,7 @@ if(data.status && data.status=='fail'){
     index.push(a)
     const d=data.data[i]
     const eventName=document.createElement('h2')
-      eventName.innerHTML=data.data[i].activity
+      eventName.innerHTML=data.data[i].eventName
       eventName.className="event-name"
      div.className='event-details'
     
@@ -87,7 +87,7 @@ if(data.status && data.status=='fail'){
       data:data.data[a]
   })
      }
-      fetch('https://kickits-1.onrender.com/KickIt/getEventDetails',options)
+      fetch('https://kickits-1.onrender.comKickIt/getEventDetails',options)
       .then(res=>res.json())
       .then(data=>{
       
@@ -157,6 +157,6 @@ const signUpbutton=document.getElementById('signup-btn').addEventListener('click
 createEvent.addEventListener('click',()=>{
    window.location.href='createEvents.html'
 })
-console.log(arr.length)
+
 
 
