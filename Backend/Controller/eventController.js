@@ -54,15 +54,12 @@ const event=new ApiFeature(eventModel,req.query).filter()
     else
     user=await userModel.findById(id)
 
-   if(data.length==0){
-     next(new AppError('The data is non existant',404))
-   }
-   else{
+  
       return res.status(200).json({
          token:req.cookies.token,
          data
       })
-   }
+   
 
   
   
