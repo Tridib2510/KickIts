@@ -1,3 +1,4 @@
+
 let newData
 
 let arr=[]
@@ -156,6 +157,9 @@ const signUpbutton=document.getElementById('signup-btn').addEventListener('click
 })
 createEvent.addEventListener('click',()=>{
    window.location.href='createEvents.html'
+})
+const loginbutton=document.getElementById('login-btn').addEventListener('click',()=>{
+   window.location.href='login.html'
 })
 
 
