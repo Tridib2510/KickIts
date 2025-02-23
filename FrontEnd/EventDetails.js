@@ -52,8 +52,8 @@ fetch('https://kickits-1.onrender.com/KickIt/getEventDetails',{
                 }),
                 credentials:'include'
             }).then(res=>res.json())
-            .then(data=>console.log(data)).catch(err=>console.log(err))
-            location.reload();
+            .then(data=>location.reload()).catch(err=>console.log(err))
+            
         })
         
          }
