@@ -20,6 +20,47 @@ fetch('https://kickits-1.onrender.com/KickIt/getEventDetails',{
     chat.addEventListener('click',()=>{
         window.location.href="https://kickits-chatapp-frontend.onrender.com/"
     })
+    fetch('https://kickits-1.onrender.com/KickIt/alreadyExits',{
+        method:'PATCH',
+        headers:{
+            'Content-Type':'application/json'
+        },
+        body:JSON.stringify({
+            eventId:data.event._id
+        }),
+        credentials:'include'
+    }).then(res=>res.json())
+    .then(status=>{
+        console.log(status)
+         if(status.status==='alredyJoined'){
+            const div=document.getElementById('division')
+            const join=document.getElementById('Join')
+            div.removeChild(join)
+
+         }
+         else{
+            const div=document.getElementById('division')
+            div.removeChild(chat)
+        const join=document.getElementById('Join').addEventListener('click',()=>{
+            fetch('https://kickits-1.onrender.com/KickIt/joinEvent',{
+                method:'PATCH',
+                headers:{
+                    'Content-Type':'application/json'
+                },
+                body:JSON.stringify({
+                    eventId:data.event._id
+                }),
+                credentials:'include'
+            }).then(res=>res.json())
+            .then(data=>console.log(data)).catch(err=>console.log(err))
+            location.reload();
+        })
+        
+         }
+
+
+    }).catch(err=>console.log(err))
+  
     console.log(data)
 })
 .catch(err=>console.log(err))
