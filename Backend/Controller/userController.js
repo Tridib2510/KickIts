@@ -12,12 +12,16 @@ const userModel=require('../models/usermodels')
 const ApiFeature=require('../utils/ApiFeature')
 
 exports.getProfile=catchAsync(async(req,res,next)=>{
-    const id=req.params.id
-    const user=await userModel.findById(id)
+    const id=req.cookies.token
     
-    const file=await ejs.renderFile(path.resolve('./public/views/profile.ejs'),{data:user})
+    const decode=jwt.verify(id,process.env.JWT_SECRET)
+    const user=await userModel.findById(decode.id)
     
-    return res.status(200).send(file)
+   
+    
+    return res.status(200).json({
+        user
+    })
 })
 let y;
 
@@ -42,6 +46,9 @@ exports.getUpdateProfile=catchAsync(async(req,res,next)=>{
     
     return res.status(200).send(file)
 })
+
+
+
 
 
 exports.updateProfile=catchAsync(async (req,res,next)=>{

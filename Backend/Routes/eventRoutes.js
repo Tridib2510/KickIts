@@ -31,7 +31,7 @@ router.route('/home').get(eventController.getAllEvents)
 
 router.route('/home/:id').get(eventController.getAllEvents)
 
-router.route('/profile/:id').get(authController.protect,userController.getProfile)
+router.route('/profile').get(authController.protect,userController.getProfile)
 
 router.route('/profileUpdate/:id').get(authController.protect,userController.getUpdateProfile).patch(userController.updateProfile).post(userController.makeChanges,upload.single("image"),userController.updateProfilePicture)
 
@@ -44,5 +44,9 @@ router.route('/logout').get(authController.logOut)
 router.route('/getEventDetails').patch(eventController.eventDetails).get(eventController.getEventDetails)
 
 router.route('/getUser').get(userController.getUserDetails)
+
+router.route('/joinEvent').patch(eventController.join)
+
+router.route('/alreadyExits').patch(eventController.alreadyJoined)
 
 module.exports=router

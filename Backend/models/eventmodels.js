@@ -33,8 +33,11 @@ const Schema=new mongoose.Schema({
 },
 "createdBy":{
   type:String
+},
+"playersJoined":{
+    type:Array,
+    default:[]
 }
-    
 
 
 })

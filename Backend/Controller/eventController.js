@@ -126,7 +126,22 @@ exports.eventDetails=catchAsync(async(req,res,next)=>{
     
 
 })
-
+exports.alreadyJoined=catchAsync(async(req,res,next)=>{
+   const id=req.cookies.token
+   const decode=jwt.verify(id,process.env.JWT_SECRET)
+   const user=await userModel.findById(decode.id)
+   const event=await eventModel.findById(req.body.eventId)
+   if(event.playersJoined.includes(decode.id))
+      return res.status(200).json({
+        status:"alredyJoined"
+      })
+   else{
+      return res.status(200).json({
+         status:"notJoined"
+      })
+   }
+   
+})
 exports.getEventDetails=catchAsync(async(req,res,next)=>{
 
    const id=req.cookies.token
@@ -140,4 +155,32 @@ exports.getEventDetails=catchAsync(async(req,res,next)=>{
    return res.status(200).json({
       event
    })
+}
+
+
+)
+exports.join=catchAsync(async(req,res,next)=>{
+   console.log(req.body)
+   const id=req.cookies.token
+   const decode=jwt.verify(id,process.env.JWT_SECRET)
+  
+    const event=await eventModel.findById(req.body.eventId)
+
+   const user=await userModel.findById(decode.id)
+
+   user.joinedEvents.push(req.body.eventId)
+   event.playersJoined.push(decode.id)
+
+   await user.save({
+      validateBeforeSave: false
+   })
+   await event.save({
+      validateBeforeSave: false
+   })
+   
+
+   return res.status(200).json({
+      status:"success"
+   })
+   
 })

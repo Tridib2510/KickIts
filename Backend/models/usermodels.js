@@ -11,7 +11,10 @@ const Schema=new mongoose.Schema({
         lowercase:true
         
     },
-    Description:String,
+    Description:{
+      type:String,
+      default:"Hey I am a new user"
+    },
     email:{
        type:String,
        required:[true,'Please provide an email'],
@@ -37,12 +40,16 @@ const Schema=new mongoose.Schema({
     },
     image:{
       type:String,
-      default:"default.png"
+      default:"https://res.cloudinary.com/dsloz7tfz/image/upload/v1740231238/default_h4rvgx.jpg"
     },
     matchesPlayed:Number,
     currentEvent:{
       type:String,
       default:'none'
+    },
+    joinedEvents:{
+      type:Array,
+      default:[]
     }
 })
 
