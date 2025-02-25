@@ -49,4 +49,6 @@ router.route('/joinEvent').patch(eventController.join)
 
 router.route('/alreadyExits').patch(eventController.alreadyJoined)
 
+router.route('/myEvents').get(authController.protect,eventController.myEvents)
+
 module.exports=router

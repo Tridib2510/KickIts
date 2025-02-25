@@ -1,4 +1,4 @@
-fetch('https://kickits-1.onrender.com/KickIt/getEventDetails',{
+fetch('http://127.0.0.1:8000/KickIt/getEventDetails',{
     credentials:'include'
 })
 .then(res=>res.json())
@@ -20,7 +20,7 @@ fetch('https://kickits-1.onrender.com/KickIt/getEventDetails',{
     chat.addEventListener('click',()=>{
         window.location.href="https://kickits-chatapp-frontend.onrender.com/"
     })
-    fetch('https://kickits-1.onrender.com/KickIt/alreadyExits',{
+    fetch('http://127.0.0.1:8000/KickIt/alreadyExits',{
         method:'PATCH',
         headers:{
             'Content-Type':'application/json'
@@ -42,7 +42,7 @@ fetch('https://kickits-1.onrender.com/KickIt/getEventDetails',{
             const div=document.getElementById('division')
             div.removeChild(chat)
         const join=document.getElementById('Join').addEventListener('click',()=>{
-            fetch('https://kickits-1.onrender.com/KickIt/joinEvent',{
+            fetch('http://127.0.0.1:8000/KickIt/joinEvent',{
                 method:'PATCH',
                 headers:{
                     'Content-Type':'application/json'

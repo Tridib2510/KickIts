@@ -42,7 +42,8 @@ exports.getAllEvents=catchAsync(async (req,res,next)=>{
     const decode=jwt.verify(req.cookies.token,process.env.JWT_SECRET)
      id=decode.id
     }
-const event=new ApiFeature(eventModel,req.query).filter()
+   
+const event=new ApiFeature(eventModel,req.query,'').filter()
    const data=await event.query   
    let user
     
@@ -183,4 +184,23 @@ exports.join=catchAsync(async(req,res,next)=>{
       status:"success"
    })
    
+})
+exports.myEvents=catchAsync(async(req,res,next)=>{
+
+const id=req.cookies.token
+const decode=jwt.verify(id,process.env.JWT_SECRET)
+const user=await userModel.findById(decode.id)
+
+ const text={playersJoined:decode.id}
+
+const event=new ApiFeature(eventModel,req.query,text).filter()
+const data=await event.query 
+
+return res.status(200).json({
+  data
+
+
+
+
+})
 })

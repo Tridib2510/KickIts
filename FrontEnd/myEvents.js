@@ -8,13 +8,11 @@ let Events=document.createElement('div')
 
 const buttons=document.getElementById('auth-buttons')
 
-const login=document.getElementById('login-btn')
 
-const signUp=document.getElementById('signup-btn')
 
 const logout=document.getElementById('Logout')
 
-const MyEvents=document.getElementById('MyEvents')
+const allEvents=document.getElementById('AllEvents')
 
 const createEvent=document.getElementById('createEvent')
 
@@ -22,7 +20,7 @@ const createEvent=document.getElementById('createEvent')
 function helper(text){
    
 Events=document.createElement('div')
-fetch(`https://kickits-1.onrender.com/KickIt/home${text}`,{
+fetch(`https://kickits-1.onrender.com/KickIt/myEvents${text}`,{
    credentials:"include"
 })
 .then(res=>res.json())
@@ -30,17 +28,12 @@ fetch(`https://kickits-1.onrender.com/KickIt/home${text}`,{
 
 if(text==''){
     if(data.token){
-      buttons.removeChild(signUp)
-      buttons.removeChild(login)
+      
       logout.addEventListener('click',()=>{
          window.location.href="https://kickits-1.onrender.com/KickIt/logout"
       })
     }
-    else{
-      buttons.removeChild(logout)
-      buttons.removeChild(MyEvents)
-      buttons.removeChild(createEvent)
-    }
+    
    }
 if(data.status && data.status=='fail'){
    document.body.events=false
@@ -152,18 +145,14 @@ const button=document.getElementById('search-button').addEventListener('click',(
 
 })
 
-const signUpbutton=document.getElementById('signup-btn').addEventListener('click',()=>{
-   window.location.href='SignUpPage.html'
-})
+
 createEvent.addEventListener('click',()=>{
    window.location.href='createEvents.html'
 })
-const loginbutton=document.getElementById('login-btn').addEventListener('click',()=>{
-   window.location.href='Login.html'
-})
 
-const myEvents=document.getElementById('MyEvents').addEventListener('click',()=>{
-   window.location.href='myEvents.html'
+allEvents.addEventListener('click',()=>{
+window.location.href='AllEvents.html'
+
 })
 
 
