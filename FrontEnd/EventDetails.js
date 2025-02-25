@@ -20,7 +20,7 @@ fetch('http://127.0.0.1:8000/KickIt/getEventDetails',{
     chat.addEventListener('click',()=>{
         window.location.href="https://kickits-chatapp-frontend.onrender.com/"
     })
-    fetch('http://127.0.0.1:8000/KickIt/alreadyExits',{
+    fetch('https://kickits-1.onrender.com/KickIt/alreadyExits',{
         method:'PATCH',
         headers:{
             'Content-Type':'application/json'
