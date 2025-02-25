@@ -27,12 +27,12 @@ fetch(`https://kickits-1.onrender.com/KickIt/myEvents${text}`,{
 .then(data=>{
 
 if(text==''){
-    if(data.token){
+  
       
       logout.addEventListener('click',()=>{
          window.location.href="https://kickits-1.onrender.com/KickIt/logout"
       })
-    }
+    
     
    }
 if(data.status && data.status=='fail'){
