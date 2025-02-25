@@ -42,7 +42,7 @@ fetch('http://127.0.0.1:8000/KickIt/getEventDetails',{
             const div=document.getElementById('division')
             div.removeChild(chat)
         const join=document.getElementById('Join').addEventListener('click',()=>{
-            fetch('http://127.0.0.1:8000/KickIt/joinEvent',{
+            fetch('https://kickits-1.onrender.com/KickIt/joinEvent',{
                 method:'PATCH',
                 headers:{
                     'Content-Type':'application/json'
