@@ -1,4 +1,4 @@
-fetch('http://127.0.0.1:8000/KickIt/getEventDetails',{
+fetch('https://kickits-1.onrender.com/KickIt/getEventDetails',{
     credentials:'include'
 })
 .then(res=>res.json())
