@@ -18,11 +18,13 @@ const MyEvents=document.getElementById('MyEvents')
 
 const createEvent=document.getElementById('createEvent')
 
+const image=document.getElementById('image')
+
 
 function helper(text){
    
 Events=document.createElement('div')
-fetch(`https://kickits-1.onrender.com/KickIt/home${text}`,{
+fetch(`http://127.0.0.1:8000/KickIt/home${text}`,{
    credentials:"include"
 })
 .then(res=>res.json())
@@ -30,13 +32,21 @@ fetch(`https://kickits-1.onrender.com/KickIt/home${text}`,{
 
 if(text==''){
     if(data.token){
+      image.src=data.image
+      image.addEventListener('click',()=>{
+         window.location.href='profile.html'
+      })
+      console.log(data.image)
       buttons.removeChild(signUp)
       buttons.removeChild(login)
       logout.addEventListener('click',()=>{
-         window.location.href="https://kickits-1.onrender.com/KickIt/logout"
+         window.location.href="http://127.0.0.1:8000/KickIt/logout"
       })
     }
     else{
+     
+     
+      buttons.removeChild(image)
       buttons.removeChild(logout)
       buttons.removeChild(MyEvents)
       buttons.removeChild(createEvent)
@@ -88,7 +98,7 @@ if(data.status && data.status=='fail'){
       data:data.data[a]
   })
      }
-      fetch('https://kickits-1.onrender.com/KickIt/getEventDetails',options)
+      fetch('http://127.0.0.1:8000/getEventDetails',options)
       .then(res=>res.json())
       .then(data=>{
       

@@ -5,12 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profile Page</title>
     <style>
+        
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
             background-color: #f4f4f4;
         }
+    #update {
+    background-color:green;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin: 0 10px; /* Add some space between the buttons */
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+}
+
+#update:hover {
+    background-color: #0056b3;
+}
         .profile-container {
             max-width: 600px;
             margin: 50px auto;
@@ -54,21 +69,30 @@
     </style>
 </head>
 <body>
-    <div class="profile-container">
-        <div class="profile-header">
+    <div id="profile-container" class="profile-container">
+        <div class="profile-header" id="profile-header">
             <div id="image">
                 
             </div>
-           
-            <div id="name"></div>
-        <div class="profile-details">
+           <div id="nameContainer">
+            <div id="name">
+                
+            </div>
+        </div>
+            <input type="text" id="changeProfile" >  
+        <div class="profile-details" id="profile-details">
             <h2>About Me</h2>
+            <div id="descriptionContainer">
             <p id="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam scelerisque leo nec magna fermentum, a facilisis ligula cursus.</p>
-           
+            
+            <textarea id="Description" placeholder="Description"></textarea>
+           </div>
             <p id="email">Email: john.doe@example.com</p>
             
         </div>
-    </div>
+        <button id="update"> UPDATE</button>
+    </div> 
+   
     <script src="./profile.js"></script>
 </body>
 </html>
