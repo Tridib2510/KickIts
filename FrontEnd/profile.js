@@ -140,7 +140,12 @@ console.log(description.innerHTML)
             username:username,
             Description:Description
         })
-    }).then(res=>res.json()).then((data)=>console.log(data)).catch(err=>console.log(err))
+    }).then(res=>res.json())
+    .then((data)=>{
+        console.log(data)
+        window.location.reload()
+    })
+    .catch(err=>console.log(err))
         
-       //window.location.reload()
+       
 })
