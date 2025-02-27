@@ -115,7 +115,7 @@ exports.eventDetails=catchAsync(async(req,res,next)=>{
  
   
    const id=req.cookies.token
- //const a=(req.body.data)._id
+ const a=(req.body.data)._id
 
   //console.log(a)
  // console.log(a._id)
