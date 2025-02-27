@@ -126,9 +126,8 @@ div.appendChild(image)
 update.addEventListener('click',()=>{
 
 const username=changeProfile.value!=''?changeProfile.value:(name.innerHTML).substring(5)
-const description=descriptionUpdate.value!=''?descriptionUpdate.value:description.innerHTML
-console.log('hello2')
-console.log(changeProfile)
+const Description=descriptionUpdate.value!=''?descriptionUpdate.value:description.innerHTML
+console.log(description.innerHTML)
 
 
     fetch('https://kickits-1.onrender.com/KickIt/profileUpdate',{
@@ -139,9 +138,9 @@ console.log(changeProfile)
         credentials:'include',
         body:JSON.stringify({
             username:username,
-            Description:description
+            Description:Description
         })
     }).then(res=>res.json()).then((data)=>console.log(data)).catch(err=>console.log(err))
         
-       window.location.reload()
+       //window.location.reload()
 })

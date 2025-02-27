@@ -55,10 +55,12 @@ const event=new ApiFeature(eventModel,req.query,'').filter()
     else
     user=await userModel.findById(id)
 
-  
+    const image=user.image
+   console.log(image)
       return res.status(200).json({
          token:req.cookies.token,
-         data
+         data,
+         image
       })
    
 

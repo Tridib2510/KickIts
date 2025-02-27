@@ -33,7 +33,7 @@ router.route('/home/:id').get(eventController.getAllEvents)
 
 router.route('/profile').get(authController.protect,userController.getProfile)
 
-router.route('/profileUpdate/:id').get(authController.protect,userController.getUpdateProfile).patch(userController.updateProfile).post(userController.makeChanges,upload.single("image"),userController.updateProfilePicture)
+router.route('/profileUpdate').get(authController.protect,userController.getUpdateProfile).patch(userController.updateProfile).post(userController.makeChanges,upload.single("image"),userController.updateProfilePicture)
 
 router.route('/signUp').post(authController.signUp)
 

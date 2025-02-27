@@ -32,6 +32,7 @@ fetch(`https://kickits-1.onrender.com/KickIt/home${text}`,{
 
 if(text==''){
     if(data.token){
+      console.log(data.image)
       image.src=data.image
       image.addEventListener('click',()=>{
          window.location.href='profile.html'
@@ -98,7 +99,7 @@ if(data.status && data.status=='fail'){
       data:data.data[a]
   })
      }
-      fetch('http://127.0.0.1:8000/getEventDetails',options)
+      fetch('https://kickits-1.onrender.com/getEventDetails',options)
       .then(res=>res.json())
       .then(data=>{
       

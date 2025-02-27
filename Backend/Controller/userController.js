@@ -13,7 +13,7 @@ const ApiFeature=require('../utils/ApiFeature')
 
 exports.getProfile=catchAsync(async(req,res,next)=>{
     const id=req.cookies.token
-    
+    console.log(req.body)
     const decode=jwt.verify(id,process.env.JWT_SECRET)
     const user=await userModel.findById(decode.id)
     
@@ -52,11 +52,14 @@ exports.getUpdateProfile=catchAsync(async(req,res,next)=>{
 
 
 exports.updateProfile=catchAsync(async (req,res,next)=>{
+const id=req.cookies.token
+const decode=jwt.verify(id,process.env.JWT_SECRET)
+ console.log(decode)
+    const user=await userModel.findByIdAndUpdate(decode.id,req.body)
 
-
-    const user=await userModel.findByIdAndUpdate(y,req.body)
-
-    next()
+    return res.status(200).json({
+        "status":"success"
+    })
 
  
 })
