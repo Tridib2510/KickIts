@@ -76,7 +76,7 @@ descriptionUpdate.addEventListener('click',()=>{
 })
 
 
-fetch('http://127.0.0.1:8000/KickIt/profile',{credentials:'include'}).then((res)=>res.json()).then((data)=>{
+fetch('https://kickits-1.onrender.com/KickIt/profile',{credentials:'include'}).then((res)=>res.json()).then((data)=>{
     console.log(data)
     
 name.innerHTML='Name: '+data.user.username
@@ -131,7 +131,7 @@ console.log('hello2')
 console.log(changeProfile)
 
 
-    fetch('http://127.0.0.1:8000/KickIt/profileUpdate',{
+    fetch('https://kickits-1.onrender.com/KickIt/profileUpdate',{
         method:'PATCH',
         headers:{
             'Content-Type':'application/json'
