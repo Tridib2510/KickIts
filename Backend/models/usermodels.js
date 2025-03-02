@@ -40,7 +40,7 @@ const Schema=new mongoose.Schema({
     },
     image:{
       type:String,
-      default:"https://res.cloudinary.com/dsloz7tfz/image/upload/v1740231238/default_h4rvgx.jpg"
+      default:"https://res.cloudinary.com/dsloz7tfz/image/upload/v1740896254/default_tzfjxy.jpg"
     },
     matchesPlayed:Number,
     currentEvent:{

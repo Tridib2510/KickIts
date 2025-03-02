@@ -65,19 +65,20 @@ exports.getUpdateProfile=catchAsync(async(req,res,next)=>{
 exports.updateProfile=catchAsync(async (req,res,next)=>{
 
    // console.log(req.body)
-    console.log(req.file)
-    if(req.file)
+//console.log(req.file)
+    if(req.file){
     cloudinary.uploader.upload(req.file.path,{
        public_id: req.file.filename,
        resource_type: 'image'
     })
+}
 
 const id=req.cookies.token
 const decode=jwt.verify(id,process.env.JWT_SECRET)
-
+if(req.file){
 const imageUrl=cloudinary.url(req.file.filename)
     req.body.image=imageUrl
-  
+}
 
     console.log(req.body)
 
