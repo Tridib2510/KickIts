@@ -1,16 +1,21 @@
 const express=require('express')
-
+const jwt=require('jsonwebtoken')
 const router=express.Router()
 
 const multer=require('multer')
 
 const storage=multer.diskStorage({
     destination:function(req,file,cb){
+       // console.log(req.body)
+        //onsole.log(file)
+       
+
         return cb(null,'./uploads')
     },
     filename:function(req,file,cb){
-       
-        return cb(null,`${req.id}.png`)
+       const id=req.cookies.token
+       const decode=jwt.verify(id,process.env.JWT_SECRET)
+        return cb(null,`${Date.now()}_${decode.id}`)
     }
 })
 
@@ -33,7 +38,7 @@ router.route('/home/:id').get(eventController.getAllEvents)
 
 router.route('/profile').get(authController.protect,userController.getProfile)
 
-router.route('/profileUpdate').get(authController.protect,userController.getUpdateProfile).patch(userController.updateProfile).post(userController.makeChanges,upload.single("image"),userController.updateProfilePicture)
+router.route('/profileUpdate').get(authController.protect,userController.getUpdateProfile).patch(upload.single('file'),userController.updateProfile).post(userController.makeChanges,upload.single("image"),userController.updateProfilePicture)
 
 router.route('/signUp').post(authController.signUp)
 

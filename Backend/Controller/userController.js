@@ -9,11 +9,22 @@ const jwt=require('jsonwebtoken')
 
 const eventModel=require('../models/eventmodels')
 const userModel=require('../models/usermodels')
-const ApiFeature=require('../utils/ApiFeature')
+const ApiFeature=require('../utils/ApiFeature');
+const { runInNewContext } = require('node:vm');
+
+
+const cloudinary=require('cloudinary').v2
+
+cloudinary.config({
+    cloud_name:'dsloz7tfz',
+    api_key:'872176943676699',
+    api_secret:'svjtmkuIsQARXvl8GYV_MqDm65s'
+  });
 
 exports.getProfile=catchAsync(async(req,res,next)=>{
     const id=req.cookies.token
     console.log(req.body)
+   
     const decode=jwt.verify(id,process.env.JWT_SECRET)
     const user=await userModel.findById(decode.id)
     
@@ -52,9 +63,25 @@ exports.getUpdateProfile=catchAsync(async(req,res,next)=>{
 
 
 exports.updateProfile=catchAsync(async (req,res,next)=>{
+
+   // console.log(req.body)
+    console.log(req.file)
+    if(req.file)
+    cloudinary.uploader.upload(req.file.path,{
+       public_id: req.file.filename,
+       resource_type: 'image'
+    })
+
 const id=req.cookies.token
 const decode=jwt.verify(id,process.env.JWT_SECRET)
- console.log(decode)
+
+const imageUrl=cloudinary.url(req.file.filename)
+    req.body.image=imageUrl
+  
+
+    console.log(req.body)
+
+
     const user=await userModel.findByIdAndUpdate(decode.id,req.body)
 
     return res.status(200).json({

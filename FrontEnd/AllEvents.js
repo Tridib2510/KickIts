@@ -24,7 +24,7 @@ const image=document.getElementById('image')
 function helper(text){
    
 Events=document.createElement('div')
-fetch(`https://kickits-1.onrender.com/KickIt/home${text}`,{
+fetch(`http://127.0.0.1:8000/KickIt/home${text}`,{
    credentials:"include"
 })
 .then(res=>res.json())
@@ -41,7 +41,7 @@ if(text==''){
       buttons.removeChild(signUp)
       buttons.removeChild(login)
       logout.addEventListener('click',()=>{
-         window.location.href="https://kickits-1.onrender.com/KickIt/logout"
+         window.location.href="http://127.0.0.1:8000/KickIt/logout"
       })
     }
     else{
@@ -99,7 +99,7 @@ if(data.status && data.status=='fail'){
       data:data.data[a]
   })
      }
-      fetch('https://kickits-1.onrender.com/KickIt/getEventDetails',options)
+      fetch('http://127.0.0.1:8000/KickIt/getEventDetails',options)
       .then(res=>res.json())
       .then(data=>{
       

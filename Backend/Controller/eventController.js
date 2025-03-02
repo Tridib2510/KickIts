@@ -6,18 +6,15 @@ const jwt=require('jsonwebtoken')
 const eventEmitter = new EventEmitter();
 const catchAsync=require('../utils/catchAsync')
 const AppError=require('../utils/appError')
-const cloudinary=require('cloudinary').v2
+
 
 const eventModel=require('../models/eventmodels')
 const userModel=require('../models/usermodels')
 const ApiFeature=require('../utils/ApiFeature')
 
 
-cloudinary.config({
-   cloud_name:'dsloz7tfz',
-   api_key:'916935817685145',
-   api_secret:'cJPKjcD8v7IKw_dUMqU_paF8gyM'
- });
+
+
 
 exports.getAllEvents=catchAsync(async (req,res,next)=>{
 
@@ -27,10 +24,7 @@ exports.getAllEvents=catchAsync(async (req,res,next)=>{
       overwrite: true,
     };
 
-   // cloudinary.uploader.upload('https://e0.365dm.com/21/05/1600x900/skysports-lionel-messi-barcelona_5390329.jpg?20210522073558',(err,result)=>{
-   //    console.log(result)
-   // });
-
+   
    
 
   
