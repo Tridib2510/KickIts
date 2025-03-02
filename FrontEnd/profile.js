@@ -80,7 +80,7 @@ descriptionUpdate.addEventListener('click', () => {
     a = true;
 });
 
-fetch('http://127.0.0.1:8000/KickIt/profile', { credentials: 'include' })
+fetch('https://kickits-1.onrender.com/KickIt/profile', { credentials: 'include' })
     .then((res) => res.json())
     .then((data) => {
         console.log(data);
@@ -125,7 +125,7 @@ update.addEventListener('click', () => {
     formData.append('username', username);
     formData.append('Description', Description);
 
-    fetch('http://127.0.0.1:8000/KickIt/profileUpdate', {
+    fetch('https://kickits-1.onrender.com/KickIt/profileUpdate', {
         method: 'PATCH',
         credentials: 'include',
         body: formData,
@@ -133,7 +133,7 @@ update.addEventListener('click', () => {
         .then((res) => res.json())
         .then((data) => {
             console.log(data);
-            // window.location.reload();
+             window.location.reload();
         })
         .catch((err) => console.log(err));
 });
