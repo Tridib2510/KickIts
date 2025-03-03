@@ -189,12 +189,14 @@ const user=await userModel.findById(decode.id)
 
  const text={playersJoined:decode.id}
 
+ const image=user.image
+
 const event=new ApiFeature(eventModel,req.query,text).filter()
 const data=await event.query 
 
 return res.status(200).json({
-  data
-
+  data,
+  image
 
 
 
