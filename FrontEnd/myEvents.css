@@ -158,3 +158,10 @@ background-image: url('https://m.media-amazon.com/images/I/81NE5bSsUML._AC_UF894
 .custom-btn:hover {
     background-color: #0056b3;
 }
+#image{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: #f4f4f4;
+    margin: 0 auto;
+}
