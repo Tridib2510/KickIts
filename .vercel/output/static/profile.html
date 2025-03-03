@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Page</title>
+    <style>
+        
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+    #update {
+    background-color:green;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin: 0 10px; /* Add some space between the buttons */
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+}
+
+#update:hover {
+    background-color: #0056b3;
+}
+        .profile-container {
+            max-width: 600px;
+            margin: 50px auto;
+            background: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+        .profile-header {
+            text-align: center;
+        }
+        .profile-header img {
+            border-radius: 50%;
+            width: 150px;
+            height: 150px;
+        }
+        .profile-header h1 {
+            margin: 10px 0 5px;
+        }
+        .profile-header p {
+            color: #777;
+        }
+        .profile-details {
+            margin-top: 20px;
+        }
+        .profile-details h2 {
+            margin-bottom: 10px;
+            border-bottom: 2px solid #f4f4f4;
+            padding-bottom: 5px;
+        }
+        .profile-details p {
+            margin: 5px 0;
+        }
+        .image{
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background-color: #f4f4f4;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+    <div id="profile-container" class="profile-container">
+        <div class="profile-header" id="profile-header">
+            <div id="image">
+                <input type="file" id="file" name="myfile">
+            </div>
+           <div id="nameContainer">
+            <div id="name">
+                
+            </div>
+        </div>
+            <input type="text" id="changeProfile" >  
+        <div class="profile-details" id="profile-details">
+            <h2>About Me</h2>
+            <div id="descriptionContainer">
+            <p id="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam scelerisque leo nec magna fermentum, a facilisis ligula cursus.</p>
+            
+            <textarea id="Description" placeholder="Description"></textarea>
+           </div>
+            <p id="email">Email: john.doe@example.com</p>
+            
+        </div>
+        <button id="update"> UPDATE</button>
+    </div> 
+   
+    <script src="./profile.js"></script>
+</body>
+</html>
