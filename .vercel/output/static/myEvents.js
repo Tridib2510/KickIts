@@ -16,6 +16,7 @@ const allEvents=document.getElementById('AllEvents')
 
 const createEvent=document.getElementById('createEvent')
 
+const image=document.getElementById('image')
 
 function helper(text){
    
@@ -28,7 +29,11 @@ fetch(`https://kickits-1.onrender.com/KickIt/myEvents${text}`,{
 
 if(text==''){
   
-      
+   image.src=data.image
+      image.addEventListener('click',()=>{
+         window.location.href='profile.html'
+      })   
+
       logout.addEventListener('click',()=>{
          window.location.href="https://kickits-1.onrender.com/KickIt/logout"
       })
