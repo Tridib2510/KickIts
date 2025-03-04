@@ -7,9 +7,10 @@ const eventEmitter = new EventEmitter();
 const catchAsync=require('../utils/catchAsync')
 const AppError=require('../utils/appError')
 
-
-const eventModel=require('../models/eventmodels')
 const userModel=require('../models/usermodels')
+const eventModel=require('../models/eventmodels')
+
+
 const ApiFeature=require('../utils/ApiFeature')
 
 
@@ -80,7 +81,7 @@ exports.getCreateEvent=catchAsync(async(req,res,next)=>{
 })
 
 exports.createEvent=catchAsync(async(req,res,next)=>{
-
+ console.log('What happended')
    const decode=jwt.verify(req.cookies.token,process.env.JWT_SECRET)
    console.log(req.body)
    const id=decode.id
@@ -107,7 +108,6 @@ let store
 exports.eventDetails=catchAsync(async(req,res,next)=>{
   
  
-  
    const id=req.cookies.token
  const a=(req.body.data)._id
 
@@ -144,10 +144,12 @@ exports.getEventDetails=catchAsync(async(req,res,next)=>{
    const id=req.cookies.token
    const decode=jwt.verify(id,process.env.JWT_SECRET)
    const user=await userModel.findById(decode.id)
-   
+   console.log('helloo')
    const currentEvent=user.currentEvent
 
-  const event=await eventModel.findById(currentEvent)
+  const event=await eventModel.findById(currentEvent).populate({
+   path:'playersJoined'
+}) 
 
    return res.status(200).json({
       event
@@ -186,7 +188,7 @@ exports.myEvents=catchAsync(async(req,res,next)=>{
 const id=req.cookies.token
 const decode=jwt.verify(id,process.env.JWT_SECRET)
 const user=await userModel.findById(decode.id)
-
+ console.log('hi')
  const text={playersJoined:decode.id}
 
  const image=user.image

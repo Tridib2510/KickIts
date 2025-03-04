@@ -1,5 +1,7 @@
 const express=require('express')
 
+const user=require('./usermodels')
+
 const mongoose=require('mongoose')
 
 const DB=process.env.DATABASE_LOCAL
@@ -34,14 +36,16 @@ const Schema=new mongoose.Schema({
 "createdBy":{
   type:String
 },
-"playersJoined":{
-    type:Array,
-    default:[]
-}
+"playersJoined":[{
+    type:mongoose.Schema.ObjectId,
+    ref:'users'
+}]
 
 
 })
 
-const model=new mongoose.model('Events',Schema)
+
+
+const model=mongoose.model('Events',Schema)
 
 module.exports=model
