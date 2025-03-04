@@ -1,2 +1,3 @@
 # KickIts
-https://kick-its.vercel.app/
+It is a backend project in development
+
