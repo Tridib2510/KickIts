@@ -99,7 +99,7 @@ if(data.status && data.status=='fail'){
       data:data.data[a]
   })
      }
-      fetch('https://kickits-1.onrender.com/getEventDetails',options)
+      fetch('https://kickits-1.onrender.comz/KickIt/getEventDetails',options)
       .then(res=>res.json())
       .then(data=>{
       
