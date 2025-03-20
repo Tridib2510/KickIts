@@ -262,12 +262,13 @@ body:JSON.stringify({
    requestedEvents:data.user.requestedEvents[a]
 })
   }
+  console.log(data.user.requestedEvents[a])
   fetch(`${url}/KickIt/joinRequests`,options)
   .then(res=>res.json())
   .then(data=>{
    console.log('hello')
   // console.log(data)
-   window.location='./acceptRequest.html'
+window.location='./acceptRequest.html'
 })
   .catch(err=>console.log(err))
 })

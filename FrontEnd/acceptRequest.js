@@ -89,6 +89,7 @@ fetch(`${url}/KickIt/PermissionNeeded`,{
         buttons.removeChild(MyEvents)
         buttons.removeChild(createEvent)
       }
+      console.log(data.event)
       accept.addEventListener('click',()=>{
          fetch(`${url}/KickIt//joinEvent`,{
             method:'PATCH',
@@ -104,7 +105,29 @@ fetch(`${url}/KickIt/PermissionNeeded`,{
             credentials:'include'
         }).then(res=>res.json())
         .then(data=>{
-         console.log('data')
+        window.location.href='AllEvents.html'
+           console.log(data)
+           
+           
+        }).catch(err=>console.log(err))
+      })
+
+      decline.addEventListener('click',()=>{
+         fetch(`${url}/KickIt//joinEvent`,{
+            method:'PATCH',
+            headers:{
+                'Content-Type':'application/json'
+            },
+            body:JSON.stringify({
+                user:data.requestedUser,
+                eventId:data.event,
+                createdBy:data.event.createdBy,
+                buttonPressed:'decline'
+            }),
+            credentials:'include'
+        }).then(res=>res.json())
+        .then(data=>{
+         window.location.href='AllEvents.html'
            console.log(data)
            
            

@@ -131,13 +131,15 @@ exports.alreadyJoined=catchAsync(async(req,res,next)=>{
    const user=await userModel.findById(decode.id)
    const event=await eventModel.findById(req.body.eventId)
    const creator=await userModel.findById(event.createdBy)
-   console.log(creator)
+ 
    console.log("hello bitch"+decode.id)
+   
+   
    if(event.playersJoined.includes(decode.id))
       return res.status(200).json({
         status:"alredyJoined"
       })
-   else if(creator.joinedRequests.includes(user._id)){
+   else if(event.joiningRequest.includes(decode.id)){
       return res.status(200).json({
          status:"requestNotYetAnswered"
       })
@@ -194,12 +196,13 @@ exports.join=catchAsync(async(req,res,next)=>{
 
     const creator=await userModel.findById(creatorId)
 
-  
+  console.log(event)
   
     console.log('Test Case 0')
 
    if(req.body.buttonPressed==='accept'){
    event.playersJoined.push(client._id)
+  
    client.joinedEvents.push(event._id)
    }
    
@@ -251,7 +254,8 @@ exports.joinRequest=catchAsync(async(req,res,next)=>{
 
    creator.requestedEvents.push(req.body.eventId)
 
-  
+   event.joiningRequest.push(user._id)
+
    await user.save({
       validateBeforeSave: false
    })

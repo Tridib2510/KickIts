@@ -69,4 +69,26 @@ fetch(`${url}/KickIt/getEventDetails`,{
                     eventId:data.event._id,
                     createdBy:data.event.createdBy
                 }),
-                cred
+                credentials:'include'
+            }).then(res=>res.json())
+            .then(data=>{
+               console.log(data)
+                socket.emit('sendRequest',userName,data.creatorId)
+                const join=document.getElementById('Join')
+                join.innerHTML='Pending Request'
+                join.style.backgroundColor='grey'
+                join.style.color='black'
+                join.style.cursor='not-allowed'
+               
+            }).catch(err=>console.log(err))
+            
+        })
+        
+         }
+
+
+    }).catch(err=>console.log(err))
+  
+    console.log(data)
+})
+.catch(err=>console.log(err))
