@@ -56,7 +56,20 @@ body {
 .auth-buttons button:hover {
     background-color: #45a049;
 }
-
+.side-by-side-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px; /* Adjust the gap between the divs as needed */
+    width: 80%; /* Adjust the width as needed */
+    margin: 60px auto; /* Center the container */
+}
+.side-by-side-container > div {
+    flex: 1; /* Make both divs take equal space */
+    padding: 50px;
+    background-color:#333;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+}
 .signup-btn {
     background-color: #008CBA;
 }
@@ -71,6 +84,9 @@ body {
     background-color: #5c7751;
     border: 1px solid #ddd;
     border-radius: 8px;
+    
+    
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
 background-image: url('https://m.media-amazon.com/images/I/81NE5bSsUML._AC_UF894,1000_QL80_.jpg');
     
    
@@ -88,13 +104,15 @@ background-image: url('https://m.media-amazon.com/images/I/81NE5bSsUML._AC_UF894
     margin-bottom: 10px;
   
 }
-
+#logo {
+    height: 50px;
+    width: auto;
+}
 .event-details p {
     font-size: 16px;
     color: white;
     margin-bottom: 8px;
 }
-
 .event-name {
     font-weight: bold;
 }
@@ -164,4 +182,23 @@ background-image: url('https://m.media-amazon.com/images/I/81NE5bSsUML._AC_UF894
     border-radius: 50%;
     background-color: #f4f4f4;
     margin: 0 auto;
+}
+#notification-icon{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin-left: 10px;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out;
+}
+#notification-icon:hover {
+    transform: translateY(-5px);
+}
+#notifications{
+    width: 300px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #5c7751;
+    border: 1px solid #ddd;
+    border-radius: 8px;
 }

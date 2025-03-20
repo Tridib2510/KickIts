@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Taskbar</title>
+    <link rel="stylesheet" href="./acceptRequest.css">
+    
+</head>
+<body>
+    <div class="taskbar">
+        <div class="start-menu">
+          
+        </div>
+        <div class="auth-buttons" id="auth-buttons">
+            <button id="login-btn">Login</button>
+            <button id="signup-btn">Sign Up</button>
+            <button id="createEvent">Create</button>
+            <button id="Logout">Logout</button>
+            <button id="MyEvents">My Events</button>
+            <img id="image" src="https://img.icons8.com/ios/50">
+        </div>
+    </div>
+   
+    <!-- Move search bar outside of taskbar div -->
+   
+   
+    <!-- New buttons container below the search bar -->
+  
+
+    <!-- Side by side divs -->
+    <div class="side-by-side-container">
+        <div id="left-div">
+            <div class="profile-details" id="profile-details">
+                <div class="profile-header" id="profile-header">
+                <div id="imageContainer">
+                    
+                </div>
+                </div>
+                <h2>About Me</h2>
+                <div id="descriptionContainer">
+                <p id="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam scelerisque leo nec magna fermentum, a facilisis ligula cursus.</p>
+                
+                
+               </div>
+               <h3>Email</h3>
+                <p id="email">Email: john.doe@example.com</p>
+                <button class="custom-btn" id="accept-btn">Accept</button>
+                <button class="custom-btn" id="decline-btn">Decline</button>
+            </div>
+            
+        </div>
+        <div id="right-div">
+            <h2>Event Details</h2>
+            <p id="EventDetails">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam non urna vitae odio convallis tincidunt.</p>
+            <h2>Players Required</h2>
+            <p id="players-required">4</p>
+            <h2>Venue</h2>
+            <p id="venue">Simlagarh</p>
+            <h2>Date</h2>
+            <p id="Date">Address: 123 Main St, Anytown, USA</p>
+            <h2>Time</h2>
+            <p id="time">Address: 123 Main St, Anytown, USA</p>
+    </div>
+   
+    <script type="module" src="acceptRequest.js"></script>
+</body>
+</html>

@@ -34,9 +34,14 @@ const Schema=new mongoose.Schema({
    type:Number
 },
 "createdBy":{
-  type:String
+  type:mongoose.Schema.ObjectId,
+    ref:'users'
 },
 "playersJoined":[{
+    type:mongoose.Schema.ObjectId,
+    ref:'users'
+}],
+"joiningRequest":[{
     type:mongoose.Schema.ObjectId,
     ref:'users'
 }]

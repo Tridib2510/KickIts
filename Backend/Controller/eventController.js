@@ -16,7 +16,6 @@ const ApiFeature=require('../utils/ApiFeature')
 
 
 
-
 exports.getAllEvents=catchAsync(async (req,res,next)=>{
 
    const options = {
@@ -81,23 +80,26 @@ exports.getCreateEvent=catchAsync(async(req,res,next)=>{
 })
 
 exports.createEvent=catchAsync(async(req,res,next)=>{
- console.log('What happended')
+
    const decode=jwt.verify(req.cookies.token,process.env.JWT_SECRET)
-   console.log(req.body)
-   const id=decode.id
    
+   const id=decode.id
+   console.log(id)
    const user=await userModel.findById(id)
-   req.body.createdBy=user.username
-   console.log(req.body)
+   req.body.createdBy=user._id
+     
+ 
    if(!user){
       
       return next(new AppError('Not found by this Id',404))
      }
    const body=req.body
 
-   
+    
   
   await eventModel.create(req.body)
+
+  console.log(user)
   
  return res.status(200).json({
    "status":"success"
@@ -128,10 +130,18 @@ exports.alreadyJoined=catchAsync(async(req,res,next)=>{
    const decode=jwt.verify(id,process.env.JWT_SECRET)
    const user=await userModel.findById(decode.id)
    const event=await eventModel.findById(req.body.eventId)
+   const creator=await userModel.findById(event.createdBy)
+   console.log(creator)
+   console.log("hello bitch"+decode.id)
    if(event.playersJoined.includes(decode.id))
       return res.status(200).json({
         status:"alredyJoined"
       })
+   else if(creator.joinedRequests.includes(user._id)){
+      return res.status(200).json({
+         status:"requestNotYetAnswered"
+      })
+   }
    else{
       return res.status(200).json({
          status:"notJoined"
@@ -152,34 +162,110 @@ exports.getEventDetails=catchAsync(async(req,res,next)=>{
 }) 
 
    return res.status(200).json({
+      userId:decode.id,
+      username:user.username,
       event
    })
 }
 
 
 )
+
 exports.join=catchAsync(async(req,res,next)=>{
-   console.log(req.body)
+
+   const client=req.body.user
+   console.log('hello')
+   console.log(client)
+
+   const creatorId=req.body.createdBy
+   console.log('Test case 1')
+   const eventId=req.body.eventId;
+
    const id=req.cookies.token
    const decode=jwt.verify(id,process.env.JWT_SECRET)
+   console.log('Test Case 4')
+    const event=await eventModel.findById(eventId)
+
+    console.log('Test Case 3')
+
+    const user=await userModel.findById(decode.id)
+
+    console.log('Test Case 2')
+
+    const creator=await userModel.findById(creatorId)
+
   
-    const event=await eventModel.findById(req.body.eventId)
+  
+    console.log('Test Case 0')
 
-   const user=await userModel.findById(decode.id)
-
-   user.joinedEvents.push(req.body.eventId)
-   event.playersJoined.push(decode.id)
-
+   if(req.body.buttonPressed==='accept'){
+   event.playersJoined.push(client._id)
+   client.joinedEvents.push(event._id)
+   }
+   
+      user.joinedRequests.pop(client._id)
+   
    await user.save({
       validateBeforeSave: false
    })
    await event.save({
       validateBeforeSave: false
    })
-   
+   await creator.save({
+      validateBeforeSave: false
+   })
+  
 
    return res.status(200).json({
-      status:"success"
+      creatorId,
+      userId:decode.id
+   })
+   
+})
+
+exports.joinRequest=catchAsync(async(req,res,next)=>{
+   
+   const creatorId=req.body.createdBy
+   
+   const eventId=req.body.eventId; 
+
+   const id=req.cookies.token
+   const decode=jwt.verify(id,process.env.JWT_SECRET)
+   console.log('Test Case 4')
+    const event=await eventModel.findById(eventId)
+
+    console.log('Test Case 3')
+
+    const user=await userModel.findById(decode.id)
+
+    console.log('Test Case 2')
+
+    const creator=await userModel.findById(creatorId)
+
+    console.log(creator)
+   
+    creator.joinedRequests.push(decode.id)
+     
+   
+    console.log('Test Case 0')
+
+   creator.requestedEvents.push(req.body.eventId)
+
+  
+   await user.save({
+      validateBeforeSave: false
+   })
+   await event.save({
+      validateBeforeSave: false
+   })
+   await creator.save({
+      validateBeforeSave: false
+   })
+  
+
+   return res.status(200).json({
+      creatorId,
+      userId:decode.id
    })
    
 })
@@ -188,7 +274,7 @@ exports.myEvents=catchAsync(async(req,res,next)=>{
 const id=req.cookies.token
 const decode=jwt.verify(id,process.env.JWT_SECRET)
 const user=await userModel.findById(decode.id)
- console.log('hi')
+
  const text={playersJoined:decode.id}
 
  const image=user.image
@@ -203,4 +289,63 @@ return res.status(200).json({
 
 
 })
+})
+exports.notification=catchAsync(async (req,res,next)=>{
+   const id=req.cookies.token
+   console.log(id)
+const decode=jwt.verify(id,process.env.JWT_SECRET)
+const user=await userModel.findById(decode.id).populate({
+   path:'joinedRequests'
+}).populate({
+   path:'requestedEvents'
+})
+
+ return res.status(200).json({
+   user
+ })
+})
+
+exports.getPermission=catchAsync(async (req,res,next)=>{
+  
+   const id=req.cookies.token
+  
+const decode=jwt.verify(id,process.env.JWT_SECRET)
+
+const user=await userModel.findById(decode.id).populate({
+   path:'userRequest'
+}).populate({
+   path:'eventRequest'
+})
+
+ return res.status(200).json({
+   token:req.cookies.token,
+   user,
+   image:user.image,
+   event:user.eventRequest,
+   requestedUser:user.userRequest
+ })
+})
+
+
+exports.notificationSend=catchAsync(async (req,res,next)=>{
+   const requestedUser=req.body.requestedUser
+   const requestedEvents=req.body.requestedEvents
+   
+   const id=req.cookies.token
+   const decode=jwt.verify(id,process.env.JWT_SECRET)
+
+   const user=await userModel.findById(decode.id)
+  
+   
+   user.userRequest=requestedUser._id
+   user.eventRequest=requestedEvents._id
+
+   await user.save({
+      validateBeforeSave: false
+   })
+
+
+   return res.status(200).json({
+      status:"success"
+   })
 })

@@ -1,17 +1,14 @@
 const express=require('express')
 
+
 const app=require('./app')
+
+const server=require('./utils/WebSockets')
 
 
 const mongoose=require('mongoose')
 
 const {Server}=require('socket.io')
-
-const http=require('http')
-
-const server=http.createServer(app)
-
-const io=new Server(server)
 
 const DB=process.env.DATABASE_LOCAL
 

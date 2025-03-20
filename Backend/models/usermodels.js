@@ -50,7 +50,25 @@ const Schema=new mongoose.Schema({
     joinedEvents:{
       type:Array,
       default:[]
+    },
+    joinedRequests:[{
+      type:mongoose.Schema.ObjectId,
+      ref:'users'
     }
+    ],
+    requestedEvents:[{
+      type:mongoose.Schema.ObjectId,
+      ref:'Events'
+    }],
+    userRequest:{
+      type:mongoose.Schema.ObjectId,
+      ref:'users'
+    },
+    eventRequest:{
+      type:mongoose.Schema.ObjectId,
+      ref:'Events'
+    }
+
 })
 
 

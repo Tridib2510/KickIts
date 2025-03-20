@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Taskbar</title>
     <link rel="stylesheet" href="style.css">
+    
 </head>
 <body>
     <div class="taskbar">
@@ -13,30 +14,39 @@
         </div>
         <div class="auth-buttons" id="auth-buttons">
             <button id="login-btn">Login</button>
-            
             <button id="signup-btn">Sign Up</button>
             <button id="createEvent">Create</button>
             <button id="Logout">Logout</button>
             <button id="MyEvents">My Events</button>
-            <img id="image"src="https://img.icons8.com/ios/50">
-            
-        
+            <img id="notification-icon" src="https://img.icons8.com/ios-filled/50/ffffff/appointment-reminders.png" alt="Notifications">
+            <img id="image" src="https://img.icons8.com/ios/50">
         </div>
     </div>
    
     <!-- Move search bar outside of taskbar div -->
-    <div class="search-container" >
-        <input type="text" id="search-bar" placeholder="Search events...">
-        <button id="search-button">Search</button>
-    </div>
+   
    
     <!-- New buttons container below the search bar -->
-    <div class="buttons-container">
-        <button class="custom-btn" id="Location">Location</button>
-        <button class="custom-btn" id="EventName">Event Name</button>
-        <button class="custom-btn" id="Creator">Created By</button>
+  
+
+    <!-- Side by side divs -->
+    <div class="side-by-side-container" id="side-by-side-container">
+        <div id="left-div">
+            <div class="search-container">
+                <input type="text" id="search-bar" placeholder="Search events...">
+                <button id="search-button">Search</button>
+            </div>
+            <div class="buttons-container">
+                <button class="custom-btn" id="Location">Location</button>
+                <button class="custom-btn" id="EventName">Event Name</button>
+                <button class="custom-btn" id="Creator">Created By</button>
+            </div>
+        </div>
+        <div id="right-div">
+            
     </div>
-   
-    <script src="AllEvents.js"></script>
+    </div>
+    <script defer src="https://cdn.socket.io/4.0.0/socket.io.min.js"></script>
+    <script type="module" defer src="./AllEvents.js"></script>
 </body>
 </html>

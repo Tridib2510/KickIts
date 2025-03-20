@@ -52,8 +52,14 @@ router.route('/getUser').get(userController.getUserDetails)
 
 router.route('/joinEvent').patch(eventController.join)
 
+router.route('/joinRequestToCreator').patch(eventController.joinRequest)
+
 router.route('/alreadyExits').patch(eventController.alreadyJoined)
 
 router.route('/myEvents').get(authController.protect,eventController.myEvents)
+
+router.route('/joinRequests').get(eventController.notification).patch(eventController.notificationSend)
+
+router.route('/PermissionNeeded').get(eventController.getPermission)
 
 module.exports=router

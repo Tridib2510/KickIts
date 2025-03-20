@@ -1,3 +1,7 @@
+import url from "./ApiUrl.js";
+
+const socket=io(`${url}`)
+
 
 let newData
 
@@ -20,28 +24,66 @@ const createEvent=document.getElementById('createEvent')
 
 const image=document.getElementById('image')
 
+const leftDiv=document.getElementById('left-div')
+
+const rightDiv=document.getElementById('right-div')
+
+const notification=document.getElementById('notification-icon')
+
+const side_side_container=document.getElementById('side-by-side-container')
+
+
+side_side_container.removeChild(rightDiv)
+
+
+
+socket.on('send',(str)=>{
+   console.log(str)
+   console.log(str)
+   const requests=document.createElement('div')
+   requests.id='notifications' 
+   const name=document.createElement('p')
+   name.innerHTML='Name:'+str
+   requests.appendChild(name)
+   rightDiv.appendChild(requests)
+  })
+
+notification.addEventListener('click',()=>{
+  if(!side_side_container.contains(rightDiv)){
+   side_side_container.appendChild(rightDiv);
+  }
+  else{
+   side_side_container.removeChild(rightDiv)
+  }
+})
+
 
 function helper(text){
    
 Events=document.createElement('div')
-fetch(`https://kickits-1.onrender.com/KickIt/home${text}`,{
+fetch(`${url}/KickIt/home${text}`,{
    credentials:"include"
 })
 .then(res=>res.json())
 .then(data=>{
-
+   
+  // console.log(data)
+   socket.emit('joinRoom','i')
+   socket.on('sendResponse',()=>{
+    window.location.href="https://www.google.com/"
+   })
 if(text==''){
     if(data.token){
-      console.log(data.image)
+      
       image.src=data.image
       image.addEventListener('click',()=>{
          window.location.href='profile.html'
       })
-      console.log(data.image)
+      
       buttons.removeChild(signUp)
       buttons.removeChild(login)
       logout.addEventListener('click',()=>{
-         window.location.href="https://kickits-1.onrender.com/KickIt/logout"
+         window.location.href=`${url}/KickIt/logout`
       })
     }
     else{
@@ -57,7 +99,7 @@ if(data.status && data.status=='fail'){
    document.body.events=false
 }
    
-   for(i=0;i<data.data.length;i++){
+   for(let i=0;i<data.data.length;i++){
     const div=document.createElement('div')
   arr.push(div)
     const link=document.createElement('a')
@@ -99,7 +141,7 @@ if(data.status && data.status=='fail'){
       data:data.data[a]
   })
      }
-      fetch('https://kickits-1.onrender.com/KickIt/getEventDetails',options)
+      fetch(`${url}/KickIt/getEventDetails`,options)
       .then(res=>res.json())
       .then(data=>{
       
@@ -108,7 +150,7 @@ if(data.status && data.status=='fail'){
       .catch(err=>console.log(err))
        //New concept
    })
-    document.body.appendChild(Events)
+   leftDiv.appendChild(Events)
    }
   
 })
@@ -152,7 +194,7 @@ const button=document.getElementById('search-button').addEventListener('click',(
    
    if(document.body.events===true){
     
-      document.body.removeChild(Events)
+      leftDiv.removeChild(Events)
    }
    
    index=[]
@@ -177,4 +219,61 @@ const myEvents=document.getElementById('MyEvents').addEventListener('click',()=>
    window.location.href='myEvents.html'
 })
 
+
+fetch(`${url}/KickIt/joinRequests`,{
+   credentials:'include'
+})
+.then(res=>res.json())
+.then(data=>{
+  console.log('Its deep bro')
+   console.log(data)
+ socket.emit('joinRoom',data.user._id)
+  console.log(data.user)
+   const arr=data.user.joinedRequests
+
+   const array=[]
+   const index=[]
+   const events=[]
+ for(let i=0;i<arr.length;i++){
+ const requests=document.createElement('div')
+ 
+ const a=i
+ array.push(requests)
+ index.push(data.user.joinedRequests[a])
+ events.push(data.user.requestedEvents[a])
+
+ requests.id='notifications' 
+ const name=document.createElement('p')
+  name.innerHTML='Name:'+data.user.joinedRequests[i].username
+  requests.appendChild(name)
+ rightDiv.appendChild(requests)
+
+requests.addEventListener('click',()=>{
+   const options = {
+      method:'PATCH',
+       // This ensures cookies are included in the request
+       credentials:'include',
+   headers: {
+   'Content-Type': 'application/json',  // This was the problem We have to manually set headers to allow Content-Type:'application /json' otherwise we can not send it together with our credetials
+   
+},
+body:JSON.stringify({
+   requestedUser:data.user.joinedRequests[a],
+   requestedEvents:data.user.requestedEvents[a]
+})
+  }
+  fetch(`${url}/KickIt/joinRequests`,options)
+  .then(res=>res.json())
+  .then(data=>{
+   console.log('hello')
+  // console.log(data)
+   window.location='./acceptRequest.html'
+})
+  .catch(err=>console.log(err))
+})
+
+ }
+
+})
+.catch(err=>console.log(err))
 

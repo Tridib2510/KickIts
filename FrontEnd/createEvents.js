@@ -1,3 +1,4 @@
+
 const EventName=document.getElementById('EventName')
 const activity=document.getElementById('activity')
 const venue=document.getElementById('venue')
@@ -6,6 +7,7 @@ const time=document.getElementById('time')
 const Description=document.getElementById('description')
 const playersRequired=document.getElementById('playersRequired')
 
+import url from "./ApiUrl.js";
 
 const button=document.getElementById('createEvent').addEventListener('click',()=>{
     const options = {
@@ -27,7 +29,7 @@ const button=document.getElementById('createEvent').addEventListener('click',()=
     
  })
     }
-    fetch('https://kickits-1.onrender.com/KickIt/createEvent',options).then(res=>res.json()).then(data=>{
+    fetch(`${url}/KickIt/createEvent`,options).then(res=>res.json()).then(data=>{
         console.log(data)
     }).catch(err=>console.log(err))
 

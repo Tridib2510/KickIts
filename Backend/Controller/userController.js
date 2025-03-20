@@ -72,7 +72,7 @@ exports.updateProfile=catchAsync(async (req,res,next)=>{
        resource_type: 'image'
     })
 }
-
+console.log('Test case passed')
 const id=req.cookies.token
 const decode=jwt.verify(id,process.env.JWT_SECRET)
 if(req.file){

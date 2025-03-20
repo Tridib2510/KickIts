@@ -1,9 +1,16 @@
-fetch('https://kickits-1.onrender.com/KickIt/getEventDetails',{
+import url from "./ApiUrl.js";
+
+const socket=io(`${url}`)
+
+fetch(`${url}/KickIt/getEventDetails`,{
     credentials:'include'
 })
 .then(res=>res.json())
 .then(data=>{
-    console.log(data)
+    socket.emit('joinRoom',data.userId);
+    console.log(data.userId)
+    const userName=data.username
+   
     const eventName=document.getElementById('profile-name')
     eventName.innerHTML=data.event.eventName
     const creator=document.getElementById('creator')
@@ -17,10 +24,11 @@ fetch('https://kickits-1.onrender.com/KickIt/getEventDetails',{
     const date=document.getElementById('Date')
     date.innerHTML=data.event.date
     const chat=document.getElementById('Chat')
+    const join=document.getElementById('Join')
     chat.addEventListener('click',()=>{
         window.location.href="https://kickits-chatapp-frontend.onrender.com/"
     })
-    fetch('https://kickits-1.onrender.com/KickIt/alreadyExits',{
+    fetch(`${url}/KickIt/alreadyExits`,{
         method:'PATCH',
         headers:{
             'Content-Type':'application/json'
@@ -38,21 +46,41 @@ fetch('https://kickits-1.onrender.com/KickIt/getEventDetails',{
             div.removeChild(join)
 
          }
+         else if(status.status==='requestNotYetAnswered'){
+            const div=document.getElementById('division')
+            div.removeChild(chat)
+            const join=document.getElementById('Join')
+            join.innerHTML='Pending Request'
+            join.style.backgroundColor='grey'
+            join.style.color='black'
+            join.style.cursor='not-allowed'
+         }
          else{
             const div=document.getElementById('division')
             div.removeChild(chat)
-        const join=document.getElementById('Join').addEventListener('click',()=>{
-            fetch('https://kickits-1.onrender.com/KickIt/joinEvent',{
+        join.addEventListener('click',()=>{
+            fetch(`${url}/KickIt/joinRequestToCreator`,{
                 method:'PATCH',
                 headers:{
                     'Content-Type':'application/json'
                 },
                 body:JSON.stringify({
-                    eventId:data.event._id
+                    
+                    eventId:data.event._id,
+                    createdBy:data.event.createdBy
                 }),
                 credentials:'include'
             }).then(res=>res.json())
-            .then(data=>location.reload()).catch(err=>console.log(err))
+            .then(data=>{
+               console.log(data)
+                socket.emit('sendRequest',userName,data.creatorId)
+                const join=document.getElementById('Join')
+                join.innerHTML='Pending Request'
+                join.style.backgroundColor='grey'
+                join.style.color='black'
+                join.style.cursor='not-allowed'
+               
+            }).catch(err=>console.log(err))
             
         })
         

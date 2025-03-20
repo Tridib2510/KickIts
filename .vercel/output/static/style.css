@@ -6,22 +6,18 @@
 
 body {
     font-family: Arial, sans-serif;
-    background-color: #333;
-    background-image: url('https://t4.ftcdn.net/jpg/09/85/65/17/360_F_985651719_z8HxDJ3SsenIWTe7YV9vmB8Ic6uc6f9d.jpg');
+    background-color: black;
+    
 }
 
 .taskbar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 40px;
-    background-color: #333;
-    color: white;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 10px;
+    background-color: #333;
+    padding: 10px 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    color: white;
 }
 
 .start-menu .start-btn {
@@ -40,6 +36,7 @@ body {
 
 .auth-buttons {
     display: flex;
+    align-items: center;
     gap: 10px;
 }
 
@@ -47,10 +44,11 @@ body {
     background-color: #4CAF50;
     color: white;
     border: none;
-    padding: 5px 10px;
+    padding: 10px 15px;
     cursor: pointer;
     font-size: 14px;
     border-radius: 5px;
+    transition: background-color 0.3s ease;
 }
 
 .auth-buttons button:hover {
@@ -71,6 +69,9 @@ body {
     background-color: #5c7751;
     border: 1px solid #ddd;
     border-radius: 8px;
+    
+    
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
 background-image: url('https://m.media-amazon.com/images/I/81NE5bSsUML._AC_UF894,1000_QL80_.jpg');
     
    
@@ -136,7 +137,7 @@ background-image: url('https://m.media-amazon.com/images/I/81NE5bSsUML._AC_UF894
 .search-container {
     display: flex;
     justify-content: center; /* Center the container horizontally */
-    margin: 60px auto; /* Adjust the top and bottom margin as needed */
+   /* margin: 60px auto; /* Adjust the top and bottom margin as needed */
 }
 .buttons-container {
     display: flex;
@@ -164,4 +165,37 @@ background-image: url('https://m.media-amazon.com/images/I/81NE5bSsUML._AC_UF894
     border-radius: 50%;
     background-color: #f4f4f4;
     margin: 0 auto;
+}
+#notification-icon{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin-left: 10px;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out;
+}
+#notification-icon:hover {
+    transform: translateY(-5px);
+}
+.side-by-side-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px; /* Adjust the gap between the divs as needed */
+    width: 80%; /* Adjust the width as needed */
+    margin: 60px auto; /* Center the container */
+}
+.side-by-side-container > div {
+    flex: 1; /* Make both divs take equal space */
+    padding: 50px;
+    background-color:#333;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+}
+#notifications{
+    width: 300px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #5c7751;
+    border: 1px solid #ddd;
+    border-radius: 8px;
 }
