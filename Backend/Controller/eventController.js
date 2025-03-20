@@ -205,8 +205,9 @@ exports.join=catchAsync(async(req,res,next)=>{
   
    client.joinedEvents.push(event._id)
    }
-   
+      user.requestedEvents.pop(event._id)
       user.joinedRequests.pop(client._id)
+      event.joiningRequest.pop(client._id)
    
    await user.save({
       validateBeforeSave: false
