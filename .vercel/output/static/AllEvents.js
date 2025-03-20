@@ -187,4 +187,26 @@ fetch(`${url}/KickIt/joinRequests`, {
             const name = document.createElement('p');
             name.innerHTML = 'Name:' + data.user.joinedRequests[i].username;
             requests.appendChild(name);
-            rig
+            rightDiv.appendChild(requests);
+            requests.addEventListener('click', () => {
+                const options = {
+                    method: 'PATCH',
+                    credentials: 'include',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        requestedUser: data.user.joinedRequests[a],
+                        requestedEvents: data.user.requestedEvents[a]
+                    })
+                };
+                fetch(`${url}/KickIt/joinRequests`, options)
+                    .then(res => res.json())
+                    .then(data => {
+                        window.location = './acceptRequest.html';
+                    })
+                    .catch(err => console.log(err));
+            });
+        }
+    })
+    .catch(err => console.log(err));
