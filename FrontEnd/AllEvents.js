@@ -1,4 +1,4 @@
-import url from "ApiUrl.js";
+import url from "./ApiUrl.js";
 
 const socket=io(`${url}`)
 
