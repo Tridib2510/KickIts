@@ -1,5 +1,5 @@
 import url from "./ApiUrl.js";
-
+//Web socket below
 const socket=io(`${url}`)
 
 fetch(`${url}/KickIt/getEventDetails`,{
