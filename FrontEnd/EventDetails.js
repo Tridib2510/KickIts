@@ -1,12 +1,37 @@
 import url from "./ApiUrl.js";
 //Web socket below
 const socket=io(`${url}`)
+const rightDiv=document.getElementById('right-div')
+const leftDiv=document.getElementById('left-div')
 
 fetch(`${url}/KickIt/getEventDetails`,{
     credentials:'include'
 })
 .then(res=>res.json())
 .then(data=>{
+    console.log(data.event.playersJoined.length)
+    for(let i=0;i<data.event.playersJoined.length;i++){
+        const player=document.createElement('div')
+        player.id='player'
+        const playerInfo = document.createElement('div');
+            playerInfo.className = 'player-info';
+
+            const playerName = document.createElement('h1');
+            playerName.innerHTML = 'Name :' + data.event.playersJoined[i].username;
+            player.appendChild(playerName);
+            
+            
+
+            const playerImage = document.createElement('img');
+            playerImage.id = 'player-image';
+            playerImage.src = data.event.playersJoined[i].image;
+
+            player.appendChild(playerInfo);
+            player.appendChild(playerImage);
+
+            const joinedUsers = document.getElementById('joined-users');
+            joinedUsers.appendChild(player);
+    }
     socket.emit('joinRoom',data.userId);
     console.log(data.userId)
     const userName=data.username
@@ -25,6 +50,7 @@ fetch(`${url}/KickIt/getEventDetails`,{
     date.innerHTML=data.event.date
     const chat=document.getElementById('Chat')
     const join=document.getElementById('Join')
+    const joinedUsers=document.getElementById('joined-users')
     chat.addEventListener('click',()=>{
         window.location.href="https://kickits-chatapp-frontend.onrender.com/"
     })
@@ -39,7 +65,7 @@ fetch(`${url}/KickIt/getEventDetails`,{
         credentials:'include'
     }).then(res=>res.json())
     .then(status=>{
-        console.log(status)
+       console.log(status)
          if(status.status==='alredyJoined'){
             const div=document.getElementById('division')
             const join=document.getElementById('Join')
@@ -56,7 +82,11 @@ fetch(`${url}/KickIt/getEventDetails`,{
             join.style.cursor='not-allowed'
          }
          else{
+            const joinedUsers=document.getElementById('joined-users')
+            rightDiv.removeChild(joinedUsers)
+            leftDiv.style.margin = 'auto';
             const div=document.getElementById('division')
+           
             div.removeChild(chat)
         join.addEventListener('click',()=>{
             fetch(`${url}/KickIt/joinRequestToCreator`,{
