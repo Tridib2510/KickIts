@@ -1,3 +1,9 @@
+body{
+    background-color: #333;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
 .profile-container {
     width: 80%;
     margin: 50px auto;
@@ -7,7 +13,45 @@
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
+#player {
+    display: flex;
+    width: 80%;
+    height:80%;
+    justify-content: space-between;
+    background-color: #5c7751;
+    padding: 20px;
+    margin: 10px auto;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    background-image: url('https://m.media-amazon.com/images/I/81NE5bSsUML._AC_UF894,1000_QL80_.jpg');
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
 
+.player-info {
+    display: flex;
+    
+}
+
+#player h1 {
+    font-size: 18px; /* Adjust the font size as needed */
+    color: white;
+    margin-left: 10px; /* Add some space between the image and the text */
+}
+#player p {
+    font-size: 18px; /* Adjust the font size as needed */
+    color: white;
+    margin-left: 10px; /* Add some space between the image and the text */
+}
+
+
+#player-image {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #f4f4f4;
+    margin-right: 10px; /* Add some space between the image and the text */
+}
 .profile-header {
     text-align: center;
     margin-bottom: 20px;
@@ -64,4 +108,35 @@
 
 #Join:hover, #Chat:hover {
     background-color: #0056b3;
+}
+.main-container {
+    display: flex;
+    gap: 5px; /* Adjust the gap value as needed */
+}
+
+.left-div {
+    flex: 1;
+    padding: 5px; /* Reduce padding */
+}
+
+.right-div {
+    flex: 1;
+    padding: 5px; /* Reduce padding */
+}
+
+.additional-content{
+    width: 80%;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+#joined-users {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add shadow */
+    padding: 20px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
 }

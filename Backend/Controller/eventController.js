@@ -152,7 +152,7 @@ exports.alreadyJoined=catchAsync(async(req,res,next)=>{
    
 })
 exports.getEventDetails=catchAsync(async(req,res,next)=>{
-
+ 
    const id=req.cookies.token
    const decode=jwt.verify(id,process.env.JWT_SECRET)
    const user=await userModel.findById(decode.id)
@@ -201,6 +201,7 @@ exports.join=catchAsync(async(req,res,next)=>{
     console.log('Test Case 0')
 
    if(req.body.buttonPressed==='accept'){
+      console.log('hello 69')
    event.playersJoined.push(client._id)
   
    client.joinedEvents.push(event._id)
