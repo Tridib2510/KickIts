@@ -27,14 +27,15 @@ const userController=require('../Controller/userController')
 
 const authController=require('../Controller/authController')
 
+const reviewController=require('../Controller/reviewController')
+
+const reviewRouter=require('./reviewRoutes')
 
 //router.route('/createEvent/:id').get(eventController.getCreateEvent).post(eventController.createEvent)
 
 router.route('/createEvent').get(eventController.getCreateEvent).post(eventController.createEvent)
 
 router.route('/home').get(eventController.getAllEvents)
-
-router.route('/home/:id').get(eventController.getAllEvents)
 
 router.route('/profile').get(authController.protect,userController.getProfile)
 
@@ -60,6 +61,9 @@ router.route('/myEvents').get(authController.protect,eventController.myEvents)
 
 router.route('/joinRequests').get(eventController.notification).patch(eventController.notificationSend)
 
+router.route('/:userId').get(userController.getUser)
 router.route('/PermissionNeeded').get(eventController.getPermission)
+router.use('/:userId/Review',reviewRouter)
+
 
 module.exports=router

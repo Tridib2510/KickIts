@@ -1,3 +1,4 @@
+
 import url from "./ApiUrl.js";
 //Web socket below
 const socket=io(`${url}`)
@@ -10,8 +11,12 @@ fetch(`${url}/KickIt/getEventDetails`,{
 .then(res=>res.json())
 .then(data=>{
     console.log(data.event.playersJoined.length)
+    let arr=[]
+    let userId=[]
     for(let i=0;i<data.event.playersJoined.length;i++){
         const player=document.createElement('div')
+        arr.push(player)
+        
         player.id='player'
         const playerInfo = document.createElement('div');
             playerInfo.className = 'player-info';
@@ -31,6 +36,13 @@ fetch(`${url}/KickIt/getEventDetails`,{
 
             const joinedUsers = document.getElementById('joined-users');
             joinedUsers.appendChild(player);
+            const a=i
+            player.addEventListener('click',()=>{
+                
+                console.log(data.event.activity)
+                window.location.href="/giveReview.html?userId="+data.event.playersJoined[a]._id+"&activity="+data.event.activity
+
+            })
     }
     socket.emit('joinRoom',data.userId);
     console.log(data.userId)

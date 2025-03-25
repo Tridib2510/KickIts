@@ -20,7 +20,15 @@ cloudinary.config({
     api_key:'872176943676699',
     api_secret:'svjtmkuIsQARXvl8GYV_MqDm65s'
   });
-
+exports.getUser=catchAsync(async(req,res,next)=>{
+    console.log(req.body)
+    const id=req.params.userId
+    const user=await userModel.findById(id)
+    
+    return res.status(200).json({
+        user
+    })
+})
 exports.getProfile=catchAsync(async(req,res,next)=>{
     const id=req.cookies.token
     console.log(req.body)
@@ -110,3 +118,4 @@ exports.makeChanges=catchAsync(async(req,res,next)=>{
    
     next()
 })
+

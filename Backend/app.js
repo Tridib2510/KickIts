@@ -26,6 +26,7 @@ app.use(express.json());
 dotenv.config({path:'config.env'})
 
 const router=require('./Routes/eventRoutes')
+const reviewRouter=require('./Routes/reviewRoutes')
 const path=require('path')
 
 
@@ -53,6 +54,7 @@ app.use(express.static(path.join(__dirname,'/uploads/')))
 
 
 app.use('/KickIt',router)
+app.use('/KickIt',reviewRouter)
 
 
 
