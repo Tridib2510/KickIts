@@ -42,18 +42,19 @@ notification.addEventListener('click', () => {
     }
 });
 
-function helper(text) {
+function helper(text,params) {
     Events = document.createElement('div');
-    fetch(`${url}/KickIt/home${text}`, {
+    fetch(`${url}/KickIt/home${text}${params}`, {
         credentials: "include"
     })
         .then(res => res.json())
         .then(data => {
+            console.log(data)
             socket.emit('joinRoom', 'i');
             socket.on('sendResponse', () => {
                 window.location.href = "https://www.google.com/";
             });
-            if (text == '') {
+            if (text == '') {                                                                                                                      
                 if (data.token) {
                     image.src = data.image;
                     image.addEventListener('click', () => {
@@ -65,9 +66,13 @@ function helper(text) {
                         window.location.href = `${url}/KickIt/logout`;
                     });
                 } else {
+                    if(buttons.contains(image))
                     buttons.removeChild(image);
+                    if(buttons.contains(logout))
                     buttons.removeChild(logout);
+                    if(buttons.contains(MyEvents))
                     buttons.removeChild(MyEvents);
+                    if(buttons.contains(createEvent))
                     buttons.removeChild(createEvent);
                 }
             }
@@ -120,8 +125,36 @@ function helper(text) {
         })
         .catch(err => console.log(err));
 }
+helper('','?page=1&limit=5');
 
-helper('');
+
+let previousScrollTop = 0;
+let page=1;
+let top=leftDiv.scrollHeight;
+function myScript() {
+    const currentScrollTop = leftDiv.scrollTop; // Get the current scroll position
+
+    if (currentScrollTop > previousScrollTop) {
+        console.log('Scrolling down');
+        // Perform actions for scrolling down
+    } else if (currentScrollTop < previousScrollTop) {
+        console.log('Scrolling up');
+        // Perform actions for scrolling up
+    }
+
+    // Update the previous scroll position
+    previousScrollTop = currentScrollTop;
+   console.log(Math.ceil(currentScrollTop+leftDiv.clientHeight),leftDiv.scrollHeight);
+    // Example: Load more content when scrolling down and reaching the bottom
+    if (Math.ceil(currentScrollTop + leftDiv.clientHeight) >= leftDiv.scrollHeight) {
+        
+            page++;
+       // helper('', `?page=${page}&limit=5`); // Example: Load the next page
+    }
+   
+}
+leftDiv.addEventListener("scroll", myScript);
+
 
 const Choose = document.getElementsByClassName('custom-btn');
 
@@ -149,7 +182,7 @@ const button = document.getElementById('search-button').addEventListener('click'
         leftDiv.removeChild(Events);
     }
     index = [];
-    helper(text);
+    helper(text,'');
     b.placeholder = "Search events...";
 });
 

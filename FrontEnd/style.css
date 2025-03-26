@@ -7,6 +7,7 @@
 body {
     font-family: Arial, sans-serif;
     background-color: black;
+    overflow-y:hidden
     
 }
 
@@ -183,6 +184,8 @@ background-image: url('https://m.media-amazon.com/images/I/81NE5bSsUML._AC_UF894
     gap: 20px; /* Adjust the gap between the divs as needed */
     width: 80%; /* Adjust the width as needed */
     margin: 60px auto; /* Center the container */
+    overflow-x: hidden;
+    overflow-y: auto;
 }
 .side-by-side-container > div {
     flex: 1; /* Make both divs take equal space */
@@ -190,6 +193,8 @@ background-image: url('https://m.media-amazon.com/images/I/81NE5bSsUML._AC_UF894
     background-color:#333;
     border: 1px solid #ddd;
     border-radius: 8px;
+    overflow-x: hidden;
+    overflow-y: auto;
 }
 #notifications{
     width: 300px;
@@ -198,4 +203,12 @@ background-image: url('https://m.media-amazon.com/images/I/81NE5bSsUML._AC_UF894
     background-color: #5c7751;
     border: 1px solid #ddd;
     border-radius: 8px;
+}
+#left-div{
+    height: 600px;
+    overflow-y: scroll;
+}
+#right-div{
+    height: 600px;
+    overflow-y: scroll;
 }

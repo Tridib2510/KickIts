@@ -18,6 +18,8 @@ const ApiFeature=require('../utils/ApiFeature')
 
 exports.getAllEvents=catchAsync(async (req,res,next)=>{
 
+   console.log(req.query)
+
    const options = {
       use_filename: true,
       unique_filename: false,
@@ -37,7 +39,8 @@ exports.getAllEvents=catchAsync(async (req,res,next)=>{
      id=decode.id
     }
    
-const event=new ApiFeature(eventModel,req.query,'').filter()
+const event=new ApiFeature(eventModel,req.query,req.query,'').filter().paginate()
+
    const data=await event.query   
    let user
     
@@ -285,7 +288,7 @@ const user=await userModel.findById(decode.id)
 
  const image=user.image
 
-const event=new ApiFeature(eventModel,req.query,text).filter()
+const event=new ApiFeature(eventModel,req.query,text).filter().paginate()
 const data=await event.query 
 
 return res.status(200).json({
