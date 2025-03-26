@@ -39,7 +39,7 @@ exports.getAllEvents=catchAsync(async (req,res,next)=>{
      id=decode.id
     }
    
-const event=new ApiFeature(eventModel,req.query,req.query,'').filter().paginate()
+const event=new ApiFeature(eventModel,req.query,req.query,).filter().paginate()
 
    const data=await event.query   
    let user

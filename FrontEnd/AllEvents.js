@@ -21,7 +21,7 @@ const leftDiv = document.getElementById('left-div');
 const rightDiv = document.getElementById('right-div');
 const notification = document.getElementById('notification-icon');
 const side_side_container = document.getElementById('side-by-side-container');
-
+let totalDocuments=0
 side_side_container.removeChild(rightDiv);
 
 socket.on('send', (str) => {
@@ -41,6 +41,16 @@ notification.addEventListener('click', () => {
         side_side_container.removeChild(rightDiv);
     }
 });
+const navigationContainer = document.createElement('div');
+navigationContainer.className = 'navigation-container';
+
+const backward = document.createElement('img');
+backward.src = "https://img.icons8.com/ios-filled/50/000000/back.png";
+navigationContainer.appendChild(backward);
+
+const forward = document.createElement('img');
+forward.src = "https://img.icons8.com/ios-filled/50/000000/forward.png";
+navigationContainer.appendChild(forward);
 
 function helper(text,params) {
     Events = document.createElement('div');
@@ -60,7 +70,9 @@ function helper(text,params) {
                     image.addEventListener('click', () => {
                         window.location.href = 'profile.html';
                     });
+                    if(buttons.contains(signUp))
                     buttons.removeChild(signUp);
+                  if(buttons.contains(login))
                     buttons.removeChild(login);
                     logout.addEventListener('click', () => {
                         window.location.href = `${url}/KickIt/logout`;
@@ -120,40 +132,39 @@ function helper(text,params) {
                         })
                         .catch(err => console.log(err));
                 });
+                totalDocuments=data.data.length
                 leftDiv.appendChild(Events);
+                leftDiv.appendChild(navigationContainer);
             }
+          
         })
         .catch(err => console.log(err));
 }
 helper('','?page=1&limit=5');
 
 
-let previousScrollTop = 0;
+
 let page=1;
-let top=leftDiv.scrollHeight;
-function myScript() {
-    const currentScrollTop = leftDiv.scrollTop; // Get the current scroll position
 
-    if (currentScrollTop > previousScrollTop) {
-        console.log('Scrolling down');
-        // Perform actions for scrolling down
-    } else if (currentScrollTop < previousScrollTop) {
-        console.log('Scrolling up');
-        // Perform actions for scrolling up
-    }
 
-    // Update the previous scroll position
-    previousScrollTop = currentScrollTop;
-   console.log(Math.ceil(currentScrollTop+leftDiv.clientHeight),leftDiv.scrollHeight);
-    // Example: Load more content when scrolling down and reaching the bottom
-    if (Math.ceil(currentScrollTop + leftDiv.clientHeight) >= leftDiv.scrollHeight) {
-        
-            page++;
-       // helper('', `?page=${page}&limit=5`); // Example: Load the next page
+backward.addEventListener('click',()=>{
+    if(page>1){
+    if(leftDiv.contains(Events))
+  leftDiv.removeChild(Events)
+  page--;
+  helper('',`?page=${page}&limit=5`)
     }
-   
-}
-leftDiv.addEventListener("scroll", myScript);
+    
+})
+forward.addEventListener('click',()=>{
+    if(page<totalDocuments){
+        if(leftDiv.contains(Events))
+        leftDiv.removeChild(Events)
+  page++;
+  helper('',`?page=${page}&limit=5`)
+    }
+})
+
 
 
 const Choose = document.getElementsByClassName('custom-btn');

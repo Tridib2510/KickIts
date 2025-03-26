@@ -212,3 +212,17 @@ background-image: url('https://m.media-amazon.com/images/I/81NE5bSsUML._AC_UF894
     height: 600px;
     overflow-y: scroll;
 }
+
+.navigation-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    gap: 20px; /* Add spacing between the icons */
+}
+
+.navigation-container img {
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+}
