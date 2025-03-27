@@ -268,4 +268,18 @@ fetch(`${url}/KickIt/joinRequests`, {
                     headers: {
                         'Content-Type': 'application/json',
                     },
-                    body: JSON.strin
+                    body: JSON.stringify({
+                        requestedUser: data.user.joinedRequests[a],
+                        requestedEvents: data.user.requestedEvents[a]
+                    })
+                };
+                fetch(`${url}/KickIt/joinRequests`, options)
+                    .then(res => res.json())
+                    .then(data => {
+                        window.location = './acceptRequest.html';
+                    })
+                    .catch(err => console.log(err));
+            });
+        }
+    })
+    .catch(err => console.log(err));
