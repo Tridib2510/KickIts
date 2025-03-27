@@ -94,7 +94,7 @@ fetch(`${url}/KickIt/PermissionNeeded`,{
       }
       console.log(data.event)
       accept.addEventListener('click',()=>{
-         fetch(`${url}/KickIt/joinEvent`,{
+         fetch(`${url}/KickIt//joinEvent`,{
             method:'PATCH',
             headers:{
                 'Content-Type':'application/json'
@@ -116,7 +116,7 @@ fetch(`${url}/KickIt/PermissionNeeded`,{
       })
 
       decline.addEventListener('click',()=>{
-         fetch(`${url}/KickIt/joinEvent`,{
+         fetch(`${url}/KickIt//joinEvent`,{
             method:'PATCH',
             headers:{
                 'Content-Type':'application/json'
