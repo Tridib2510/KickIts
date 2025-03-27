@@ -202,32 +202,18 @@ Choose[2].addEventListener('click',()=>{
 })
 
 const button=document.getElementById('search-button').addEventListener('click',()=>{
-  let text=''
-  arr=[]
-   const b=document.getElementById('search-bar')
- 
-   //b.placeholder='hello'
-   
-   if(b!='' && b.value!=''){
-      console.log(b.placeholder)
-   
-      text=`?${b.placeholder}=${b.value}`
-   
-   
+   let text = '';
+   arr = [];
+   const b = document.getElementById('search-bar');
+   if (b != '' && b.value != '') {
+       text = `?${b.placeholder}=${b.value}`;
    }
-   
-   
-   
-   
-   if(document.body.events===true){
-    
-      document.body.removeChild(Events)
+   if (document.body.events === true) {
+       leftDiv.removeChild(Events);
    }
-   
-   index=[]
-   console.log(text)
-   helper(text)
-   b.placeholder="Search events..."
+   index = [];
+   helper(text,'');
+   b.placeholder = "Search events...";
    
 
 })
