@@ -48,12 +48,15 @@ const decline=document.getElementById('accept-btn')
 
 
 Events=document.createElement('div')
+
+console.log(url)
+
 fetch(`${url}/KickIt/PermissionNeeded`,{
    credentials:"include"
 })
 .then(res=>res.json())
 .then(data=>{
-   console.log(data.requestedUser)
+   
   const i=document.createElement('img')
    i.src=data.requestedUser.image
    i.id="imageProfile"

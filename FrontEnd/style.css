@@ -197,12 +197,21 @@ background-image: url('https://m.media-amazon.com/images/I/81NE5bSsUML._AC_UF894
     overflow-y: auto;
 }
 #notifications{
-    width: 300px;
-    margin: 50px auto;
-    padding: 20px;
-    background-color: #5c7751;
+    width: 500px;
+    margin: 20px auto; /* Reduced the top and bottom margin */
+    padding: 20px; /* Adjusted padding */
+    background-color: #ddd;
     border: 1px solid #ddd;
     border-radius: 8px;
+}
+#notifications p {
+    margin-bottom: 0px; /* Reduce the gap between paragraphs */
+}
+
+#notifications:hover {
+    transform: translateY(-5px); /* Slightly move the div upwards */
+    background-color: #f0f0f0; /* Change background color on hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add a shadow effect */
 }
 #left-div{
     height: 600px;
@@ -225,4 +234,44 @@ background-image: url('https://m.media-amazon.com/images/I/81NE5bSsUML._AC_UF894
     width: 30px;
     height: 30px;
     cursor: pointer;
+}
+#requests {
+    display: flex;
+    justify-content: center; /* Center the left and right divs horizontally */
+    align-items: center; /* Center the content vertically */
+    padding: 5px; /* Add some padding */
+    margin-bottom: 10px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-sizing: border-box; /* Ensure padding is included in width and height */
+    gap: 20px; /* Add spacing between the left and right divs */
+}
+#left {
+    display: flex;
+    flex-direction: row-reverse; /* Reverse the order of elements */
+    align-items: center; /* Vertically center the content */
+    gap: 10px; /* Add spacing between the name and the image */
+}
+
+#right {
+    flex: 0 0 auto; /* Allow the right div to size itself based on its content */
+    display: flex;
+    justify-content: flex-end; /* Align content to the right */
+    align-items: center; /* Vertically center the content */
+  
+     
+}
+
+#requestImage {
+    width: 50px; /* Size of the image */
+    height: 50px; /* Size of the image */
+    border-radius: 50%; /* Make the image circular */
+    background-color: #f4f4f4;
+    
+}
+#requestName {
+    font-size: 20px; /* Adjust font size */
+    color: #333; /* Text color */
+    margin: 0; /* Remove default margin */
 }

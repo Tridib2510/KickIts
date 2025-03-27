@@ -280,6 +280,8 @@ exports.joinRequest=catchAsync(async(req,res,next)=>{
 })
 exports.myEvents=catchAsync(async(req,res,next)=>{
 
+  
+
 const id=req.cookies.token
 const decode=jwt.verify(id,process.env.JWT_SECRET)
 const user=await userModel.findById(decode.id)
@@ -287,8 +289,13 @@ const user=await userModel.findById(decode.id)
  const text={playersJoined:decode.id}
 
  const image=user.image
+ 
+ req.query.playersJoined=decode.id
 
-const event=new ApiFeature(eventModel,req.query,text).filter().paginate()
+ console.log(req.query)
+
+const event=new ApiFeature(eventModel,req.query,req.query).filter().paginate()
+
 const data=await event.query 
 
 return res.status(200).json({
@@ -315,9 +322,9 @@ const user=await userModel.findById(decode.id).populate({
 })
 
 exports.getPermission=catchAsync(async (req,res,next)=>{
-  
+
    const id=req.cookies.token
-  
+   console.log(id)
 const decode=jwt.verify(id,process.env.JWT_SECRET)
 
 const user=await userModel.findById(decode.id).populate({
@@ -336,7 +343,9 @@ const user=await userModel.findById(decode.id).populate({
 })
 
 
+
 exports.notificationSend=catchAsync(async (req,res,next)=>{
+   
    const requestedUser=req.body.requestedUser
    const requestedEvents=req.body.requestedEvents
    

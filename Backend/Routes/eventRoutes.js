@@ -59,10 +59,14 @@ router.route('/alreadyExits').patch(eventController.alreadyJoined)
 
 router.route('/myEvents').get(authController.protect,eventController.myEvents)
 
+router.route('/PermissionNeeded').get(eventController.getPermission)
+
 router.route('/joinRequests').get(eventController.notification).patch(eventController.notificationSend)
 
 router.route('/:userId').get(userController.getUser)
-router.route('/PermissionNeeded').get(eventController.getPermission)
+
+
+
 router.use('/:userId/Review',reviewRouter)
 
 

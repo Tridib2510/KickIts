@@ -147,35 +147,21 @@ helper('','?page=1&limit=5');
 let page=1;
 
 
-backward.addEventListener('click',()=>{
-    if(page>1){
-    if(leftDiv.contains(Events))
-  leftDiv.removeChild(Events)
-  page--;
-  helper('',`?page=${page}&limit=5`)
-    }
-    
-})
-forward.addEventListener('click',()=>{
-    if(page<totalDocuments){
-        if(leftDiv.contains(Events))
-        leftDiv.removeChild(Events)
-  page++;
-  helper('',`?page=${page}&limit=5`)
-    }
-})
-
 
 
 const Choose = document.getElementsByClassName('custom-btn');
 
+let placeholder=''
+
 Choose[0].addEventListener('click', () => {
     const b = document.getElementById('search-bar');
     b.placeholder = "venue";
+    placeholder="venue"
 });
 Choose[1].addEventListener('click', () => {
     const b = document.getElementById('search-bar');
     b.placeholder = "activity";
+    placeholder="activity"
 });
 Choose[2].addEventListener('click', () => {
     const b = document.getElementById('search-bar');
@@ -196,6 +182,34 @@ const button = document.getElementById('search-button').addEventListener('click'
     helper(text,'');
     b.placeholder = "Search events...";
 });
+
+
+
+backward.addEventListener('click',()=>{
+    const c = document.getElementById('search-bar');
+
+    const text=c.value!=''?`?${c.placeholder}=${c.value}`:'';
+    if(page>1){
+    if(leftDiv.contains(Events))
+  leftDiv.removeChild(Events)
+  page--;
+  helper(text,`?page=${page}&limit=5`)
+    }
+    
+})
+forward.addEventListener('click',()=>{
+    const c = document.getElementById('search-bar');
+    console.log(c.value==='')
+    const text=c.value!=''?`?${placeholder}=${c.value}`:'';
+    console.log(c.placeholder)
+    if(page<totalDocuments){
+        if(leftDiv.contains(Events))
+        leftDiv.removeChild(Events)
+  page++;
+  console.log(text)
+  helper('',`?page=${page}&limit=5`)
+    }
+})
 
 const signUpbutton = document.getElementById('signup-btn').addEventListener('click', () => {
     window.location.href = 'SignUpPage.html';
@@ -223,14 +237,29 @@ fetch(`${url}/KickIt/joinRequests`, {
         const events = [];
         for (let i = 0; i < arr.length; i++) {
             const requests = document.createElement('div');
+            const left=document.createElement('div');
+            left.id="left"
+            const right=document.createElement('div');
+            right.id="right"
+            requests.appendChild(left)
+            requests.appendChild(right)
+            
+           requests.id='requests'
             const a = i;
             array.push(requests);
             index.push(data.user.joinedRequests[a]);
             events.push(data.user.requestedEvents[a]);
             requests.id = 'notifications';
-            const name = document.createElement('p');
-            name.innerHTML = 'Name:' + data.user.joinedRequests[i].username;
+            const name = document.createElement('h1');
+            const image=document.createElement('img')
+            image.src=data.user.image
+            image.id="requestImage"
+            name.id = "requestName";
             requests.appendChild(name);
+            left.appendChild(image)
+            name.innerHTML = data.user.joinedRequests[i].username+" is waiting for you response"
+            
+            
             rightDiv.appendChild(requests);
             requests.addEventListener('click', () => {
                 const options = {
@@ -239,18 +268,4 @@ fetch(`${url}/KickIt/joinRequests`, {
                     headers: {
                         'Content-Type': 'application/json',
                     },
-                    body: JSON.stringify({
-                        requestedUser: data.user.joinedRequests[a],
-                        requestedEvents: data.user.requestedEvents[a]
-                    })
-                };
-                fetch(`${url}/KickIt/joinRequests`, options)
-                    .then(res => res.json())
-                    .then(data => {
-                        window.location = './acceptRequest.html';
-                    })
-                    .catch(err => console.log(err));
-            });
-        }
-    })
-    .catch(err => console.log(err));
+                    body: JSON.strin
