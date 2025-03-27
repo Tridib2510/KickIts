@@ -7,21 +7,18 @@
 body {
     font-family: Arial, sans-serif;
     background-color: #333;
+    overflow-y:hidden;
     background-image: url('https://static.vecteezy.com/system/resources/thumbnails/013/087/516/small/diagonal-golden-line-glass-cube-on-black-background-illustration-of-website-banner-poster-sign-corporate-business-social-media-post-billboard-agency-advertising-media-motion-video-animation-wave-vector.jpg');
 }
 
 .taskbar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 40px;
-    background-color: #333;
-    color: white;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 10px;
+    background-color: #333;
+    padding: 10px 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    color: white;
 }
 
 .start-menu .start-btn {
@@ -40,6 +37,7 @@ body {
 
 .auth-buttons {
     display: flex;
+    align-items: center;
     gap: 10px;
 }
 
@@ -47,10 +45,11 @@ body {
     background-color: #4CAF50;
     color: white;
     border: none;
-    padding: 5px 10px;
+    padding: 10px 15px;
     cursor: pointer;
     font-size: 14px;
     border-radius: 5px;
+    transition: background-color 0.3s ease;
 }
 
 .auth-buttons button:hover {
@@ -62,6 +61,8 @@ body {
     gap: 20px; /* Adjust the gap between the divs as needed */
     width: 80%; /* Adjust the width as needed */
     margin: 60px auto; /* Center the container */
+    overflow-x: hidden;
+    overflow-y: auto;
 }
 .side-by-side-container > div {
     flex: 1; /* Make both divs take equal space */
@@ -69,6 +70,8 @@ body {
     background-color:#333;
     border: 1px solid #ddd;
     border-radius: 8px;
+    overflow-x: hidden;
+    overflow-y: auto;
 }
 .signup-btn {
     background-color: #008CBA;
@@ -154,7 +157,7 @@ background-image: url('https://m.media-amazon.com/images/I/81NE5bSsUML._AC_UF894
 .search-container {
     display: flex;
     justify-content: center; /* Center the container horizontally */
-    margin: 60px auto; /* Adjust the top and bottom margin as needed */
+   /* margin: 60px auto; /* Adjust the top and bottom margin as needed */
 }
 .buttons-container {
     display: flex;
@@ -176,6 +179,21 @@ background-image: url('https://m.media-amazon.com/images/I/81NE5bSsUML._AC_UF894
 .custom-btn:hover {
     background-color: #0056b3;
 }
+
+.navigation-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    gap: 20px; /* Add spacing between the icons */
+}
+
+.navigation-container img {
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+}
+
 #image{
     width: 30px;
     height: 30px;
@@ -194,11 +212,68 @@ background-image: url('https://m.media-amazon.com/images/I/81NE5bSsUML._AC_UF894
 #notification-icon:hover {
     transform: translateY(-5px);
 }
+#notifications:hover {
+    transform: translateY(-5px); /* Slightly move the div upwards */
+    background-color: #f0f0f0; /* Change background color on hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add a shadow effect */
+}
 #notifications{
-    width: 300px;
-    margin: 50px auto;
-    padding: 20px;
-    background-color: #5c7751;
+    width: 500px;
+    margin: 20px auto; /* Reduced the top and bottom margin */
+    padding: 20px; /* Adjusted padding */
+    background-color: #ddd;
     border: 1px solid #ddd;
     border-radius: 8px;
+}
+#notifications p {
+    margin-bottom: 0px; /* Reduce the gap between paragraphs */
+}
+#left-div{
+    height: 600px;
+    overflow-y: scroll;
+}
+#right-div{
+    height: 600px;
+    overflow-y: scroll;
+}
+#requests {
+    display: flex;
+    justify-content: center; /* Center the left and right divs horizontally */
+    align-items: center; /* Center the content vertically */
+    padding: 5px; /* Add some padding */
+    margin-bottom: 10px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-sizing: border-box; /* Ensure padding is included in width and height */
+    gap: 20px; /* Add spacing between the left and right divs */
+}
+#left {
+    display: flex;
+    flex-direction: row-reverse; /* Reverse the order of elements */
+    align-items: center; /* Vertically center the content */
+    gap: 10px; /* Add spacing between the name and the image */
+}
+
+#right {
+    flex: 0 0 auto; /* Allow the right div to size itself based on its content */
+    display: flex;
+    justify-content: flex-end; /* Align content to the right */
+    align-items: center; /* Vertically center the content */
+  
+     
+}
+
+#requestImage {
+    width: 50px; /* Size of the image */
+    height: 50px; /* Size of the image */
+    border-radius: 50%; /* Make the image circular */
+    background-color: #f4f4f4;
+    
+    
+}
+#requestName {
+    font-size: 20px; /* Adjust font size */
+    color: #333; /* Text color */
+    margin: 0; /* Remove default margin */
 }

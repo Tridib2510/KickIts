@@ -11,7 +11,7 @@ let Events=document.createElement('div')
 
 const buttons=document.getElementById('auth-buttons')
 
-
+let totalDocuments=0
 
 const logout=document.getElementById('Logout')
 
@@ -55,15 +55,28 @@ socket.on('send',(str)=>{
    }
  })
 
-function helper(text){
+
+ const navigationContainer = document.createElement('div');
+ navigationContainer.className = 'navigation-container';
+ 
+ const backward = document.createElement('img');
+ backward.src = "https://img.icons8.com/ios-filled/50/000000/back.png";
+ navigationContainer.appendChild(backward);
+ 
+ const forward = document.createElement('img');
+ forward.src = "https://img.icons8.com/ios-filled/50/000000/forward.png";
+ navigationContainer.appendChild(forward);
+ 
+
+function helper(text,params){
    
 Events=document.createElement('div')
-fetch(`${url}/KickIt/myEvents${text}`,{
+fetch(`${url}/KickIt/myEvents${text}${params}`,{
    credentials:"include"
 })
 .then(res=>res.json())
 .then(data=>{
-
+ console.log(data)
 if(text==''){
   
    image.src=data.image
@@ -134,12 +147,44 @@ if(data.status && data.status=='fail'){
    })
    leftDiv.appendChild(Events)
    }
+   totalDocuments=data.data.length
+   leftDiv.appendChild(Events);
+   leftDiv.appendChild(navigationContainer);
+            
   
 })
 .catch(err=>console.log(err))
 }
 
-helper('')
+helper('','?page=1&limit=5')
+
+let page=1;
+
+backward.addEventListener('click',()=>{
+   const c = document.getElementById('search-bar');
+
+   const text=c.value!=''?`?${c.placeholder}=${c.value}`:'';
+   if(page>1){
+   if(leftDiv.contains(Events))
+ leftDiv.removeChild(Events)
+ page--;
+ helper(text,`?page=${page}&limit=5`)
+   }
+   
+})
+forward.addEventListener('click',()=>{
+   const c = document.getElementById('search-bar');
+   console.log(c.value==='')
+   const text=c.value!=''?`?${placeholder}=${c.value}`:'';
+   console.log(c.placeholder)
+   if(page<totalDocuments){
+       if(leftDiv.contains(Events))
+       leftDiv.removeChild(Events)
+ page++;
+ console.log(text)
+ helper('',`?page=${page}&limit=5`)
+   }
+})
 
 const Choose=document.getElementsByClassName('custom-btn')
 
@@ -213,18 +258,31 @@ fetch(`${url}/KickIt/joinRequests`,{
    const index=[]
    const events=[]
  for(let i=0;i<arr.length;i++){
- const requests=document.createElement('div')
- 
- const a=i
- array.push(requests)
- index.push(data.user.joinedRequests[a])
- events.push(data.user.requestedEvents[a])
-
- requests.id='notifications' 
- const name=document.createElement('p')
-  name.innerHTML='Name:'+data.user.joinedRequests[i].username
-  requests.appendChild(name)
- rightDiv.appendChild(requests)
+   const requests = document.createElement('div');
+            const left=document.createElement('div');
+            left.id="left"
+            const right=document.createElement('div');
+            right.id="right"
+            requests.appendChild(left)
+            requests.appendChild(right)
+            
+           requests.id='requests'
+            const a = i;
+            array.push(requests);
+            index.push(data.user.joinedRequests[a]);
+            events.push(data.user.requestedEvents[a]);
+            requests.id = 'notifications';
+            const name = document.createElement('h1');
+            const image=document.createElement('img')
+            image.src=data.user.image
+            image.id="requestImage"
+            name.id = "requestName";
+            requests.appendChild(name);
+            left.appendChild(image)
+            name.innerHTML = data.user.joinedRequests[i].username+" is waiting for you response"
+            
+            
+            rightDiv.appendChild(requests);
 
 requests.addEventListener('click',()=>{
    const options = {
