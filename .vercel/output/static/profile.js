@@ -12,6 +12,7 @@ const name = document.getElementById('name');
 const descriptionUpdate = document.getElementById('Description');
 const div = document.getElementById('image');
 const fileInput = document.getElementById('file');
+const ctx=document.getElementById('myChart')
 
 const formData = new FormData();
 const image = document.createElement('img');
@@ -114,6 +115,26 @@ fetch(`${url}/KickIt/profile`, { credentials: 'include' })
          
         image.src =data.user.image;
         div.appendChild(image);
+
+        
+new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels:data.user.ratingsDate,
+      datasets: [{
+        label: 'Ratings',
+        data: data.user.ratings,
+        borderWidth: 1
+      }]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  });
     })
     .catch((err) => console.log(err));
 
@@ -138,3 +159,5 @@ update.addEventListener('click', () => {
         })
         .catch((err) => console.log(err));
 });
+
+
