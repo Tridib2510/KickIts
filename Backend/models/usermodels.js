@@ -67,7 +67,13 @@ const Schema=new mongoose.Schema({
     eventRequest:{
       type:mongoose.Schema.ObjectId,
       ref:'Events'
-    }
+    },
+    ratings:[{
+      type:Number
+    }],
+    ratingsDate:[{
+      type:Date
+    }]
 
 })
 

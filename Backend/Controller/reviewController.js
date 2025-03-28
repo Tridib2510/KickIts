@@ -19,6 +19,17 @@ exports.createReview=catchAsync(async(req,res,next)=>{
     console.log(id)
     const decode=jwt.verify(id,process.env.JWT_SECRET)
     const user=await userModel.findById(decode.id)
+
+    const client=await userModel.findById(req.body.User)
+
+    client.ratings.push(req.body.rating)
+    client.ratingsDate.push(Date.now())
+
+    await client.save({
+        validateBeforeSave: false
+     })
+
+    await userModel.sa
     
 if(!req.body.createdBy)req.body.createdBy=user._id
 const newReview=await reviewModel.create(req.body)
