@@ -15,16 +15,20 @@ body{
 }
 #player {
     display: flex;
-    width: 80%;
-    height:80%;
     justify-content: space-between;
+    align-items: center; /* Vertically center the content */
+    width: 100%; /* Set the width to take full container space */
+    max-width: 500px; /* Limit the maximum width */
+    height: 80px; /* Set a fixed height */
     background-color: #5c7751;
     padding: 20px;
-    margin: 10px auto;
+    margin: 20px auto; /* Center the div horizontally */
     border: 1px solid #ddd;
     border-radius: 8px;
     transition: opacity 0.6s ease-out, transform 0.6s ease-out;
     background-image: url('https://m.media-amazon.com/images/I/81NE5bSsUML._AC_UF894,1000_QL80_.jpg');
+    background-size: cover; /* Ensure the background image covers the div */
+    background-position: center; /* Center the background image */
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
@@ -122,7 +126,7 @@ body{
 .right-div {
     flex: 1;
     padding: 5px; /* Reduce padding */
-    overflow-y: scroll;
+    
 }
 
 .additional-content{
@@ -135,9 +139,14 @@ body{
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 #joined-users {
+    width: 100%; /* Set the width to take full container space */
+    max-width: 600px; /* Limit the maximum width */
+    height: 600px; /* Set a fixed height */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add shadow */
     padding: 20px;
     background-color: #f9f9f9;
     border: 1px solid #ddd;
     border-radius: 8px;
+    overflow-y: scroll;
+    
 }

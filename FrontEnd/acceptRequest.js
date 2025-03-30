@@ -31,6 +31,7 @@ const description=document.getElementById('description')
 
 const email=document.getElementById('email')
 
+const ctx=document.getElementById('myChart') 
 
 const EventDetails=document.getElementById('EventDetails')
 
@@ -56,6 +57,27 @@ fetch(`${url}/KickIt/PermissionNeeded`,{
 })
 .then(res=>res.json())
 .then(data=>{
+
+
+          
+   new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels:data.user.ratingsDate,
+        datasets: [{
+          label: 'Ratings',
+          data: data.user.ratings,
+          borderWidth: 1
+        }]
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        }
+      }
+    });
    
   const i=document.createElement('img')
    i.src=data.requestedUser.image

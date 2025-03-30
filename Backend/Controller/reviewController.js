@@ -32,6 +32,7 @@ exports.createReview=catchAsync(async(req,res,next)=>{
     await userModel.sa
     
 if(!req.body.createdBy)req.body.createdBy=user._id
+req.body.reviewer=user.username
 const newReview=await reviewModel.create(req.body)
 return res.status(200).json({
     newReview

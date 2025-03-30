@@ -6,7 +6,7 @@ const eventEmitter = new EventEmitter();
 const catchAsync=require('../utils/catchAsync')
 const AppError=require('../utils/appError')
 const jwt=require('jsonwebtoken')
-
+const mongoose=require('mongoose')
 const eventModel=require('../models/eventmodels')
 const userModel=require('../models/usermodels')
 const ApiFeature=require('../utils/ApiFeature');
@@ -23,7 +23,7 @@ cloudinary.config({
 exports.getUser=catchAsync(async(req,res,next)=>{
     console.log(req.body)
     const id=req.params.userId
-    const user=await userModel.findById(id)
+    const user=await userModel.findById(id).populate('reviews')
     
     return res.status(200).json({
         user
@@ -34,7 +34,7 @@ exports.getProfile=catchAsync(async(req,res,next)=>{
     console.log(req.body)
    
     const decode=jwt.verify(id,process.env.JWT_SECRET)
-    const user=await userModel.findById(decode.id)
+    const user=await userModel.findById(decode.id).populate('reviews')
     
    
     
@@ -45,9 +45,14 @@ exports.getProfile=catchAsync(async(req,res,next)=>{
 let y;
 
 exports.getUserDetails=catchAsync(async(req,res,next)=>{
+
+   
     const id=req.cookies.token
     const decode=jwt.verify(id,process.env.JWT_SECRET)
-    const user=await userModel.findById(decode.id)
+    const user=await userModel.findById(decode.id).populate('reviews')
+
+  console.log(user)
+
     return res.status(200).json({
         user
     })
@@ -118,4 +123,18 @@ exports.makeChanges=catchAsync(async(req,res,next)=>{
    
     next()
 })
-
+exports.getUsers=catchAsync(async(req,res,next)=>{
+    
+    const id=req.params.id
+    const mongooseId=mongoose.Types.ObjectId(id)
+    console.log(mongooseId)
+  
+    const joinedEvents={
+        joinedEvents:id
+    }
+    const user=await userModel.find()
+console.log(user)
+    res.status(200).json({
+        user:user
+    })
+})

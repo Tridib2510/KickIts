@@ -12,7 +12,9 @@ const name = document.getElementById('name');
 const descriptionUpdate = document.getElementById('Description');
 const div = document.getElementById('image');
 const fileInput = document.getElementById('file');
-const ctx=document.getElementById('myChart')
+const ctx=document.getElementById('myChart') 
+
+const rightDiv=document.getElementById('right-div')
 
 const formData = new FormData();
 const image = document.createElement('img');
@@ -116,14 +118,16 @@ fetch(`${url}/KickIt/profile`, { credentials: 'include' })
         image.src =data.user.image;
         div.appendChild(image);
 
-        
+      const n=data.user.ratingsDate.length
+      const start=data.user.ratingsDate.length-1-2>=0?data.user.ratingsDate.length-3:0
+
 new Chart(ctx, {
     type: 'line',
     data: {
-      labels:data.user.ratingsDate,
+      labels:data.user.ratingsDate.slice(start,n),
       datasets: [{
         label: 'Ratings',
-        data: data.user.ratings,
+        data: data.user.ratings.slice(start,n),
         borderWidth: 1
       }]
     },
@@ -135,7 +139,34 @@ new Chart(ctx, {
       }
     }
   });
-    })
+  const reviews=data.user.reviews
+
+  for(let i=reviews.length-1;i>=0;i--){
+    console.log(reviews[i])
+    const reviewDiv = document.createElement('div');
+    reviewDiv.className = 'review';
+
+    const reviewerName = document.createElement('h4');
+    reviewerName.className = 'reviewer-name';
+    reviewerName.innerText = reviews[i].reviewer;
+
+    const reviewText = document.createElement('p');
+    reviewText.className = 'review-text';
+    reviewText.innerText = reviews[i].review;
+
+    reviewDiv.appendChild(reviewerName);
+    reviewDiv.appendChild(reviewText);
+    rightDiv.appendChild(reviewDiv);
+
+
+
+  }
+
+  
+
+
+
+})
     .catch((err) => console.log(err));
 
 update.addEventListener('click', () => {
@@ -160,4 +191,18 @@ update.addEventListener('click', () => {
         .catch((err) => console.log(err));
 });
 
+const container=document.getElementById('container')
 
+container.removeChild(rightDiv)
+
+const review=document.getElementById('reviews')  
+
+review.addEventListener('click',()=>{
+    if(container.contains(rightDiv)){
+        container.removeChild(rightDiv)
+    }
+    else{
+        container.appendChild(rightDiv)
+    }
+
+})

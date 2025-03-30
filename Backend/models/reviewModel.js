@@ -12,6 +12,10 @@ const Schema=new mongoose.Schema({
         type:mongoose.Schema.ObjectId,
         ref:'users'
     },
+    "createdAt":{
+     type:Date,
+     default:Date.now()
+    },
     "rating":{
         type:String
     },
@@ -34,6 +38,9 @@ const Schema=new mongoose.Schema({
   type:mongoose.Schema.ObjectId,
     ref:'users'
 },
+"reviewer":{
+    type:String
+}
 
 },
 {

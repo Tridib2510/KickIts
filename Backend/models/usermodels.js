@@ -8,7 +8,7 @@ const Schema=new mongoose.Schema({
     username:{
         type:String,
         recquired:[true,'Name is recquired'],
-        lowercase:true
+       
         
     },
     Description:{
@@ -73,10 +73,20 @@ const Schema=new mongoose.Schema({
     }],
     ratingsDate:[{
       type:Date
-    }]
-
+    }],
+  
+},
+{
+    
+  toJSON: { virtuals: true },
+  toObject: { virtuals: true }
+//Each time that the data is outputed as JSON we want the virtuals to be true
 })
-
+Schema.virtual ('reviews',{
+  ref:'Review',
+  foreignField:'User',
+  localField:'_id'
+})
 
 
 Schema.pre('save',async function(next){
