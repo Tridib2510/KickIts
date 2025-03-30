@@ -31,6 +31,7 @@ const description=document.getElementById('description')
 
 const email=document.getElementById('email')
 
+const ctx=document.getElementById('myChart') 
 
 const EventDetails=document.getElementById('EventDetails')
 
@@ -48,12 +49,36 @@ const decline=document.getElementById('accept-btn')
 
 
 Events=document.createElement('div')
+
+console.log(url)
+
 fetch(`${url}/KickIt/PermissionNeeded`,{
    credentials:"include"
 })
 .then(res=>res.json())
 .then(data=>{
-   console.log(data.requestedUser)
+
+
+          
+   new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels:data.user.ratingsDate,
+        datasets: [{
+          label: 'Ratings',
+          data: data.user.ratings,
+          borderWidth: 1
+        }]
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        }
+      }
+    });
+   
   const i=document.createElement('img')
    i.src=data.requestedUser.image
    i.id="imageProfile"
@@ -91,7 +116,7 @@ fetch(`${url}/KickIt/PermissionNeeded`,{
       }
       console.log(data.event)
       accept.addEventListener('click',()=>{
-         fetch(`${url}/KickIt/joinEvent`,{
+         fetch(`${url}/KickIt//joinEvent`,{
             method:'PATCH',
             headers:{
                 'Content-Type':'application/json'
@@ -113,7 +138,7 @@ fetch(`${url}/KickIt/PermissionNeeded`,{
       })
 
       decline.addEventListener('click',()=>{
-         fetch(`${url}/KickIt/joinEvent`,{
+         fetch(`${url}/KickIt//joinEvent`,{
             method:'PATCH',
             headers:{
                 'Content-Type':'application/json'
