@@ -59,25 +59,27 @@ fetch(`${url}/KickIt/PermissionNeeded`,{
 .then(data=>{
 
 
-          
-   new Chart(ctx, {
-      type: 'line',
-      data: {
-        labels:data.user.ratingsDate,
-        datasets: [{
-          label: 'Ratings',
-          data: data.user.ratings,
-          borderWidth: 1
-        }]
-      },
-      options: {
-        scales: {
-          y: {
-            beginAtZero: true
-          }
-        }
-      }
-    });
+   const n=data.user.ratingsDate.length
+   const start=data.user.ratingsDate.length-1-2>=0?data.user.ratingsDate.length-3:0
+
+new Chart(ctx, {
+ type: 'line',
+ data: {
+   labels:data.user.ratingsDate.slice(start,n),
+   datasets: [{
+     label: 'Ratings',
+     data: data.user.ratings.slice(start,n),
+     borderWidth: 1
+   }]
+ },
+ options: {
+   scales: {
+     y: {
+       beginAtZero: true
+     }
+   }
+ }
+});
    
   const i=document.createElement('img')
    i.src=data.requestedUser.image
