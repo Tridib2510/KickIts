@@ -89,6 +89,7 @@ exports.protect=catchAsync(async(req,res,next)=>{
 
 exports.logOut=catchAsync(async (req,res,next)=>{
     res.clearCookie('token')
+    
   return  res.status(200).json({
         status:"You have logged out"
     })

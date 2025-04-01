@@ -238,7 +238,10 @@ const myEvents = document.getElementById('MyEvents').addEventListener('click', (
 logout.addEventListener('click', () => {
     fetch(`${url}/KickIt/logout`,{
         credentials:'include'
-    }).then(res=>res.json()).then(data=>window.location.href="AllEvents.html").catch(err=>console.log(err))
+    }).then(res=>res.json()).then(data=>{
+        console.log(data)
+       // window.location.href="AllEvents.html"
+    }).catch(err=>console.log(err))
 });
 
 fetch(`${url}/KickIt/joinRequests`, {
