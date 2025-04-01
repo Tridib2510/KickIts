@@ -58,7 +58,7 @@ fetch(`${url}/KickIt/PermissionNeeded`,{
 .then(res=>res.json())
 .then(data=>{
 
-const start=data.requestedUser.ratingsDate.length-1-2>=0?data.user.ratingsDate.length-3:0
+const start=data.requestedUser.ratingsDate.length-1-2>=0?data.requestedUser.ratingsDate.length-3:0
 
 new Chart(ctx, {
     type: 'line',
