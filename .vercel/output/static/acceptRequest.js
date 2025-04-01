@@ -222,4 +222,3 @@ const loginbutton=document.getElementById('login-btn').addEventListener('click',
 const myEvents=document.getElementById('MyEvents').addEventListener('click',()=>{
    window.location.href='myEvents.html'
 })
-
