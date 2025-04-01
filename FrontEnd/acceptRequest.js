@@ -44,8 +44,24 @@ const date=document.getElementById('Date')
 const time=document.getElementById('time')
 
 const accept=document.getElementById('accept-btn')  
-const decline=document.getElementById('accept-btn') 
+const decline=document.getElementById('decline-btn') 
 
+const reviewButton=document.getElementById('reviews-btn')
+
+const review=document.getElementById('Reviews')
+
+const profileDetails=document.getElementById('profile-details')
+
+profileDetails.removeChild(review)
+
+reviewButton.addEventListener('click',()=>{
+ if(profileDetails.contains(review)){
+   profileDetails.removeChild(review)
+ }
+ else{
+   profileDetails.appendChild(review)
+ }
+})
 
 
 Events=document.createElement('div')
@@ -87,13 +103,41 @@ new Chart(ctx, {
    imageContainer.appendChild(i)
    description.innerHTML=data.requestedUser.Description
    email.innerHTML=data.requestedUser.email
-
+   const EventName=document.getElementById('EventName')
+   const activity=document.getElementById('activity')
+   EventName.innerHTML=data.event.eventName
+   activity.innerHTML=data.event.activity
 
    EventDetails.innerHTML=data.event.Description
    playersRequired.innerHTML=data.event.playersRequired
    venue.innerHTML=data.event.venue
    date.innerHTML=data.event.date
    time.innerHTML=data.event.time
+
+  console.log(data.requestedUser)
+
+  const reviews=data.requestedUser.reviews
+  console.log(reviews)
+  for(let i=reviews.length-1;i>=0;i--){
+    console.log(reviews[i])
+    const reviewDiv = document.createElement('div');
+    reviewDiv.className = 'review';
+
+    const reviewerName = document.createElement('h4');
+    reviewerName.className = 'reviewer-name';
+    reviewerName.innerText = reviews[i].reviewer;
+
+    const reviewText = document.createElement('p');
+    reviewText.className = 'review-text';
+    reviewText.innerText = reviews[i].review;
+
+    reviewDiv.appendChild(reviewerName);
+    reviewDiv.appendChild(reviewText);
+    review.appendChild(reviewDiv);
+
+
+
+  }
 
     if(data.token){
         
@@ -118,7 +162,7 @@ new Chart(ctx, {
       }
       console.log(data.event)
       accept.addEventListener('click',()=>{
-         fetch(`${url}/KickIt//joinEvent`,{
+         fetch(`${url}/KickIt/joinEvent`,{
             method:'PATCH',
             headers:{
                 'Content-Type':'application/json'
@@ -140,7 +184,8 @@ new Chart(ctx, {
       })
 
       decline.addEventListener('click',()=>{
-         fetch(`${url}/KickIt//joinEvent`,{
+         console.log('hello boy')
+         fetch(`${url}/KickIt/joinEvent`,{
             method:'PATCH',
             headers:{
                 'Content-Type':'application/json'

@@ -135,7 +135,7 @@ exports.alreadyJoined=catchAsync(async(req,res,next)=>{
    const event=await eventModel.findById(req.body.eventId)
    const creator=await userModel.findById(event.createdBy)
  
-   console.log("hello bitch"+decode.id)
+  
    
    
    if(event.playersJoined.includes(decode.id))
@@ -204,7 +204,7 @@ exports.join=catchAsync(async(req,res,next)=>{
     console.log('Test Case 0')
 
    if(req.body.buttonPressed==='accept'){
-      console.log('hello 69')
+     
    event.playersJoined.push(client._id)
   
    client.joinedEvents.push(event._id)
@@ -328,17 +328,17 @@ exports.getPermission=catchAsync(async (req,res,next)=>{
 const decode=jwt.verify(id,process.env.JWT_SECRET)
 
 const user=await userModel.findById(decode.id).populate({
-   path:'userRequest'
-}).populate({
    path:'eventRequest'
 })
+const requestedUser=await userModel.findById(user.userRequest).populate('reviews')
+
 
  return res.status(200).json({
    token:req.cookies.token,
    user,
    image:user.image,
    event:user.eventRequest,
-   requestedUser:user.userRequest
+   requestedUser:requestedUser
  })
 })
 

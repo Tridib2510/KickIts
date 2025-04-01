@@ -9,6 +9,8 @@ let index = [];
 
 let Events = document.createElement('div');
 
+let TEXT=''
+
 const buttons = document.getElementById('auth-buttons');
 
 const login = document.getElementById('login-btn');
@@ -53,13 +55,15 @@ forward.src = "https://img.icons8.com/ios-filled/50/000000/forward.png";
 navigationContainer.appendChild(forward);
 
 function helper(text,params) {
+   
     Events = document.createElement('div');
     fetch(`${url}/KickIt/home${text}${params}`, {
         credentials: "include"
     })
         .then(res => res.json())
         .then(data => {
-            console.log(data)
+            console.log(text+data.data.length)
+            if(data.data.length!=0)TEXT=text
             socket.emit('joinRoom', 'i');
             socket.on('sendResponse', () => {
                 window.location.href = "https://www.google.com/";
@@ -74,9 +78,7 @@ function helper(text,params) {
                     buttons.removeChild(signUp);
                   if(buttons.contains(login))
                     buttons.removeChild(login);
-                    logout.addEventListener('click', () => {
-                        window.location.href = `${url}/KickIt/logout`;
-                    });
+                   
                 } else {
                     if(buttons.contains(image))
                     buttons.removeChild(image);
@@ -153,61 +155,69 @@ const Choose = document.getElementsByClassName('custom-btn');
 
 let placeholder=''
 
-Choose[0].addEventListener('click', () => {
-    const b = document.getElementById('search-bar');
-    b.placeholder = "venue";
-    placeholder="venue"
-});
-Choose[1].addEventListener('click', () => {
-    const b = document.getElementById('search-bar');
-    b.placeholder = "activity";
-    placeholder="activity"
-});
-Choose[2].addEventListener('click', () => {
-    const b = document.getElementById('search-bar');
-    b.placeholder = "Creator";
-});
+
+
 
 const button = document.getElementById('search-button').addEventListener('click', () => {
-    let text = '';
-    arr = [];
-    const b = document.getElementById('search-bar');
-    if (b != '' && b.value != '') {
-        text = `?${b.placeholder}=${b.value}`;
+    const searchBar=document.getElementById('search-bar')
+    if(searchBar.value===''){
+       
+        if (document.body.events === true) {
+            leftDiv.removeChild(Events);
+       }
+       helper('','?page=1&limit=5');
     }
+    else{
+    const text1=`?activity=${searchBar.value}`
+    const text2=`?venue=${searchBar.value}`
+    const text3=`?eventName=${searchBar.value}`
     if (document.body.events === true) {
-        leftDiv.removeChild(Events);
-    }
-    index = [];
-    helper(text,'');
-    b.placeholder = "Search events...";
-});
-
+                leftDiv.removeChild(Events);
+           }
+    helper(text1,'&page=1&limit=5')
+    helper(text2,'&page=1&limit=5')
+    helper(text3,'&page=1&limit=5')
+    page=1
+   
+        }
+    
+ 
+ });
+ 
 
 
 backward.addEventListener('click',()=>{
     const c = document.getElementById('search-bar');
 
-    const text=c.value!=''?`?${c.placeholder}=${c.value}`:'';
+    
     if(page>1){
     if(leftDiv.contains(Events))
-  leftDiv.removeChild(Events)
+    leftDiv.removeChild(Events)
   page--;
-  helper(text,`?page=${page}&limit=5`)
+  if(TEXT==='')
+    helper(TEXT,`?page=${page}&limit=5`)
+  else{
+    helper(TEXT,`&page=${page}&limit=5`)
+  }
     }
     
 })
 forward.addEventListener('click',()=>{
     const c = document.getElementById('search-bar');
     console.log(c.value==='')
-    const text=c.value!=''?`?${placeholder}=${c.value}`:'';
+   
     console.log(c.placeholder)
     if(page<totalDocuments){
         if(leftDiv.contains(Events))
         leftDiv.removeChild(Events)
   page++;
-  console.log(text)
-  helper('',`?page=${page}&limit=5`)
+  console.log(TEXT)
+  if(TEXT==='')
+  helper(TEXT,`?page=${page}&limit=5`)
+else {
+    console.log(TEXT+`&page=${page}&limit=5`)
+    helper(TEXT,`&page=${page}&limit=5`)
+}
     }
 })
 
@@ -223,6 +233,12 @@ const loginbutton = document.getElementById('login-btn').addEventListener('click
 
 const myEvents = document.getElementById('MyEvents').addEventListener('click', () => {
     window.location.href = 'myEvents.html';
+});
+
+logout.addEventListener('click', () => {
+    fetch(`${url}/KickIt/logout`,{
+        credentials:'include'
+    }).then(res=>res.json()).then(data=>window.location.href="AllEvents.html").catch(err=>console.log(err))
 });
 
 fetch(`${url}/KickIt/joinRequests`, {

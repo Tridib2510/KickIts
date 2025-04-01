@@ -13,8 +13,8 @@ exports.getLogin=catchAsync(async(req,res,next)=>{
 })
 
 exports.signUp=catchAsync(async(req,res,next)=>{
- 
-    const newUser=await usermodel.create(req.body)
+    console.log(req.body.data)
+    const newUser=await usermodel.create(req.body.data)
 
     const token=jwt.sign({id:newUser._id},process.env.JWT_SECRET,{
         expiresIn:process.env.JWT_EXPIRES_IN
@@ -37,7 +37,7 @@ exports.getSignUp=catchAsync(async(req,res,next)=>{
 
 exports.login=catchAsync(async (req,res,next)=>{
     
-    const {email,password}=req.body
+    const {email,password}=req.body.data
 
 
     if(!email||!password){

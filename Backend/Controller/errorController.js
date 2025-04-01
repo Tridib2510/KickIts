@@ -29,6 +29,12 @@ const handleCastErrorDB=err=>{
     const message=`Invalid ${err.path}:${err.value}`
     return new AppError('Please enter a valid ID',400)
 }
+const handleValidationErrorDB=err=>{
+    const error=Object.values(err.errors).map(el=>el.message)
+    console.log(error)
+    const message=`Invalid input data+${error.join('. ')}`
+    return new AppError(message,400)
+}
 module.exports=(err,req,res,next)=>{
 
     err.statusCode=err.statusCode||500
@@ -40,6 +46,7 @@ module.exports=(err,req,res,next)=>{
     let error={...err}
    
     if(err.name==='CastError')error=handleCastErrorDB(error)
+    if(err.name==='ValidationError')error=handleValidationErrorDB(error)
     sendProduction(error,res)
    }
 }

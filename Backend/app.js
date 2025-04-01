@@ -21,6 +21,7 @@ app.options('*', (req, res) => {
 const dotenv=require('dotenv')
 
 const bodyParser=require('body-parser')
+
 app.use(express.json()); 
 
 dotenv.config({path:'config.env'})
