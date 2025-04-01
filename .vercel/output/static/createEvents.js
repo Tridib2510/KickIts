@@ -31,6 +31,7 @@ const button=document.getElementById('createEvent').addEventListener('click',()=
     }
     fetch(`${url}/KickIt/createEvent`,options).then(res=>res.json()).then(data=>{
         console.log(data)
+        window.location.href='AllEvents.html'
     }).catch(err=>console.log(err))
 
 })
