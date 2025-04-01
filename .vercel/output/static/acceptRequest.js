@@ -58,28 +58,28 @@ fetch(`${url}/KickIt/PermissionNeeded`,{
 .then(res=>res.json())
 .then(data=>{
 
-const start=data.requestedUser.ratingsDate.length-1-2>=0?data.requestedUser.ratingsDate.length-3:0
+
+   const n=data.user.ratingsDate.length
+   const start=data.user.ratingsDate.length-1-2>=0?data.user.ratingsDate.length-3:0
 
 new Chart(ctx, {
-    type: 'line',
-    data: {
-      labels:data.requestedUser.ratingsDate.slice(start,n),
-      datasets: [{
-        label: 'Ratings',
-        data: data.requestedUser.ratings.slice(start,n),
-        borderWidth: 1
-      }]
-    },
-    options: {
-      scales: {
-        y: {
-          beginAtZero: true
-        }
-      }
-    }
-  });
-         
-   
+ type: 'line',
+ data: {
+   labels:data.user.ratingsDate.slice(start,n),
+   datasets: [{
+     label: 'Ratings',
+     data: data.user.ratings.slice(start,n),
+     borderWidth: 1
+   }]
+ },
+ options: {
+   scales: {
+     y: {
+       beginAtZero: true
+     }
+   }
+ }
+});
    
   const i=document.createElement('img')
    i.src=data.requestedUser.image
@@ -177,4 +177,3 @@ const loginbutton=document.getElementById('login-btn').addEventListener('click',
 const myEvents=document.getElementById('MyEvents').addEventListener('click',()=>{
    window.location.href='myEvents.html'
 })
-
