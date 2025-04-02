@@ -240,7 +240,7 @@ logout.addEventListener('click', () => {
         credentials:'include'
     }).then(res=>res.json()).then(data=>{
         console.log(data)
-       // window.location.href="AllEvents.html"
+        window.location.href="AllEvents.html"
     }).catch(err=>console.log(err))
 });
 
