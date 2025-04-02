@@ -82,14 +82,15 @@ exports.protect=catchAsync(async(req,res,next)=>{
 
  const user=await usermodel.findById(decode.id)
 
- res.cookie('token',token)
+
  next()
  
 })
 
 exports.logOut=catchAsync(async (req,res,next)=>{
-    res.clearCookie('token')
     
+    res.clearCookie('token', { path: '/', domain: 'https://kickits-1.onrender.com' });
+
   return  res.status(200).json({
         status:"You have logged out"
     })
