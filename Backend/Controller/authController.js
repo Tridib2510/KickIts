@@ -88,8 +88,19 @@ exports.protect=catchAsync(async(req,res,next)=>{
 })
 
 exports.logOut=catchAsync(async (req,res,next)=>{
-    
-    res.clearCookie('token', { path: '/', domain: 'https://kickits-1.onrender.com' });
+    // res.cookie('cookieName', '', {
+    //     httpOnly: true, // Ensure the cookie is not accessible via JavaScript
+    //     secure: true, // Send only over HTTPS
+    //     sameSite: 'None', // Allow cross-origin requests
+    //     expires: new Date(0), // Expire the cookie immediately
+    //     path: '/', // Ensure the path matches where the cookie was set
+    // })
+    res.clearCookie('token', { 
+        httpOnly: true, 
+        secure: true, 
+        sameSite: 'None', 
+        path: '/', 
+    });
 
   return  res.status(200).json({
         status:"You have logged out"
