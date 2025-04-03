@@ -69,7 +69,8 @@ function helper(text,params) {
                 window.location.href = "https://www.google.com/";
             });
             if (text == '') {                                                                                                                      
-                if (data.token) {
+                if (data.token!='default') {
+                
                     image.src = data.image;
                     image.addEventListener('click', () => {
                         window.location.href = 'profile.html';
@@ -80,6 +81,7 @@ function helper(text,params) {
                     buttons.removeChild(login);
                    
                 } else {
+                    
                     if(buttons.contains(image))
                     buttons.removeChild(image);
                     if(buttons.contains(logout))
@@ -114,8 +116,17 @@ function helper(text,params) {
                 eventTime.innerHTML = `Time : ${data.data[i].time}`;
                 div.appendChild(eventTime);
                 document.body.events = true;
+                const active=document.createElement('h3')
+                active.innerHTML=`${data.data[i].active}`
+                div.appendChild(active)
+                if(data.data[i].active!='Inactive'){
                 Events.appendChild(div);
+                }
                 document.body.events = true;
+                if(data.data[i].active==='Filled'&&!data.data[i].playersJoined.includes(data.token)){
+                    div.style.cursor='not-allowed'
+                }
+                if((data.data[i].active==='Filled'&&data.data[i].playersJoined.includes(data.token))||data.data[i].active==='Active'){
                 div.addEventListener('click', () => {
                     const options = {
                         method: 'PATCH',
@@ -134,6 +145,7 @@ function helper(text,params) {
                         })
                         .catch(err => console.log(err));
                 });
+            }
                 totalDocuments=data.data.length
                 leftDiv.appendChild(Events);
                 leftDiv.appendChild(navigationContainer);

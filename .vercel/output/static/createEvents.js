@@ -6,7 +6,7 @@ const date=document.getElementById('date')
 const time=document.getElementById('time')
 const Description=document.getElementById('description')
 const playersRequired=document.getElementById('playersRequired')
-
+const errorContainer=document.getElementById('error-container')
 import url from "./ApiUrl.js";
 
 const button=document.getElementById('createEvent').addEventListener('click',()=>{
@@ -29,9 +29,16 @@ const button=document.getElementById('createEvent').addEventListener('click',()=
     
  })
     }
-    fetch(`${url}/KickIt/createEvent`,options).then(res=>res.json()).then(data=>{
-        console.log(data)
-        window.location.href='AllEvents.html'
-    }).catch(err=>console.log(err))
+    fetch(`${url}/KickIt/createEvent`,options).then(res=>res.json())
+    .then(data=>{
+        if (data.status==='fail') {
+            console.log(data.message)
+            throw new Error(data.message);
+        }
+    window.location.href="AllEvents.html"
+    })
+    .catch(err=>{
+        errorContainer.textContent = `Error: ${err.message}`; // Display the error message
+    })
 
 })
