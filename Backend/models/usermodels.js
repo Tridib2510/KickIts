@@ -33,10 +33,12 @@ const Schema=new mongoose.Schema({
       type:String,
       
       required:[true,'password need to be confirmed'],
-      validate:function(el){
+      validate:{//Keep this validate and validator in mind we have made a mistake here
+      validator:function(el){
         return el===this.password
       },
       message:'Password and confirm password are not the same'
+    }
     },
     image:{
       type:String,

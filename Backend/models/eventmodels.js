@@ -18,7 +18,13 @@ const Schema=new mongoose.Schema({
         type:String
     },
     "date":{
-        type:Date
+        type:Date,
+        validate:{
+            validator:function(el){
+                return el.getTime()>=Date.now()
+              },
+              message:'Please input a valid date'
+        }
     },
     "time":{
         type:String
@@ -31,7 +37,13 @@ const Schema=new mongoose.Schema({
     },
     
 "playersRequired":{
-   type:Number
+   type:Number,
+   validate:{
+    validator:function(el){
+        return el>0
+      },
+      message:'You need at least 1 player'
+}
 },
 "createdBy":{
   type:mongoose.Schema.ObjectId,
@@ -44,11 +56,24 @@ const Schema=new mongoose.Schema({
 "joiningRequest":[{
     type:mongoose.Schema.ObjectId,
     ref:'users'
-}]
+}],
+"active":{
+    type:String,
+    default:'Active'
+}
 
 
 })
 
+Schema.pre('save',async function(next){
+     if(this.isModified('playersJoined')){
+        if(this.playersJoined.length>=this.playersRequired){
+            this.active="Filled"
+        }
+     }
+    
+     next()
+  })
 
 
 const model=mongoose.model('Events',Schema)

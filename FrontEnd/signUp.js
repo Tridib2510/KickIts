@@ -19,17 +19,19 @@ form.addEventListener('submit',(event)=>{
     };
     fetch(`${url}/KickIt/signUp`,options).
     then(res=>{
-   console.log(res)
+   
         
         return res.json(); // Parse the JSON response
 
     })
     .then(data=>{
-        if (data.status==='fail') {
+        console.log(data)
+        if (data.status==='fail'||data.status==='error') {
             console.log(data.message)
             throw new Error(data.message);
         }
-     window.location.href="AllEvents.html"
+        
+    // window.location.href="AllEvents.html"
     })
     .catch(err=>{
        // console.log('hello')

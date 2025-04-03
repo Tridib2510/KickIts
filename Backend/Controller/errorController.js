@@ -1,6 +1,7 @@
 const AppError = require("../utils/appError")
 
 const sendDevelopment=(err,res)=>{
+   
     res.status(err.statusCode).json({
         status:err.status,
         message:err.message,
@@ -9,6 +10,8 @@ const sendDevelopment=(err,res)=>{
 }
 
 const sendProduction=(err,res)=>{
+    console.log(err.isOperational)
+    console.log('error checking')
     if(err.isOperational===true){
     res.status(err.statusCode).json({
         status:err.status,
@@ -31,8 +34,8 @@ const handleCastErrorDB=err=>{
 }
 const handleValidationErrorDB=err=>{
     const error=Object.values(err.errors).map(el=>el.message)
-    console.log(error)
-    const message=`Invalid input data+${error.join('. ')}`
+    console.log(err)
+    const message=`${error.join('. ')}`
     return new AppError(message,400)
 }
 module.exports=(err,req,res,next)=>{
@@ -44,9 +47,11 @@ module.exports=(err,req,res,next)=>{
     sendDevelopment(err,res)
    else if(process.env.NODE_ENV==='production'){
     let error={...err}
-   
-    if(err.name==='CastError')error=handleCastErrorDB(error)
-    if(err.name==='ValidationError')error=handleValidationErrorDB(error)
-    sendProduction(error,res)
+    console.log(err)
+    console.log(error)
+    if(err.code===11000)err=handleDuplicateFieldsDB(err)
+    if(err.name==='CastError')err=handleCastErrorDB(err)
+    if(err.name==='ValidationError')err=handleValidationErrorDB(err)
+    sendProduction(err,res)
    }
 }

@@ -35,7 +35,7 @@ const reviewRouter=require('./reviewRoutes')
 
 router.route('/createEvent').get(eventController.getCreateEvent).post(eventController.createEvent)
 
-router.route('/home').get(eventController.getAllEvents)
+router.route('/home').get(eventController.isActive,eventController.getAllEvents)
 
 router.route('/profile').get(authController.protect,userController.getProfile)
 

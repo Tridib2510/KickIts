@@ -20,15 +20,15 @@ form.addEventListener('submit',(event)=>{
     };
     fetch(`${url}/KickIt/login`,options).
     then(res=>{
-   console.log(res)
+   
         
         return res.json(); // Parse the JSON response
 
     })
     .then(data=>{
         console.log(data)
-        if (data.status==='fail') {
-            console.log(data.message)
+        if (data.status==='fail'||data.status==='Error') {
+            console.log(data);
             throw new Error(data.message);
         }
     window.location.href="AllEvents.html"

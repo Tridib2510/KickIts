@@ -13,6 +13,8 @@ exports.getLogin=catchAsync(async(req,res,next)=>{
 })
 
 exports.signUp=catchAsync(async(req,res,next)=>{
+    console.log('pookies')
+    
     console.log(req.body.data)
     const newUser=await usermodel.create(req.body.data)
 

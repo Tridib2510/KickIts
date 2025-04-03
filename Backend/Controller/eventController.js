@@ -18,6 +18,9 @@ const ApiFeature=require('../utils/ApiFeature')
 
 exports.getAllEvents=catchAsync(async (req,res,next)=>{
 
+
+
+   
    console.log(req.query)
 
    const options = {
@@ -55,7 +58,7 @@ const event=new ApiFeature(eventModel,req.query,req.query,).filter().paginate()
     const image=user.image
    console.log(image)
       return res.status(200).json({
-         token:req.cookies.token,
+         token:id,
          data,
          image
       })
@@ -63,6 +66,23 @@ const event=new ApiFeature(eventModel,req.query,req.query,).filter().paginate()
 
   
   
+})
+
+exports.isActive=catchAsync(async(req,res,next)=>{
+   console.log('sexy')
+   const event=await eventModel.find()
+   const currentDate=Date.now();
+   Object.values(event).forEach(async(event)=>{
+      console.log('hey bro')
+      console.log(event.date.getTime()<Date.now())
+      if(event.date.getTime()<Date.now())event.active='Inactive'
+      await event.save({
+         validateBeforeSave: false
+      })
+   })
+   
+   next()
+   
 })
 
 exports.getCreateEvent=catchAsync(async(req,res,next)=>{
