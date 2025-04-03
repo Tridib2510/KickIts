@@ -30,8 +30,8 @@ form.addEventListener('submit',(event)=>{
             console.log(data.message)
             throw new Error(data.message);
         }
-        
-    // window.location.href="AllEvents.html"
+        else
+     window.location.href="AllEvents.html"
     })
     .catch(err=>{
        // console.log('hello')
