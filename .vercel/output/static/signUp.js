@@ -25,7 +25,7 @@ form.addEventListener('submit',(event)=>{
 
     })
     .then(data=>{
-        if (data.status==='fail') {
+        if (data.status==='fail'||data.status==='Error') {
             console.log(data.message)
             throw new Error(data.message);
         }
