@@ -69,7 +69,7 @@ const event=new ApiFeature(eventModel,req.query,req.query,).filter().paginate()
 })
 
 exports.isActive=catchAsync(async(req,res,next)=>{
-   console.log('sexy')
+  
    const event=await eventModel.find()
    const currentDate=Date.now();
    Object.values(event).forEach(async(event)=>{
