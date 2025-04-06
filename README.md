@@ -7,10 +7,15 @@ Kick It is a full-stack event scheduling web app designed for sports enthusiasts
 
 ✨ Key Features
 ✔ User Auth & Profiles – Secure JWT-based login with OAuth support.
+
 ✔ Event Creation & Discovery – Schedule, browse, and join games in your area.
+
 ✔ Real-Time Chat – Dedicated group chats for event participants.
+
 ✔ Live Notifications – Instant updates for event changes, messages, and invites.
+
 ✔ Review & Rating System – Rate players and organizers to build trust.
+
 ✔ Performance Analytics – Track player stats 
 
 
