@@ -2,7 +2,7 @@ const express=require('express')
 const mongoose=require('mongoose')
 const validator=require('validator')
 const bcrypt=require('bcryptjs')
-
+const crypto=require('crypto')
 
 const Schema=new mongoose.Schema({
     username:{
@@ -76,6 +76,14 @@ const Schema=new mongoose.Schema({
     ratingsDate:[{
       type:Date
     }],
+    passwordResetToken:{
+      type:String,
+      default:""
+    },
+    passwordResetExpires:{
+      type:Date,
+      default:Date.now()
+    }
   
 },
 {
@@ -105,6 +113,16 @@ Schema.pre('save',async function(next){
 Schema.method('correctPassword', async function(candidatePassword,userPassword){
   return await bcrypt.compare(candidatePassword,userPassword)
 })
+
+Schema.methods.createPasswordResetToken=function(){
+  console.log('Test case 8')
+  const resetToken=crypto.randomBytes(32).toString('hex')
+
+  console.log('Test case 9')
+  this.passwordResetToken=crypto.createHash('sha256').update(resetToken).digest('hex')
+  this.passwordResetExpires=Date.now()+10*60*1000
+  return resetToken
+}
 
 const model=new mongoose.model('users',Schema)
 

@@ -21,7 +21,15 @@ const Schema=new mongoose.Schema({
         type:Date,
         validate:{
             validator:function(el){
-                return el.getTime()>=Date.now()
+                const eventDate = new Date(el.getTime());
+
+               
+                const [hours, minutes] = this.time.split(':').map(Number);
+       
+                
+                eventDate.setHours(hours, minutes, 0, 0);
+
+                return (eventDate)>=Date.now()
               },
               message:'Please input a valid date'
         }

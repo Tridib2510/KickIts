@@ -65,6 +65,9 @@ router.route('/joinRequests').get(eventController.notification).patch(eventContr
 
 router.route('/:userId').get(userController.getUser)
 
+router.route('/forgotPassword').post(authController.forgotPassword)
+
+router.route('/resetPassword/:token').patch(authController.resetPassword)
 
 
 router.use('/:userId/Review',reviewRouter)

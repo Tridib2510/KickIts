@@ -74,8 +74,17 @@ exports.isActive=catchAsync(async(req,res,next)=>{
    const currentDate=Date.now();
    Object.values(event).forEach(async(event)=>{
       console.log('hey bro')
-      console.log(event.date.getTime()<Date.now())
-      if(event.date.getTime()<Date.now())event.active='Inactive'
+
+     const eventDate=new Date(event.date.getTime())
+
+     const [hours,minutes]=event.time.split(':').map(Number)
+   
+     eventDate.setHours(hours,minutes,0,0)
+   
+     console.log(eventDate.getTime())
+
+      if(eventDate.getTime()<Date.now())event.active='Inactive'
+
       await event.save({
          validateBeforeSave: false
       })
