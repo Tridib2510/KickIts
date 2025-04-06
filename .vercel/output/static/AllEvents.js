@@ -283,7 +283,7 @@ fetch(`${url}/KickIt/joinRequests`, {
             requests.id = 'notifications';
             const name = document.createElement('h1');
             const image=document.createElement('img')
-            image.src=data.user.image
+            image.src=data.joinedRequests[i].image
             image.id="requestImage"
             name.id = "requestName";
             requests.appendChild(name);
