@@ -27,7 +27,7 @@ document.getElementById('resetPasswordForm').addEventListener('submit', async (e
         throw new Error(data.message);
     }
     else
-   window.location.href = '/login.html'
+   window.location.href = 'Login.html'
 })
 .catch(err =>{
         const errorContainer=document.getElementById('error-container')
