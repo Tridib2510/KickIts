@@ -237,10 +237,28 @@ exports.join=catchAsync(async(req,res,next)=>{
    event.playersJoined.push(client._id)
   
    client.joinedEvents.push(event._id)
+   
    }
-      user.requestedEvents.pop(event._id)
-      user.joinedRequests.pop(client._id)
+   console.log('Before')
+         
+   console.log(user.requestedEvents)
+   
+   const index=user.requestedEvents.indexOf(event._id)
+
+      user.requestedEvents.splice(index,1)
+
+    
+
+      user.joinedRequests.splice(index,1)
+   
+      console.log('After')
+         
+     console.log(user.requestedEvents)
+   
+
       event.joiningRequest.pop(client._id)
+        
+      console.log(user.joinedRequests)
    
    await user.save({
       validateBeforeSave: false
