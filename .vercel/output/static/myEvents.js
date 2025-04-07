@@ -186,37 +186,34 @@ forward.addEventListener('click',()=>{
    }
 })
 
-const Choose=document.getElementsByClassName('custom-btn')
 
-Choose[0].addEventListener('click',()=>{
-   const b=document.getElementById('search-bar')
-   b.placeholder="venue"
-})
-Choose[1].addEventListener('click',()=>{
-   const b=document.getElementById('search-bar')
-   b.placeholder="activity"
-})
-Choose[2].addEventListener('click',()=>{
-   const b=document.getElementById('search-bar')
-   b.placeholder="Creator"
-})
-
-const button=document.getElementById('search-button').addEventListener('click',()=>{
-   let text = '';
-   arr = [];
-   const b = document.getElementById('search-bar');
-   if (b != '' && b.value != '') {
-       text = `?${b.placeholder}=${b.value}`;
+const button = document.getElementById('search-button').addEventListener('click', () => {
+   const searchBar=document.getElementById('search-bar')
+   if(searchBar.value===''){
+      
+       if (document.body.events === true) {
+         if(leftDiv.contains(Events))
+           leftDiv.removeChild(Events);
+      }
+      helper('','?page=1&limit=5');
    }
+   else{
+   const text1=`?activity=${searchBar.value}`
+   const text2=`?venue=${searchBar.value}`
+   const text3=`?eventName=${searchBar.value}`
    if (document.body.events === true) {
-       leftDiv.removeChild(Events);
-   }
-   index = [];
-   helper(text,'');
-   b.placeholder = "Search events...";
+               leftDiv.removeChild(Events);
+          }
+   helper(text1,'&page=1&limit=5')
+   helper(text2,'&page=1&limit=5')
+   helper(text3,'&page=1&limit=5')
+   page=1
+  
+       }
    
 
-})
+});
+
 
 
 createEvent.addEventListener('click',()=>{
@@ -260,7 +257,7 @@ fetch(`${url}/KickIt/joinRequests`,{
             requests.id = 'notifications';
             const name = document.createElement('h1');
             const image=document.createElement('img')
-            image.src=data.user.joinedRequests[i].image
+            image.src=data.user.image
             image.id="requestImage"
             name.id = "requestName";
             requests.appendChild(name);

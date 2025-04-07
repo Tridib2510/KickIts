@@ -175,6 +175,7 @@ const button = document.getElementById('search-button').addEventListener('click'
     if(searchBar.value===''){
        
         if (document.body.events === true) {
+            if(leftDiv.contains(Events))
             leftDiv.removeChild(Events);
        }
        helper('','?page=1&limit=5');
