@@ -40,14 +40,17 @@ fetch(`${url}/KickIt/getEventDetails`,{
             player.addEventListener('click',()=>{
                 
                 console.log(data.event.activity)
-                window.location.href="/giveReview.html?userId="+data.event.playersJoined[a]._id+"&activity="+data.event.activity
+            if(data.event.createdBy===data.userId)
+                window.location.href="/giveReview.html?userId="+data.event.playersJoined[a]._id+"&activity="+data.event.activity+"&event="+data.event._id
 
             })
     }
     socket.emit('joinRoom',data.userId);
-    console.log(data.userId)
+    console.log('data')
+    console.log(data)
     const userName=data.username
-   
+    const user_id=data.userId
+   const event=data.event
     const eventName=document.getElementById('profile-name')
     eventName.innerHTML=data.event.eventName
     const creator=document.getElementById('creator')
@@ -62,6 +65,7 @@ fetch(`${url}/KickIt/getEventDetails`,{
     date.innerHTML=data.event.date
     const chat=document.getElementById('Chat')
     const join=document.getElementById('Join')
+    const leave=document.getElementById('Leave')
     const joinedUsers=document.getElementById('joined-users')
     chat.addEventListener('click',()=>{
         window.location.href="https://kickits-chatapp-frontend.onrender.com/"
@@ -81,12 +85,33 @@ fetch(`${url}/KickIt/getEventDetails`,{
          if(status.status==='alredyJoined'){
             const div=document.getElementById('division')
             const join=document.getElementById('Join')
+
             div.removeChild(join)
+
+            leave.addEventListener('click',()=>{
+                console.log('hello')
+               const options = {
+                method: 'PATCH',
+                credentials: 'include',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    id:data.event._id
+                })
+            };
+             fetch(`${url}/KickIt/leaveEvent`,options)
+             .then(res=>res.json())
+             .then(data=>console.log(data))
+             .catch(err=>console.log(err))
+            
+            })
 
          }
          else if(status.status==='requestNotYetAnswered'){
             const div=document.getElementById('division')
             div.removeChild(chat)
+            div.removeChild(leave)
             const join=document.getElementById('Join')
             join.innerHTML='Pending Request'
             join.style.backgroundColor='grey'
@@ -100,6 +125,8 @@ fetch(`${url}/KickIt/getEventDetails`,{
             const div=document.getElementById('division')
            
             div.removeChild(chat)
+            div.removeChild(leave)
+            
         join.addEventListener('click',()=>{
             fetch(`${url}/KickIt/joinRequestToCreator`,{
                 method:'PATCH',
@@ -114,8 +141,9 @@ fetch(`${url}/KickIt/getEventDetails`,{
                 credentials:'include'
             }).then(res=>res.json())
             .then(data=>{
+                console.log('Pookie')
                console.log(data)
-                socket.emit('sendRequest',userName,data.creatorId)
+                socket.emit('sendRequest',data.creatorId,userName,user_id,event)
                 const join=document.getElementById('Join')
                 join.innerHTML='Pending Request'
                 join.style.backgroundColor='grey'
@@ -125,6 +153,7 @@ fetch(`${url}/KickIt/getEventDetails`,{
             }).catch(err=>console.log(err))
             
         })
+
         
          }
 

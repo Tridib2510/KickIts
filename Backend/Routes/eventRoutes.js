@@ -53,6 +53,10 @@ router.route('/getUser').get(userController.getUserDetails)
 
 router.route('/joinEvent').patch(eventController.join)
 
+router.route('/removeEvent').patch(eventController.removeEvent)
+
+router.route("/leaveEvent").patch(eventController.leaveEvent)
+
 router.route('/joinRequestToCreator').patch(eventController.joinRequest)
 
 router.route('/alreadyExits').patch(eventController.alreadyJoined)

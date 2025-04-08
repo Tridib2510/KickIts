@@ -1,5 +1,6 @@
 body{
     background-color: #333;
+    background-image: url('https://t3.ftcdn.net/jpg/03/91/46/10/360_F_391461057_5P0BOWl4lY442Zoo9rzEeJU0S2c1WDZR.jpg');
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
@@ -100,7 +101,7 @@ body{
     margin-top: 20px;
 }
 
-#Join, #Chat {
+#Join, #Chat,#Leave {
     padding: 10px 20px;
     background-color: #007BFF;
     color: white;
@@ -110,7 +111,7 @@ body{
     font-size: 16px;
 }
 
-#Join:hover, #Chat:hover {
+#Join:hover, #Chat:hover,#Leave:hover {
     background-color: #0056b3;
 }
 .main-container {
@@ -124,18 +125,28 @@ body{
 }
 
 .right-div {
-    flex: 1;
+    flex: 1; /* Allow it to take equal space as the left-div */
     padding: 5px; /* Reduce padding */
+    max-width: 50%; /* Limit the maximum width to 50% of the container */
+    height: auto; /* Allow the height to adjust based on content */
+    
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+    overflow-y: auto; /* Add vertical scrolling if content overflows */
     
 }
 
 .additional-content{
-    width: 80%;
+    flex:1;
+    max-width: 50%;
     margin: 50px auto;
     padding: 20px;
     background-color: #f9f9f9;
     border: 1px solid #ddd;
+    box-sizing: border-box;
+    min-height: 300px;
+    max-height: 580px;
     border-radius: 8px;
+    border: 1px solid #ddd;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 #joined-users {

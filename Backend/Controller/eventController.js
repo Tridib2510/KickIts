@@ -414,3 +414,43 @@ exports.notificationSend=catchAsync(async (req,res,next)=>{
       status:"success"
    })
 })
+exports.removeEvent=catchAsync(async (req,res,next)=>{
+
+const eventId=req.body.eventId
+const event=await eventModel.findById(eventId)
+event.active='Inactive'
+await event.save({
+   validateBeforeSave:false
+})
+
+return res.status(200).json({
+   status:"successfully removed"
+})
+
+})
+
+exports.leaveEvent=catchAsync(async(req,res,next)=>{
+   console.log('Test Case pookie')
+   const id=req.body.id
+   const token=req.cookies.token
+   const decode=jwt.verify(token,process.env.JWT_SECRET)
+
+   const event=await eventModel.findById(id)
+   console.log('Before')
+   console.log(event.playersJoined)
+
+   event.playersJoined.pull(decode.id)
+
+   console.log('After')
+   console.log(event.playersJoined)
+
+   await event.save({
+      validateBeforeSave:false
+   })
+
+
+   return res.status(200).json({
+      status:"success"
+   })
+
+})

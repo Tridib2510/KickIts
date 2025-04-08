@@ -3,6 +3,7 @@ import url from "./ApiUrl.js";
 const params=new URLSearchParams(window.location.search)
 const searchUrl=params.get('userId')
 const sport=params.get('activity')
+const event=params.get('event')
 console.log(url)
 console.log(searchUrl)
 
@@ -27,7 +28,8 @@ if (!searchUrl) {
         })
         .catch(err => console.log(err));
 }
-
+ 
+  
     submit.addEventListener('click',()=>{
 
   const rating=document.getElementById('rating').value
@@ -42,14 +44,16 @@ if (!searchUrl) {
                User:searchUrl,
                 rating:rating,
                 review:review,
-                sports:sport
+                sports:sport,
+                event:event
+                
 
          })
    }
   fetch(`${url}/KickIt/${searchUrl}/Review/createReview`,options)
   .then(res=>res.json())
   .then(data=>{
-    console.log(data)
+    window.location.href='./eventDetails.html'
   })
   .catch(err=>console.loge(err))
 })

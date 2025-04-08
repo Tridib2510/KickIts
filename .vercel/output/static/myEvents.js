@@ -33,17 +33,51 @@ const side_side_container=document.getElementById('side-by-side-container')
 side_side_container.removeChild(rightDiv)
 
 
-
-socket.on('send',(str)=>{
-   console.log(str)
-   console.log(str)
-   const requests=document.createElement('div')
-   requests.id='notifications' 
-   const name=document.createElement('p')
-   name.innerHTML='Name:'+str
-   requests.appendChild(name)
-   rightDiv.appendChild(requests)
-  })
+socket.on('send', (user,event) => {
+  
+   const requests = document.createElement('div');
+           const left=document.createElement('div');
+           left.id="left"
+           const right=document.createElement('div');
+           right.id="right"
+           requests.appendChild(left)
+           requests.appendChild(right)
+           
+          requests.id='requests'
+           requests.id = 'notifications';
+           const name = document.createElement('h1');
+           const image=document.createElement('img')
+           image.src=user.image
+           image.id="requestImage"
+           name.id = "requestName";
+           requests.appendChild(name);
+           left.appendChild(image)
+           name.innerHTML = user.username+" is waiting for you response"
+           
+           
+           rightDiv.appendChild(requests);
+   
+   const options = {
+       method: 'PATCH',
+       credentials: 'include',
+       headers: {
+           'Content-Type': 'application/json',
+       },
+       body: JSON.stringify({
+           requestedUser: user,
+           requestedEvents:event
+       })
+   };
+   requests.addEventListener('click', () => {
+   fetch(`${url}/KickIt/joinRequests`, options)
+                   .then(res => res.json())
+                   .then(data => {
+                       window.location = './acceptRequest.html';
+                   })
+                   .catch(err => console.log(err));
+   
+               }) 
+});
 
 
   notification.addEventListener('click',()=>{
