@@ -9,16 +9,20 @@ const DB=process.env.DATABASE_LOCAL
 const Schema=new mongoose.Schema({
     
     "eventName":{
-        type:String
+        type:String,
+        required:[true,'Event Name is recquired'],
     },
     "activity":{
-        type:String
+        type:String,
+        required:[true,'Sports is needed']
     },
     "venue":{
-        type:String
+        type:String,
+        recquired:[true,'Venue is needed']
     },
     "date":{
         type:Date,
+        required:[true,'Date is needed'],
         validate:{
             validator:function(el){
                 const eventDate = new Date(el.getTime());
@@ -35,17 +39,22 @@ const Schema=new mongoose.Schema({
         }
     },
     "time":{
-        type:String
+
+        type:String,
+        required:[true,'Time is needed']
     },
     "sports":{
-        type:String
+        type:String,
+       
     },
     "Description":{
         type:String
+       
     },
     
 "playersRequired":{
    type:Number,
+   required:[true,'No of players is needed'],
    validate:{
     validator:function(el){
         return el>0

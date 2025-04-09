@@ -169,9 +169,85 @@ button:hover {
 #reviews:hover {
     background-color: #0056b3;
 }
+
+.taskbar {
+    display: flex;
+    align-items: center; /* Vertically center the content */
+    justify-content: center; /* Horizontally center the content */
+    background-color: #333;
+    padding: 10px 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    
+    color: white;
+}
+
+.start-menu .start-btn {
+    background-color: #0078D4;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    font-size: 14px;
+    border-radius: 5px;
+}
+
+.start-btn:hover {
+    background-color: #005a8c;
+}
+
+
+
+
+.signup-btn {
+    background-color: #008CBA;
+}
+
+.signup-btn:hover {
+    background-color: #007B9A;
+}
+.auth-buttons {
+    display: flex;
+    align-items: center;
+ 
+    justify-content: flex-start; /* Keep other elements aligned to the left */
+    gap: 100px; /* Add spacing between the divs */
+}
+
+.auth-buttons div {
+    margin-left: 10px;
+    display: inline-block;
+    padding: 10px 15px;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+  
+}
+.auth-buttons div:hover {
+    background-color: gray; /* Change background color on hover */
+    transform: translateY(-3px); /* Slightly move the div upwards on hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add a shadow effect */
+}
+.auth-buttons img {
+    margin-left: auto; /* Push the notification and image to the right */
+}
+
     </style>
 </head>
 <body>
+    <div class="taskbar">
+        <div class="start-menu">
+          
+        </div>
+        <div class="auth-buttons" id="auth-buttons">
+            
+            <div id="createEvent">Create</div>
+            <div id="Logout">Logout</div>
+            <div id="MyEvents">My Events</div>
+            <div id="AllEvents">All Events</div>
+        </div>
+    </div>
+
     <div class="container" id="container">
         <div id="left-div">
             <div id="profile-container" class="profile-container">

@@ -19,6 +19,25 @@ const rightDiv=document.getElementById('right-div')
 const formData = new FormData();
 const image = document.createElement('img');
 
+const createEvent=document.getElementById('createEvent').addEventListener('click',()=>{
+    window.location.href='./createEvents.html'
+})
+const logout=document.getElementById('Logout').addEventListener('click',()=>{
+    fetch(`${url}/KickIt/logout`,{
+        credentials:'include'
+    }).then(res=>res.json()).then(data=>{
+        console.log(data)
+        window.location.href="AllEvents.html"
+    }).catch(err=>console. log(err))
+})
+const allEvents=document.getElementById('AllEvents').addEventListener('click',()=>{
+    window.location.href='./AllEvents.html'
+})
+const myEvents=document.getElementById('MyEvents').addEventListener('click',()=>{
+    window.location.href='./MyEvents.html'
+})
+
+
 div.removeChild(file);
 
 image.addEventListener('click', () => {
@@ -151,11 +170,16 @@ new Chart(ctx, {
     reviewerName.innerText = reviews[i].reviewer;
 
     const reviewText = document.createElement('p');
-    reviewText.className = 'review-text';
+    const createdAt=document.createElement('p');
+    createdAt.className = 'review-text';
+    createdAt.innerHTML=reviews[i].createdAt
+  //  reviewText.className = 'review-text';
     reviewText.innerText = reviews[i].review;
-
+    
     reviewDiv.appendChild(reviewerName);
+    reviewDiv.appendChild(createdAt)
     reviewDiv.appendChild(reviewText);
+    
     rightDiv.appendChild(reviewDiv);
 
 

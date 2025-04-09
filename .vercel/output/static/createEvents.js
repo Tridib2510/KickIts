@@ -7,7 +7,35 @@ const time=document.getElementById('time')
 const Description=document.getElementById('description')
 const playersRequired=document.getElementById('playersRequired')
 const errorContainer=document.getElementById('error-container')
+const logout = document.getElementById('Logout').addEventListener('click',()=>{
+    fetch(`${url}/KickIt/logout`,{
+        credentials:'include'
+    }).then(res=>res.json()).then(data=>{
+        console.log(data)
+        window.location.href="AllEvents.html"
+    }).catch(err=>console. log(err))
+});
+const MyEvents = document.getElementById('MyEvents').addEventListener('click',()=>{
+    window.location.href='myEvents.html'
+});
+const AllEvents = document.getElementById('AllEvents').addEventListener('click',()=>{
+    window.location.href='AllEvents.html'
+});
+const createEvent = document.getElementById('createEvent');
+const image = document.getElementById('image');
 import url from "./ApiUrl.js";
+
+
+fetch(`${url}/KickIt/profile`,{
+    credentials:'include'
+ }).then(res=>res.json())
+ .then(data=>{
+image.src=data.user.image
+image.addEventListener('click',()=>{
+    window.location.href='profile.html'
+})
+ })
+
 
 const button=document.getElementById('createEvent').addEventListener('click',()=>{
     const options = {
@@ -29,9 +57,11 @@ const button=document.getElementById('createEvent').addEventListener('click',()=
     
  })
     }
+ 
+
     fetch(`${url}/KickIt/createEvent`,options).then(res=>res.json())
     .then(data=>{
-        if (data.status==='fail') {
+        if (data.status==='fail'||data.status==='Error') {
             console.log(data.message)
             throw new Error(data.message);
         }

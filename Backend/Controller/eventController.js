@@ -12,6 +12,7 @@ const eventModel=require('../models/eventmodels')
 
 
 const ApiFeature=require('../utils/ApiFeature')
+const { Mongoose } = require('mongoose')
 
 
 
@@ -125,9 +126,14 @@ exports.createEvent=catchAsync(async(req,res,next)=>{
       
       return next(new AppError('Not found by this Id',404))
      }
-   const body=req.body
+     console.log('TC')
+//      Object.keys(req.body).forEach((key) => {
+//       if (req.body[key]==='') {
+//          delete req.body[key];
+//      }
+//   });
 
-    
+    console.log(req.body)
   
   await eventModel.create(req.body)
 
@@ -196,6 +202,7 @@ exports.getEventDetails=catchAsync(async(req,res,next)=>{
 }) 
 
    return res.status(200).json({
+      user:user,
       userId:decode.id,
       username:user.username,
       event
@@ -440,7 +447,10 @@ exports.leaveEvent=catchAsync(async(req,res,next)=>{
    console.log(event.playersJoined)
 
    event.playersJoined.pull(decode.id)
-
+   if(event.playersJoined.length==1){
+      const newId=event.playersJoined[0]
+      event.createdBy=newId
+   }
    console.log('After')
    console.log(event.playersJoined)
 

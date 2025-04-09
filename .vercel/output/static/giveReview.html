@@ -14,7 +14,74 @@
             align-items: center;
             height: 100vh;
             background-color: #f4f4f4;
+            background-image: url('https://t3.ftcdn.net/jpg/03/91/46/10/360_F_391461057_5P0BOWl4lY442Zoo9rzEeJU0S2c1WDZR.jpg');
         }
+        .taskbar {
+            display: flex;
+        align-items: center; /* Vertically center the content */
+        justify-content: center; /* Horizontally center the content */
+        background-color: #333;
+        padding: 10px 20px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        color: white;
+        position: fixed; /* Fix the taskbar at the top */
+        top: 0;
+        left: 0;
+        max-height: 30px;
+        width: 100%; /* Make it span the full width of the page */
+        z-index: 1000; /* Ensure it stays above other elements */
+        }
+
+.start-menu .start-btn {
+    background-color: #0078D4;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    font-size: 14px;
+    border-radius: 5px;
+}
+
+.start-btn:hover {
+    background-color: #005a8c;
+}
+
+
+
+
+.signup-btn {
+    background-color: #008CBA;
+}
+
+.signup-btn:hover {
+    background-color: #007B9A;
+}
+.auth-buttons {
+    display: flex;
+    align-items: center;
+ 
+    justify-content: flex-start; /* Keep other elements aligned to the left */
+    gap: 100px; /* Add spacing between the divs */
+}
+
+.auth-buttons div {
+    margin-left: 10px;
+    display: inline-block;
+    padding: 10px 15px;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+  
+}
+.auth-buttons div:hover {
+    background-color: gray; /* Change background color on hover */
+    transform: translateY(-3px); /* Slightly move the div upwards on hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add a shadow effect */
+}
+.auth-buttons img {
+    margin-left: auto; /* Push the notification and image to the right */
+}
         .container {
             display: flex;
             width: 80%;
@@ -85,16 +152,36 @@
         align-items: center;
         height: 150px; /* Adjust height as needed */
     }
-        #image{
-            width: 150px;
-            height:150px;
+        #profileIcon{
+            width: 30px;
+            height:30px;
             border-radius: 50%;
             background-color: #f4f4f4;
-            margin-top: 50px;
+            margin-top: 3px;
         }
+        #image{
+        width: 150px;
+       height: 150px;
+       border-radius: 50%;
+       background-color: #f4f4f4;
+       margin: 0 auto;
+       }
     </style>
 </head>
 <body>
+    <div class="taskbar">
+        <div class="start-menu">
+          
+        </div>
+        <div class="auth-buttons" id="auth-buttons">
+            
+            <div id="createEvent">Create</div>
+            <div id="Logout">Logout</div>
+            <div id="MyEvents">All Events</div>
+           
+            <img id="profileIcon" src="https://img.icons8.com/ios/50">
+        </div>
+    </div>
     <div class="container">
         <div class="left-div">
             <div class="profile-details" id="profile-details">
@@ -103,8 +190,10 @@
                     
                 </div>
                 </div>
+                <h3 id="name">My Name</h3>
                 <h2>About Me</h2>
                 <div id="descriptionContainer">
+                
                 <p id="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam scelerisque leo nec magna fermentum, a facilisis ligula cursus.</p>
                 
                 

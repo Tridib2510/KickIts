@@ -126,12 +126,15 @@ new Chart(ctx, {
     const reviewerName = document.createElement('h4');
     reviewerName.className = 'reviewer-name';
     reviewerName.innerText = reviews[i].reviewer;
-
+    const createdAt=document.createElement('p');
+    createdAt.className = 'review-text';
+    createdAt.innerHTML=reviews[i].createdAt
     const reviewText = document.createElement('p');
-    reviewText.className = 'review-text';
+   
     reviewText.innerText = reviews[i].review;
 
     reviewDiv.appendChild(reviewerName);
+    reviewDiv.appendChild(createdAt)
     reviewDiv.appendChild(reviewText);
     review.appendChild(reviewDiv);
 
@@ -222,3 +225,4 @@ const loginbutton=document.getElementById('login-btn').addEventListener('click',
 const myEvents=document.getElementById('MyEvents').addEventListener('click',()=>{
    window.location.href='myEvents.html'
 })
+

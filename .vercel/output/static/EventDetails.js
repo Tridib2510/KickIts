@@ -4,12 +4,34 @@ import url from "./ApiUrl.js";
 const socket=io(`${url}`)
 const rightDiv=document.getElementById('right-div')
 const leftDiv=document.getElementById('left-div')
+const mainContainer=document.getElementById('main-container')
+
+const logout = document.getElementById('Logout').addEventListener('click',()=>{
+    fetch(`${url}/KickIt/logout`,{
+        credentials:'include'
+    }).then(res=>res.json()).then(data=>{
+        console.log(data)
+        window.location.href="AllEvents.html"
+    }).catch(err=>console.log(err))
+});
+const AllEvents = document.getElementById('AllEvents').addEventListener('click',()=>{
+ window.location.href='./AllEvents.html'
+})
+const createEvent = document.getElementById('createEvent').addEventListener('click',()=>{
+    window.location.href='./createEvents.html'
+});
+const image = document.getElementById('image')
+
 
 fetch(`${url}/KickIt/getEventDetails`,{
     credentials:'include'
 })
 .then(res=>res.json())
 .then(data=>{
+    image.src=data.user.image
+    image.addEventListener('click', () => {
+        window.location.href = 'profile.html';
+    });
     console.log(data.event.playersJoined.length)
     let arr=[]
     let userId=[]
@@ -102,7 +124,7 @@ fetch(`${url}/KickIt/getEventDetails`,{
             };
              fetch(`${url}/KickIt/leaveEvent`,options)
              .then(res=>res.json())
-             .then(data=>console.log(data))
+             .then(data=>window.location.href='./EventDetails.html')
              .catch(err=>console.log(err))
             
             })
@@ -120,7 +142,7 @@ fetch(`${url}/KickIt/getEventDetails`,{
          }
          else{
             const joinedUsers=document.getElementById('joined-users')
-            rightDiv.removeChild(joinedUsers)
+           // rightDiv.removeChild(joinedUsers)
             leftDiv.style.margin = 'auto';
             const div=document.getElementById('division')
            

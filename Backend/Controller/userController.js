@@ -21,11 +21,14 @@ cloudinary.config({
     api_secret:'svjtmkuIsQARXvl8GYV_MqDm65s'
   });
 exports.getUser=catchAsync(async(req,res,next)=>{
+    const decode=jwt.verify(req.cookies.token,process.env.JWT_SECRET)
+    const me=await userModel.findById(decode.id)
     console.log(req.body)
     const id=req.params.userId
     const user=await userModel.findById(id).populate('reviews')
     
     return res.status(200).json({
+        me:me,
         user
     })
 })
