@@ -84,7 +84,9 @@ fetch(`${url}/KickIt/getEventDetails`,{
     const venue=document.getElementById('venue')
     venue.innerHTML=data.event.venue
     const date=document.getElementById('Date')
+    const time=document.getElementById('time')
     date.innerHTML=data.event.date
+    time.innerHTML=data.event.time
     const chat=document.getElementById('Chat')
     const join=document.getElementById('Join')
     const leave=document.getElementById('Leave')
