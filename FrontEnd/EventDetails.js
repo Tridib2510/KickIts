@@ -90,6 +90,7 @@ fetch(`${url}/KickIt/getEventDetails`,{
     const chat=document.getElementById('Chat')
     const join=document.getElementById('Join')
     const leave=document.getElementById('Leave')
+    const deleteEvent=document.getElementById('Delete')
     const joinedUsers=document.getElementById('joined-users')
     chat.addEventListener('click',()=>{
         window.location.href="https://kickits-chatapp-frontend.onrender.com/"
@@ -109,7 +110,7 @@ fetch(`${url}/KickIt/getEventDetails`,{
          if(status.status==='alredyJoined'){
             const div=document.getElementById('division')
             const join=document.getElementById('Join')
-
+             
             div.removeChild(join)
 
             leave.addEventListener('click',()=>{
@@ -130,12 +131,29 @@ fetch(`${url}/KickIt/getEventDetails`,{
              .catch(err=>console.log(err))
             
             })
+            deleteEvent.addEventListener('click',()=>{
+                const options2 = {
+                    method: 'DELETE',
+                    credentials: 'include',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        id:data.event._id
+                    })
+                };
+            fetch(`${url}/KickIt/removeEvent`,options2)
+            .then(res=>res.json())
+            .then(data=>window.location.href='./AllEvents.html')
+            .catch(err=>console.log(err))
+        })
 
          }
          else if(status.status==='requestNotYetAnswered'){
             const div=document.getElementById('division')
             div.removeChild(chat)
             div.removeChild(leave)
+            div.removeChild(deleteEvent)
             const join=document.getElementById('Join')
             join.innerHTML='Pending Request'
             join.style.backgroundColor='grey'
@@ -150,6 +168,7 @@ fetch(`${url}/KickIt/getEventDetails`,{
            
             div.removeChild(chat)
             div.removeChild(leave)
+            div.removeChild(deleteEvent)
             
         join.addEventListener('click',()=>{
             fetch(`${url}/KickIt/joinRequestToCreator`,{

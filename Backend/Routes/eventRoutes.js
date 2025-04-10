@@ -70,6 +70,7 @@ router.route('/joinRequests').get(eventController.notification).patch(eventContr
 router.route('/:userId').get(userController.getUser)
 
 router.route('/forgotPassword').post(authController.forgotPassword)
+router.route('/removeEvent').delete(eventController.removeEvent)
 
 router.route('/resetPassword/:token').patch(authController.resetPassword)
 

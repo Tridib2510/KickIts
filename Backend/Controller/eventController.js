@@ -403,7 +403,7 @@ exports.notificationSend=catchAsync(async (req,res,next)=>{
    const requestedUser=req.body.requestedUser
    const requestedEvents=req.body.requestedEvents
    
-   const id=req.cookies.token
+   const id=req.cookies.id
    const decode=jwt.verify(id,process.env.JWT_SECRET)
 
    const user=await userModel.findById(decode.id)
@@ -422,10 +422,17 @@ exports.notificationSend=catchAsync(async (req,res,next)=>{
    })
 })
 exports.removeEvent=catchAsync(async (req,res,next)=>{
-
-const eventId=req.body.eventId
+console.log(req.cookies.token)
+const eventId=req.body.id
 const event=await eventModel.findById(eventId)
+const token=req.cookies.token
+const decode=jwt.verify(token,process.env.JWT_SECRET)
+console.log('decode'+decode.id)
+if(event.createdBy!=decode.id){
+   return next(new AppError('Your do not have permissin to delete a event',401));
+}
 event.active='Inactive'
+await eventModel.findByIdAndDelete(eventId)
 await event.save({
    validateBeforeSave:false
 })

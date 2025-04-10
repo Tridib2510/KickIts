@@ -224,7 +224,7 @@ body{
     margin-top: 20px;
 }
 
-#Join, #Chat,#Leave {
+#Join, #Chat,#Leave, #Delete {
     padding: 10px 20px;
     background-color: #007BFF;
     color: white;
@@ -234,7 +234,7 @@ body{
     font-size: 16px;
 }
 
-#Join:hover, #Chat:hover,#Leave:hover {
+#Join:hover, #Chat:hover,#Leave:hover, #Delete:hover {
     background-color: #0056b3;
 }
 .main-container {
