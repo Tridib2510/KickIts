@@ -142,6 +142,7 @@ fetch(`${url}/KickIt/getEventDetails`,{
                         id:data.event._id
                     })
                 };
+                div.removeChild(leave);
             fetch(`${url}/KickIt/removeEvent`,options2)
             .then(res=>res.json())
             .then(data=>window.location.href='./AllEvents.html')
