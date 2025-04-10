@@ -90,7 +90,7 @@ fetch(`${url}/KickIt/getEventDetails`,{
     const chat=document.getElementById('Chat')
     const join=document.getElementById('Join')
     const leave=document.getElementById('Leave')
-    const deleteEvent=document.getElementById('Delete')
+    
     const joinedUsers=document.getElementById('joined-users')
     chat.addEventListener('click',()=>{
         window.location.href="https://kickits-chatapp-frontend.onrender.com/"
@@ -131,7 +131,7 @@ fetch(`${url}/KickIt/getEventDetails`,{
              .catch(err=>console.log(err))
             
             })
-            deleteEvent.addEventListener('click',()=>{
+        //    deleteEvent.addEventListener('click',()=>{
                 const options2 = {
                     method: 'DELETE',
                     credentials: 'include',
@@ -142,11 +142,11 @@ fetch(`${url}/KickIt/getEventDetails`,{
                         id:data.event._id
                     })
                 };
-            fetch(`${url}/KickIt/removeEvent`,options2)
-            .then(res=>res.json())
-            .then(data=>window.location.href='./AllEvents.html')
-            .catch(err=>console.log(err))
-        })
+           // fetch(`${url}/KickIt/removeEvent`,options2)
+            //.then(res=>res.json())
+            //.then(data=>window.location.href='./AllEvents.html')
+           // .catch(err=>console.log(err))
+      //  })
 
          }
          else if(status.status==='requestNotYetAnswered'){
@@ -168,7 +168,7 @@ fetch(`${url}/KickIt/getEventDetails`,{
            
             div.removeChild(chat)
             div.removeChild(leave)
-            div.removeChild(deleteEvent)
+            
             
         join.addEventListener('click',()=>{
             fetch(`${url}/KickIt/joinRequestToCreator`,{
