@@ -255,10 +255,12 @@ exports.join=catchAsync(async(req,res,next)=>{
          
    console.log(user.requestedEvents)
    
-   const index=user.requestedEvents.indexOf(event._id)
+   const index=user.joinedRequests.indexOf(client._id)
+   console.log(index)
 
       user.requestedEvents.splice(index,1)
 
+      const eventUser=event.joiningRequest.indexOf(client._id)
     
 
       user.joinedRequests.splice(index,1)
@@ -268,7 +270,7 @@ exports.join=catchAsync(async(req,res,next)=>{
      console.log(user.requestedEvents)
    
 
-      event.joiningRequest.splice(index,1)
+      event.joiningRequest.splice(eventUser,1)
         
       console.log(user.joinedRequests)
    
