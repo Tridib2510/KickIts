@@ -34,7 +34,7 @@ const allEvents=document.getElementById('AllEvents').addEventListener('click',()
     window.location.href='./AllEvents.html'
 })
 const myEvents=document.getElementById('MyEvents').addEventListener('click',()=>{
-    window.location.href='./MyEvents.html'
+    window.location.href='./myEvents.html'
 })
 
 

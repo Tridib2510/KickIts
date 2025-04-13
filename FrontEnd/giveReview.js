@@ -73,7 +73,7 @@ if (!searchUrl) {
   fetch(`${url}/KickIt/${searchUrl}/Review/createReview`,options)
   .then(res=>res.json())
   .then(data=>{
-    window.location.href='./eventDetails.html'
+    window.location.href='./EventDetails.html'
   })
   .catch(err=>console.loge(err))
 })

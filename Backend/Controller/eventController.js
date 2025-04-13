@@ -82,13 +82,18 @@ exports.isActive=catchAsync(async(req,res,next)=>{
    
      eventDate.setHours(hours,minutes,0,0)
    
-     console.log(eventDate.getTime())
+     console.log(eventDate.getTime()+" "+Date.now()+" "+event.eventName+" "+(eventDate.getTime()<Date.now()))
 
-      if(eventDate.getTime()<Date.now())event.active='Inactive'
+     
 
-      await event.save({
-         validateBeforeSave: false
-      })
+      if(eventDate.getTime()<Date.now()){
+         const e=await eventModel.findById(event._id)
+         await e.save({
+            validateBeforeSave: false
+         })
+      }
+
+      
    })
    
    next()
