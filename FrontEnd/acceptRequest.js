@@ -75,16 +75,16 @@ fetch(`${url}/KickIt/PermissionNeeded`,{
 .then(data=>{
 
 
-   const n=data.user.ratingsDate.length
-   const start=data.user.ratingsDate.length-1-2>=0?data.user.ratingsDate.length-3:0
+   const n=data.requestedUser.ratingsDate.length
+   const start=data.requestedUser.ratingsDate.length-1-2>=0?data.requestedUser.ratingsDate.length-3:0
 
 new Chart(ctx, {
  type: 'line',
  data: {
-   labels:data.user.ratingsDate.slice(start,n),
+   labels:data.requestedUser.ratingsDate.slice(start,n),
    datasets: [{
      label: 'Ratings',
-     data: data.user.ratings.slice(start,n),
+     data: data.requestedUser.ratings.slice(start,n),
      borderWidth: 1
    }]
  },

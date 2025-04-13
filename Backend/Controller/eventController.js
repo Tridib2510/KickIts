@@ -268,7 +268,7 @@ exports.join=catchAsync(async(req,res,next)=>{
      console.log(user.requestedEvents)
    
 
-      event.joiningRequest.pop(client._id)
+      event.joiningRequest.splice(index,1)
         
       console.log(user.joinedRequests)
    
