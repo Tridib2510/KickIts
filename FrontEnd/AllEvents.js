@@ -228,6 +228,7 @@ const button = document.getElementById('search-button').addEventListener('click'
     const text2=`?venue=${searchBar.value}`
     const text3=`?eventName=${searchBar.value}`
     if (document.body.events === true) {
+        if(leftDiv.contains(Events))
                 leftDiv.removeChild(Events);
            }
     helper(text1,'&page=1&limit=5')
