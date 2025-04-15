@@ -7,6 +7,9 @@ const event=params.get('event')
 console.log(url)
 console.log(searchUrl)
 
+const about = document.getElementById('About').addEventListener('click',()=>{
+  window.location.href='About.html'
+});
 
 const logout = document.getElementById('Logout').addEventListener('click',()=>{
   fetch(`${url}/KickIt/logout`,{

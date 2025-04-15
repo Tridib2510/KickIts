@@ -11,6 +11,10 @@ let Events=document.createElement('div')
 
 const buttons=document.getElementById('auth-buttons')
 
+const about = document.getElementById('About').addEventListener('click',()=>{
+   window.location.href='About.html'
+});
+
 let totalDocuments=0
 
 const logout=document.getElementById('Logout')
@@ -119,7 +123,12 @@ if(text==''){
       })   
 
       logout.addEventListener('click',()=>{
-         window.location.href=`${url}/KickIt/logout`
+         fetch(`${url}/KickIt/logout`,{
+            credentials:'include'
+        }).then(res=>res.json()).then(data=>{
+            console.log(data)
+            window.location.href="AllEvents.html"
+        }).catch(err=>console. log(err))
       })
     
     

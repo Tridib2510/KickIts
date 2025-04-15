@@ -13,7 +13,9 @@ const descriptionUpdate = document.getElementById('Description');
 const div = document.getElementById('image');
 const fileInput = document.getElementById('file');
 const ctx=document.getElementById('myChart') 
-
+const about = document.getElementById('About').addEventListener('click',()=>{
+    window.location.href='About.html'
+ });
 const rightDiv=document.getElementById('right-div')
 
 const formData = new FormData();

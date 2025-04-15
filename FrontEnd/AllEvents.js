@@ -17,6 +17,9 @@ const login = document.getElementById('login-btn');
 const signUp = document.getElementById('signup-btn');
 const logout = document.getElementById('Logout');
 const MyEvents = document.getElementById('MyEvents');
+const about = document.getElementById('About').addEventListener('click',()=>{
+    window.location.href='About.html'
+});
 const createEvent = document.getElementById('createEvent');
 const image = document.getElementById('image');
 const leftDiv = document.getElementById('left-div');
@@ -126,6 +129,8 @@ function helper(text,params) {
                     buttons.removeChild(MyEvents);
                     if(buttons.contains(createEvent))
                     buttons.removeChild(createEvent);
+                    if(buttons.contains(notification))
+                        buttons.removeChild(notification)
                 }
             }
             if (data.status && data.status == 'fail') {
@@ -162,7 +167,9 @@ function helper(text,params) {
                 if(data.data[i].active==='Filled'&&!data.data[i].playersJoined.includes(data.token)){
                     div.style.cursor='not-allowed'
                 }
+                
                 if((data.data[i].active==='Filled'&&data.data[i].playersJoined.includes(data.token))||data.data[i].active==='Active'){
+                    if(data.token!='default')
                 div.addEventListener('click', () => {
                     const options = {
                         method: 'PATCH',

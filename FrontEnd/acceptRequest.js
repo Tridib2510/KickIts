@@ -11,6 +11,10 @@ const buttons=document.getElementById('auth-buttons')
 
 const login=document.getElementById('login-btn')
 
+const about = document.getElementById('About').addEventListener('click',()=>{
+  window.location.href='About.html'
+});
+
 const signUp=document.getElementById('signup-btn')
 
 const logout=document.getElementById('Logout')

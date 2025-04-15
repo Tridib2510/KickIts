@@ -6,6 +6,11 @@ const rightDiv=document.getElementById('right-div')
 const leftDiv=document.getElementById('left-div')
 const mainContainer=document.getElementById('main-container')
 
+const about = document.getElementById('About').addEventListener('click',()=>{
+    window.location.href='About.html'
+});
+
+
 const logout = document.getElementById('Logout').addEventListener('click',()=>{
     fetch(`${url}/KickIt/logout`,{
         credentials:'include'
