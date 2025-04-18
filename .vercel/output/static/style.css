@@ -290,6 +290,7 @@ background-image: url('https://m.media-amazon.com/images/I/81NE5bSsUML._AC_UF894
     margin-left: auto; /* Push the notification and image to the right */
     width: 30px;
     height: 30px;
+    flex-wrap: wrap;
 }
 @media (max-width: 768px) {
     .taskbar {

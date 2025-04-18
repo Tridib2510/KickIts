@@ -203,17 +203,22 @@ body {
 .side-by-side-container {
     display: flex;
     justify-content: space-between;
-    gap: 20px; /* Adjust the gap between the divs as needed */
-    width: 80%; /* Adjust the width as needed */
-    margin: 60px auto; /* Center the container */
+    gap: 20px; /* Add spacing between the divs */
+    width: 90%; /* Adjust the width */
+    margin: 20px auto; /* Center the container */
+    flex-wrap: wrap; /* Allow wrapping for smaller screens */
+    overflow-x: hidden; /* Prevent horizontal scrolling */
+    overflow-y: auto; /* Allow vertical scrolling */
 }
 
 .side-by-side-container > div {
-    flex: 1; /* Make both divs take equal space */
-    padding: 50px;
-    background-color: #ddd;
+    flex: 1; /* Allow both divs to take equal space */
+    padding: 20px;
+    background-color: #f9f9f9;
     border: 1px solid #ddd;
     border-radius: 8px;
+    box-sizing: border-box; /* Include padding and border in the total width/height */
+    overflow-y: auto; /* Enable vertical scrolling for content */
 }
 
 #notifications {
@@ -393,8 +398,8 @@ body {
     }
 
     .side-by-side-container > div {
-        padding: 15px; /* Adjust padding for smaller screens */
-        max-height: none; /* Allow content to expand fully */
+        padding: 20px; /* Adjust padding for smaller screens */
+        max-height: 60vh; /* Adjust height for smaller screens */
     }
 }
 @media (max-width: 480px) {
@@ -414,12 +419,12 @@ body {
     }
     .side-by-side-container {
         flex-direction: column; /* Stack the divs vertically */
-        width: 95%; /* Adjust the width for smaller screens */
+        width: 90%; /* Adjust the width for smaller screens */
         gap: 10px; /* Reduce the gap between the divs */
     }
 
     .side-by-side-container > div {
-        padding: 10px; /* Adjust padding for smaller screens */
+        padding: 20px; /* Adjust padding for smaller screens */
         max-height: 60vh; /* Adjust height for smaller screens */
     }
 }

@@ -59,3 +59,59 @@ h2 {
     color: #007bff;
     text-decoration: none;
 }
+@media (max-width: 768px) {
+    .container {
+        max-width: 90%; /* Adjust the width for smaller screens */
+        margin: 50px auto; /* Reduce the top margin */
+        padding: 15px; /* Adjust padding */
+    }
+
+    h2 {
+        font-size: 20px; /* Adjust font size for smaller screens */
+    }
+
+    .form-group label {
+        font-size: 13px; /* Reduce label font size */
+    }
+
+    .form-group input {
+        font-size: 13px; /* Reduce input font size */
+        padding: 8px; /* Adjust padding */
+    }
+
+    .btn {
+        font-size: 14px; /* Reduce button font size */
+        padding: 10px; /* Adjust padding */
+    }
+
+    .footer {
+        font-size: 12px; /* Reduce footer font size */
+    }
+}
+
+/* Media query for very small screens */
+@media (max-width: 480px) {
+    .container {
+        max-width: 95%; /* Further reduce the width for very small screens */
+        margin: 30px auto; /* Reduce the top margin */
+        padding: 10px; /* Further adjust padding */
+    }
+
+    h2 {
+        font-size: 18px; /* Further reduce font size */
+    }
+
+    .form-group input {
+        font-size: 12px; /* Further reduce input font size */
+        padding: 6px; /* Further adjust padding */
+    }
+
+    .btn {
+        font-size: 12px; /* Further reduce button font size */
+        padding: 8px; /* Further adjust padding */
+    }
+
+    .footer {
+        font-size: 11px; /* Further reduce footer font size */
+    }
+}
