@@ -7,7 +7,7 @@
 body {
     font-family: Arial, sans-serif;
     background-color: #555;
-    overflow-y:hidden;
+  
     background-image: url('https://png.pngtree.com/thumb_back/fh260/background/20201026/pngtree-futuristic-shape-abstract-background-chemistry-technology-concept-for-website-image_438818.jpg');
 
    
@@ -293,3 +293,85 @@ background-image: url('https://m.media-amazon.com/images/I/81NE5bSsUML._AC_UF894
 .auth-buttons img {
     margin-left: auto; /* Push the notification and image to the right */
 }
+@media (max-width: 768px) {
+    .taskbar {
+        flex-direction: column; /* Stack elements vertically */
+        align-items: flex-start; /* Align items to the left */
+    }
+
+    .auth-buttons {
+        justify-content: center; /* Center the buttons */
+        gap: 10px; /* Reduce spacing between buttons */
+    }
+
+    .auth-buttons div {
+        padding: 8px 10px; /* Adjust padding for smaller screens */
+        font-size: 14px; /* Reduce font size */
+    }
+    .side-by-side-container {
+        flex-direction: column; /* Stack the divs vertically */
+        width: 90%; /* Adjust the width for smaller screens */
+        gap: 10px; /* Reduce the gap between the divs */
+    }
+
+    .side-by-side-container > div {
+        padding: 20px; /* Adjust padding for smaller screens */
+        max-height: 60vh; /* Adjust height for smaller screens */
+    }
+    .event-details {
+        width: 90%; /* Adjust the width for smaller screens */
+        margin: 20px auto; /* Reduce the margin for smaller screens */
+        padding: 15px; /* Adjust padding for smaller screens */
+    }
+
+    .event-details h2 {
+        font-size: 20px; /* Reduce font size for smaller screens */
+    }
+
+    .event-details p {
+        font-size: 14px; /* Reduce font size for smaller screens */
+    }
+    .event-details {
+        width: 90%; /* Adjust the width for smaller screens */
+        margin: 20px auto; /* Reduce the margin for smaller screens */
+        padding: 15px; /* Adjust padding for smaller screens */
+    }
+
+    .event-details h2 {
+        font-size: 20px; /* Reduce font size for smaller screens */
+    }
+
+    .event-details p {
+        font-size: 14px; /* Reduce font size for smaller screens */
+    }
+    #notifications {
+        width: 90%; /* Adjust the width for smaller screens */
+        padding: 15px; /* Reduce padding for smaller screens */
+        margin: 15px auto; /* Adjust margin for smaller screens */
+    }
+
+    #notifications p {
+        font-size: 14px; /* Reduce font size for smaller screens */
+    }
+}
+@media (max-width: 400px) {
+    .event-details {
+        padding: 10px; /* Further reduce padding for very small screens */
+    }
+
+    .event-details h2 {
+        font-size: 18px; /* Further reduce font size */
+    }
+
+    .event-details p {
+        font-size: 12px; /* Further reduce font size */
+    }
+    #notifications {
+        padding: 10px; /* Further reduce padding for very small screens */
+    }
+
+    #notifications p {
+        font-size: 12px; /* Further reduce font size */
+    }
+}
+

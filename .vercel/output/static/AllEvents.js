@@ -233,7 +233,7 @@ const button = document.getElementById('search-button').addEventListener('click'
            }
     helper(text1,'&page=1&limit=5')
     helper(text2,'&page=1&limit=5')
-    helper(text3,'&page=1&limit=5') 
+    helper(text3,'&page=1&limit=5')
     page=1
    
         }

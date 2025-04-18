@@ -7,7 +7,7 @@
 body {
     font-family: Arial, sans-serif;
     background-color: black;
-    overflow-y:hidden;
+   
     background-image: url('https://t3.ftcdn.net/jpg/03/91/46/10/360_F_391461057_5P0BOWl4lY442Zoo9rzEeJU0S2c1WDZR.jpg');
     
 }
@@ -21,6 +21,7 @@ body {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
     
     color: white;
+    
 }
 
 .start-menu .start-btn {
@@ -62,10 +63,12 @@ background-image: url('https://m.media-amazon.com/images/I/81NE5bSsUML._AC_UF894
    
 
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    
 }
 
 .event-details:hover {
     transform: translateY(-20px);
+    
 }
 
 .event-details h2 {
@@ -230,6 +233,7 @@ background-image: url('https://m.media-amazon.com/images/I/81NE5bSsUML._AC_UF894
     border-radius: 8px;
     box-sizing: border-box; /* Ensure padding is included in width and height */
     gap: 20px; /* Add spacing between the left and right divs */
+    
 }
 #left {
     display: flex;
@@ -262,9 +266,9 @@ background-image: url('https://m.media-amazon.com/images/I/81NE5bSsUML._AC_UF894
 .auth-buttons {
     display: flex;
     align-items: center;
- 
     justify-content: flex-start; /* Keep other elements aligned to the left */
     gap: 100px; /* Add spacing between the divs */
+    flex-wrap: wrap; /* Allow wrapping for smaller screens */
 }
 
 .auth-buttons div {
@@ -284,5 +288,88 @@ background-image: url('https://m.media-amazon.com/images/I/81NE5bSsUML._AC_UF894
 }
 .auth-buttons img {
     margin-left: auto; /* Push the notification and image to the right */
+    width: 30px;
+    height: 30px;
+}
+@media (max-width: 768px) {
+    .taskbar {
+        flex-direction: column; /* Stack elements vertically */
+        align-items: flex-start; /* Align items to the left */
+    }
+
+    .auth-buttons {
+        justify-content: center; /* Center the buttons */
+        gap: 10px; /* Reduce spacing between buttons */
+    }
+
+    .auth-buttons div {
+        padding: 8px 10px; /* Adjust padding for smaller screens */
+        font-size: 14px; /* Reduce font size */
+    }
+    .side-by-side-container {
+        flex-direction: column; /* Stack the divs vertically */
+        width: 90%; /* Adjust the width for smaller screens */
+        gap: 10px; /* Reduce the gap between the divs */
+    }
+
+    .side-by-side-container > div {
+        padding: 20px; /* Adjust padding for smaller screens */
+        max-height: 60vh; /* Adjust height for smaller screens */
+    }
+    .event-details {
+        width: 90%; /* Adjust the width for smaller screens */
+        margin: 20px auto; /* Reduce the margin for smaller screens */
+        padding: 15px; /* Adjust padding for smaller screens */
+    }
+
+    .event-details h2 {
+        font-size: 20px; /* Reduce font size for smaller screens */
+    }
+
+    .event-details p {
+        font-size: 14px; /* Reduce font size for smaller screens */
+    }
+    .event-details {
+        width: 90%; /* Adjust the width for smaller screens */
+        margin: 20px auto; /* Reduce the margin for smaller screens */
+        padding: 15px; /* Adjust padding for smaller screens */
+    }
+
+    .event-details h2 {
+        font-size: 20px; /* Reduce font size for smaller screens */
+    }
+
+    .event-details p {
+        font-size: 14px; /* Reduce font size for smaller screens */
+    }
+    #notifications {
+        width: 90%; /* Adjust the width for smaller screens */
+        padding: 15px; /* Reduce padding for smaller screens */
+        margin: 15px auto; /* Adjust margin for smaller screens */
+    }
+
+    #notifications p {
+        font-size: 14px; /* Reduce font size for smaller screens */
+    }
+}
+@media (max-width: 400px) {
+    .event-details {
+        padding: 10px; /* Further reduce padding for very small screens */
+    }
+
+    .event-details h2 {
+        font-size: 18px; /* Further reduce font size */
+    }
+
+    .event-details p {
+        font-size: 12px; /* Further reduce font size */
+    }
+    #notifications {
+        padding: 10px; /* Further reduce padding for very small screens */
+    }
+
+    #notifications p {
+        font-size: 12px; /* Further reduce font size */
+    }
 }
 
