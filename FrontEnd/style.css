@@ -168,11 +168,11 @@ background-image: url('https://m.media-amazon.com/images/I/81NE5bSsUML._AC_UF894
 .side-by-side-container {
     display: flex;
     justify-content: space-between;
-    gap: 20px; /* Adjust the gap between the divs as needed */
-    width: 80%; /* Adjust the width as needed */
-    margin: 60px auto; /* Center the container */
-    overflow-x: hidden;
-    overflow-y: auto;
+    gap: 30px; /* Increase the gap between the divs */
+    width: 90%; /* Increase the width of the container */
+    margin: 40px auto; /* Center the container with adjusted margins */
+    overflow-x: hidden; /* Prevent horizontal scrolling */
+    overflow-y: auto; /* Allow vertical scrolling */
 }
 .side-by-side-container > div {
     flex: 1; /* Make both divs take equal space */
@@ -266,9 +266,9 @@ background-image: url('https://m.media-amazon.com/images/I/81NE5bSsUML._AC_UF894
 .auth-buttons {
     display: flex;
     align-items: center;
+ 
     justify-content: flex-start; /* Keep other elements aligned to the left */
     gap: 100px; /* Add spacing between the divs */
-    flex-wrap: wrap; /* Allow wrapping for smaller screens */
 }
 
 .auth-buttons div {
@@ -313,8 +313,14 @@ background-image: url('https://m.media-amazon.com/images/I/81NE5bSsUML._AC_UF894
     }
 
     .side-by-side-container > div {
-        padding: 20px; /* Adjust padding for smaller screens */
-        max-height: 60vh; /* Adjust height for smaller screens */
+        flex: 1; /* Make both divs take equal space */
+        padding: 60px; /* Increase padding for larger content */
+        background-color: #333;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        overflow-y: auto; /* Enable vertical scrolling for content */
+        max-height: 80vh; /* Increase the height limit to 80% of the viewport */
+        box-sizing: border-box; /* Include padding and border in the total width/height */
     }
     .event-details {
         width: 90%; /* Adjust the width for smaller screens */

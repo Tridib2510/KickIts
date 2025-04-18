@@ -16,6 +16,7 @@ body{
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
     
     color: white;
+    
 }
 .start-menu .start-btn {
     background-color: #0078D4;
@@ -290,6 +291,87 @@ body{
 }
 
 @media (max-width: 768px) {
+    .taskbar {
+        flex-direction: column; /* Stack elements vertically */
+        align-items: flex-start; /* Align items to the left */
+    }
+
+    .auth-buttons {
+        justify-content: center; /* Center the buttons */
+        gap: 10px; /* Reduce spacing between buttons */
+    }
+
+    .auth-buttons div {
+        padding: 8px 10px; /* Adjust padding for smaller screens */
+        font-size: 14px; /* Reduce font size */
+    }
+    .side-by-side-container {
+        flex-direction: column; /* Stack the divs vertically */
+        width: 90%; /* Adjust the width for smaller screens */
+        gap: 10px; /* Reduce the gap between the divs */
+    }
+
+    .side-by-side-container > div {
+        padding: 20px; /* Adjust padding for smaller screens */
+        max-height: 60vh; /* Adjust height for smaller screens */
+    }
+    .main-container {
+        flex-direction: column; /* Stack the divs vertically */
+        gap: 10px; /* Add spacing between the divs */
+    }
+
+    .left-div, .right-div {
+        max-width: 100%; /* Allow full width for smaller screens */
+        padding: 10px; /* Adjust padding for smaller screens */
+    }
+    #player {
+        flex-direction: column; /* Stack the content vertically */
+        align-items: center; /* Center the content */
+        padding: 15px; /* Adjust padding for smaller screens */
+        max-width: 90%; /* Adjust width for smaller screens */
+    }
+
+    .player-info {
+        flex-direction: column; /* Stack the image and text vertically */
+        align-items: center; /* Center the content */
+        gap: 5px; /* Reduce spacing for smaller screens */
+    }
+
+    #player h1, #player p {
+        font-size: 16px; /* Reduce font size for smaller screens */
+        margin-left: 0; /* Remove left margin for better alignment */
+        text-align: center; /* Center-align the text */
+    }
+
+    #player-image {
+        width: 40px; /* Reduce image size for smaller screens */
+        height: 40px;
+    }
+    #notifications {
+        width: 90%; /* Adjust the width for smaller screens */
+        padding: 15px; /* Reduce padding for smaller screens */
+        margin: 15px auto; /* Adjust margin for smaller screens */
+    }
+
+    #notifications p {
+        font-size: 14px; /* Reduce font size for smaller screens */
+    }
+    .event-details {
+        width: 90%; /* Adjust the width for smaller screens */
+        margin: 20px auto; /* Reduce the margin for smaller screens */
+        padding: 15px; /* Adjust padding for smaller screens */
+    }
+
+    .event-details h2 {
+        font-size: 20px; /* Reduce font size for smaller screens */
+    }
+
+    .event-details p {
+        font-size: 14px; /* Reduce font size for smaller screens */
+    }
+}
+
+@media (max-width: 480px) {
     .taskbar {
         flex-direction: column; /* Stack elements vertically */
         align-items: flex-start; /* Align items to the left */
