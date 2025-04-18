@@ -60,9 +60,9 @@
 .auth-buttons {
     display: flex;
     align-items: center;
- 
     justify-content: flex-start; /* Keep other elements aligned to the left */
     gap: 100px; /* Add spacing between the divs */
+    flex-wrap: wrap; /* Allow wrapping for smaller screens */
 }
 
 .auth-buttons div {
@@ -73,6 +73,7 @@
     border-radius: 5px;
     cursor: pointer;
     text-align: center;
+    flex-wrap: wrap;
   
 }
 .auth-buttons div:hover {
@@ -105,11 +106,19 @@
             align-items: center;
         }
         .review-container {
-            background: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            width: 400px;
+            flex:1;
+    max-width: 50%;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    box-sizing: border-box;
+    min-height: 300px;
+    max-height: 580px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    flex-wrap: wrap;
         }
         .review-container h1 {
             text-align: center;
@@ -167,7 +176,7 @@
        background-color: #f4f4f4;
        margin: 0 auto;
        }
-       @media (max-width: 768px) {
+@media (max-width: 768px) {
     .taskbar {
         flex-direction: column; /* Stack elements vertically */
         align-items: flex-start; /* Align items to the left */
@@ -189,29 +198,74 @@
     }
 
     .side-by-side-container > div {
-        padding: 20px; /* Adjust padding for smaller screens */
-        max-height: 60vh; /* Adjust height for smaller screens */
+        flex: 1; /* Make both divs take equal space */
+        padding: 60px; /* Increase padding for larger content */
+        background-color: #333;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        overflow-y: auto; /* Enable vertical scrolling for content */
+        max-height: 80vh; /* Increase the height limit to 80% of the viewport */
+        box-sizing: border-box; /* Include padding and border in the total width/height */
     }
-    .review-container {
-            width: 100%; /* Take full width on smaller screens */
-            padding: 15px; /* Adjust padding for smaller screens */
-        }
+    .event-details {
+        width: 90%; /* Adjust the width for smaller screens */
+        margin: 20px auto; /* Reduce the margin for smaller screens */
+        padding: 15px; /* Adjust padding for smaller screens */
+    }
 
-        .review-container h1 {
-            font-size: 20px; /* Reduce font size for smaller screens */
-        }
+    .event-details h2 {
+        font-size: 20px; /* Reduce font size for smaller screens */
+    }
 
-        .form-group input,
-        .form-group textarea,
-        .form-group select {
-            font-size: 12px; /* Adjust font size for smaller screens */
-        }
+    .event-details p {
+        font-size: 14px; /* Reduce font size for smaller screens */
+    }
+    .event-details {
+        width: 90%; /* Adjust the width for smaller screens */
+        margin: 20px auto; /* Reduce the margin for smaller screens */
+        padding: 15px; /* Adjust padding for smaller screens */
+    }
 
-        .submit-btn {
-            font-size: 14px; /* Adjust button font size for smaller screens */
-        }
-    
+    .event-details h2 {
+        font-size: 20px; /* Reduce font size for smaller screens */
+    }
+
+    .event-details p {
+        font-size: 14px; /* Reduce font size for smaller screens */
+    }
+    #notifications {
+        width: 90%; /* Adjust the width for smaller screens */
+        padding: 15px; /* Reduce padding for smaller screens */
+        margin: 15px auto; /* Adjust margin for smaller screens */
+    }
+
+    #notifications p {
+        font-size: 14px; /* Reduce font size for smaller screens */
+    }
 }
+@media (max-width: 400px) {
+    .event-details {
+        padding: 10px; /* Further reduce padding for very small screens */
+    }
+
+    .event-details h2 {
+        font-size: 18px; /* Further reduce font size */
+    }
+
+    .event-details p {
+        font-size: 12px; /* Further reduce font size */
+    }
+    #notifications {
+        padding: 10px; /* Further reduce padding for very small screens */
+    }
+
+    #notifications p {
+        font-size: 12px; /* Further reduce font size */
+    }
+}
+
+    
+
 
 
     </style>
