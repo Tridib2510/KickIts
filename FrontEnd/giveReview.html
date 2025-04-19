@@ -210,6 +210,47 @@
         .submit-btn {
             font-size: 14px; /* Adjust button font size for smaller screens */
         }
+        .container {
+        flex-direction: column;
+        width: 90%;
+        height: auto;
+        margin-top: 50px;
+        overflow: hidden;
+    }
+    
+    /* Content div modifications */
+    .left-div, .right-div {
+        width: 100%;
+        flex: none;
+        overflow-x: hidden;
+        padding: 15px;
+        box-sizing: border-box;
+    }
+    
+    .left-div {
+        border-right: none;
+        border-bottom: 1px solid #ccc;
+    }
+    
+    .right-div {
+        display: block;
+    }
+    
+    /* Review form modifications */
+    .review-container {
+        width: 100%;
+        max-width: 100%;
+        box-shadow: none;
+        padding: 15px;
+        box-sizing: border-box;
+    }
+    
+    .form-group input, 
+    .form-group textarea, 
+    .form-group select {
+        width: 100%;
+        box-sizing: border-box;
+    }
     
 }
 

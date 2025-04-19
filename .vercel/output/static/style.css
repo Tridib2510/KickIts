@@ -166,10 +166,9 @@ background-image: url('https://m.media-amazon.com/images/I/81NE5bSsUML._AC_UF894
     transform: translateY(-5px);
 }
 .side-by-side-container {
-    flex-direction: column;
     display: flex;
     justify-content: space-between;
-    gap: 10px; /* Increase the gap between the divs */
+    gap: 30px; /* Increase the gap between the divs */
     width: 90%; /* Increase the width of the container */
     margin: 40px auto; /* Center the container with adjusted margins */
     overflow-x: hidden; /* Prevent horizontal scrolling */
@@ -177,13 +176,12 @@ background-image: url('https://m.media-amazon.com/images/I/81NE5bSsUML._AC_UF894
 }
 .side-by-side-container > div {
     flex: 1; /* Make both divs take equal space */
-        padding: 60px; /* Increase padding for larger content */
-        background-color: #333;
-        border: 1px solid #ddd;
-        border-radius: 8px;
-        overflow-y: auto; /* Enable vertical scrolling for content */
-        max-height: 80vh; /* Increase the height limit to 80% of the viewport */
-        box-sizing: border-box; /* Include padding and border in the total width/height */
+    padding: 50px;
+    background-color:#333;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow-x: hidden;
+    overflow-y: auto;
 }
 #notifications{
     width: 500px;
