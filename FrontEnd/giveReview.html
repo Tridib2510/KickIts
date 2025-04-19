@@ -98,6 +98,7 @@
         .left-div {
             background-color: #fff; /* Changed to white */
             border-right: 1px solid #ccc;
+            overflow-y: scroll;
         }
         .right-div {
             display: flex;
@@ -168,19 +169,57 @@
        margin: 0 auto;
        }
        @media (max-width: 768px) {
+    /* Existing container styles */
+  
+    /* Body adjustments */
+    body {
+        padding-top: 0; /* Remove body padding */
+        height: auto; /* Allow body to expand */
+        min-height: 100vh; /* Ensure it takes at least full viewport height */
+        align-items: flex-start; /* Align content at the top instead of center */
+        padding-bottom: 30px; /* Add some bottom padding */
+    }
+    
+    /* Additional space for the profile section */
+    .left-div {
+        padding-top: 25px; /* Add extra padding at the top */
+    }
+    
+    /* Ensure the taskbar doesn't cover content */
     .taskbar {
-        flex-direction: column; /* Stack elements vertically */
-        align-items: flex-start; /* Align items to the left */
+        /* Keep existing styles */
+        z-index: 1100; /* Ensure it stays on top */
+        justify-content: center;
+        padding: 10px;
+        max-height: none;
+        height: auto;
+    }
+    
+    /* Center image container properly */
+    #imageContainer {
+        margin-top: 10px; /* Add space at the top */
     }
 
     .auth-buttons {
-        justify-content: center; /* Center the buttons */
-        gap: 10px; /* Reduce spacing between buttons */
+        
+        width: 100%;
+        gap: 8px;
+        justify-content: center;
+        flex-wrap: wrap;
+        margin: 0;
     }
 
     .auth-buttons div {
-        padding: 8px 10px; /* Adjust padding for smaller screens */
-        font-size: 14px; /* Reduce font size */
+        margin: 3px;
+        padding: 6px 8px;
+        font-size: 12px;
+        min-width: 60px;
+        text-align: center;
+    }
+    #profileIcon {
+        width: 24px;
+        height: 24px;
+        margin: 3px;
     }
     .side-by-side-container {
         flex-direction: column; /* Stack the divs vertically */
@@ -192,6 +231,7 @@
         padding: 20px; /* Adjust padding for smaller screens */
         max-height: 60vh; /* Adjust height for smaller screens */
     }
+
     .review-container {
             width: 100%; /* Take full width on smaller screens */
             padding: 15px; /* Adjust padding for smaller screens */
@@ -211,6 +251,8 @@
             font-size: 14px; /* Adjust button font size for smaller screens */
         }
         .container {
+        margin-top: 90px; /* Increased margin to prevent overlap with taskbar */
+        padding-top: 20px; /* Additional padding at top */
         flex-direction: column;
         width: 90%;
         height: auto;
