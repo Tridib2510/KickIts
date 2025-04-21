@@ -23,6 +23,7 @@ socket.on('send',(message,e,name)=>{
 
   
     const messageElement = document.createElement('div');
+  
     messageElement.classList.add('chat-message', 'user');
     messageElement.style='size'
             const messageContent = document.createElement('div');
