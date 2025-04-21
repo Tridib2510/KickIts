@@ -23,15 +23,12 @@ socket.on('send',(message,e,name)=>{
 
   
     const messageElement = document.createElement('div');
-  
-    messageElement.classList.add('chat-message', 'user');
+    messageElement.id="received-message"
     messageElement.style='size'
             const messageContent = document.createElement('div');
             messageContent.classList.add('message-content');
             messageContent.textContent = `${name} : ${message}`;
-            messageContent.style.backgroundColor='grey'
-            messageContent.style.position="relative"
-            messageContent.style.left="250px"
+          
             messageElement.appendChild(messageContent);
             chatBox.appendChild(messageElement);
     }

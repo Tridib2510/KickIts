@@ -52,13 +52,14 @@
             flex-direction: column;
         }
         
-        .chat-message {
+        /* Received messages with specific ID */
+        #received-message {
             margin-bottom: 15px;
             max-width: 80%;
-            align-self: flex-start;  /* Default position is left */
+            align-self: flex-start;
         }
         
-        .chat-message .message-content {
+        #received-message .message-content {
             padding: 12px 15px;
             border-radius: 18px;
             background-color: #e6e6e6;
@@ -70,22 +71,17 @@
         
         /* Your current messages (the ones you send) */
         .chat-message.user {
-            align-self: flex-end;  /* Position your messages on the right */
+            align-self: flex-end;
         }
         
         .chat-message.user .message-content {
-            background-color: #4e4376;
-            color: #fff;
-            border-bottom-left-radius: 18px;
-            border-bottom-right-radius: 5px;
-        }
-        
-        /* Override for received messages with grey background */
-        .chat-message .message-content[style*="background-color:grey"] {
-            position: static !important;  /* Override inline position */
-            left: auto !important;       /* Override inline left */
-            background-color: #e6e6e6 !important;  /* Override inline background-color */
-            color: #333 !important;       /* Better text contrast */
+            padding: 12px 15px;
+            border-radius: 18px;
+            background-color: #e3f2fd;
+            display: inline-block;
+            word-break: break-word;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+            border-bottom-left-radius: 5px;
         }
         
         .chat-input {
@@ -156,10 +152,17 @@
 <body>
     <div class="chat-container">
         <div class="chat-header">
-            Chat Application
+            Kick IT
         </div>
         <div class="chat-messages" id="message-content">
-            <!-- Messages will be added dynamically by JavaScript -->
+            <!-- Example received message with the new ID -->
+            <div id="received-message">
+               
+            </div>
+            <!-- Example user message -->
+            <div class="chat-message user">
+               
+            </div>
         </div>
         <div class="chat-input">
             <input type="text" id="input-text" placeholder="Type a message...">
