@@ -221,7 +221,7 @@ exports.join=catchAsync(async(req,res,next)=>{
 
    const client=req.body.user
    console.log('hello')
-   console.log(client)
+  // console.log(client)
 
    const creatorId=req.body.createdBy
    console.log('Test case 1')
@@ -240,7 +240,7 @@ exports.join=catchAsync(async(req,res,next)=>{
 
     const creator=await userModel.findById(creatorId)
 
-  console.log(event)
+ // console.log(event)
   
     console.log('Test Case 0')
 
@@ -253,24 +253,43 @@ exports.join=catchAsync(async(req,res,next)=>{
    }
    console.log('Before')
          
-   console.log(user.requestedEvents)
-   
-   const index=user.joinedRequests.indexOf(client._id)
-   console.log(index)
+//   console.log(user.requestedEvents)
+   //client._id-->joinedRequests-->user
+   //eventUser->event->joiningRequest
+   // const index=user.joinedRequests.indexOf(client._id)
+   // console.log(index)
 
-      user.requestedEvents.splice(index,1)
+   //    user.requestedEvents.splice(index,1)
 
-      const eventUser=event.joiningRequest.indexOf(client._id)
+   //    const eventUser=event.joiningRequest.indexOf(client._id)
     
 
-      user.joinedRequests.splice(index,1)
+   //    user.joinedRequests.splice(index,1)
    
-      console.log('After')
+   //    console.log('After')
          
-     console.log(user.requestedEvents)
+   //   console.log(user.requestedEvents)
    
 
-      event.joiningRequest.splice(eventUser,1)
+   //    event.joiningRequest.splice(eventUser,1)
+
+const eventUser=event.joiningRequest.indexOf(client._id)
+ let i=0
+ const length=user.joinedRequests.length
+ console.log('joinedRequests')
+ console.log(user.joinedRequests)
+ console.log('requestedEvents')
+ console.log(user.requestedEvents)
+ console.log(client._id+"------")
+ console.log(eventId._id)
+
+       while(i<length && (user.joinedRequests[i]!=client._id || user.requestedEvents[i]!=eventId._id)){
+         i++
+       }
+       console.log('The i is '+i)
+       user.requestedEvents.splice(i,1)
+       user.joinedRequests.splice(i,1)
+       event.joiningRequest.splice(eventUser,1)
         
       console.log(user.joinedRequests)
    
