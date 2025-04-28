@@ -266,22 +266,19 @@ background-image: url('https://m.media-amazon.com/images/I/81NE5bSsUML._AC_UF894
 .auth-buttons {
     display: flex;
     align-items: center;
-    justify-content: flex-start; /* Keep other elements aligned to the left */
+    justify-content: center; /* Keep other elements aligned to the left */
     gap: 100px; /* Add spacing between the divs */
     flex-wrap: wrap; /* Allow wrapping for smaller screens */
 }
 
 .auth-buttons div {
-    margin-left: 10px;
-    display: inline-block;
+  
     padding: 10px 15px;
-    color: white;
-    border-radius: 5px;
-    cursor: pointer;
-    text-align: center;
+    flex-wrap: wrap; 
   
 }
 .auth-buttons div:hover {
+    flex-wrap: wrap; 
     background-color: gray; /* Change background color on hover */
     transform: translateY(-3px); /* Slightly move the div upwards on hover */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add a shadow effect */
@@ -299,8 +296,10 @@ background-image: url('https://m.media-amazon.com/images/I/81NE5bSsUML._AC_UF894
     }
 
     .auth-buttons {
+        display: flex;
+        align-items: center;
         justify-content: center; /* Center the buttons */
-        gap: 10px; /* Reduce spacing between buttons */
+        gap: 60px; /* Reduce spacing between buttons */
     }
 
     .auth-buttons div {
@@ -359,7 +358,13 @@ background-image: url('https://m.media-amazon.com/images/I/81NE5bSsUML._AC_UF894
         font-size: 14px; /* Reduce font size for smaller screens */
     }
 }
-@media (max-width: 400px) {
+@media (max-width: 480px) {
+    .auth-buttons{
+        display: flex;
+    }
+    .auth-buttons div{
+        justify-content: center;
+    }
     .event-details {
         padding: 10px; /* Further reduce padding for very small screens */
     }
