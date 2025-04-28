@@ -380,6 +380,9 @@ background-image: url('https://m.media-amazon.com/images/I/81NE5bSsUML._AC_UF894
     }
 }
 @media (max-width: 400px) {
+    .auth-buttons{
+        display:grid;
+    }
     .event-details {
         padding: 10px; /* Further reduce padding for very small screens */
     }

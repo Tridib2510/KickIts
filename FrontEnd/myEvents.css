@@ -321,6 +321,7 @@ background-image: url('https://m.media-amazon.com/images/I/81NE5bSsUML._AC_UF894
     .auth-buttons {
         justify-content: center; /* Center the buttons */
         gap: 60px; /* Reduce spacing between buttons */
+   
     }
 
     .auth-buttons div {
@@ -380,6 +381,9 @@ background-image: url('https://m.media-amazon.com/images/I/81NE5bSsUML._AC_UF894
     }
 }
 @media (max-width: 400px) {
+    .auth-buttons{
+        display:grid;
+    }
     .event-details {
         padding: 10px; /* Further reduce padding for very small screens */
     }
