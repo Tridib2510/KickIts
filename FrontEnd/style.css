@@ -156,6 +156,7 @@ background-image: url('https://m.media-amazon.com/images/I/81NE5bSsUML._AC_UF894
 }
 #notification-icon{
     width: 30px;
+    
     height: 30px;
     border-radius: 50%;
     margin-left: 10px;
@@ -168,6 +169,7 @@ background-image: url('https://m.media-amazon.com/images/I/81NE5bSsUML._AC_UF894
 .side-by-side-container {
     display: flex;
     justify-content: space-between;
+    
     gap: 30px; /* Increase the gap between the divs */
     width: 90%; /* Increase the width of the container */
     margin: 40px auto; /* Center the container with adjusted margins */
@@ -179,6 +181,7 @@ background-image: url('https://m.media-amazon.com/images/I/81NE5bSsUML._AC_UF894
     padding: 50px;
     background-color:#333;
     border: 1px solid #ddd;
+    max-width: 10000px;
     border-radius: 8px;
     overflow-x: hidden;
     overflow-y: auto;
@@ -379,4 +382,20 @@ background-image: url('https://m.media-amazon.com/images/I/81NE5bSsUML._AC_UF894
         font-size: 12px; /* Further reduce font size */
     }
 }
-
+.profile-pic img {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  
+  /* Left align dropdown menu content */
+  #auth-buttons{
+    text-align: left;
+    left: auto;
+    right: 0;
+  }
+  
+  #auth-buttons.dropdown-item {
+    text-align: left;
+  }
