@@ -12,7 +12,7 @@ let Events = document.createElement('div');
 let TEXT=''
 
 const buttons = document.getElementById('auth-buttons');
-
+const profilePic=document.getElementById('profile-pic')
 const login = document.getElementById('login-btn');
 const signUp = document.getElementById('signup-btn');
 const logout = document.getElementById('Logout');
@@ -75,13 +75,15 @@ socket.on('send', (user,event) => {
                 }) 
 });
 
-notification.addEventListener('click', () => {
-    if (!side_side_container.contains(rightDiv)) {
-        side_side_container.appendChild(rightDiv);
-    } else {
-        side_side_container.removeChild(rightDiv);
-    }
-});
+
+
+// notification.addEventListener('click', () => {
+//     if (!side_side_container.contains(rightDiv)) {
+//         side_side_container.appendChild(rightDiv);
+//     } else {
+//         side_side_container.removeChild(rightDiv);
+//     }
+// });
 const navigationContainer = document.createElement('div');
 navigationContainer.className = 'navigation-container';
 
@@ -115,14 +117,14 @@ function helper(text,params) {
                         window.location.href = 'profile.html';
                     });
                     if(buttons.contains(signUp))
-                    buttons.removeChild(signUp);
+                       buttons.removeChild(signUp);
                   if(buttons.contains(login))
                     buttons.removeChild(login);
                    
                 } else {
                     
-                    if(buttons.contains(image))
-                    buttons.removeChild(image);
+                    if(profilePic.contains(image))
+                    profilePic.removeChild(image);
                     if(buttons.contains(logout))
                     buttons.removeChild(logout);
                     if(buttons.contains(MyEvents))
@@ -285,6 +287,7 @@ createEvent.addEventListener('click', () => {
     window.location.href = 'createEvents.html';
 });
 const loginbutton = document.getElementById('login-btn').addEventListener('click', () => {
+    console.log('hi')
     window.location.href = 'Login.html';
 });
 
@@ -292,14 +295,15 @@ const myEvents = document.getElementById('MyEvents').addEventListener('click', (
     window.location.href = 'myEvents.html';
 });
 
-logout.addEventListener('click', () => {
-   fetch(`${url}/KickIt/logout`,{
+logout.addEventListener('click',()=>{
+    fetch(`${url}/KickIt/logout`,{
         credentials:'include'
     }).then(res=>res.json()).then(data=>{
         console.log(data)
         window.location.href="AllEvents.html"
     }).catch(err=>console. log(err))
-});
+})
+
 
 fetch(`${url}/KickIt/joinRequests`, {
     credentials: 'include'
@@ -359,3 +363,5 @@ fetch(`${url}/KickIt/joinRequests`, {
         }
     })
     .catch(err => console.log(err));
+
+    
