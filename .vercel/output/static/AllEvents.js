@@ -24,7 +24,7 @@ const createEvent = document.getElementById('createEvent');
 const image = document.getElementById('image');
 const leftDiv = document.getElementById('left-div');
 const rightDiv = document.getElementById('right-div');
-const notification = document.getElementById('notification-icon');
+const notification = document.getElementById('notification');
 const side_side_container = document.getElementById('side-by-side-container');
 let totalDocuments=0
 side_side_container.removeChild(rightDiv);
@@ -77,13 +77,13 @@ socket.on('send', (user,event) => {
 
 
 
-// notification.addEventListener('click', () => {
-//     if (!side_side_container.contains(rightDiv)) {
-//         side_side_container.appendChild(rightDiv);
-//     } else {
-//         side_side_container.removeChild(rightDiv);
-//     }
-// });
+notification.addEventListener('click', () => {
+    if (!side_side_container.contains(rightDiv)) {
+        side_side_container.appendChild(rightDiv);
+    } else {
+        side_side_container.removeChild(rightDiv);
+    }
+});
 const navigationContainer = document.createElement('div');
 navigationContainer.className = 'navigation-container';
 

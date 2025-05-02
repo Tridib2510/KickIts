@@ -412,3 +412,20 @@ background-image: url('https://m.media-amazon.com/images/I/81NE5bSsUML._AC_UF894
     }
 }
 
+.profile-pic img {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  
+  /* Left align dropdown menu content */
+  #auth-buttons{
+    text-align: left;
+    left: auto;
+    right: 0;
+  }
+  
+  #auth-buttons.dropdown-item {
+    text-align: left;
+  }

@@ -29,7 +29,7 @@ const leftDiv=document.getElementById('left-div')
 
 const rightDiv=document.getElementById('right-div')
 
-const notification=document.getElementById('notification-icon')
+const notification=document.getElementById('notification')
 
 const side_side_container=document.getElementById('side-by-side-container')
 
