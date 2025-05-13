@@ -6,8 +6,8 @@
     <title>Home</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
-
-
+    <!-- Add Font Awesome for the notification icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -24,26 +24,49 @@
               <li class="nav-item">
                 <a class="nav-link" href="#" id="About">About</a>
               </li>
-              
             </ul>
            
-            <ul class="navbar-nav ms-auto mb-2 mb-lg-0 profile-menu"> 
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0 profile-menu ">
+              <!-- Add notification icon with dropdown -->
+              <li class="nav-item dropdown" id="notificationIcons">
+                <a class="nav-link position-relative " href="#" id="notification" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  <i class="fas fa-bell fa-xl"></i>
+                  <!-- <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                    5
+                    <span class="visually-hidden">unread notifications</span>
+                  </span> -->
+                </a>
+                <ul class="dropdown-menu dropdown-menu-end notification-dropdown" aria-labelledby="notificationDropdown" style="width: 300px; max-height: 400px; overflow-y: auto;">
+                  <li><h6 class="dropdown-header">Notifications</h6></li>
+                  <li><a class="dropdown-item" href="#">
+                    <div class="d-flex">
+                     
+                     
+                    </div>
+                  </a></li>
+                  <li id="right-div"><a class="dropdown-item" href="#">
+                   
+                  </a></li>
+                 
+                 
+                  
+                  <li><hr class="dropdown-divider"></li>
+                  
+                </ul>
+              </li>
+              
               <li class="nav-item dropdown">
-                
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                
                     <div class="profile-pic" id="profile-pic">                
                       <img src="https://source.unsplash.com/250x250?girl" id="image" alt="Profile Picture">
                    </div>
-               <!-- You can also use icon as follows: -->
-                 <!--  <i class="fas fa-user"></i> -->
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown" id="auth-buttons">
                     <li  id="login-btn"><a class="dropdown-item" href="#">Login</a></li>
                     <li id="signup-btn"><a class="dropdown-item" href="#" >SignUp</a></li>
                     <li id="MyEvents"><a class="dropdown-item" href="#" >MyEvents</a></li>
                     <li id="createEvent"><a class="dropdown-item" href="#" >Create</a></li>
-                    <li id="notification"><a class="dropdown-item" href="#" >Requests</a></li>
+                    
                     
                     <li><hr class="dropdown-divider"></li>
                     <li id="Logout"><a class="dropdown-item" href="#" >Log Out</a></li>
@@ -53,43 +76,16 @@
           </div>
         </div>
       </nav>
-    <!-- <div class="taskbar">
-        <div class="start-menu">
-          
-        </div>
-        <div class="auth-buttons" id="auth-buttons">
-            <div id="login-btn">Login</div>
-            <div id="signup-btn">Sign Up</div>
-            <div id="createEvent">Create</div>
-            <div id="Logout">Logout</div>
-            <div id="MyEvents">My Events</div>
-            <div id="About">About</div>
-            <img id="notification-icon" src="https://img.icons8.com/ios-filled/50/ffffff/appointment-reminders.png" alt="Notifications">
-            <img id="image" src="https://img.icons8.com/ios/50">
-            
-        </div>
-    </div> -->
    
-    <!-- Move search bar outside of taskbar div -->
-   
-   
-    <!-- New buttons container below the search bar -->
-  
-
-    <!-- Side by side divs -->
     <div class="side-by-side-container" id="side-by-side-container">
-
         <div id="left-div">
             <div class="search-container">
                 <input type="text" id="search-bar" placeholder="Search events...">
                 <button id="search-button">Search</button>
             </div>
-            
         </div>
         
-        <div id="right-div">
-            
-    </div>
+      
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous"></script>
 

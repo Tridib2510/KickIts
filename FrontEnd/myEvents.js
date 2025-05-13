@@ -34,7 +34,7 @@ const notification=document.getElementById('notification')
 const side_side_container=document.getElementById('side-by-side-container')
 
 
-side_side_container.removeChild(rightDiv)
+//side_side_container.removeChild(rightDiv)
 
 
 socket.on('send', (user,event) => {
@@ -263,10 +263,7 @@ createEvent.addEventListener('click',()=>{
    window.location.href='createEvents.html'
 })
 
-allEvents.addEventListener('click',()=>{
-window.location.href='AllEvents.html'
 
-})
 
 
 fetch(`${url}/KickIt/joinRequests`,{

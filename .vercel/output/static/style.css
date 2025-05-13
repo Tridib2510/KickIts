@@ -154,16 +154,16 @@ background-image: url('https://m.media-amazon.com/images/I/81NE5bSsUML._AC_UF894
     background-color: #f4f4f4;
     margin: 0 auto;
 }
-#notification-icon{
-    width: 30px;
+#notification{
+    width: 40px;
     
-    height: 30px;
+    height: 40px;
     border-radius: 50%;
     margin-left: 10px;
     cursor: pointer;
     transition: transform 0.3s ease-in-out;
 }
-#notification-icon:hover {
+#notification:hover {
     transform: translateY(-5px);
 }
 .side-by-side-container {
@@ -187,7 +187,7 @@ background-image: url('https://m.media-amazon.com/images/I/81NE5bSsUML._AC_UF894
     overflow-y: auto;
 }
 #notifications{
-    width: 500px;
+    width: 250px;
     margin: 20px auto; /* Reduced the top and bottom margin */
     padding: 20px; /* Adjusted padding */
     background-color: #ddd;
@@ -235,10 +235,11 @@ background-image: url('https://m.media-amazon.com/images/I/81NE5bSsUML._AC_UF894
     border: 1px solid #ddd;
     border-radius: 8px;
     box-sizing: border-box; /* Ensure padding is included in width and height */
-    gap: 20px; /* Add spacing between the left and right divs */
-    
+    gap: 2px; /* Add spacing between the left and right divs */
+     
 }
 #left {
+ 
     display: flex;
     flex-direction: row-reverse; /* Reverse the order of elements */
     align-items: center; /* Vertically center the content */
@@ -246,23 +247,24 @@ background-image: url('https://m.media-amazon.com/images/I/81NE5bSsUML._AC_UF894
 }
 
 #right {
+    
     flex: 0 0 auto; /* Allow the right div to size itself based on its content */
     display: flex;
     justify-content: flex-end; /* Align content to the right */
     align-items: center; /* Vertically center the content */
-  
+   
      
 }
 
 #requestImage {
-    width: 50px; /* Size of the image */
-    height: 50px; /* Size of the image */
+    width: 20px; /* Size of the image */
+    height: 20px; /* Size of the image */
     border-radius: 50%; /* Make the image circular */
     background-color: #f4f4f4;
     
 }
 #requestName {
-    font-size: 20px; /* Adjust font size */
+    font-size: 10px; /* Adjust font size */
     color: #333; /* Text color */
     margin: 0; /* Remove default margin */
 }
@@ -399,3 +401,22 @@ background-image: url('https://m.media-amazon.com/images/I/81NE5bSsUML._AC_UF894
   #auth-buttons.dropdown-item {
     text-align: left;
   }
+  .search-container {
+    position: relative;
+}
+
+.search-input {
+    height: 50px;
+    border-radius: 30px;
+    padding-left: 35px;
+    border: none;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.search-icon {
+    position: absolute;
+    top: 50%;
+    left: 15px;
+    transform: translateY(-50%);
+    color: #888;
+}
