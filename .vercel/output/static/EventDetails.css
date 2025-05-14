@@ -105,15 +105,15 @@ body{
     height: 30px;
     cursor: pointer;
 }
-.auth-buttons {
-    display: flex;
-    align-items: center;
- 
-    justify-content: flex-start; /* Keep other elements aligned to the left */
-    gap: 100px; /* Add spacing between the divs */
-    flex-wrap: wrap;
-}
-
+ #auth-buttons{
+    text-align: left;
+    left: auto;
+    right: 0;
+  }
+  
+  #auth-buttons.dropdown-item {
+    text-align: left;
+  }
 .auth-buttons div {
     margin-left: 10px;
     display: inline-block;

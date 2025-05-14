@@ -376,6 +376,15 @@ body {
 .auth-buttons img {
     margin-left: auto; /* Push the notification and image to the right */
 }
+ #auth-buttons{
+    text-align: left;
+    left: auto;
+    right: 0;
+  }
+  
+  #auth-buttons.dropdown-item {
+    text-align: left;
+  }
 @media (max-width: 768px) {
     .taskbar {
         flex-direction: column; /* Stack elements vertically */

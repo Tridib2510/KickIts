@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Give a Review</title>
+    <!-- Added Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -12,356 +14,195 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
+            min-height: 100vh;
             background-color: #f4f4f4;
-            background-image: url('https://t3.ftcdn.net/jpg/03/91/46/10/360_F_391461057_5P0BOWl4lY442Zoo9rzEeJU0S2c1WDZR.jpg');
+            padding-top: 60px; /* Space for fixed navbar */
         }
-        .taskbar {
-            display: flex;
-        align-items: center; /* Vertically center the content */
-        justify-content: center; /* Horizontally center the content */
-        background-color: #333;
-        padding: 10px 20px;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-        color: white;
-        position: fixed; /* Fix the taskbar at the top */
-        top: 0;
-        left: 0;
-        max-height: 30px;
-        width: 100%; /* Make it span the full width of the page */
-        z-index: 1000; /* Ensure it stays above other elements */
-        flex-wrap: wrap; /* Allow wrapping for smaller screens */
-        }
-
-.start-menu .start-btn {
-    background-color: #0078D4;
-    color: white;
-    border: none;
-    padding: 5px 10px;
-    cursor: pointer;
-    font-size: 14px;
-    border-radius: 5px;
-}
-
-.start-btn:hover {
-    background-color: #005a8c;
-}
-
-
-
-
-.signup-btn {
-    background-color: #008CBA;
-}
-
-.signup-btn:hover {
-    background-color: #007B9A;
-}
-.auth-buttons {
-    display: flex;
-    align-items: center;
- 
-    justify-content: flex-start; /* Keep other elements aligned to the left */
-    gap: 100px; /* Add spacing between the divs */
-}
-
-.auth-buttons div {
-    margin-left: 10px;
-    display: inline-block;
-    padding: 10px 15px;
-    color: white;
-    border-radius: 5px;
-    cursor: pointer;
-    text-align: center;
-  
-}
-.auth-buttons div:hover {
-    background-color: gray; /* Change background color on hover */
-    transform: translateY(-3px); /* Slightly move the div upwards on hover */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add a shadow effect */
-}
-.auth-buttons img {
-    margin-left: auto; /* Push the notification and image to the right */
-}
+        
         .container {
             display: flex;
-            width: 80%;
-            height: 80%;
+            width: 90%;
+            max-width: 1200px;
+            margin: 20px auto;
             background: #fff;
             border-radius: 8px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
         }
+        
         .left-div, .right-div {
-            flex: 1;
             padding: 20px;
         }
+        
         .left-div {
-            background-color: #fff; /* Changed to white */
+            flex: 1;
+            background-color: #fff;
             border-right: 1px solid #ccc;
-            overflow-y: scroll;
+            overflow-y: auto;
         }
+        
         .right-div {
+            flex: 1.5;
             display: flex;
             justify-content: center;
             align-items: center;
         }
+        
         .review-container {
-            background: #fff;
+            width: 100%;
+            max-width: 500px;
             padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            width: 400px;
         }
+        
         .review-container h1 {
             text-align: center;
             margin-bottom: 20px;
         }
+        
         .form-group {
             margin-bottom: 15px;
         }
+        
         .form-group label {
             display: block;
             margin-bottom: 5px;
             font-weight: bold;
         }
-        .form-group input, .form-group textarea, .form-group select {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            font-size: 14px;
-        }
+        
         .form-group textarea {
             resize: none;
-            height: 100px;
+            height: 150px;
         }
-        .submit-btn {
-            width: 100%;
-            padding: 10px;
-            background-color: #007bff;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            font-size: 16px;
-            cursor: pointer;
-        }
-        .submit-btn:hover {
-            background-color: #0056b3;
-        }
-        #imageContainer {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 150px; /* Adjust height as needed */
-    }
-        #profileIcon{
-            width: 30px;
-            height:30px;
-            border-radius: 50%;
-            background-color: #f4f4f4;
-            margin-top: 3px;
-        }
-        #image{
-        width: 150px;
-       height: 150px;
-       border-radius: 50%;
-       background-color: #f4f4f4;
-       margin: 0 auto;
-       }
-       @media (max-width: 768px) {
-    /* Existing container styles */
-  
-    /* Body adjustments */
-    body {
-        padding-top: 0; /* Remove body padding */
-        height: auto; /* Allow body to expand */
-        min-height: 100vh; /* Ensure it takes at least full viewport height */
-        align-items: flex-start; /* Align content at the top instead of center */
-        padding-bottom: 30px; /* Add some bottom padding */
-    }
-    
-    /* Additional space for the profile section */
-    .left-div {
-        padding-top: 25px; /* Add extra padding at the top */
-    }
-    
-    /* Ensure the taskbar doesn't cover content */
-    .taskbar {
-        /* Keep existing styles */
-        z-index: 1100; /* Ensure it stays on top */
-        justify-content: center;
-        padding: 10px;
-        max-height: none;
-        height: auto;
-    }
-    
-    /* Center image container properly */
-    #imageContainer {
-        margin-top: 10px; /* Add space at the top */
-    }
-
-    .auth-buttons {
         
-        width: 100%;
-        gap: 8px;
-        justify-content: center;
-        flex-wrap: wrap;
-        margin: 0;
-    }
-
-    .auth-buttons div {
-        margin: 3px;
-        padding: 6px 8px;
-        font-size: 12px;
-        min-width: 60px;
-        text-align: center;
-    }
-    #profileIcon {
-        width: 24px;
-        height: 24px;
-        margin: 3px;
-    }
-    .side-by-side-container {
-        flex-direction: column; /* Stack the divs vertically */
-        width: 90%; /* Adjust the width for smaller screens */
-        gap: 10px; /* Reduce the gap between the divs */
-    }
-
-    .side-by-side-container > div {
-        padding: 20px; /* Adjust padding for smaller screens */
-        max-height: 60vh; /* Adjust height for smaller screens */
-    }
-
-    .review-container {
-            width: 100%; /* Take full width on smaller screens */
-            padding: 15px; /* Adjust padding for smaller screens */
+        #imageContainer {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
         }
-
-        .review-container h1 {
-            font-size: 20px; /* Reduce font size for smaller screens */
+        
+        #image {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            background-color: #f4f4f4;
         }
-
-        .form-group input,
-        .form-group textarea,
-        .form-group select {
-            font-size: 12px; /* Adjust font size for smaller screens */
+        
+        .profile-details h3, 
+        .profile-details h2 {
+            margin-top: 20px;
+            margin-bottom: 10px;
         }
-
-        .submit-btn {
-            font-size: 14px; /* Adjust button font size for smaller screens */
+        
+        /* Media Queries for Responsive Design */
+        @media (max-width: 992px) {
+            .container {
+                flex-direction: column;
+                width: 95%;
+            }
+            
+            .left-div {
+                border-right: none;
+                border-bottom: 1px solid #ccc;
+            }
         }
-        .container {
-        margin-top: 90px; /* Increased margin to prevent overlap with taskbar */
-        padding-top: 20px; /* Additional padding at top */
-        flex-direction: column;
-        width: 90%;
-        height: auto;
-        margin-top: 50px;
-        overflow: hidden;
-    }
-    
-    /* Content div modifications */
-    .left-div, .right-div {
-        width: 100%;
-        flex: none;
-        overflow-x: hidden;
-        padding: 15px;
-        box-sizing: border-box;
-    }
-    
-    .left-div {
-        border-right: none;
-        border-bottom: 1px solid #ccc;
-    }
-    
-    .right-div {
-        display: block;
-    }
-    
-    /* Review form modifications */
-    .review-container {
-        width: 100%;
-        max-width: 100%;
-        box-shadow: none;
-        padding: 15px;
-        box-sizing: border-box;
-    }
-    
-    .form-group input, 
-    .form-group textarea, 
-    .form-group select {
-        width: 100%;
-        box-sizing: border-box;
-    }
-    
-}
-
-
+        
+        @media (max-width: 576px) {
+            .review-container {
+                padding: 15px;
+            }
+            
+            .form-group input,
+            .form-group textarea,
+            .form-group select {
+                font-size: 14px;
+            }
+            
+            #image {
+                width: 120px;
+                height: 120px;
+            }
+        }
     </style>
 </head>
 <body>
-    <div class="taskbar">
-        <div class="start-menu">
-          
+    <!-- Fixed and streamlined navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">KickIt</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a id="AllEvents" class="nav-link active" aria-current="page" href="./AllEvents.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" id="About">About</a>
+                    </li>
+                   
+                  
+                </ul>
+                
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0 profile-menu">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <img id="profileIcon" src="https://source.unsplash.com/250x250?profile" alt="Profile Picture" style="width: 32px; height: 32px; border-radius: 50%; object-fit: cover;">
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" id="MyEvents" href="./myEvents.html">My Events</a></li>
+                            <li><a class="dropdown-item" href="#" id="createEvent">Create</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#" id="Logout">Log Out</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
         </div>
-        <div class="auth-buttons" id="auth-buttons">
-            
-            <div id="createEvent">Create</div>
-            <div id="Logout">Logout</div>
-            <div id="MyEvents">Home</div>
-            <div id="About">About</div>
-            <img id="profileIcon" src="https://img.icons8.com/ios/50">
-        </div>
-    </div>
+    </nav>
+
     <div class="container">
         <div class="left-div">
             <div class="profile-details" id="profile-details">
-                <div class="profile-header" id="profile-header">
                 <div id="imageContainer">
-                    
+                 
                 </div>
-                </div>
-                <h3 id="name">My Name</h3>
+                <h3 id="name" class="text-center">My Name</h3>
                 <h2>About Me</h2>
                 <div id="descriptionContainer">
-                
-                <p id="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam scelerisque leo nec magna fermentum, a facilisis ligula cursus.</p>
-                
-                
-               </div>
-               <h3>Email</h3>
+                    <p id="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam scelerisque leo nec magna fermentum, a facilisis ligula cursus.</p>
+                </div>
+                <h3>Contact</h3>
                 <p id="email">Email: john.doe@example.com</p>
-               
             </div>
         </div>
         <div class="right-div">
             <div class="review-container">
                 <h1>Give a Review</h1>
-              
-                    <div class="form-group">
-                        
-                    </div>
-                    <div class="form-group">
-                        <label for="rating">Rating</label>
-                        <select id="rating" name="rating" required>
-                            <option value="">Select a rating</option>
-                            <option value="1">1 - Poor</option>
-                            <option value="2">2 - Fair</option>
-                            <option value="3">3 - Good</option>
-                            <option value="4">4 - Very Good</option>
-                            <option value="5">5 - Excellent</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="review">Your Review</label>
-                        <textarea id="review" name="review" placeholder="Write your review here..." required></textarea>
-                    </div>
-                    <button id="submit" type="submit" class="submit-btn">Submit Review</button>
-                
+                <div class="form-group">
+                    <label for="rating">Rating</label>
+                    <select id="rating" name="rating" class="form-select" required>
+                        <option value="">Select a rating</option>
+                        <option value="1">1 - Poor</option>
+                        <option value="2">2 - Fair</option>
+                        <option value="3">3 - Good</option>
+                        <option value="4">4 - Very Good</option>
+                        <option value="5">5 - Excellent</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="review">Your Review</label>
+                    <textarea id="review" name="review" class="form-control" placeholder="Write your review here..." required></textarea>
+                </div>
+                <button id="submit" type="submit" class="btn btn-primary w-100">Submit Review</button>
             </div>
         </div>
     </div>
 
-    <script type="module" src="giveReview.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script type="module" defer src="./giveReview.js"></script>
 </body>
 </html>
