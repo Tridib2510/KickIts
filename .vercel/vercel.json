@@ -12,7 +12,7 @@
       },
       {
         "src": "/(.*)",
-        "dest": "./About.html"
+        "dest": "./AllEvents.html"
       }
     ]
   }
