@@ -7,7 +7,7 @@
     {
       "status": 404,
       "src": "^(?!/api).*$",
-      "dest": "/Login.html"
+      "dest": "/About.html"
     }
   ],
   "crons": []
