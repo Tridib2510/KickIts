@@ -1,0 +1,440 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: black;
+    
+}
+
+.taskbar {
+    display: flex;
+    align-items: center; /* Vertically center the content */
+    justify-content: center; /* Horizontally center the content */
+    background-color: #333;
+    padding: 10px 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    
+    color: white;
+}
+
+.start-menu .start-btn {
+    background-color: #0078D4;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    font-size: 14px;
+    border-radius: 5px;
+}
+
+.start-btn:hover {
+    background-color: #005a8c;
+}
+
+
+
+
+.signup-btn {
+    background-color: #008CBA;
+}
+
+.signup-btn:hover {
+    background-color: #007B9A;
+}
+
+.start-menu .start-btn {
+    background-color: #0078D4;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    font-size: 14px;
+    border-radius: 5px;
+}
+
+.start-btn:hover {
+    background-color: #005a8c;
+}
+
+.auth-buttons {
+    display: flex;
+    align-items: center;
+ 
+    justify-content: flex-start; /* Keep other elements aligned to the left */
+    gap: 100px; /* Add spacing between the divs */
+    flex-wrap: wrap;
+}
+.auth-buttons div {
+    padding: 10px 15px;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+  
+}
+
+.auth-buttons div:hover {
+    background-color: gray; /* Change background color on hover */
+    transform: translateY(-3px); /* Slightly move the div upwards on hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add a shadow effect */
+}
+.auth-buttons img {
+    margin-left: auto; /* Push the notification and image to the right */
+}
+
+.auth-buttons button:hover {
+    background-color: #45a049;
+}
+
+.signup-btn {
+    background-color: #008CBA;
+}
+
+.signup-btn:hover {
+    background-color: #007B9A;
+}
+
+.event-details {
+    width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #5c7751;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-image: url('https://m.media-amazon.com/images/I/81NE5bSsUML._AC_UF894,1000_QL80_.jpg');
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.event-details:hover {
+    transform: translateY(-20px);
+}
+
+.event-details h2 {
+    font-size: 24px;
+    color: white;
+    margin-bottom: 10px;
+}
+
+.event-details p {
+    font-size: 16px;
+    color: white;
+    margin-bottom: 8px;
+}
+
+.event-name {
+    font-weight: bold;
+}
+
+.event-location {
+    font-style: italic;
+    color: #777;
+}
+
+#search-bar {
+    width: 500px; /* Adjust the width as needed */
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px 0 0 4px; /* Rounded corners on the left side */
+    font-size: 16px;
+    display: inline-block;
+}
+
+#search-bar:focus {
+    border-color: #007BFF;
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+#search-button {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-left: none; /* Remove the left border */
+    border-radius: 0 4px 4px 0; /* Rounded corners on the right side */
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #007BFF;
+    color: white;
+}
+
+#search-button:hover {
+    background-color: #0056b3;
+}
+
+.search-container {
+    display: flex;
+    justify-content: center; /* Center the container horizontally */
+}
+
+.buttons-container {
+    display: flex;
+    justify-content: flex-start; /* Align the buttons to the left */
+    margin: 20px 0; /* Add some margin above and below the buttons */
+}
+
+.custom-btn {
+    padding: 10px 20px;
+    border: 1px solid #007BFF;
+    border-left: none;
+    border-radius: 0 4px 4px 0;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #007BFF;
+    color: white;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.custom-btn:hover {
+    background-color: #0056b3;
+}
+
+#image {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: #f4f4f4;
+    margin: 0 auto;
+}
+
+.side-by-side-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px; /* Add spacing between the divs */
+    width: 80%; /* Adjust the width */
+    margin: 20px auto; /* Center the container */
+    flex-wrap: wrap; /* Allow wrapping for smaller screens */
+    overflow-x: hidden; /* Prevent horizontal scrolling */
+    overflow-y: auto; /* Allow vertical scrolling */
+}
+
+.side-by-side-container > div {
+    
+    flex: 1; /* Allow both divs to take equal space */
+    padding: 20px;
+    color:white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-sizing: border-box; /* Include padding and border in the total width/height */
+   
+}
+
+#notifications {
+    width: 300px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #5c7751;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+}
+
+.profile-container {
+    max-width: 600px;
+    margin: 50px auto;
+    background: #fff;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+.profile-header {
+    text-align: center;
+}
+
+.profile-header img {
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+}
+
+.profile-header h1 {
+    margin: 10px 0 5px;
+}
+
+.profile-header p {
+    color: #777;
+}
+
+.profile-details {
+    margin-top: 20px;
+}
+
+.profile-details h2 {
+    margin-bottom: 10px;
+    border-bottom: 2px solid #f4f4f4;
+    padding-bottom: 5px;
+}
+
+.profile-details p {
+    margin: 5px 0;
+}
+
+#imageProfile {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-color: #f4f4f4;
+    margin: 0 auto;
+}
+/* Style for the Reviews button */
+#reviews-btn {
+    background-color: grey; /* Blue background */
+    color: white; /* White text */
+    border: none; /* Remove border */
+    padding: 10px 20px; /* Add padding */
+    font-size: 16px; /* Font size */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s ease; /* Smooth hover effect */
+}
+
+#reviews-btn:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}
+#Reviews{
+    width: 100%; /* Take full width */
+    height:200px;
+    max-width: 600px; /* Limit the width of the right div */
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow-y: scroll
+}
+#reviews-container {
+    margin-top: 20px;
+        padding: 20px;
+        width: 100%; /* Ensure it takes full width */
+        max-width: 600px; /* Limit the width */
+        height: 200px; /* Set a fixed height */
+        background-color: #f9f9f9;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        
+}
+.review {
+    margin-bottom: 15px;
+    padding: 10px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.reviewer-name {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.review-text {
+    font-size: 14px;
+    color: #555;
+    line-height: 1.5;
+}
+#EventName {
+    text-align: center; /* Align text to the right */
+    margin-right: 20px; /* Add some spacing from the right edge */
+    font-size: 40px; /* Optional: Adjust font size for better visibility */
+    font-weight: bold; /* Optional: Make the text bold */
+}
+#activity{
+    text-align: center; /* Align text to the right */
+    margin-right: 20px; /* Add some spacing from the right edge */
+    font-size: 20px; /* Optional: Adjust font size for better visibility */
+    
+}
+#EventDetailsHeading,
+#EventDetails,
+#players-required,
+#venue,
+#Date,
+#time {
+    
+    line-height: 1.6; /* Optional: Adjust line height for better readability */
+}
+
+.auth-buttons div {
+    margin-left: 10px;
+    display: inline-block;
+    padding: 10px 15px;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+  
+}
+.auth-buttons div:hover {
+    background-color: gray; /* Change background color on hover */
+    transform: translateY(-3px); /* Slightly move the div upwards on hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add a shadow effect */
+}
+.auth-buttons img {
+    margin-left: auto; /* Push the notification and image to the right */
+}
+ #auth-buttons{
+    text-align: left;
+    left: auto;
+    right: 0;
+  }
+  
+  #auth-buttons.dropdown-item {
+    text-align: left;
+  }
+@media (max-width: 768px) {
+    .taskbar {
+        flex-direction: column; /* Stack elements vertically */
+        align-items: flex-start; /* Align items to the left */
+    }
+
+    .auth-buttons {
+        justify-content: center; /* Center the buttons */
+        gap: 10px; /* Reduce spacing between buttons */
+    }
+
+    .auth-buttons div {
+        padding: 8px 10px; /* Adjust padding for smaller screens */
+        font-size: 14px; /* Reduce font size */
+    }
+    .side-by-side-container {
+        flex-direction: column; /* Stack the divs vertically */
+        width: 90%; /* Adjust the width for smaller screens */
+        gap: 10px; /* Reduce the gap between the divs */
+    }
+
+    .side-by-side-container > div {
+        padding: 20px; /* Adjust padding for smaller screens */
+        max-height: 60vh; /* Adjust height for smaller screens */
+    }
+}
+@media (max-width: 480px) {
+    .taskbar {
+        flex-direction: column; /* Stack elements vertically */
+        align-items: flex-start; /* Align items to the left */
+    }
+
+    .auth-buttons {
+        justify-content: center; /* Center the buttons */
+        gap: 10px; /* Reduce spacing between buttons */
+    }
+
+    .auth-buttons div {
+        padding: 8px 10px; /* Adjust padding for smaller screens */
+        font-size: 14px; /* Reduce font size */
+    }
+    .side-by-side-container {
+        flex-direction: column; /* Stack the divs vertically */
+        width: 90%; /* Adjust the width for smaller screens */
+        gap: 10px; /* Reduce the gap between the divs */
+    }
+
+    .side-by-side-container > div {
+        padding: 20px; /* Adjust padding for smaller screens */
+        max-height: 60vh; /* Adjust height for smaller screens */
+    }
+}
