@@ -1,7 +1,7 @@
 {
     "builds": [
       {
-        "src": "./About.html",
+        "src": "./AllEvents.html",
         "use": "@vercel/static"
       }
     ],
