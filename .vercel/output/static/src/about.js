@@ -4,6 +4,7 @@ const login = document.getElementById('login-btn');
 const signUp = document.getElementById('signup-btn');
 const logout = document.getElementById('Logout');
 const AllEvents = document.getElementById('AllEvents');
+const myEvents=document.getElementById('MyEvents')
 const createEvent = document.getElementById('createEvent');
 const image = document.getElementById('image');
 const authController=document.getElementById('auth-buttons')
@@ -15,9 +16,9 @@ fetch(`${url}/KickIt/profile`, { credentials: 'include' })
         console.log(data)
         if(data.status==='error'){
            
-           
+           authController.removeChild(myEvents)
            authController.removeChild(createEvent)
-           authController.removeChild(image)
+           document.getElementById('profile-pic').removeChild(image)
            authController.removeChild(logout)
         
                
