@@ -8,7 +8,7 @@
     "routes": [
       {
         "src": "/",
-        "dest": "./About.html"
+        "dest": ".src/About.html"
       },
       {
         "src": "/(.*)",
