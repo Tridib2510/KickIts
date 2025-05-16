@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us</title>
+    <link rel="stylesheet" href="output.css">
+    <link rel="stylesheet" href="style.css">
+       <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
+    <style>
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            color:white;
+            border-radius: 8px;
+            background-color: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(5px);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #0078D4;
+        }
+        p {
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        .creator-info {
+            margin-top: 30px;
+            padding: 15px;
+            background-color: #f9f9f9;
+            border-left: 4px solid #0078D4;
+            display: flex;
+            align-items: center;
+              background-color: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(5px);
+            gap: 20px;
+        }
+        .creator-info img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            border: 2px solid white;
+        }
+        .social-links {
+            margin-top: 15px;
+            display: flex;
+            gap: 10px;
+        }
+        .social-links a img {
+            width: 30px;
+            height: 30px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        .social-links a img:hover {
+            transform: scale(1.1);
+        }
+        .taskbar {
+    display: flex;
+    align-items: center; /* Vertically center the content */
+    justify-content: center; /* Horizontally center the content */
+    background-color: #333;
+    padding: 10px 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    
+    color: white;
+}
+
+
+    </style>
+  
+</head>
+   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">KickIt</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page"  href="#">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#" id="About">About</a>
+              </li>
+            </ul>
+           
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0 profile-menu ">
+              <!-- Add notification icon with dropdown -->
+              <li class="nav-item dropdown" id="notificationIcons">
+                <a class="nav-link position-relative " href="#" id="notification" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  <i class="fas fa-bell fa-xl"></i>
+                  <!-- <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                    5
+                    <span class="visually-hidden">unread notifications</span>
+                  </span> -->
+                </a>
+                <ul class="dropdown-menu dropdown-menu-end notification-dropdown" aria-labelledby="notificationDropdown" style="width: 300px; max-height: 400px; overflow-y: auto;">
+                  <li><h6 class="dropdown-header">Notifications</h6></li>
+                  <li><a class="dropdown-item" href="#">
+                    <div class="d-flex">
+                     
+                     
+                    </div>
+                  </a></li>
+                  <li id="right-div"><a class="dropdown-item" href="#">
+                   
+                  </a></li>
+                 
+                 
+                  
+                  <li><hr class="dropdown-divider"></li>
+                  
+                </ul>
+              </li>
+              
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <div class="profile-pic" id="profile-pic">                
+                      <img src="https://source.unsplash.com/250x250?girl" id="image" alt="Profile Picture">
+                   </div>
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown" id="auth-buttons">
+                    <li  id="login-btn"><a class="dropdown-item" href="#">Login</a></li>
+                    <li id="signup-btn"><a class="dropdown-item" href="#" >SignUp</a></li>
+                    <li id="MyEvents"><a class="dropdown-item" href="#" >MyEvents</a></li>
+                    <li id="createEvent"><a class="dropdown-item" href="#" >Create</a></li>
+                    
+                    
+                    <li><hr class="dropdown-divider"></li>
+                    <li id="Logout"><a class="dropdown-item" href="#" >Log Out</a></li>
+                  </ul>
+              </li>
+           </ul>
+          </div>
+        </div>
+      </nav>
+
+<body>
+    	<div class="area">
+			<ul class="circles bg-stone-500">
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+			</ul>
+		</div>
+      
+    <div class="container">
+        <h1>About KickIt</h1>
+        <p>Welcome to KickIt! This platform is designed to help users create, manage, and participate in events seamlessly. Whether you're organizing a small gathering or a large-scale event, KickIt provides the tools you need to make it a success.</p>
+        <p>Our mission is to bring people together and make event management simple, efficient, and enjoyable. With features like event creation, notifications, and personalized dashboards, KickIt is your go-to solution for all things event-related.</p>
+        
+        <div class="creator-info">
+            <img src="https://res.cloudinary.com/dsloz7tfz/image/upload/v1744262147/1744262148110_67f7509328db7e57d0de7290.jpg" alt="Creator's Picture">
+            <div>
+                <h2>About the Creator</h2>
+                <p>This website was created by <strong>Tridib Roy Chowdhury</strong>, a passionate developer with a love for building user-friendly and impactful web applications. Tridib is dedicated to creating solutions that make life easier and more enjoyable for users.</p>
+                <div class="social-links">
+                    <a href="https://github.com/Tridib2510" target="_blank">
+                        <img src="https://img.icons8.com/ios-glyphs/30/github.png" alt="GitHub">
+                    </a>
+                    <a href="https://www.linkedin.com/in/tridib-roy-chowdhury-13a9b42a4/" target="_blank">
+                        <img src="https://img.icons8.com/ios-filled/30/linkedin.png" alt="LinkedIn">
+                    </a>
+                    <a href="https://x.com/Tridib2510" target="_blank">
+                        <img src="https://img.icons8.com/ios-filled/30/twitter.png" alt="Twitter">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous"></script>
+    <script type="module" defer src="about.js"></script>
+</body>
+</html>

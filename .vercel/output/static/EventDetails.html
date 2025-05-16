@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event</title>
+    <style>
+        #heading {
+    font-style: italic;
+    
+}
+    </style>
+    <link rel="stylesheet" href="EventDetails.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">KickIt</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a id="AllEvents" class="nav-link active" aria-current="page"  href="./AllEvents.html">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#" id="About">About</a>
+              </li>
+            </ul>
+           
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0 profile-menu ">
+              <!-- Add notification icon with dropdown -->
+              <li class="nav-item dropdown" id="notificationIcons">
+                <a class="nav-link position-relative " href="#" id="notification" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  <i class="fas fa-bell fa-xl"></i>
+                  <!-- <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                    5
+                    <span class="visually-hidden">unread notifications</span>
+                  </span> -->
+                </a>
+                <ul class="dropdown-menu dropdown-menu-end notification-dropdown" aria-labelledby="notificationDropdown" style="width: 300px; max-height: 400px; overflow-y: auto;">
+                  <li><h6 class="dropdown-header">Notifications</h6></li>
+                  <li><a class="dropdown-item" href="#">
+                    <div class="d-flex">
+                     
+                     
+                    </div>
+                  </a></li>
+                  <li id="right-div"><a class="dropdown-item" href="#">
+                   
+                  </a></li>
+                 
+                 
+                  
+                  <li><hr class="dropdown-divider"></li>
+                  
+                </ul>
+              </li>
+              
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <div class="profile-pic" id="profile-pic">                
+                      <img src="https://source.unsplash.com/250x250?girl" id="image" alt="Profile Picture">
+                   </div>
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown" id="auth-buttons">
+                  
+                    <li id="AllEvents"><a class="dropdown-item" href="./myEvents.html" >My Events</a></li>
+                    <li id="createEvent"><a class="dropdown-item" href="#" >Create</a></li>
+                    
+                    
+                    <li><hr class="dropdown-divider"></li>
+                    <li id="Logout"><a class="dropdown-item" href="#" >Log Out</a></li>
+                  </ul>
+              </li>
+           </ul>
+          </div>
+        </div>
+      </nav>
+   
+    <!-- <div class="taskbar">
+        <div class="start-menu">
+          
+        </div>
+        <div class="auth-buttons" id="auth-buttons">
+           
+            <div id="createEvent">Create</div>
+            <div id="Logout">Logout</div>
+            <div id="AllEvents">Home</div>
+            <div id="About">About</div>
+            <img id="image" src="https://img.icons8.com/ios/50">
+        </div>
+    </div> -->
+
+    <div class="main-container" id="main-container">
+        <div class="left-div" id="left-div">
+            <div class="profile-container" id="profile-container">
+                <div class="profile-header">
+                    <h1 id="profile-name">John Doe</h1>
+                    <p id="creator">john.doe@example.com</p>
+                </div>
+                <div class="profile-details">
+                    <h2>Event Details</h2>
+                    <p id="EventDetails">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam non urna vitae odio convallis tincidunt.</p>
+                    <h2>Players Required</h2>
+                    <p id="players-required">4</p>
+                    <h2>Venue</h2>
+                    <p id="venue">Simlagarh</p>
+                    <h2>Date</h2>
+                    <p id="Date">Address: 123 Main St, Anytown, USA</p>
+                    <h3>Time</h3>
+                    <p id="time">20:20AM</p>
+                    <div id='division'>
+                        <button id="Join">Join</button>
+                        <button id="Chat">Chat</button>
+                        <button id="Leave">Leave</button>
+                        <button id="Delete">Delete Event</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="right-div" id="right-div">
+            <div class="additional-content" id="joined-users">
+                <!-- Add content for the additional div here -->
+                 
+                
+            </div>
+        </div>
+    </div>
+     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.socket.io/4.0.0/socket.io.min.js"></script>
+    <script type="module" defer src="EventDetails.js"></script>
+</body>
+</html>

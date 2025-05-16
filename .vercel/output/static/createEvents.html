@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Event</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('https://w7.pngwing.com/pngs/239/755/png-transparent-kids-playing-sports.png');
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .signup-container {
+            background-color: #fff;
+            padding: 40px 50px; /* Adjust the padding as needed */
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 500px;
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Center elements horizontally */
+           
+        }
+        .signup-container h2 {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .signup-container input,
+        .signup-container textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            text-align: left; /* Align text to the left */
+            padding-left: 10px; /* Add padding to shift the text */
+        }
+        .signup-container button {
+            width: 100%;
+            padding: 10px;
+            background-color: #28a745;
+            border: none;
+            border-radius: 4px;
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .signup-container button:hover {
+            background-color: #218838;
+        }
+        
+.taskbar {
+    display: flex;
+        align-items: center; /* Vertically center the content */
+        justify-content: center; /* Horizontally center the content */
+        background-color: #333;
+        padding: 10px 20px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        color: white;
+        position: fixed; /* Fix the taskbar at the top */
+        top: 0;
+        left: 0;
+       
+        width: 100%; /* Make it span the full width of the page */
+        
+        flex-wrap: wrap; /* Allow wrapping for smaller screens */
+}
+
+.start-menu .start-btn {
+    background-color: #0078D4;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    font-size: 14px;
+    border-radius: 5px;
+}
+
+.start-btn:hover {
+    background-color: #005a8c;
+}
+
+
+
+
+.signup-btn {
+    background-color: #008CBA;
+}
+
+.signup-btn:hover {
+    background-color: #007B9A;
+}
+.auth-buttons {
+    display: flex;
+        align-items: center;
+        gap: 100px; /* Add spacing between the buttons */
+        flex-wrap: wrap; /* Allow wrapping for smaller screens */
+}
+
+.auth-buttons div {
+    margin-left: 10px;
+    display: inline-block;
+    padding: 10px 15px;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+  
+}
+.auth-buttons div:hover {
+    background-color: gray; /* Change background color on hover */
+    transform: translateY(-3px); /* Slightly move the div upwards on hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add a shadow effect */
+}
+.auth-buttons img {
+    margin-left: auto; /* Push the notification and image to the right */
+    width: 30px;
+    height: 30px;
+}
+#image{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: #f4f4f4;
+    margin: 0 auto;
+}
+@media (max-width: 768px) {
+    .taskbar {
+        flex-direction: column; /* Stack elements vertically */
+        align-items: flex-start; /* Align items to the left */
+    }
+
+    .auth-buttons {
+        justify-content: center; /* Center the buttons */
+        gap: 10px; /* Reduce spacing between buttons */
+    }
+
+    .auth-buttons div {
+        padding: 8px 10px; /* Adjust padding for smaller screens */
+        font-size: 14px; /* Reduce font size */
+    }
+    .side-by-side-container {
+        flex-direction: column; /* Stack the divs vertically */
+        width: 90%; /* Adjust the width for smaller screens */
+        gap: 10px; /* Reduce the gap between the divs */
+    }
+
+    .side-by-side-container > div {
+        padding: 20px; /* Adjust padding for smaller screens */
+        max-height: 60vh; /* Adjust height for smaller screens */
+    }
+    .event-details {
+        width: 90%; /* Adjust the width for smaller screens */
+        margin: 20px auto; /* Reduce the margin for smaller screens */
+        padding: 15px; /* Adjust padding for smaller screens */
+    }
+
+    .event-details h2 {
+        font-size: 20px; /* Reduce font size for smaller screens */
+    }
+
+    .event-details p {
+        font-size: 14px; /* Reduce font size for smaller screens */
+    }
+}
+@media (max-width: 480px) {
+    .taskbar {
+        flex-direction: column; /* Stack elements vertically */
+        align-items: flex-start; /* Align items to the left */
+    }
+
+    .auth-buttons {
+        justify-content: center; /* Center the buttons */
+        gap: 10px; /* Reduce spacing between buttons */
+    }
+
+    .auth-buttons div {
+        padding: 8px 10px; /* Adjust padding for smaller screens */
+        font-size: 14px; /* Reduce font size */
+    }
+    .side-by-side-container {
+        flex-direction: column; /* Stack the divs vertically */
+        width: 90%; /* Adjust the width for smaller screens */
+        gap: 10px; /* Reduce the gap between the divs */
+    }
+
+    .side-by-side-container > div {
+        padding: 20px; /* Adjust padding for smaller screens */
+        max-height: 60vh; /* Adjust height for smaller screens */
+    }
+    .event-details {
+        width: 90%; /* Adjust the width for smaller screens */
+        margin: 20px auto; /* Reduce the margin for smaller screens */
+        padding: 15px; /* Adjust padding for smaller screens */
+    }
+
+    .event-details h2 {
+        font-size: 20px; /* Reduce font size for smaller screens */
+    }
+
+    .event-details p {
+        font-size: 14px; /* Reduce font size for smaller screens */
+    }
+}
+
+    </style>
+</head>
+<body>
+    <div class="taskbar">
+        <div class="start-menu">
+          
+        </div>
+        <div class="auth-buttons" id="auth-buttons">
+           
+         
+            <div id="Logout">Logout</div>
+            <div id="MyEvents">My Events</div>
+            <div id="AllEvents">Home</div>
+           <div id="About">About</div>
+            <img id="image" src="https://img.icons8.com/ios/50">
+        </div>
+    </div>
+    <div class="signup-container">
+        <h2>Create Event</h2>
+    
+            <input type="text" id="EventName" placeholder="Event Name" required>
+            <input type="text" id="activity" placeholder="Activity" required>
+            <input type="text" id="venue" placeholder="Venue" required>
+            <input type="date" id="date" placeholder="Date" required>
+            <input type="time" id="time" placeholder="Time" required>
+            <input type="number" id="playersRequired" placeholder="Players Required" required>
+            <textarea id="description" placeholder="Description" required></textarea>
+            <button id='createEvent'type="submit">Create</button>
+            <div id="error-container" style="color: red; margin-top: 10px;"></div>
+    </div>
+    <script type="module" src="./createEvents.js"></script>
+</body>
+</html>
