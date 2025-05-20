@@ -22,7 +22,7 @@ Kick It is a full-stack event scheduling web app designed for sports enthusiasts
 
 
 🚀 Tech Stack
-🔹 Frontend:HTML,CSS 
+🔹 Frontend:HTML,CSS ,Tailwind
 
 🔹 Backend: Node.js, Express.js
 
