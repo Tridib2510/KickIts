@@ -12,7 +12,7 @@
     },
     {
       "src": "/(.*)",
-      "dest": "output/static/src/$1"
+      "dest": "output/static/src/About.html"
     }
   ]
 }
