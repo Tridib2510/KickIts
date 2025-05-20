@@ -6,7 +6,7 @@
     },
     {
       "status": 404,
-      "src": "src/(.*)",
+      "src": "/src/(.*)",
       "dest": "AllEvents.html"
     }
   ],
