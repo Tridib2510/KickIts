@@ -6,7 +6,7 @@
     },
     {
       "status": 404,
-      "src": "^(?!/api).*$",
+      "src": "./src/(.*)",
       "dest": "/About.html"
     }
   ],
