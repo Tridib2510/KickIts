@@ -8,7 +8,7 @@
     "installCommand": null,
     "buildCommand": null,
     "outputDirectory": null,
-    "rootDirectory": "FrontEnd",
+    "rootDirectory": "static/src",
     "directoryListing": false,
     "nodeVersion": "22.x"
   }

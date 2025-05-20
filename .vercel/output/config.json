@@ -7,8 +7,12 @@
     {
       "src": "/",
       "dest": "/src/About.html"
+    },
+    {
+      "status": 404,
+      "src": "^(?!/api).*$",
+      "dest": "/About.html"
     }
-   
   ],
   "crons": []
 }
