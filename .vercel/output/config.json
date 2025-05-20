@@ -7,7 +7,7 @@
     {
       "status": 404,
       "src": "^(?!/api).*$",
-      "dest": "/src/AllEvents.html"
+      "dest": ".static/src/AllEvents.html"
     }
   ],
   "crons": []
