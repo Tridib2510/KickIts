@@ -8,11 +8,11 @@
   "routes": [
     {
       "src": "/",
-      "dest": "static/src/About.html"
+      "dest": "/src/About.html"
     },
     {
       "src": "/(.*)",
-      "dest": "static/src/About.html"
+      "dest": "/src/About.html"
     }
   ]
 }
