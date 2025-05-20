@@ -68,7 +68,7 @@ fetch(`${url}/KickIt/getEventDetails`,{
                 
                 console.log(data.event.activity)
             if(data.event.createdBy===data.userId)
-                window.location.href="/giveReview.html?userId="+data.event.playersJoined[a]._id+"&activity="+data.event.activity+"&event="+data.event._id
+                window.location.href="./giveReview.html?userId="+data.event.playersJoined[a]._id+"&activity="+data.event.activity+"&event="+data.event._id
 
             })
     }

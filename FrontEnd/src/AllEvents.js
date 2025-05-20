@@ -131,8 +131,9 @@ function helper(text,params) {
                     buttons.removeChild(MyEvents);
                     if(buttons.contains(createEvent))
                     buttons.removeChild(createEvent);
-                    if(document.getElementById('notificationIcons').contains(notification))
-                        document.getElementById('notificationIcons').removeChild(notification)
+                    if(document.getElementById('notification-button').contains(notification))
+                        document.getElementById('notification-button').removeChild(notification)
+                        document.getElementById('notification-dropdown').removeChild(document.getElementById('notification-button'))
                 }
             }
             if (data.status && data.status == 'fail') {

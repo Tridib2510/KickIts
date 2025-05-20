@@ -6,6 +6,7 @@
     <title>Give a Review</title>
     <!-- Added Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="output.css">
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -15,7 +16,7 @@
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            background-color: #f4f4f4;
+          
             padding-top: 60px; /* Space for fixed navbar */
         }
         
@@ -24,20 +25,26 @@
             width: 90%;
             max-width: 1200px;
             margin: 20px auto;
-            background: #fff;
+            
             border-radius: 8px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            
             overflow: hidden;
+            color: white;
+           
         }
         
         .left-div, .right-div {
             padding: 20px;
+            
+            
         }
         
         .left-div {
             flex: 1;
-            background-color: #fff;
-            border-right: 1px solid #ccc;
+         
+            border:1px solid white;
+             border-radius: 8px;
             overflow-y: auto;
         }
         
@@ -46,6 +53,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
+             
         }
         
         .review-container {
@@ -60,7 +68,7 @@
         }
         
         .form-group {
-            margin-bottom: 15px;
+            margin-bottom: 15px; backdrop-filter: blur(5px);
         }
         
         .form-group label {
@@ -162,7 +170,20 @@
             </div>
         </div>
     </nav>
-
+      	<div class="area">
+			<ul class="circles bg-stone-500">
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+			</ul>
+		</div>
     <div class="container">
         <div class="left-div">
             <div class="profile-details" id="profile-details">
@@ -184,7 +205,7 @@
                 <div class="form-group">
                     <label for="rating">Rating</label>
                     <select id="rating" name="rating" class="form-select" required>
-                        <option value="">Select a rating</option>
+                        <option value="" >Select a rating</option>
                         <option value="1">1 - Poor</option>
                         <option value="2">2 - Fair</option>
                         <option value="3">3 - Good</option>
@@ -194,9 +215,9 @@
                 </div>
                 <div class="form-group">
                     <label for="review">Your Review</label>
-                    <textarea id="review" name="review" class="form-control" placeholder="Write your review here..." required></textarea>
+                    <textarea id="review" name="review" class="form-control" placeholder="Write your review here..." style="background-color:#555 " required></textarea>
                 </div>
-                <button id="submit" type="submit" class="btn btn-primary w-100">Submit Review</button>
+                <button id="submit" type="submit" class="btn btn-primary w-100" >Submit Review</button>
             </div>
         </div>
     </div>
