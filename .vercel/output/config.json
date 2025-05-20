@@ -6,8 +6,8 @@
     },
     {
       "status": 404,
-      "src": "^(?!/api).*$",
-      "dest": ".static/src/AllEvents.html"
+      "src": "src/(.*)",
+      "dest": "AllEvents.html"
     }
   ],
   "crons": []
