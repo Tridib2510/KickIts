@@ -1,18 +1,18 @@
 {
-    "builds": [
-      {
-        "src": "./About.html",
-        "use": "@vercel/static"
-      }
-    ],
-    "routes": [
-      {
-        "src": "/",
-        "dest": "static/src/About.html"
-      },
-      {
-        "src": "/(.*)",
-        "dest": "./About.html"
-      }
-    ]
-  }
+  "builds": [
+    {
+      "src": "static/src/About.html",
+      "use": "@vercel/static"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/",
+      "dest": "static/src/About.html"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "static/src/About.html"
+    }
+  ]
+}
