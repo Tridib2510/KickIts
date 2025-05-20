@@ -11,7 +11,7 @@
       "require": "@vercel/static",
       "requirePath": "",
       "apiVersion": 2,
-      "src": "./src/About.html",
+      "src": "./src/**",
       "use": "@vercel/static" 
     } 
   ]
