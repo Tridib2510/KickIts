@@ -4,9 +4,9 @@
     {
       "handle": "error"
     },
-     {
+    {
       "src": "/",
-      "dest": "/static/src/AllEvents.html"
+      "dest": "/src/About.html"
     },
     {
       "status": 404,
