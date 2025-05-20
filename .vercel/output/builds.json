@@ -11,7 +11,7 @@
       "require": "@vercel/static",
       "requirePath": "",
       "apiVersion": 2,
-      "src": "./src/**",
+      "src": "/AllEvents.html",
       "use": "@vercel/static" 
     } 
   ]

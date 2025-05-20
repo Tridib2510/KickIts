@@ -4,6 +4,10 @@
     {
       "handle": "error"
     },
+     {
+      "src": "/",
+      "dest": "/static/src/AllEvents.html"
+    },
     {
       "status": 404,
       "src": "^(?!/api).*$",
