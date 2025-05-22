@@ -2,6 +2,9 @@
   "version": 3,
   "routes": [
     {
+      "handle": "filesystem"
+    },
+    {
       "handle": "error"
     },
     {
