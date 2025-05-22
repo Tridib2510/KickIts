@@ -5,9 +5,13 @@
       "handle": "error"
     },
     {
+      "src": "^/([\\w\\-./]+\\.(css|js|png|jpg|jpeg|gif|svg|ico))$",
+      "dest": "/static/src/$1"
+    },
+    {
       "status":200,
-     "src": "^/([\\w\\-./]+\\.(css|js|png|jpg|jpeg|gif|svg|ico))$",
-      "dest": "/src/AllEvents.html"
+      "src": "^/([\\w\\-./]+\\.(css|js|png|jpg|jpeg|gif|svg|ico))$",
+      "dest": "/static/src/About.html"
     },
     {
       "status": 404,
