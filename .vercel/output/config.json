@@ -1,16 +1,7 @@
 {
   "version": 3,
   "routes": [
-    {
-      "handle": "filesystem"
-    },
-    {
-      "handle": "error"
-    },
-    {
-      "src": "^/([\\w\\-./]+\\.(css|js|png|jpg|jpeg|gif|svg|ico|html))$",
-      "dest": "/static/src/$1"
-    },
+    { "handle": "filesystem" },
     {
       "src": "^/$",
       "dest": "/static/src/About.html"
@@ -20,6 +11,5 @@
       "src": "^(?!/api).*$",
       "dest": "/static/src/About.html"
     }
-  ],
-  "crons": []
+  ]
 }
