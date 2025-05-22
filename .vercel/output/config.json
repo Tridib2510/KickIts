@@ -10,7 +10,7 @@
     },
     {
       "status":200,
-      "src": "^/([\\w\\-./]+\\.(css|js|png|jpg|jpeg|gif|svg|ico))$",
+      "src": "^/$",
       "dest": "/static/src/About.html"
     },
     {
