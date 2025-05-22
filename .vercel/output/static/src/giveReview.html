@@ -198,30 +198,80 @@
                 <h3>Contact</h3>
                 <p id="email">Email: john.doe@example.com</p>
             </div>
+            
         </div>
         <div class="right-div">
-            <div class="review-container">
-                <h1>Give a Review</h1>
-                <div class="form-group">
-                    <label for="rating">Rating</label>
-                    <select id="rating" name="rating" class="form-select" required>
-                        <option value="" >Select a rating</option>
-                        <option value="1">1 - Poor</option>
-                        <option value="2">2 - Fair</option>
-                        <option value="3">3 - Good</option>
-                        <option value="4">4 - Very Good</option>
-                        <option value="5">5 - Excellent</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="review">Your Review</label>
-                    <textarea id="review" name="review" class="form-control" placeholder="Write your review here..." style="background-color:#555 " required></textarea>
-                </div>
-                <button id="submit" type="submit" class="btn btn-primary w-100" >Submit Review</button>
-            </div>
-        </div>
+            <div class="p-4 mx-auto bg-white rounded-lg shadow-md max-w-4xl sm:p-6 grid grid-cols-1 lg:grid-cols-6 gap-6">
+  <div class="lg:col-span-4 col-span-1">
+    <form action="" method="POST" class="space-y-4">
+      <h2 class="text-2xl font-semibold text-gray-700 mb-4">
+        Write a review
+      </h2>
+      <div class="flex justify-start items-center space-x-1 mb-4">
+        <input type="radio" id="5-stars" name="rating" value="5" class="hidden">
+        <label for="5-stars" class="text-yellow-400 text-2xl cursor-pointer hover:scale-110">★</label>
+        <input type="radio" id="4-stars" name="rating" value="4" class="hidden">
+        <label for="4-stars" class="text-yellow-400 text-2xl cursor-pointer hover:scale-110">★</label>
+        <input type="radio" id="3-stars" name="rating" value="3" class="hidden">
+        <label for="3-stars" class="text-yellow-400 text-2xl cursor-pointer hover:scale-110">★</label>
+        <input type="radio" id="2-stars" name="rating" value="2" class="hidden">
+        <label for="2-stars" class="text-yellow-400 text-2xl cursor-pointer hover:scale-110">★</label>
+        <input type="radio" id="1-star" name="rating" value="1" class="hidden">
+        <label for="1-star" class="text-yellow-400 text-2xl cursor-pointer hover:scale-110">★</label>
+      </div>
+      <textarea id="review" name="review" rows="4" required="true" class="block w-full p-3 text-sm text-gray-900 bg-gray-50 rounded-md border border-gray-300 focus:ring-blue-500 focus:border-blue-500" placeholder="Write your review"></textarea>
+      <div class="text-right py-4">
+        <a href="/user"
+          class="text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-semibold rounded-lg text-sm px-5 py-3">Login
+          to Post Review</a>
+      </div>
+    </form>
+  </div>
+  <div class="lg:col-span-2 hidden lg:flex flex-col space-y-4">
+    <div class="flex items-center">
+      <span class="text-yellow-400 text-xl">★★★★★</span>
+      <p class="ml-2 text-sm font-medium text-gray-900">0 out of 0</p>
     </div>
-
+    <p class="text-sm font-medium text-gray-500">0 global ratings</p>
+    <div class="flex items-center mt-2">
+      <span class="text-sm font-medium text-blue-600 hover:underline shrink-0">5 star</span>
+      <div class="w-3/4 h-4 mx-2 bg-gray-200 rounded">
+        <div class="h-4 bg-yellow-400 rounded" style="width: 50%"></div>
+      </div>
+      <span class="text-sm font-medium text-gray-500">0%</span>
+    </div>
+    <div class="flex items-center">
+      <span class="text-sm font-medium text-blue-600 hover:underline shrink-0">4 star</span>
+      <div class="w-3/4 h-4 mx-2 bg-gray-200 rounded">
+        <div class="h-4 bg-yellow-400 rounded" style="width: 25%"></div>
+      </div>
+      <span class="text-sm font-medium text-gray-500">0%</span>
+    </div>
+    <div class="flex items-center">
+      <span class="text-sm font-medium text-blue-600 hover:underline shrink-0">3 star</span>
+      <div class="w-3/4 h-4 mx-2 bg-gray-200 rounded">
+        <div class="h-4 bg-yellow-400 rounded" style="width: 10%"></div>
+      </div>
+      <span class="text-sm font-medium text-gray-500">0%</span>
+    </div>
+    <div class="flex items-center">
+      <span class="text-sm font-medium text-blue-600 hover:underline shrink-0">2 star</span>
+      <div class="w-3/4 h-4 mx-2 bg-gray-200 rounded">
+        <div class="h-4 bg-yellow-400 rounded" style="width: 5%"></div>
+      </div>
+      <span class="text-sm font-medium text-gray-500">0%</span>
+    </div>
+    <div class="flex items-center">
+      <span class="text-sm font-medium text-blue-600 hover:underline shrink-0">2 star</span>
+      <div class="w-3/4 h-4 mx-2 bg-gray-200 rounded">
+        <div class="h-4 bg-yellow-400 rounded" style="width: 10%"></div>
+      </div>
+      <span class="text-sm font-medium text-gray-500">0%</span>
+    </div>
+  </div>
+</div>
+    </div>
+   
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script type="module" defer src="./giveReview.js"></script>

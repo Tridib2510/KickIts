@@ -13,7 +13,7 @@
   
 </head>
 <body>
- <nav class="bg-gray-800">
+ <nav class="bg-gray-800" id="top-nav">
   <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
     <div class="relative flex h-16 items-center justify-between">
       <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
@@ -35,9 +35,9 @@
         </div>
         <div class="hidden sm:ml-6 sm:block">
           <div class="flex space-x-4">
-            <a href="#" class="rounded-md bg-gray-900 px-3 py-2 text-sm font-medium text-white" aria-current="page" id="About">About</a>
+            <a href="#cards-div" class="rounded-md bg-gray-900 px-3 py-2 text-sm font-medium text-white" aria-current="page" >About</a>
             <a href="#" id="MyEvents" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">MyEvents</a>
-            <a href="#" id="createEvent" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Create</a>
+            <a href="#create"  class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Create</a>
             <a href="#" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Calendar</a>
           </div>
         </div>
@@ -71,11 +71,16 @@
               <span class="sr-only">Open user menu</span>
               <img class="size-8 rounded-full" id="image" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
             </button>
+              <div class="flex space-x-4">
+            <a href="./Login.html" class="rounded-md bg-gray-900 px-3 py-2 text-sm font-medium text-white" aria-current="page" id="Login">Login</a>
+            <a href="./SignUpPage.html" class="rounded-md bg-gray-900 px-3 py-2 text-sm font-medium text-white" aria-current="page" id="SignUp">Sign Up</a>
+          </div>
           </div>
           <div id="auth-buttons" class="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black/5 focus:outline-none hidden" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
             <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="signup-btn">Sign Up</a>
             <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="login-btn">Login</a>
             <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="Logout">Sign out</a>
+            <a href="./profile.html" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="Logout">Profile</a>
           </div>
         </div>
       </div>
@@ -91,6 +96,35 @@
     </div>
   </div>
 </nav>
+<div class="fixed bottom-0 left-0 z-50 w-full h-16 bg-white border-t border-gray-200 dark:bg-gray-700 dark:border-gray-600" id="bottom-nav">
+    <div class="grid h-full max-w-lg grid-cols-4 mx-auto font-medium">
+        <button type="button" class="inline-flex flex-col items-center justify-center px-5 hover:bg-gray-50 dark:hover:bg-gray-800 group">
+            <svg class="w-5 h-5 mb-2 text-gray-500 dark:text-gray-400 group-hover:text-blue-600 dark:group-hover:text-blue-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                <path d="m19.707 9.293-2-2-7-7a1 1 0 0 0-1.414 0l-7 7-2 2a1 1 0 0 0 1.414 1.414L2 10.414V18a2 2 0 0 0 2 2h3a1 1 0 0 0 1-1v-4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v4a1 1 0 0 0 1 1h3a2 2 0 0 0 2-2v-7.586l.293.293a1 1 0 0 0 1.414-1.414Z"/>
+            </svg>
+            <span class="text-sm text-gray-500 dark:text-gray-400 group-hover:text-blue-600 dark:group-hover:text-blue-500">Home</span>
+        </button>
+        <button type="button" class="inline-flex flex-col items-center justify-center px-5 hover:bg-gray-50 dark:hover:bg-gray-800 group">
+            <svg class="w-5 h-5 mb-2 text-gray-500 dark:text-gray-400 group-hover:text-blue-600 dark:group-hover:text-blue-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M11.074 4 8.442.408A.95.95 0 0 0 7.014.254L2.926 4h8.148ZM9 13v-1a4 4 0 0 1 4-4h6V6a1 1 0 0 0-1-1H1a1 1 0 0 0-1 1v13a1 1 0 0 0 1 1h17a1 1 0 0 0 1-1v-2h-6a4 4 0 0 1-4-4Z"/>
+                <path d="M19 10h-6a2 2 0 0 0-2 2v1a2 2 0 0 0 2 2h6a1 1 0 0 0 1-1v-3a1 1 0 0 0-1-1Zm-4.5 3.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2ZM12.62 4h2.78L12.539.41a1.086 1.086 0 1 0-1.7 1.352L12.62 4Z"/>
+            </svg>
+            <span class="text-sm text-gray-500 dark:text-gray-400 group-hover:text-blue-600 dark:group-hover:text-blue-500">Wallet</span>
+        </button>
+        <button type="button" class="inline-flex flex-col items-center justify-center px-5 hover:bg-gray-50 dark:hover:bg-gray-800 group">
+            <svg class="w-5 h-5 mb-2 text-gray-500 dark:text-gray-400 group-hover:text-blue-600 dark:group-hover:text-blue-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 12.25V1m0 11.25a2.25 2.25 0 0 0 0 4.5m0-4.5a2.25 2.25 0 0 1 0 4.5M4 19v-2.25m6-13.5V1m0 2.25a2.25 2.25 0 0 0 0 4.5m0-4.5a2.25 2.25 0 0 1 0 4.5M10 19V7.75m6 4.5V1m0 11.25a2.25 2.25 0 1 0 0 4.5 2.25 2.25 0 0 0 0-4.5ZM16 19v-2"/>
+            </svg>
+            <span class="text-sm text-gray-500 dark:text-gray-400 group-hover:text-blue-600 dark:group-hover:text-blue-500">Settings</span>
+        </button>
+        <button type="button" class="inline-flex flex-col items-center justify-center px-5 hover:bg-gray-50 dark:hover:bg-gray-800 group">
+            <svg class="w-5 h-5 mb-2 text-gray-500 dark:text-gray-400 group-hover:text-blue-600 dark:group-hover:text-blue-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M10 0a10 10 0 1 0 10 10A10.011 10.011 0 0 0 10 0Zm0 5a3 3 0 1 1 0 6 3 3 0 0 1 0-6Zm0 13a8.949 8.949 0 0 1-4.951-1.488A3.987 3.987 0 0 1 9 13h2a3.987 3.987 0 0 1 3.951 3.512A8.949 8.949 0 0 1 10 18Z"/>
+            </svg>
+            <span class="text-sm text-gray-500 dark:text-gray-400 group-hover:text-blue-600 dark:group-hover:text-blue-500">Profile</span>
+        </button>
+    </div>
+</div>
     <div class="area">
 			<ul class="circles">
 				<li></li>
@@ -107,14 +141,45 @@
       </ul>
 		
     <div class="side-by-side-container" id="side-by-side-container">
+
+      
         <div id="left-div">
             <div class="search-container">
-                <input type="text" id="search-bar" placeholder="Search events...">
-                <button id="search-button">Search</button>
-            </div>
+              
+    <div>
+        
+            <label
+                class="mx-auto mt-8 relative bg-white min-w-sm max-w-2xl flex flex-col md:flex-row items-center justify-center border py-2 px-2 rounded-2xl gap-2 shadow-2xl focus-within:border-gray-300"
+                for="search-bar">
+
+                <input id="search-bar" placeholder="Search Events..." name="q"
+                    class="px-6 py-2 w-full rounded-md flex-1 outline-none bg-white" required="">
+                <button type="submit" id="search-button"
+                    class="w-full md:w-auto px-6 py-3 bg-black border-black text-white fill-white active:scale-95 duration-100 border will-change-transform overflow-hidden relative rounded-xl transition-all">
+                    <div class="flex items-center transition-all opacity-1">
+                        <span class="text-sm font-semibold whitespace-nowrap truncate mx-auto">
+                            Search
+                        </span>
+                    </div>
+                </button>
+            </label>
+       
+
+        <svg viewBox="0 0 1024 1024"
+            class="absolute left-1/2 top-1/2 -z-10 h-[64rem] w-[64rem] -translate-x-1/2 [mask-image:radial-gradient(closest-side,white,transparent)]"
+            aria-hidden="true">
+            <circle cx="512" cy="512" r="512" fill="url(#827591b1-ce8c-4110-b064-7cb85a0b1217)" fill-opacity="0.7">
+            </circle>
+            <defs>
+                
+            </defs>
+        </svg>
+    </div>
+</div>
+           
         </div>
        <div id="cards-div" class="grid grid-cols-2 gap-6 w-full">
-        <div class="cards">
+        <div class="cards" id="cards">
       <section >
  <div class="max-w-screen-xl 2xl:max-w-screen-3xl px-8 md:px-12 mx-auto py-12 lg:py-24 space-y-24 flex flex-col justify-center">
   <div class="flex flex-col sm:flex-row mx-auto">
@@ -130,30 +195,89 @@
     
 </section>
         </div>
-        <div class="description bg-stone-700 p-4 rounded-lg">
+          <div class="description bg-stone-700 p-4 rounded-lg" id="description">
+            
           <p class="text-stone-50">Kick It ⚽ – Connect. Compete. Play. A dynamic sports event platform where players and organizers meet.</p>
 
-<p class="text-stone-50">Kick It is a full-stack event scheduling web app designed for sports enthusiasts to create, discover, and join local games. 
+<p class="text-stone-50">Kick It is a full-stack event scheduling web app designed for sports enthusiasts to create, discover, and join local games.</p>
   <p class="text-stone-50">Whether you're looking for a casual pickup match or competitive tournaments, Kick It brings athletes together seamlessly.</p>
         </div>
+
        </div>
        
        
+    <div id="create" class="z-10">
+      <section class=" p-1 xs:p-8 ">
+  <div class=" text-blue-50 sm:max-w-4xl mx-auto border border-[#4D7C0F] rounded-lg p-8">
+    <h2 class="sm:text-xl text-[12px] font-bold mb-6">Title</h2>
+   
+      <div class="space-y-6 ">
+        <div>
+          <label for="title" class="text-xs xs:text-sm font-medium text-blue-50 mb-1 ">Event Name<!-- --> 
+            <svg xmlns="http://www.w3.org/2000/svg"  width="17" height="17" color="#9CA3AF" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-alert inline-block"><circle cx="12" cy="12" r="10"></circle><line x1="12" x2="12" y1="8" y2="12"></line><line x1="12" x2="12.01" y1="16" y2="16"></line></svg> </label>
+            <input type="text" id="EventName" class="h-[50px] rounded-[5px] text-xs xs:text-sm border border-[#D1D5DB] w-full px-2" name="title" value="">
+        </div>
+         <div>
+          <label for="title" class="text-xs xs:text-sm font-medium text-blue-50 mb-1 ">Venue<!-- --> 
+            <svg xmlns="http://www.w3.org/2000/svg"  width="17" height="17" color="#9CA3AF" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-alert inline-block"><circle cx="12" cy="12" r="10"></circle><line x1="12" x2="12" y1="8" y2="12"></line><line x1="12" x2="12.01" y1="16" y2="16"></line></svg> </label>
+            <input type="text" id="venue" class="h-[50px] rounded-[5px] text-xs xs:text-sm border border-[#D1D5DB] w-full px-2" name="title" value="">
+        </div>
+        <div>
+          <label for="title" class="text-xs xs:text-sm font-medium text-blue-50 mb-1 ">Description<!-- --> 
+            <svg xmlns="http://www.w3.org/2000/svg"  width="17" height="17" color="#9CA3AF" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-alert inline-block"><circle cx="12" cy="12" r="10"></circle><line x1="12" x2="12" y1="8" y2="12"></line><line x1="12" x2="12.01" y1="16" y2="16"></line></svg> </label>
+            <textarea id="description-event" id="title" class="h-[100px] rounded-[5px] text-xs xs:text-sm border border-[#D1D5DB] w-full px-2" name="title" value=""></textarea>
 
+        </div>
+        <div class="grid sm:grid-cols-2 grid-cols-1 gap-6">
+          <div>
+            <label for="category" class="text-xs xs:text-sm font-medium text-blue-50 mb-1">Players Recquired</label>
+            <input type="number"  id="playersRequired" class="h-[50px] rounded-[5px] text-xs xs:text-sm border border-[#D1D5DB] w-full px-2" name="title" value="">
+            </select>
+          </div>
+          <div>
+            <label for="category" class="text-xs xs:text-sm font-medium text-blue-50 mb-1">Date</label>
+            <input type="date"  id="date" class="h-[50px] rounded-[5px] text-xs xs:text-sm border border-[#D1D5DB] w-full px-2" name="title" value="">
+            </select>
+          </div>
+        </div>
+        <div class="grid sm:grid-cols-2 grid-cols-1 gap-6">
+          <div>
+           <label for="category" class="text-xs xs:text-sm font-medium text-blue-50 mb-1">Time</label>
+            <input type="time"  id="time" class="h-[50px] rounded-[5px] text-xs xs:text-sm border border-[#D1D5DB] w-full px-2" name="title" value="">
+            </select>
+          </div>
+          <div><label for="language" class="text-xs xs:text-sm font-medium text-blue-50 mb-1">Activity</label>
+            <div class="flex flex-wrap items-center border rounded-md xs:p-2 bg-white">
+            
+                
+              </span><input type="text" id="activity" placeholder="Sport.." class="flex-grow outline-none py-2 w-2/3 text-sm xs:ml-2" value="">
+            </div>
+          </div>
+        </div>
+      </div>
+       <div id="error-container" style="color: red; margin-top: 10px;"></div>
+      <div class="mt-8 pt-6 border-t border-gray-200 flex justify-end">
+        <button type="submit" id='createEvent' class=" sm:w-[86px] w-full h-[50px] text-xs sm:text-base bg-[#4D7C0F] rounded-[5px] p-[13px_25px] gap-[10px] text-white flex items-center justify-center">Submit</button>
+      </div>
+    
+  </div>
+</section>
+    </div>
 
        
       
     </div>
 <footer class="bg-dark rounded-lg shadow-sm  dark:bg-gray-800 ">
     <div class="w-full mx-auto max-w-screen-xl p-4 md:flex  md:justify-between">
-      <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2023 <a href="https://flowbite.com/" class="hover:underline">Flowbite™</a>. All Rights Reserved.
+      <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400">
+        © 2023 <a href="https://flowbite.com/" class="hover:underline">Flowbite™</a>. All Rights Reserved.
     </span>
     <ul class="flex flex-wrap items-center mt-3 text-sm font-medium text-gray-500 dark:text-gray-400 sm:mt-0">
         <li>
-            <a href="#" class="hover:underline me-4 md:me-6">About</a>
+            <a href="#left-div" class="hover:underline me-4 md:me-6">About</a>
         </li>
         <li>
-            <a href="#" class="hover:underline me-4 md:me-6">Privacy Policy</a>
+            <a href="#cards-div" class="hover:underline me-4 md:me-6">Privacy Policy</a>
         </li>
         <li>
             <a href="#" class="hover:underline me-4 md:me-6">Licensing</a>
@@ -167,8 +291,9 @@
 
     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous"></script>
-
+    <script type="module" src="./createEvents.js"></script>
     <script defer src="https://cdn.socket.io/4.0.0/socket.io.min.js"></script>
+    <script type="module" src="https://unpkg.com/cally"></script>
     <script type="module" defer src="./AllEvents.js"></script>
     <script>
        document.addEventListener('DOMContentLoaded', function () {

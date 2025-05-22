@@ -198,7 +198,7 @@ body {
 
 /* Keep your existing height settings for the divs */
 #left-div {
-    
+    z-index: 10;
     height: 600px;
     overflow-y: scroll;
 }
@@ -226,6 +226,7 @@ body {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add a shadow effect */
 }
 #left-div{
+    width: 100%;
     height: 600px;
     overflow-y: scroll;
 }
@@ -235,17 +236,19 @@ body {
 }
 
 .navigation-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 20px;
-    gap: 20px; /* Add spacing between the icons */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin: 1rem 0;
+  z-index: 10;
+  position: relative;
 }
 
 .navigation-container img {
-    width: 30px;
-    height: 30px;
-    cursor: pointer;
+  cursor: pointer;
+  width: 32px;
+  height: 32px;
 }
 #requests {
     display: flex;
@@ -458,7 +461,7 @@ body {
             left: 0;
             width: 100%;
           
-            min-height: 180vh;/*Now it covers more space*/
+            min-height: 300vh;/*Now it covers more space*/
             z-index: -1;
            
         }
@@ -473,8 +476,62 @@ body {
             padding: 0;
             overflow: hidden;
         }
+        
+
         #cards-div{
             border: none;
             background:none;
         }
-      
+
+        @keyframes animate {
+  0% {
+    transform: translateY(-50%) scale(1);
+    opacity: 1;
+  }
+  80% {
+    opacity: 2; /* Stay visible longer */
+  }
+  100% {
+    transform: translateY(-100%) scale(0.5);
+    opacity: 0;
+  }
+}
+
+      @keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-100px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.fade-in-left {
+  animation: fadeInLeft 0.7s ease-out forwards;
+}
+
+@keyframes popUp {
+  0% {
+    opacity: 0;
+    transform: scale(0.7);
+  }
+  80% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.pop-up {
+  animation: popUp 2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+  #create{
+            border: none;
+            background:none;
+  }

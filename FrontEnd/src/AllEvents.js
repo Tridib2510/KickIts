@@ -17,9 +17,7 @@ const login = document.getElementById('login-btn');
 const signUp = document.getElementById('signup-btn');
 const logout = document.getElementById('Logout');
 const MyEvents = document.getElementById('MyEvents');
-const about = document.getElementById('About').addEventListener('click',()=>{
-    window.location.href='About.html'
-});
+
 const createEvent = document.getElementById('createEvent');
 const image = document.getElementById('image');
 const leftDiv = document.getElementById('left-div');
@@ -120,8 +118,17 @@ function helper(text,params) {
                        buttons.removeChild(signUp);
                   if(buttons.contains(login))
                     buttons.removeChild(login);
+
+                const parent_SignUp=document.getElementById('SignUp').parentNode;
+                parent_SignUp.removeChild(document.getElementById('SignUp'));
+
+                 const parent_Login=document.getElementById('Login').parentNode;
+                parent_Login.removeChild(document.getElementById('Login'));
+
                    
                 } else {
+                    const createEventButton=document.getElementById('createEvent')
+                    createEvent.textContent='Login'
                     
                     if(profilePic.contains(image))
                     profilePic.removeChild(image);
@@ -134,6 +141,9 @@ function helper(text,params) {
                     if(document.getElementById('notification-button').contains(notification))
                         document.getElementById('notification-button').removeChild(notification)
                         document.getElementById('notification-dropdown').removeChild(document.getElementById('notification-button'))
+
+                    const parent_profilePic=profilePic.parentNode;
+                    parent_profilePic.removeChild(profilePic)
                 }
             }
             if (data.status && data.status == 'fail') {
@@ -243,7 +253,34 @@ const button = document.getElementById('search-button').addEventListener('click'
     
  
  });
- 
+
+ document.getElementById('search-bar').addEventListener('keypress', (event) => {
+    if(event.key==='Enter'){
+         const searchBar=document.getElementById('search-bar')
+    if(searchBar.value===''){
+       
+        if (document.body.events === true) {
+            if(leftDiv.contains(Events))
+            leftDiv.removeChild(Events);
+       }
+       helper('','?page=1&limit=5');
+    }
+    else{
+    const text1=`?activity=${searchBar.value}`
+    const text2=`?venue=${searchBar.value}`
+    const text3=`?eventName=${searchBar.value}`
+    if (document.body.events === true) {
+        if(leftDiv.contains(Events))
+                leftDiv.removeChild(Events);
+           }
+    helper(text1,'&page=1&limit=5')
+    helper(text2,'&page=1&limit=5')
+    helper(text3,'&page=1&limit=5')
+    page=1
+   
+        }
+    }
+ })
 
 
 backward.addEventListener('click',()=>{
@@ -278,15 +315,19 @@ else {
     console.log(TEXT+`&page=${page}&limit=5`)
     helper(TEXT,`&page=${page}&limit=5`)
 }
+ leftDiv.scrollIntoView({ behavior: "smooth", block: "start", inline: "nearest" });
     }
 })
+
+
+
 
 const signUpbutton = document.getElementById('signup-btn').addEventListener('click', () => {
     window.location.href = 'SignUpPage.html';
 });
-createEvent.addEventListener('click', () => {
-    window.location.href = 'createEvents.html';
-});
+// createEvent.addEventListener('click', () => {
+//     window.location.href = 'createEvents.html';
+// });
 const loginbutton = document.getElementById('login-btn').addEventListener('click', () => {
     console.log('hi')
     window.location.href = 'Login.html';
@@ -365,4 +406,43 @@ fetch(`${url}/KickIt/joinRequests`, {
     })
     .catch(err => console.log(err));
 
-    
+
+function isElementInViewport(element) {
+            // Gets the element's position relative to the viewport
+            const rect = element.getBoundingClientRect();
+            
+            // Returns true when the top of the element is in the upper 75% of the viewport
+            // window.innerHeight = height of the browser window
+            // document.documentElement.clientHeight = fallback for older browsers
+
+            return (
+                rect.top <= (window.innerHeight) * 0.75
+            );
+        }
+
+
+    document.addEventListener('scroll',()=>{
+          const animatedElement = document.getElementById('cards');
+          const animatedDescription= document.getElementById('description');
+          animatedElement.style.opacity = '0';
+            animatedDescription.style.opacity = '0';
+         if (isElementInViewport(animatedElement) && !animatedElement.classList.contains('fade-in-left')) {
+             animatedElement.style.opacity = '';
+                     animatedElement.classList.add('fade-in-left');
+                        animatedDescription.style.opacity = '';
+                        animatedDescription.classList.add('pop-up');
+         }
+        
+    })
+    console.log(window.innerWidth)
+    if(window.innerWidth >=700){
+        console.log('hi')
+       const bottomNav = document.getElementById('bottom-nav');
+       const parent = bottomNav.parentNode;
+        parent.removeChild(bottomNav)
+    }
+    else{
+        const topNav = document.getElementById('top-nav');
+        const parent = topNav.parentNode;
+        
+    }
