@@ -10,7 +10,7 @@
     },
     {
       "status": 404,
-      "src": "/src",
+      "src": "/error",
       "dest": "/About.html"
     }
   ],
