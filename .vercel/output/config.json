@@ -6,8 +6,8 @@
     },
     {
       "status":200,
-      "src": "^/([\\w\\-./]+\\.(css|js|png|jpg|jpeg|gif|svg|ico))$",
-      "dest": "stat/src/About.html"
+      "src": "/",
+      "dest": "/src/About.html"
     },
     {
       "status": 404,
