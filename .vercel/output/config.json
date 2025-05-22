@@ -10,8 +10,8 @@
     },
     {
       "status": 404,
-      "src": "static/src/(.*)",
-      "dest": "/static/src/About.html"
+      "src": "^(?!/api).*$",
+      "dest": "./static/src/About.html"
     }
   ],
   "crons": []
