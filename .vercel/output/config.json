@@ -16,7 +16,7 @@
     },
     {
       "status": 404,
-      "src": "^(?!/api).*$",
+     "src": "^/([\\w\\-./]+\\.(css|js|png|jpg|jpeg|gif|svg|ico|html))$",
       "dest": "/src/About.html"
     }
   ],
