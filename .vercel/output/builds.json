@@ -11,8 +11,8 @@
       "require": "@vercel/static",
       "requirePath": "",
       "apiVersion": 2,
-      "src": "./output/static/src/**",
-      "use": "@vercel/static" 
-    } 
+      "src": "static/src/**",
+      "use": "@vercel/static"
+    }
   ]
 }
