@@ -1,9 +1,7 @@
 {
   "version": 3,
   "routes": [
-    {
-      "handle": "error"
-    },
+   
     {
       "src": "/",
       "dest": "/src/About.html"
