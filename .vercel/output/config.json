@@ -10,7 +10,7 @@
     },
     {
       "status": 404,
-      "src": "^(?!/api).*$",
+      "src": "static/src/(.*)",
       "dest": "/static/src/About.html"
     }
   ],
