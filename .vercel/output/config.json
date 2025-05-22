@@ -6,13 +6,13 @@
     },
     {
       "src": "/",
-      "dest": "/static/src/About.html"
+      "dest": "/src/About.html"
     },
     {
       "status": 404,
-      "src": "/error",
-      "dest": "/About.html"
+      "src": "^(?!/api).*$",
+      "dest": "/static/src/About.html"
     }
   ],
   "crons": []
-}  
+}
