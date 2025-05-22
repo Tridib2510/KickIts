@@ -5,19 +5,17 @@
       "handle": "error"
     },
     {
-      "status":404,
       "src": "^/([\\w\\-./]+\\.(css|js|png|jpg|jpeg|gif|svg|ico|html))$",
       "dest": "/static/src/$1"
     },
     {
-      "status":200,
-      "src": "/",
-      "dest": "/src/About.html"
+      "src": "^/$",
+      "dest": "/static/src/About.html"
     },
     {
       "status": 404,
-     "src": "^/([\\w\\-./]+\\.(css|js|png|jpg|jpeg|gif|svg|ico|html))$",
-      "dest": "/src/About.html"
+      "src": "^(?!/api).*$",
+      "dest": "/static/src/About.html"
     }
   ],
   "crons": []
