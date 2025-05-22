@@ -7,12 +7,12 @@
     {
       "status":200,
       "src": "/",
-      "dest": "/src/About.html"
+      "dest": "/static/src/About.html"
     },
     {
       "status": 404,
       "src": "^(?!/api).*$",
-      "dest": "/static/src/About.html"
+      "dest": "./static/src/About.html"
     }
   ],
   "crons": []
