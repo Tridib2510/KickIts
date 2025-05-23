@@ -38,7 +38,7 @@ image.addEventListener('click',()=>{
 
 
 const button=document.getElementById('createEvent').addEventListener('click',()=>{
-    if(document.getElementById('createEvent').textContent==='Create Event'){
+    if(document.getElementById('createEvent').textContent==='Submit'){
     const options = {
         method:'POST',
          // This ensures cookies are included in the request

@@ -4,12 +4,12 @@
     { "handle": "filesystem" },
     {
       "src": "^/$",
-      "dest": "/static/src/About.html"
+      "dest": "/About.html"
     },
     {
       "status": 404,
       "src": "^(?!/api).*$",
-      "dest": "/static/src/About.html"
+      "dest": "/About.html"
     }
   ]
 }
