@@ -31,7 +31,7 @@ form.addEventListener('submit',(event)=>{
             console.log(data.message)
             throw new Error(data.message);
         }
-    window.location.href="AllEvents.html"
+    window.location.href="index.html"
     })
     .catch(err=>{
       
