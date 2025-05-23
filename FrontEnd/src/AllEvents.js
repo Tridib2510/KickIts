@@ -105,7 +105,7 @@ navigationContainer.appendChild(forward);
 function helper(text,params) {
    
     Events = document.createElement('div');
-    async function fetchData() {
+    
     fetch(`${url}/KickIt/home${text}${params}`, {
         credentials: "include"
     })
@@ -219,8 +219,6 @@ function helper(text,params) {
           
         })
         .catch(err => console.log(err));
-    }
-    fetchData();
 }
 helper('','?page=1&limit=5');
 
@@ -459,7 +457,7 @@ function isElementInViewport(element) {
     }
 
   document.body.removeChild(loading)
-},5000)
+},10000)
 }
 
 getData();
