@@ -11,6 +11,15 @@ let Events = document.createElement('div');
 
 let TEXT=''
 
+const DATA=document.getElementById('data')
+const loading=document.getElementById('loading')
+
+
+
+async function getData(){
+
+    setTimeout(() => {
+
 const buttons = document.getElementById('auth-buttons');
 const profilePic=document.getElementById('profile-pic')
 const login = document.getElementById('login-btn');
@@ -437,12 +446,21 @@ function isElementInViewport(element) {
     console.log(window.innerWidth)
     if(window.innerWidth >=700){
         console.log('hi')
-       const bottomNav = document.getElementById('bottom-nav');
-       const parent = bottomNav.parentNode;
-        parent.removeChild(bottomNav)
+      
+       
     }
     else{
         const topNav = document.getElementById('top-nav');
         const parent = topNav.parentNode;
         
     }
+
+  document.body.removeChild(loading)
+})
+}
+
+getData();
+
+
+
+console.log('hello')

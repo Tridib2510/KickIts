@@ -219,16 +219,4 @@ update.addEventListener('click', () => {
 
 const container=document.getElementById('container')
 
-container.removeChild(rightDiv)
 
-const review=document.getElementById('reviews')  
-
-review.addEventListener('click',()=>{
-    if(container.contains(rightDiv)){
-        container.removeChild(rightDiv)
-    }
-    else{
-        container.appendChild(rightDiv)
-    }
-
-})

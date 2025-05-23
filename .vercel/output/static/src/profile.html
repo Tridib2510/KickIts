@@ -28,6 +28,7 @@
     background-color: #0056b3;
 }
         .profile-container {
+            height: 100%;
             max-width: 600px;
             margin: 50px auto;
             background: #fff;
@@ -67,28 +68,13 @@
             background-color: #f4f4f4;
             margin: 0 auto;
         }
-        .container {
-    display: flex; /* Use flexbox */
-    flex-direction: column; /* Stack the left and right divs vertically */
-    align-items: center; /* Center the content horizontally */
-   
-    margin: 20px;
+       
+#left-div{
+    border:1px solid black;
+    ;
 }
-
-#left-div {
-    
-    width: 100%; /* Take full width */
-    max-width: 600px; /* Limit the width of the left div */
-}
-
 #right-div {
-    width: 100%; /* Take full width */
-    height:200px;
-    max-width: 600px; /* Limit the width of the right div */
-    background-color: #fff;
-    padding: 20px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
+   
     overflow-y: scroll
 }
 #reviews-container {
@@ -263,8 +249,10 @@ button:hover {
         font-size: 14px; /* Reduce font size */
     }
     }
+    
 
     </style>
+  
 </head>
 <body>
     <div class="taskbar">
@@ -281,9 +269,9 @@ button:hover {
         </div>
     </div>
 
-    <div class="container" id="container">
-        <div id="left-div">
-            <div id="profile-container" class="profile-container">
+    <div class="container grid grid-cols-1 md:grid-cols-2 gap-20 mx-auto my-8 max-w-5xl" id="container">
+        <div id="left-div" class="w-full flex flex-col items-center">
+            <div id="profile-container" class="profile-container w-full max-w-full m-0">
                 <div class="profile-header" id="profile-header">
                     <div id="image">
                         <input type="file" id="file" name="myfile">
@@ -303,16 +291,53 @@ button:hover {
                     </div>
                     <button id="update">UPDATE</button>
                 </div>
-                <button id="reviews">reviews</button>
+               
             </div>
             
         </div>
         
-        <div id="right-div">
+        <div id="right-div"  class="w-full flex flex-col items-center bg-white rounded-lg shadow p-6 max-h-[600px] overflow-y-auto">
            
           
         </div>
+        <div class="bg-white dark:bg-gray-800 flex justify-center items-center w-screen h-screen p-5">
+  <div class="border shadow-teal-300 shadow-md max-w-2xl p-6 rounded-lg dark:bg-gray-700 dark:text-gray-300">
+    <div class="flex gap-2 items-center">
+      <img class="h-16 rounded-full w-16" src="https://images.unsplash.com/photo-1463453091185-61582044d556?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NzEyNjZ8MHwxfHNlYXJjaHwxMHx8cGVvcGxlfGVufDB8MHx8fDE3NDI4MzI5MTR8MA&ixlib=rb-4.0.3&q=80&w=1080"/>
+      <div>
+        <h2 class="text-2xl ">@armedshutter</h2>
+        <div class="flex space-x-1">
+          <!-- Star 1 -->
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-yellow-400" fill="currentColor" viewBox="0 0 24 24" stroke="none">
+            <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+          </svg>
+          <!-- Star 2 -->
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-yellow-400" fill="currentColor" viewBox="0 0 24 24" stroke="none">
+            <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+          </svg>
+          <!-- Star 3 -->
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-yellow-400" fill="currentColor" viewBox="0 0 24 24" stroke="none">
+            <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+          </svg>
+          <!-- Star 4 (Empty) -->
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-gray-300" fill="currentColor" viewBox="0 0 24 24" stroke="none">
+            <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+          </svg>
+          <!-- Star 5 (Empty) -->
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-gray-300" fill="currentColor" viewBox="0 0 24 24" stroke="none">
+            <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+          </svg>
+        </div>
+      </div>
     </div>
+    <p class="text-wrap text-md font-semibold mt-5">
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.    </p>
+    <a class="underline font-bold mt-10 text-blue-500 hover:pointer">See Review</a>
+  </div>
+</div>
+    </div>
+
+    
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script type="module" src="./profile.js"></script>
 </body>
