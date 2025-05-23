@@ -220,6 +220,7 @@ function helper(text,params) {
         })
         .catch(err => console.log(err));
     }
+    fetchData();
 }
 helper('','?page=1&limit=5');
 
@@ -458,7 +459,7 @@ function isElementInViewport(element) {
     }
 
   document.body.removeChild(loading)
-},10000)
+},5000)
 }
 
 getData();
