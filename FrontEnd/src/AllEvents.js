@@ -456,7 +456,7 @@ function isElementInViewport(element) {
     }
 
   document.body.removeChild(loading)
-},)
+},10000)
 }
 
 getData();
