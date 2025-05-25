@@ -16,7 +16,15 @@ const ctx=document.getElementById('myChart')
 const about = document.getElementById('About').addEventListener('click',()=>{
     window.location.href='About.html'
  });
+ let arr=[]
+ let index=[]
 const rightDiv=document.getElementById('right-div')
+
+let ratings_Date=[]
+for(let i=0;i<1000;i++){
+    ratings_Date.push(i)
+}
+
 
 const formData = new FormData();
 const image = document.createElement('img');
@@ -55,8 +63,8 @@ fileInput.addEventListener('change', () => {
 const descriptionContainer = document.getElementById('descriptionContainer');
 
 const changeProfile = document.getElementById('changeProfile');
-profile.removeChild(changeProfile);
-profile.removeChild(update);
+ profile.removeChild(changeProfile);
+ profile.removeChild(update);
 descriptionContainer.removeChild(descriptionUpdate);
 
 profile.addEventListener('click', () => {
@@ -126,10 +134,10 @@ fetch(`${url}/KickIt/profile`, { credentials: 'include' })
             }
         });
 
-        changeProfile.addEventListener('click', () => {
-            b = true;
-            a = true;
-        });
+        // changeProfile.addEventListener('click', () => {
+        //     b = true;
+        //     a = true;
+        // });
 
         const email = document.getElementById('email');
         email.innerHTML = 'Email: ' + data.user.email;
@@ -141,11 +149,11 @@ fetch(`${url}/KickIt/profile`, { credentials: 'include' })
 
       const n=data.user.ratingsDate.length
       const start=data.user.ratingsDate.length-1-2>=0?data.user.ratingsDate.length-3:0
-
+      
 new Chart(ctx, {
     type: 'line',
     data: {
-      labels:data.user.ratingsDate.slice(start,n),
+      labels:ratings_Date.slice(start,n),
       datasets: [{
         label: 'Ratings',
         data: data.user.ratings.slice(start,n),
@@ -219,4 +227,99 @@ update.addEventListener('click', () => {
 
 const container=document.getElementById('container')
 
+function helper(text,params){
 
+let Events=document.createElement('div')
+
+fetch(`${url}/KickIt/myEvents${text}${params}`,{
+   credentials:"include"
+})
+.then(res=>res.json())
+.then(data=>{
+ console.log(data)
+if(text==''){
+  
+   image.src=data.image
+      image.addEventListener('click',()=>{
+         window.location.href='profile.html'
+      })   
+
+    //   logout.addEventListener('click',()=>{
+    //      fetch(`${url}/KickIt/logout`,{
+    //         credentials:'include'
+    //     }).then(res=>res.json()).then(data=>{
+    //         console.log(data)
+    //         window.location.href="AllEvents.html"
+    //     }).catch(err=>console. log(err))
+    //   })
+    
+    
+   }
+if(data.status && data.status=='fail'){
+   document.body.events=false
+}
+   
+   for(let i=0;i<data.data.length;i++){
+    const div=document.createElement('div')
+  arr.push(div)
+    const link=document.createElement('a')
+  
+    const a=i
+    arr.push(div)
+    index.push(a)
+    const d=data.data[i]
+    const eventName=document.createElement('h2')
+      eventName.innerHTML=data.data[i].eventName
+      eventName.className="event-name"
+     div.className='event-details'
+    
+     div.appendChild(eventName)
+    
+     const eventDate=document.createElement('p')
+     eventDate.className="event-date"
+     eventDate.innerHTML=`Date : ${data.data[i].date}`
+     div.appendChild(eventDate)
+
+     const eventTime=document.createElement('p')
+     eventTime.innerHTML=`Time : ${data.data[i].time}`
+     div.appendChild(eventTime)
+     document.body.events=true
+   Events.appendChild(div)
+   document.body.events=true
+   div.addEventListener('click',()=>{
+   
+      console.log(a)
+      const options = {
+         method:'PATCH',
+          // This ensures cookies are included in the request
+          credentials:'include',
+      headers: {
+      'Content-Type': 'application/json',  // This was the problem We have to manually set headers to allow Content-Type:'application /json' otherwise we can not send it together with our credetials
+      
+  },
+  body:JSON.stringify({
+      data:data.data[a]
+  })
+     }
+      fetch(`${url}/KickIt/getEventDetails`,options)
+      .then(res=>res.json())
+      .then(data=>{
+      
+         window.location.href="EventDetails.html"
+      })
+      .catch(err=>console.log(err))
+       //New concept
+   })
+   const leftDiv=document.getElementById('left-div')
+   leftDiv.appendChild(Events)
+   }
+   totalDocuments=data.data.length
+   leftDiv.appendChild(Events);
+   leftDiv.appendChild(navigationContainer);
+            
+  
+})
+.catch(err=>console.log(err))
+}
+
+helper('','?page=1&limit=5');
