@@ -14,11 +14,16 @@ let TEXT=''
 const DATA=document.getElementById('data')
 const loading=document.getElementById('loading')
 
+const bodyData=document.body.innerHTML
+
+
+
+
 
 
 async function getData(){
 
-    setTimeout(() => {
+
 
 const buttons = document.getElementById('auth-buttons');
 const profilePic=document.getElementById('profile-pic')
@@ -71,8 +76,8 @@ socket.on('send', (user,event) => {
             requestedEvents:event
         })
     };
-    requests.addEventListener('click', () => {
-    fetch(`${url}/KickIt/joinRequests`, options)
+    requests.addEventListener('click',async () => {
+  await  fetch(`${url}/KickIt/joinRequests`, options)
                     .then(res => res.json())
                     .then(data => {
                         window.location = './acceptRequest.html';
@@ -106,7 +111,7 @@ function helper(text,params) {
    
     Events = document.createElement('div');
     
-    fetch(`${url}/KickIt/home${text}${params}`, {
+   return fetch(`${url}/KickIt/home${text}${params}`, {
         credentials: "include"
     })
         .then(res => res.json())
@@ -220,7 +225,7 @@ function helper(text,params) {
         })
         .catch(err => console.log(err));
 }
-helper('','?page=1&limit=5');
+await helper('','?page=1&limit=5');
 
 
 
@@ -264,7 +269,7 @@ const button = document.getElementById('search-button').addEventListener('click'
  
  });
 
- document.getElementById('search-bar').addEventListener('keypress', (event) => {
+ document.getElementById('search-bar').addEventListener('keypress', async(event) => {
     if(event.key==='Enter'){
          const searchBar=document.getElementById('search-bar')
     if(searchBar.value===''){
@@ -273,7 +278,7 @@ const button = document.getElementById('search-button').addEventListener('click'
             if(leftDiv.contains(Events))
             leftDiv.removeChild(Events);
        }
-       helper('','?page=1&limit=5');
+      await helper('','?page=1&limit=5');
     }
     else{
     const text1=`?activity=${searchBar.value}`
@@ -283,9 +288,9 @@ const button = document.getElementById('search-button').addEventListener('click'
         if(leftDiv.contains(Events))
                 leftDiv.removeChild(Events);
            }
-    helper(text1,'&page=1&limit=5')
-    helper(text2,'&page=1&limit=5')
-    helper(text3,'&page=1&limit=5')
+   await helper(text1,'&page=1&limit=5')
+   await helper(text2,'&page=1&limit=5')
+   await helper(text3,'&page=1&limit=5')
     page=1
    
         }
@@ -332,20 +337,20 @@ else {
 
 
 
-const signUpbutton = document.getElementById('signup-btn').addEventListener('click', () => {
-    window.location.href = 'SignUpPage.html';
-});
-// createEvent.addEventListener('click', () => {
-//     window.location.href = 'createEvents.html';
+// const signUpbutton = document.getElementById('signup-btn').addEventListener('click', () => {
+//     window.location.href = 'SignUpPage.html';
 // });
-const loginbutton = document.getElementById('login-btn').addEventListener('click', () => {
-    console.log('hi')
-    window.location.href = 'Login.html';
-});
+// // createEvent.addEventListener('click', () => {
+// //     window.location.href = 'createEvents.html';
+// // });
+// const loginbutton = document.getElementById('login-btn').addEventListener('click', () => {
+//     console.log('hi')
+//     window.location.href = 'Login.html';
+// });
 
-const myEvents = document.getElementById('MyEvents').addEventListener('click', () => {
-    window.location.href = 'myEvents.html';
-});
+// const myEvents = document.getElementById('MyEvents').addEventListener('click', () => {
+//     window.location.href = 'myEvents.html';
+// });
 
 logout.addEventListener('click',()=>{
     fetch(`${url}/KickIt/logout`,{
@@ -456,12 +461,16 @@ function isElementInViewport(element) {
         
     }
 
-  document.body.removeChild(loading)
-},10000)
+    if (loading && loading.parentNode) {
+    loading.parentNode.removeChild(loading);
+    
+    
+}
+ 
+
 }
 
-getData();
-
+await getData();
 
 
 console.log('hello')
