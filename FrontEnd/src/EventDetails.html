@@ -4,81 +4,106 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Event</title>
+    
     <style>
         #heading {
     font-style: italic;
     
 }
+#notification-div {
+   
+    height: 600px;
+    overflow-y: scroll;
+}
+
     </style>
     <link rel="stylesheet" href="EventDetails.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
+    <link rel="stylesheet" href="output.css">
+   
 </head>
 <body>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="#">KickIt</a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              <li class="nav-item">
-                <a id="AllEvents" class="nav-link active" aria-current="page"  href="./AllEvents.html">Home</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#" id="About">About</a>
-              </li>
-            </ul>
-           
-            <ul class="navbar-nav ms-auto mb-2 mb-lg-0 profile-menu ">
-              <!-- Add notification icon with dropdown -->
-              <li class="nav-item dropdown" id="notificationIcons">
-                <a class="nav-link position-relative " href="#" id="notification" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  <i class="fas fa-bell fa-xl"></i>
-                  <!-- <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                    5
-                    <span class="visually-hidden">unread notifications</span>
-                  </span> -->
-                </a>
-                <ul class="dropdown-menu dropdown-menu-end notification-dropdown" aria-labelledby="notificationDropdown" style="width: 300px; max-height: 400px; overflow-y: auto;">
-                  <li><h6 class="dropdown-header">Notifications</h6></li>
-                  <li><a class="dropdown-item" href="#">
-                    <div class="d-flex">
-                     
-                     
-                    </div>
-                  </a></li>
-                  <li id="right-div"><a class="dropdown-item" href="#">
-                   
-                  </a></li>
-                 
-                 
-                  
-                  <li><hr class="dropdown-divider"></li>
-                  
-                </ul>
-              </li>
-              
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    <div class="profile-pic" id="profile-pic">                
-                      <img src="https://source.unsplash.com/250x250?girl" id="image" alt="Profile Picture">
-                   </div>
-                </a>
-                <ul class="dropdown-menu" aria-labelledby="navbarDropdown" id="auth-buttons">
-                  
-                    <li id="AllEvents"><a class="dropdown-item" href="./myEvents.html" >My Events</a></li>
-                    <li id="createEvent"><a class="dropdown-item" href="#" >Create</a></li>
-                    
-                    
-                    <li><hr class="dropdown-divider"></li>
-                    <li id="Logout"><a class="dropdown-item" href="#" >Log Out</a></li>
-                  </ul>
-              </li>
-           </ul>
+   <nav class="bg-gray-800" id="top-nav">
+  <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
+    <div class="relative flex h-16 items-center justify-between">
+      <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
+        <!-- Mobile menu button-->
+        <button type="button" class="relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white" aria-controls="mobile-menu" aria-expanded="false">
+          <span class="absolute -inset-0.5"></span>
+          <span class="sr-only">Open main menu</span>
+          <svg class="block size-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+          </svg>
+          <svg class="hidden size-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+      <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
+        <div class="flex shrink-0 items-center">
+          <img class="h-8 w-auto" src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=indigo&shade=500" alt="Your Company">
+        </div>
+        <div class="hidden sm:ml-6 sm:block">
+          <div class="flex space-x-4">
+            <a href="#cards-div" id='About' class="rounded-md bg-gray-900 px-3 py-2 text-sm font-medium text-white" aria-current="page" >About</a>
+            <a href="#" id="MyEvents" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">MyEvents</a>
+            <a href="#create"  class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Create</a>
+            <a href="#" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Calendar</a>
           </div>
         </div>
-      </nav>
+      </div>
+      <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+        <!-- Notification Dropdown -->
+        <div class="relative ml-3" id="notification-dropdown">
+          <button type="button" id="notification-button"
+            class="relative rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
+            aria-expanded="false" aria-haspopup="true">
+            <span class="absolute -inset-1.5"></span>
+            <span class="sr-only">View notifications</span>
+            <svg class="size-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round"
+                d="M14.857 17.082a23.848 23.848 0 0 0 5.454-1.31A8.967 8.967 0 0 1 18 9.75V9A6 6 0 0 0 6 9v.75a8.967 8.967 0 0 1-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 0 1-5.714 0m5.714 0a3 3 0 1 1-5.714 0" />
+            </svg>
+          </button>
+          <div id="notification-menu"
+            class="absolute right-0 z-10 mt-2 w-80  rounded-md bg-white shadow-lg ring-1 ring-black/5 focus:outline-none hidden"
+            role="menu" aria-orientation="vertical"  aria-labelledby="notification-button" tabindex="-1">
+            <div class="px-2 text-sm text-gray-700 font-semibold " id="notification-div">Notifications</div>
+            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">No new notifications</a>
+            <!-- Add more notification items here -->
+          </div>
+        </div>
+        <!-- Profile dropdown -->
+        <div class="relative ml-3" id="profile-dropdown">
+          <div>
+            <button type="button" id="profile-pic" class="relative flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800" aria-expanded="false" aria-haspopup="true">
+              
+              <span class="sr-only">Open user menu</span>
+              <img class="size-8 rounded-full" id="image" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
+            </button>
+              <div class="flex space-x-4">
+           
+          </div>
+          </div>
+          <div id="auth-buttons" class="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black/5 focus:outline-none hidden" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
+            
+            <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="Logout">Sign out</a>
+            <a href="./profile.html" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="Logout">Profile</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Mobile menu, show/hide based on menu state. -->
+  <div class="sm:hidden" id="mobile-menu">
+    <div class="space-y-1 px-2 pb-3 pt-2">
+      <a href="#" class="block rounded-md bg-gray-900 px-3 py-2 text-base font-medium text-white" aria-current="page">Dashboard</a>
+      <a href="#" class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Team</a>
+      <a href="#" class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Projects</a>
+      <a href="#" class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Calendar</a>
+    </div>
+  </div>
+</nav>
+ 
    
     <!-- <div class="taskbar">
         <div class="start-menu">
@@ -93,7 +118,20 @@
             <img id="image" src="https://img.icons8.com/ios/50">
         </div>
     </div> -->
-
+   
+    <div class="area">
+			<ul class="circles">
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+			
     <div class="main-container" id="main-container">
         <div class="left-div" id="left-div">
             <div class="profile-container" id="profile-container">
@@ -123,13 +161,99 @@
         </div>
         <div class="right-div" id="right-div">
             <div class="additional-content" id="joined-users">
+              <div id='event-players' class="job-card bg-white dark:bg-gray-800 rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
+    <div class="relative h-20 bg-gradient-to-r from-purple-500 to-pink-600">
+        <button class="absolute top-2 right-2 text-white hover:text-purple-100 save-btn">
+            <svg class="w-6 h-6 save-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"/>
+            </svg>
+        </button>
+        <img id='players-image' class="absolute -bottom-8 left-4 w-16 h-16 rounded-full border-4 border-white dark:border-gray-800 object-cover" 
+             src="https://images.unsplash.com/photo-1584433144859-1fc3ab64a957" 
+             alt="HealthCare Corp logo">
+    </div>
+    
+    <div  class="pt-10 px-4 pb-4">
+        <div class="flex justify-between items-start">
+            <div>
+                <h3 id='players-name' class="font-bold text-lg dark:text-white">Medical Director</h3>
+                <p id='players-description' class="text-sm font-medium text-gray-600 dark:text-gray-300 mt-1">HealthCare Corp</p>
+            </div>
+            <span class="text-xs bg-yellow-100 text-yellow-800 px-2 py-1 rounded-full dark:bg-yellow-900 dark:text-yellow-200">
+                New
+            </span>
+        </div>
+
+        <div class="mt-4 flex items-center text-sm text-gray-500 dark:text-gray-400">
+            <svg class="w-5 h-5 mr-2 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+            </svg>
+            <span id="email">Boston, MA · On-site</span>
+        </div>
+
+        <div class="mt-4 flex flex-wrap gap-2">
+           
+        </div>
+
+        <div class="mt-4 flex items-center justify-between">
+           
+
+        
+            
+            <button class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors text-sm font-medium">
+                Give Review
+            </button>
+        
+    </div>
+</div>
                 <!-- Add content for the additional div here -->
                  
                 
             </div>
         </div>
     </div>
-     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous"></script>
+    </ul>
+    </div>
+    <script>
+       document.addEventListener('DOMContentLoaded', function () {
+    // Profile dropdown
+    const profileBtn = document.getElementById('profile-pic');
+    const profileDropdown = document.getElementById('auth-buttons');
+    profileBtn.addEventListener('click', function (e) {
+      e.stopPropagation();
+      profileDropdown.classList.toggle('hidden');
+      notificationDropdown.classList.add('hidden');
+    });
+    profileDropdown.addEventListener('click', function (e) {
+      e.stopPropagation();
+    });
+
+    // Notification dropdown
+    const notificationBtn = document.getElementById('notification-button');
+    const notificationDropdown = document.getElementById('notification-menu');
+    notificationBtn.addEventListener('click', function (e) {
+      e.stopPropagation();
+      notificationDropdown.classList.toggle('hidden');
+      profileDropdown.classList.add('hidden');
+    });
+    notificationDropdown.addEventListener('click', function (e) {
+      e.stopPropagation();
+    });
+
+    // Hide both dropdowns when clicking outside
+    document.addEventListener('click', function () {
+      if (!profileDropdown.classList.contains('hidden')) {
+        profileDropdown.classList.add('hidden');
+      }
+      if (!notificationDropdown.classList.contains('hidden')) {
+        notificationDropdown.classList.add('hidden');
+      }
+    });
+  });
+
+      </script>
+   
     <script defer src="https://cdn.socket.io/4.0.0/socket.io.min.js"></script>
     <script type="module" defer src="EventDetails.js"></script>
 </body>

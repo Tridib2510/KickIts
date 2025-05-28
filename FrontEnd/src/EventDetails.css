@@ -7,6 +7,7 @@ body{
     margin: 0;
     padding: 0;
 }
+
 .taskbar {
     display: flex;
     align-items: center; /* Vertically center the content */
@@ -37,13 +38,7 @@ body{
 .signup-btn:hover {
     background-color: #007B9A;
 }
-#image{
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    background-color: #f4f4f4;
-    margin: 0 auto;
-}
+
 #notification-icon{
     width: 30px;
     height: 30px;
@@ -61,7 +56,7 @@ body{
     gap: 20px; /* Adjust the gap between the divs as needed */
     width: 80%; /* Adjust the width as needed */
     margin: 60px auto; /* Center the container */
-  
+      z-index: 10;
     overflow-x: hidden; /* Prevent horizontal overflow */
     overflow-y: visible; 
 }
@@ -159,10 +154,15 @@ body{
     background-size: cover; /* Ensure the background image covers the div */
     background-position: center; /* Center the background image */
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 9999;
 }
 
 .player-info {
+    
     display: flex;
+    z-index: 10;
     
 }
 
@@ -190,13 +190,12 @@ body{
     margin-bottom: 20px;
 }
 
-.profile-picture {
-    width: 150px;
-    height: 150px;
+.profile-pic img {
+    width: 36px;
+    height: 36px;
     border-radius: 50%;
     object-fit: cover;
-    margin-bottom: 10px;
-}
+  }
 
 .profile-name {
     font-size: 24px;
@@ -245,11 +244,13 @@ body{
 .main-container {
     display: flex;
     gap: 2px; /* Adjust the gap value as needed */
+    z-index: 10;
 }
 
 .left-div {
     flex: 1;
     padding: 5px; /* Reduce padding */
+     z-index:10;
 }
 
 .right-div {
@@ -260,6 +261,7 @@ body{
     
     box-sizing: border-box; /* Include padding and border in the element's total width and height */
     overflow-y: auto; /* Add vertical scrolling if content overflows */
+    z-index:10;
     
 }
 
@@ -329,23 +331,27 @@ body{
         align-items: center; /* Center the content */
         padding: 15px; /* Adjust padding for smaller screens */
         max-width: 90%; /* Adjust width for smaller screens */
+        z-index: 10;
     }
 
     .player-info {
         flex-direction: column; /* Stack the image and text vertically */
         align-items: center; /* Center the content */
         gap: 5px; /* Reduce spacing for smaller screens */
+        z-index: 10;
     }
 
     #player h1, #player p {
         font-size: 16px; /* Reduce font size for smaller screens */
         margin-left: 0; /* Remove left margin for better alignment */
         text-align: center; /* Center-align the text */
+        z-index: 10;
     }
 
     #player-image {
         width: 40px; /* Reduce image size for smaller screens */
         height: 40px;
+        z-index: 10;
     }
     #notifications {
         width: 90%; /* Adjust the width for smaller screens */
@@ -360,6 +366,7 @@ body{
         width: 90%; /* Adjust the width for smaller screens */
         margin: 20px auto; /* Reduce the margin for smaller screens */
         padding: 15px; /* Adjust padding for smaller screens */
+        z-index: 10;
     }
 
     .event-details h2 {

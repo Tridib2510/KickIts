@@ -19,12 +19,7 @@ const logout = document.getElementById('Logout').addEventListener('click',()=>{
         window.location.href="AllEvents.html"
     }).catch(err=>console.log(err))
 });
-const AllEvents = document.getElementById('AllEvents').addEventListener('click',()=>{
- window.location.href='./AllEvents.html'
-})
-const createEvent = document.getElementById('createEvent').addEventListener('click',()=>{
-    window.location.href='./createEvents.html'
-});
+
 const image = document.getElementById('image')
 
 
@@ -40,33 +35,46 @@ fetch(`${url}/KickIt/getEventDetails`,{
     console.log(data.event.playersJoined.length)
     let arr=[]
     let userId=[]
+    const playersEvent=document.getElementById('event-players')
+        playersEvent.parentNode.removeChild(playersEvent)
+
+   
     for(let i=0;i<data.event.playersJoined.length;i++){
         const player=document.createElement('div')
-        arr.push(player)
+
+         const playersParticipants=playersEvent.cloneNode(true)
+        arr.push(playersParticipants)
         
         player.id='player'
         const playerInfo = document.createElement('div');
             playerInfo.className = 'player-info';
 
             const playerName = document.createElement('h1');
-            playerName.innerHTML = 'Name :' + data.event.playersJoined[i].username;
+            playerName.innerHTML =data.event.playersJoined[i].username;
             player.appendChild(playerName);
             
-            
-
+             const playersName = playersParticipants.querySelector('#players-name');
+                 playersName.innerHTML = data.event.playersJoined[i].username;
             const playerImage = document.createElement('img');
             playerImage.id = 'player-image';
             playerImage.src = data.event.playersJoined[i].image;
+
+            playersParticipants.querySelector('#players-image').src = data.event.playersJoined[i].image;
+
+            playersParticipants.querySelector('#players-description').innerHTML = data.event.playersJoined[i].Description;
+
+            playersParticipants.querySelector('#email').innerHTML = data.event.playersJoined[i].email;
 
             player.appendChild(playerInfo);
             player.appendChild(playerImage);
 
             const joinedUsers = document.getElementById('joined-users');
-            joinedUsers.appendChild(player);
+            joinedUsers.appendChild(playersParticipants);
             const a=i
             player.addEventListener('click',()=>{
                 
-                console.log(data.event.activity)
+                console.log(data.event.createdBy)
+                
             if(data.event.createdBy===data.userId)
                 window.location.href="./giveReview.html?userId="+data.event.playersJoined[a]._id+"&activity="+data.event.activity+"&event="+data.event._id
 
