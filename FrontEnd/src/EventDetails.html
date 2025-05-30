@@ -15,6 +15,172 @@
     height: 600px;
     overflow-y: scroll;
 }
+.chat-container {
+            width: 400px;
+            height: 600px;
+            background-color: #fff;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .chat-header {
+            background: linear-gradient(to right, #2b5876, #4e4376);
+            color: #fff;
+            padding: 15px;
+            text-align: center;
+            font-size: 18px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+        
+        .chat-messages {
+            flex: 1;
+            padding: 15px;
+            overflow-y: auto;
+            background-color: #f5f5f5;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        /* Received messages with specific ID */
+        #received-message {
+            margin-bottom: 15px;
+            max-width: 80%;
+            align-self: flex-start;
+        }
+        
+        #received-message .message-content {
+            padding: 12px 15px;
+            border-radius: 18px;
+            background-color: #e6e6e6;
+            display: inline-block;
+            word-break: break-word;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+            border-bottom-left-radius: 5px;
+        }
+        
+        /* Your current messages (the ones you send) */
+        .chat-message.user {
+            align-self: flex-end;
+        }
+        
+        .chat-message.user .message-content {
+            padding: 12px 15px;
+            border-radius: 18px;
+            background-color: #e3f2fd;
+            display: inline-block;
+            word-break: break-word;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+            border-bottom-left-radius: 5px;
+        }
+        
+        .chat-input {
+            display: flex;
+            padding: 10px;
+            background-color: #fff;
+            border-top: 1px solid #e6e6e6;
+        }
+        
+        .chat-input input {
+            flex: 1;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 20px;
+            outline: none;
+            font-size: 14px;
+            transition: border 0.2s ease;
+        }
+        
+        .chat-input input:focus {
+            border-color: #4e4376;
+        }
+        
+        .chat-input button {
+            background-color: #4e4376;
+            color: #fff;
+            border: none;
+            border-radius: 20px;
+            padding: 0 20px;
+            margin-left: 10px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: background-color 0.2s ease;
+        }
+        
+        .chat-input button:hover {
+            background-color: #3a325a;
+        }
+        
+        /* Custom scrollbar */
+        .chat-messages::-webkit-scrollbar {
+            width: 5px;
+        }
+        
+        .chat-messages::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        
+        .chat-messages::-webkit-scrollbar-thumb {
+            background-color: rgba(78, 67, 118, 0.3);
+            border-radius: 10px;
+        }
+        
+        .chat-messages::-webkit-scrollbar-thumb:hover {
+            background-color: rgba(78, 67, 118, 0.5);
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 480px) {
+            .chat-container {
+                width: 100%;
+                height: 100%;
+                border-radius: 0;
+            }
+        }
+     /* Add this to your <style> section or EventDetails.css */
+#Chatting-menu {
+    
+    flex-direction: column;
+    width: 100%;
+    max-height: 500px;
+    min-height: 500px;
+    overflow: hidden;
+    position: relative;
+}
+
+.chat-container {
+    width: 100%;
+    height: 100%;
+    min-height: 500px;
+    max-height: 500px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.chat-messages {
+    flex: 1 1 auto;
+    overflow-y: auto;
+    padding-bottom: 60px; /* Space for the input */
+}
+
+.chat-input {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #fff;
+    border-top: 1px solid #e6e6e6;
+    display: flex;
+    padding: 10px;
+    z-index: 2;
+}
+
+         
 
     </style>
     <link rel="stylesheet" href="EventDetails.css">
@@ -64,9 +230,9 @@
                 d="M14.857 17.082a23.848 23.848 0 0 0 5.454-1.31A8.967 8.967 0 0 1 18 9.75V9A6 6 0 0 0 6 9v.75a8.967 8.967 0 0 1-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 0 1-5.714 0m5.714 0a3 3 0 1 1-5.714 0" />
             </svg>
           </button>
-          <div id="notification-menu"
-            class="absolute right-0 z-10 mt-2 w-80  rounded-md bg-white shadow-lg ring-1 ring-black/5 focus:outline-none hidden"
-            role="menu" aria-orientation="vertical"  aria-labelledby="notification-button" tabindex="-1">
+         <div id="notification-menu"
+  class="absolute right-0 z-10 mt-2 w-80  rounded-md bg-white shadow-lg ring-1 ring-black/5 focus:outline-none hidden"
+  role="menu" aria-orientation="vertical"  aria-labelledby="notification-button" tabindex="-1">
             <div class="px-2 text-sm text-gray-700 font-semibold " id="notification-div">Notifications</div>
             <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">No new notifications</a>
             <!-- Add more notification items here -->
@@ -134,7 +300,11 @@
 			
     <div class="main-container" id="main-container">
         <div class="left-div" id="left-div">
+          
             <div class="profile-container" id="profile-container">
+              
+
+        
                 <div class="profile-header">
                     <h1 id="profile-name">John Doe</h1>
                     <p id="creator">john.doe@example.com</p>
@@ -152,14 +322,16 @@
                     <p id="time">20:20AM</p>
                     <div id='division'>
                         <button id="Join">Join</button>
-                        <button id="Chat">Chat</button>
+                        
                         <button id="Leave">Leave</button>
                         <button id="Delete">Delete Event</button>
                     </div>
+                    
                 </div>
             </div>
         </div>
         <div class="right-div" id="right-div">
+          
             <div class="additional-content" id="joined-users">
               <div id='event-players' class="job-card bg-white dark:bg-gray-800 rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
     <div class="relative h-20 bg-gradient-to-r from-purple-500 to-pink-600">
@@ -209,9 +381,50 @@
                 
             </div>
         </div>
+    
+        
     </div>
+    
     </ul>
+    <!-- Replace your current chat-dropdown div with this, just before </body> -->
+<div id="chat-dropdown"
+     style="position: fixed; bottom: 24px; right: 24px; z-index: 9999; display: flex; flex-direction: column; align-items: flex-end; width: 250px;">
+  <div id="Chatting-menu"
+    class="rounded-md bg-white shadow-lg ring-1 ring-black/5 focus:outline-none hidden"
+    style="width: 60vh; margin-bottom: 12px; max-height: 500px; overflow-y: auto;">
+    <div class="chat-container">
+        <div class="chat-header">
+            Kick IT
+        </div>
+        <div class="chat-messages" id="message-content">
+            <!-- Example received message with the new ID -->
+            <div id="received-message">
+               
+            </div>
+            <!-- Example user message -->
+            <div class="chat-message user">
+               
+            </div>
+        </div>
+        <div class="chat-input">
+            <input type="text" id="input-text" placeholder="Type a message..." >
+            <button id="send-button">Send</button>
+        </div>
     </div>
+    
+  </div>
+  <button type="button" id="chat-button"
+    class="rounded-full bg-gray-800 p-3 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
+    aria-expanded="false" aria-haspopup="true">
+    <span class="sr-only">Open chat</span>
+    <svg class="size-6" id='chat-icon' fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+        d="M8 10h.01M12 10h.01M16 10h.01M21 12c0 3.866-3.582 7-8 7a8.96 8.96 0 01-4-.93L3 21l1.07-4.28A7.963 7.963 0 013 12c0-3.866 3.582-7 8-7s8 3.134 8 7z"/>
+    </svg>
+  </button>
+</div>
+    
+      
     <script>
        document.addEventListener('DOMContentLoaded', function () {
     // Profile dropdown
@@ -238,6 +451,19 @@
       e.stopPropagation();
     });
 
+    // Chatting menu
+    const chatBtn = document.getElementById('chat-button');
+    const chattingMenu = document.getElementById('Chatting-menu');
+    chatBtn.addEventListener('click', function (e) {
+      e.stopPropagation();
+      chattingMenu.classList.toggle('hidden');
+      profileDropdown.classList.add('hidden');
+      notificationDropdown.classList.add('hidden');
+    });
+    chattingMenu.addEventListener('click', function (e) {
+      e.stopPropagation();
+    });
+
     // Hide both dropdowns when clicking outside
     document.addEventListener('click', function () {
       if (!profileDropdown.classList.contains('hidden')) {
@@ -250,8 +476,9 @@
   });
 
       </script>
-   
+   <script defer src="https://kickits-chatapp.onrender.com/socket.io/socket.io.js"></script>
     <script defer src="https://cdn.socket.io/4.0.0/socket.io.min.js"></script>
     <script type="module" defer src="EventDetails.js"></script>
+    
 </body>
 </html>

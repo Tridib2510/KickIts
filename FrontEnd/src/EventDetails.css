@@ -64,7 +64,7 @@ body{
     flex: 1; /* Make both divs take equal space */
     padding: 50px;
     background-color:#333;
-    border: 1px solid #ddd;
+   
     border-radius: 8px;
     overflow-x: hidden;
     overflow-y: auto;
@@ -133,7 +133,7 @@ body{
     margin: 50px auto;
     padding: 20px;
     background-color: #f9f9f9;
-    border: 1px solid #ddd;
+   
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
@@ -272,7 +272,7 @@ body{
     margin: 50px auto;
     padding: 20px;
     background-color: #f9f9f9;
-    border: 1px solid #ddd;
+   
     box-sizing: border-box;
     min-height: 300px;
     max-height: 580px;
@@ -286,8 +286,8 @@ body{
     height: 600px; /* Set a fixed height */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add shadow */
     padding: 20px;
-    background-color: #f9f9f9;
-    border: 1px solid #ddd;
+    background-color: rgba(255, 255, 255, 0.1);
+    
     border-radius: 8px;
     overflow-y: scroll;
     

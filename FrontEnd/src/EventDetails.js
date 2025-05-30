@@ -1,7 +1,7 @@
 
 import url from "./ApiUrl.js";
 //Web socket below
-const socket=io(`${url}`)
+const socket2=io(`${url}`)
 const rightDiv=document.getElementById('right-div')
 const leftDiv=document.getElementById('left-div')
 const mainContainer=document.getElementById('main-container')
@@ -80,7 +80,7 @@ fetch(`${url}/KickIt/getEventDetails`,{
 
             })
     }
-    socket.emit('joinRoom',data.userId);
+    socket2.emit('joinRoom',data.userId);
     console.log('data')
     console.log(data)
     const userName=data.username
@@ -100,14 +100,12 @@ fetch(`${url}/KickIt/getEventDetails`,{
     const time=document.getElementById('time')
     date.innerHTML=data.event.date
     time.innerHTML=data.event.time
-    const chat=document.getElementById('Chat')
+   
     const join=document.getElementById('Join')
     const leave=document.getElementById('Leave')
     const deleteEvent=document.getElementById('Delete')
     const joinedUsers=document.getElementById('joined-users')
-    chat.addEventListener('click',()=>{
-        window.location.href="https://kickits-chatapp-frontend.onrender.com/"
-    })
+   
     fetch(`${url}/KickIt/alreadyExits`,{
         method:'PATCH',
         headers:{
@@ -202,7 +200,7 @@ fetch(`${url}/KickIt/getEventDetails`,{
             .then(data=>{
                 console.log('Pookie')
                console.log(data)
-                socket.emit('sendRequest',data.creatorId,userName,user_id,event)
+                socket2.emit('sendRequest',data.creatorId,userName,user_id,event)
                 const join=document.getElementById('Join')
                 join.innerHTML='Pending Request'
                 join.style.backgroundColor='grey'
@@ -222,3 +220,81 @@ fetch(`${url}/KickIt/getEventDetails`,{
     console.log(data)
 })
 .catch(err=>console.log(err))
+
+
+
+const socket=io('https://kickits-chatapp.onrender.com/')
+//const name=prompt('Enter your name')
+// event=prompt('Connect to which event')
+
+
+fetch('https://kickits-1.onrender.com/KickIt/getUser',{credentials:'include'})
+.then(res=>res.json())
+.then(data=>events(data.user.username,data.user.currentEvent
+))
+.catch(err=>console.log(err))
+
+function events(name,event){
+console.log('hello')
+socket.on('send',(message,e,name)=>{
+    console.log(event===name)
+    if(event===e){
+    const chatBox = document.querySelector('.chat-messages');
+    const messageInput = message
+    
+    const sendButton = document.getElementById('send-button');
+
+  
+    const messageElement = document.createElement('div');
+    messageElement.id="received-message"
+    messageElement.style='size'
+            const messageContent = document.createElement('div');
+            messageContent.classList.add('message-content');
+            messageContent.textContent = `${name} : ${message}`;
+          
+            messageElement.appendChild(messageContent);
+            chatBox.appendChild(messageElement);
+    }
+
+})
+socket.emit('getEvent',event)
+
+socket.on('sendEvent',(x)=>{
+   if(x===event){
+    const chatBox = document.querySelector('.chat-messages');
+    const messageInput = document.getElementById('input-text');
+    const sendButton = document.getElementById('send-button');
+
+    sendButton.addEventListener('click', () => {
+        sendMessage();
+    });
+
+    messageInput.addEventListener('keypress', (event) => {
+        if (event.key === 'Enter') {
+            sendMessage();
+        }
+    });
+
+   async function sendMessage() {
+        const message = messageInput.value.trim();
+        if (message !== '') {
+            const messageElement = document.createElement('div');
+            messageElement.classList.add('chat-message', 'user');
+            const messageContent = document.createElement('div');
+            messageContent.classList.add('message-content');
+            messageContent.textContent = message;
+            
+           socket.emit('message',message,name)
+               
+                messageElement.appendChild(messageContent);
+                chatBox.appendChild(messageElement);
+            messageInput.value = '';
+                  
+        }
+    }
+
+            chatBox.scrollTop = chatBox.scrollHeight;
+}
+            })
+            
+        }
