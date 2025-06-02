@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Event</title>
-    
+     <link rel="stylesheet" href="output.css">
+      <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
     <style>
         #heading {
     font-style: italic;
@@ -180,11 +181,113 @@
     z-index: 2;
 }
 
-         
+          [x-cloak] { display: none !important; }
+        .slide-transition {
+            transition: transform 0.5s ease-in-out;
+        }
+        .area {
 
+            width: 100%;
+            height: 150vh;
+            overflow: hidden;
+           
+        }
+        #right-div{
+            z-index: 100;
+        }
+         .card {
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            overflow: hidden;
+            border-radius: 15px;
+        }
+        
+        .card:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 20px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .card-image {
+            transition: transform 0.8s;
+        }
+        
+        .card:hover .card-image {
+            transform: scale(1.05);
+        }
+        
+        .card-overlay {
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.65) 100%);
+        }
+        
+        .slider-container {
+            scroll-behavior: smooth;
+        }
+        
+        .nav-button {
+            transition: all 0.3s;
+            opacity: 0.9;
+        }
+        
+        .nav-button:hover {
+            transform: scale(1.1);
+            opacity: 1;
+        }
+        
+        .badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            padding: 0.25rem 0.75rem;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+        
+        .feature-card {
+            transition: all 0.3s ease;
+            border-radius: 16px;
+            overflow: hidden;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-8px);
+        }
+        
+        .feature-icon {
+            transition: all 0.3s ease;
+        }
+        
+        .feature-card:hover .feature-icon {
+            transform: scale(1.15);
+        }
+        
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        
+        .gradient-text {
+            background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .blur-backdrop {
+            backdrop-filter: blur(8px);
+            background-color: rgba(255, 255, 255, 0.8);
+        }
+        
+       
     </style>
     <link rel="stylesheet" href="EventDetails.css">
-    <link rel="stylesheet" href="output.css">
+    
+    
+   
    
 </head>
 <body>
@@ -241,7 +344,7 @@
         <!-- Profile dropdown -->
         <div class="relative ml-3" id="profile-dropdown">
           <div>
-            <button type="button" id="profile-pic" class="relative flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800" aria-expanded="false" aria-haspopup="true">
+            <button type="button" id="profile-pic" class="relative flex rounded-full bg-gray-800 text-sm " aria-expanded="false" aria-haspopup="true">
               
               <span class="sr-only">Open user menu</span>
               <img class="size-8 rounded-full" id="image" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
@@ -297,56 +400,73 @@
 				<li></li>
 				<li></li>
 				<li></li>
-			
-    <div class="main-container" id="main-container">
-        <div class="left-div" id="left-div">
-          
-            <div class="profile-container" id="profile-container">
-              
+            
+            
+			<div id="left-div" style="z-index: 10;">
+     <div class="font-std mb-10 w-full rounded-2xl bg-white p-10 font-normal leading-relaxed text-gray-900 shadow-xl max-w-7xl mx-auto">
+        <div class="flex flex-col md:flex-row">
+            <div class="md:w-1/3 text-center mb-8 md:mb-0">
+            </div>
+            <div class="md:w-2/3 md:pl-8">
+                <h1 class="text-2xl font-bold text-indigo-800 mb-2" id="profile-name">John Doe</h1>
+                <p class="text-gray-600 mb-6" id="creator">Software Developer</p>
 
-        
-                <div class="profile-header">
-                    <h1 id="profile-name">John Doe</h1>
-                    <p id="creator">john.doe@example.com</p>
-                </div>
-                <div class="profile-details">
-                    <h2>Event Details</h2>
-                    <p id="EventDetails">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam non urna vitae odio convallis tincidunt.</p>
-                    <h2>Players Required</h2>
-                    <p id="players-required">4</p>
-                    <h2>Venue</h2>
-                    <p id="venue">Simlagarh</p>
-                    <h2>Date</h2>
-                    <p id="Date">Address: 123 Main St, Anytown, USA</p>
-                    <h3>Time</h3>
-                    <p id="time">20:20AM</p>
-                    <div id='division'>
-                        <button id="Join">Join</button>
-                        
-                        <button id="Leave">Leave</button>
-                        <button id="Delete">Delete Event</button>
-                    </div>
-                    
-                </div>
+                <h2 class="text-xl font-semibold text-indigo-800 mb-4">Organization Information</h2>
+                <p class="text-gray-700 mb-6" id="EventDetails">
+                    Estep Bilişim / Software Developer
+                </p>
+              
+                <h2 class="text-xl font-semibold text-indigo-800 mb-4" id="players-required">Contact Information</h2>
+              
             </div>
         </div>
-        <div class="right-div" id="right-div">
-          
-            <div class="additional-content" id="joined-users">
-              <div id='event-players' class="job-card bg-white dark:bg-gray-800 rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
-    <div class="relative h-20 bg-gradient-to-r from-purple-500 to-pink-600">
-        <button class="absolute top-2 right-2 text-white hover:text-purple-100 save-btn">
-            <svg class="w-6 h-6 save-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+
+    </div>
+    </div>
+   <div id="right-div" style="position: relative; z-index:999;">
+        
+
+        <!-- Card Slider -->
+        <div class="relative mb-24 w-full">
+            <!-- Slider Controls -->
+            <div class="flex justify-between absolute inset-0 items-center z-50 px-4 pointer-events-none ">
+        <button id="prev-btn" class="nav-button bg-white p-3 rounded-full shadow-lg text-gray-800 pointer-events-auto focus:outline-none hover:bg-gray-50 transform transition">
+    <img src="https://img.icons8.com/ios-filled/24/000000/chevron-left.png" alt="Previous" class="w-6 h-6" />
+                </button>
+        <button id="next-btn" class="nav-button bg-white p-3 rounded-full shadow-lg text-gray-800 pointer-events-auto focus:outline-none hover:bg-gray-50 transform transition">
+    <img src="https://img.icons8.com/ios-filled/24/000000/chevron-right.png" alt="Next" class="w-6 h-6" />
+                </button>
+            </div>
+
+            <!-- Slider Container -->
+            <div id="slider" class=" slider-container flex overflow-x-auto hide-scrollbar py-8 snap-x snap-mandatory">
+                <div id="joined-users"  class="flex space-x-8 px-4">
+                   
+
+                    <!-- Card 2 -->
+                  
+
+                    <!-- Card 3 -->
+                     
+                    
+
+                    <!-- Card 4 -->
+                      <div>
+
+                     <div id='event-players' class="job-card bg-white dark:bg-gray-800 rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300  w-96 card flex-none w-80 bg-white shadow-lg snap-center">
+                      <div class="relative h-20 bg-gradient-to-r from-purple-500 to-pink-600">
+                    <button class="absolute top-2 right-2 text-white hover:text-purple-100 save-btn">
+                     <svg class="w-6 h-6 save-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"/>
             </svg>
-        </button>
-        <img id='players-image' class="absolute -bottom-8 left-4 w-16 h-16 rounded-full border-4 border-white dark:border-gray-800 object-cover" 
+             </button>
+             <img id='players-image' class="absolute -bottom-8 left-4 w-16 h-16 rounded-full border-4 border-white dark:border-gray-800 object-cover" 
              src="https://images.unsplash.com/photo-1584433144859-1fc3ab64a957" 
              alt="HealthCare Corp logo">
-    </div>
+             </div>
     
-    <div  class="pt-10 px-4 pb-4">
-        <div class="flex justify-between items-start">
+           <div  class="pt-10 px-4 pb-4">
+            <div class="flex justify-between items-start">
             <div>
                 <h3 id='players-name' class="font-bold text-lg dark:text-white">Medical Director</h3>
                 <p id='players-description' class="text-sm font-medium text-gray-600 dark:text-gray-300 mt-1">HealthCare Corp</p>
@@ -381,11 +501,32 @@
                 
             </div>
         </div>
-    
+        </div>
+       
+                    <!-- Card 5 -->
+
+                </div>
+            </div>
+        </div>
+
+        <!-- Pagination Dots -->
+        <div class="flex justify-center mb-16 space-x-2">
+            <button class="w-2.5 h-2.5 rounded-full bg-blue-500 focus:outline-none"></button>
+            <button class="w-2.5 h-2.5 rounded-full bg-gray-300 focus:outline-none hover:bg-blue-300"></button>
+            <button class="w-2.5 h-2.5 rounded-full bg-gray-300 focus:outline-none hover:bg-blue-300"></button>
+            <button class="w-2.5 h-2.5 rounded-full bg-gray-300 focus:outline-none hover:bg-blue-300"></button>
+        </div>
+
         
+        <!-- Footer -->
+        <footer class="mt-20 text-center text-gray-500 text-sm">
+            <p>© 2025 Modern Galeri. Tüm hakları saklıdır.</p>
+        </footer>
+    </div>
+           </div>
+    </ul>
     </div>
     
-    </ul>
     <!-- Replace your current chat-dropdown div with this, just before </body> -->
 <div id="chat-dropdown"
      style="position: fixed; bottom: 24px; right: 24px; z-index: 9999; display: flex; flex-direction: column; align-items: flex-end; width: 250px;">
@@ -424,8 +565,10 @@
   </button>
 </div>
     
-      
+   
     <script>
+   
+
        document.addEventListener('DOMContentLoaded', function () {
     // Profile dropdown
     const profileBtn = document.getElementById('profile-pic');
@@ -474,8 +617,78 @@
       }
     });
   });
+    
+const slider = document.getElementById('slider');
+        const prevBtn = document.getElementById('prev-btn');
+        const nextBtn = document.getElementById('next-btn');
+
+   function getCardWidth() {
+        const card = slider.querySelector('.card');
+        if (!card) return 0;
+        const style = window.getComputedStyle(card);
+        const marginRight = parseInt(style.marginRight) || 0;
+        const marginLeft = parseInt(style.marginLeft) || 0;
+        return card.offsetWidth + marginLeft + marginRight;
+    }
+
+    
+        
+        
+        prevBtn.addEventListener('click', () => {
+           const cardWidth = getCardWidth()+100;
+            slider.scrollBy({ left: -cardWidth, behavior: 'smooth' });
+        });
+        
+        nextBtn.addEventListener('click', () => {
+           const cardWidth = getCardWidth();
+            slider.scrollBy({ left: cardWidth, behavior: 'smooth' });
+        });
+
+        // Improved hover effect
+        const cards = document.querySelectorAll('.card');
+        cards.forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                cards.forEach(c => {
+                    if (c !== card) {
+                        c.style.opacity = '0.7';
+                        c.style.transform = 'scale(0.98)';
+                    }
+                });
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                cards.forEach(c => {
+                    c.style.opacity = '1';
+                    c.style.transform = '';
+                });
+            });
+        });
+
+        // Pagination dots functionality
+        const dots = document.querySelectorAll('.rounded-full');
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                // Reset all dots
+                dots.forEach(d => {
+                    d.classList.remove('bg-blue-500');
+                    d.classList.add('bg-gray-300');
+                });
+                
+                // Activate current dot
+                dot.classList.remove('bg-gray-300');
+                dot.classList.add('bg-blue-500');
+                
+                // Scroll to position
+                slider.scrollTo({
+                    left: index * cardWidth,
+                    behavior: 'smooth'
+                });
+            });
+        });
+
 
       </script>
+    
    <script defer src="https://kickits-chatapp.onrender.com/socket.io/socket.io.js"></script>
     <script defer src="https://cdn.socket.io/4.0.0/socket.io.min.js"></script>
     <script type="module" defer src="EventDetails.js"></script>
