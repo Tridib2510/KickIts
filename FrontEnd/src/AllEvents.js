@@ -134,11 +134,13 @@ function helper(text,params) {
                   if(buttons.contains(login))
                     buttons.removeChild(login);
 
-                const parent_SignUp=document.getElementById('SignUp').parentNode;
-                parent_SignUp.removeChild(document.getElementById('SignUp'));
-
-                 const parent_Login=document.getElementById('Login').parentNode;
-                parent_Login.removeChild(document.getElementById('Login'));
+                const parent_SignUp=document.getElementById('SignUp');
+                if(parent_SignUp)
+                parent_SignUp.parentNode.removeChild(document.getElementById('SignUp'));
+               
+                 const parent_Login=document.getElementById('Login');
+                 if(parent_Login)
+                parent_Login.parentNode.removeChild(document.getElementById('Login'));
 
                    
                 } else {
