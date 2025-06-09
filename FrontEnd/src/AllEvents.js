@@ -155,11 +155,14 @@ function helper(text,params) {
                     buttons.removeChild(MyEvents);
                     if(buttons.contains(createEvent))
                     buttons.removeChild(createEvent);
+                if(document.getElementById('notification-button'))
                     if(document.getElementById('notification-button').contains(notification))
                         document.getElementById('notification-button').removeChild(notification)
+                    if(document.getElementById('notification-dropdown').contains(document.getElementById('notification-button')))
                         document.getElementById('notification-dropdown').removeChild(document.getElementById('notification-button'))
 
                     const parent_profilePic=profilePic.parentNode;
+                    if( parent_profilePic && parent_profilePic.contains(profilePic))
                     parent_profilePic.removeChild(profilePic)
                 }
             }
