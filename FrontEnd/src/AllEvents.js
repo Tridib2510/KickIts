@@ -254,7 +254,7 @@ const button = document.getElementById('search-button').addEventListener('click'
             if(leftDiv.contains(Events))
             leftDiv.removeChild(Events);
        }
-       helper('','?page=1&limit=5');
+      helper('','?page=1&limit=5');
     }
     else{
     const text1=`?activity=${searchBar.value}`
@@ -274,7 +274,7 @@ const button = document.getElementById('search-button').addEventListener('click'
  
  });
 
- document.getElementById('search-bar').addEventListener('keypress', async(event) => {
+ document.getElementById('search-bar').addEventListener('keypress', (event) => {
     if(event.key==='Enter'){
          const searchBar=document.getElementById('search-bar')
     if(searchBar.value===''){
@@ -283,7 +283,7 @@ const button = document.getElementById('search-button').addEventListener('click'
             if(leftDiv.contains(Events))
             leftDiv.removeChild(Events);
        }
-      await helper('','?page=1&limit=5');
+       helper('','?page=1&limit=5');
     }
     else{
     const text1=`?activity=${searchBar.value}`
@@ -293,9 +293,9 @@ const button = document.getElementById('search-button').addEventListener('click'
         if(leftDiv.contains(Events))
                 leftDiv.removeChild(Events);
            }
-   await helper(text1,'&page=1&limit=5')
-   await helper(text2,'&page=1&limit=5')
-   await helper(text3,'&page=1&limit=5')
+    helper(text1,'&page=1&limit=5')
+    helper(text2,'&page=1&limit=5')
+    helper(text3,'&page=1&limit=5')
     page=1
    
         }
@@ -319,21 +319,24 @@ backward.addEventListener('click',()=>{
     }
     
 })
-forward.addEventListener('click',()=>{
+forward.addEventListener('click',async ()=>{
     const c = document.getElementById('search-bar');
     console.log(c.value==='')
    
     console.log(c.placeholder)
+    console.log(page,totalDocuments)
     if(page<totalDocuments){
+        console.log('check if contains',leftDiv.contains(Events))
+
         if(leftDiv.contains(Events))
         leftDiv.removeChild(Events)
   page++;
-  console.log(TEXT)
+  console.log('hey',TEXT)
   if(TEXT==='')
-  helper(TEXT,`?page=${page}&limit=5`)
+  await helper(TEXT,`?page=${page}&limit=5`)
 else {
     console.log(TEXT+`&page=${page}&limit=5`)
-    helper(TEXT,`&page=${page}&limit=5`)
+    await helper(TEXT,`&page=${page}&limit=5`)
 }
  leftDiv.scrollIntoView({ behavior: "smooth", block: "start", inline: "nearest" });
     }
