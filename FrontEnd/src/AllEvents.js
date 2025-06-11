@@ -568,3 +568,59 @@ dayElements.forEach(dayElement => {
 document.getElementById('closeModal').addEventListener('click', () => {
     hideModal();
 });
+const side=document.getElementById('side-by-side-container')
+
+ let currentTheme = 'light';
+        const body = document.body;
+        const themeIcon = document.getElementById('themeIcon');
+
+const themeToggle = document.getElementById('theme-toggle');
+
+
+
+
+        function toggleTheme() {
+    if (currentTheme === 'light') {
+        document.getElementById('border').style.border='2px solid black'
+        const area=document.getElementById('area')
+        const circles=document.getElementById('circles')
+        const create_front=document.getElementById('create-front')
+       
+        const allElements = document.querySelectorAll('label');
+        const title=document.getElementById('Title')
+        title.style.color='black'
+allElements.forEach(element => {
+    
+    element.style.color = 'black';
+});;
+        
+        area.style.background='#f8fafc';
+          const liElements = circles.querySelectorAll('li');
+          liElements.forEach((li, index) => {
+          li.style.background='black'
+    });
+        currentTheme = 'dark';
+        body.className = 'dark';
+        themeIcon.textContent = '☀️';
+    } else {
+        const area=document.getElementById('area')
+        area.style.background='#222222';
+        const liElements = circles.querySelectorAll('li');
+          liElements.forEach((li, index) => {
+          li.style.background='rgba(255, 255, 255, 0.2)'
+    });
+        currentTheme = 'light';
+        body.className = 'light';
+        themeIcon.textContent = '🌙';
+        
+        const allElements = document.querySelectorAll('label');
+        const title=document.getElementById('Title')
+        title.style.color='white'
+allElements.forEach(element => {
+    element.style.color = 'white';
+});;
+    }
+}
+
+// Add event listener to the button (better practice than onclick)
+themeToggle.addEventListener('click', toggleTheme);
