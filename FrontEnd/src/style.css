@@ -461,7 +461,7 @@ body {
             left: 0;
             width: 100%;
           
-            min-height: 300vh;/*Now it covers more space*/
+            min-height: 400vh;/*Now it covers more space*/
             z-index: -1;
            
         }
