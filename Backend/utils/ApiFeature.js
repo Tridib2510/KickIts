@@ -13,10 +13,10 @@ class ApiFeature{
        const q2={...this.q}
        console.log('hello'+q2)
       let queryStr=JSON.stringify(queryObj)
+      console.log('tatakia',queryStr)
       let q3=JSON.stringify(q2)
-      queryStr=queryStr.replace(/\b(gte|gt|lte|lt)\b/g,match=>{
-        `$${match}`})
-      
+      queryStr=queryStr.replace(/\b(gte|gt|lte|lt)\b/g,match=>`$${match}`)
+      console.log('tatakai2',queryStr)
       if(q3=='{}'){
       
         this.query=this.query.find(JSON.parse(queryStr),JSON.parse(q3))
