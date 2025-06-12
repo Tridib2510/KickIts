@@ -141,3 +141,27 @@ console.log(user)
         user:user
     })
 })
+
+exports.changeMode=catchAsync(async(req,res,next)=>{
+    const decode=jwt.verify(req.cookies.token,process.env.JWT_SECRET)
+    console.log(decode)
+  const user=await userModel.findById(decode.id)
+  console.log(user)
+    const mode=user.mode
+    if(user.mode==='light'){
+        user.mode='dark'
+    }
+    else{
+        user.mode='light'
+    }
+
+    await user.save({
+      validateBeforeSave: false
+   })
+
+    
+    res.status(200).json({
+        status:'success',
+        user
+    })
+})

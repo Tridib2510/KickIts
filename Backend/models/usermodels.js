@@ -83,7 +83,12 @@ const Schema=new mongoose.Schema({
     passwordResetExpires:{
       type:Date,
       default:Date.now()
+    },
+    mode:{
+      type:String,
+      default:'light'
     }
+
   
 },
 {

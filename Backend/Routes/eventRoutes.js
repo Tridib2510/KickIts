@@ -43,6 +43,8 @@ router.route('/profileUpdate').get(authController.protect,userController.getUpda
 
 router.route('/signUp').post(authController.signUp)
 
+router.route('/changeMode').get(userController.changeMode)
+
 router.route('/login').post(authController.login)
 
 router.route('/logout').get(authController.logOut)

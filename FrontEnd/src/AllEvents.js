@@ -18,8 +18,57 @@ const bodyData=document.body.innerHTML
 
 
 
+        function toggleTheme() {
+             fetch(`${url}/KickIt/changeMode`,{
+            credentials: 'include',
+        }).
+        then(res=>res.json()).
+        then(data=>console.log(data)).
+        catch(err=>console.log(err))
 
+    if (currentTheme === 'light') {
+       
 
+        document.getElementById('border').style.border='2px solid black'
+        const area=document.getElementById('area')
+        const circles=document.getElementById('circles')
+        const create_front=document.getElementById('create-front')
+       
+        const allElements = document.querySelectorAll('label');
+        const title=document.getElementById('Title')
+        title.style.color='black'
+allElements.forEach(element => {
+    
+    element.style.color = 'black';
+});;
+        
+        area.style.background='#f8fafc';
+          const liElements = circles.querySelectorAll('li');
+          liElements.forEach((li, index) => {
+          li.style.background='black'
+    });
+        currentTheme = 'dark';
+        body.className = 'dark';
+        themeIcon.textContent = '☀️';
+    } else {
+        const area=document.getElementById('area')
+        area.style.background='#222222';
+        const liElements = circles.querySelectorAll('li');
+          liElements.forEach((li, index) => {
+          li.style.background='rgba(255, 255, 255, 0.2)'
+    });
+        currentTheme = 'light';
+        body.className = 'light';
+        themeIcon.textContent = '🌙';
+        
+        const allElements = document.querySelectorAll('label');
+        const title=document.getElementById('Title')
+        title.style.color='white'
+allElements.forEach(element => {
+    element.style.color = 'white';
+});;
+    }
+}
 
 async function getData(){
 
@@ -62,6 +111,9 @@ socket.on('send', (user,event) => {
             left.appendChild(image)
             name.innerHTML = user.username+" is waiting for you response"
             
+             
+
+
             
             rightDiv.appendChild(requests);
     
@@ -105,9 +157,16 @@ navigationContainer.appendChild(backward);
 
 const forward = document.createElement('img');
 forward.src = "https://img.icons8.com/ios-filled/50/000000/forward.png";
+
+
+
+
 navigationContainer.appendChild(forward);
 
 function helper(text,params) {
+
+
+
    
     Events = document.createElement('div');
     
@@ -122,7 +181,8 @@ function helper(text,params) {
             socket.on('sendResponse', () => {
                 window.location.href = "https://www.google.com/";
             });
-            if (text == '') {                                                                                                                      
+            if (text == '') {   
+                                                                                                                                   
                 if (data.token!='default') {
                 
                     image.src = data.image;
@@ -375,6 +435,52 @@ fetch(`${url}/KickIt/joinRequests`, {
 })
     .then(res => res.json())
     .then(data => {
+       console.log(data.user.mode)
+       if(data.user.mode==='light'){
+                 
+
+        document.getElementById('border').style.border='2px solid black'
+        const area=document.getElementById('area')
+        const circles=document.getElementById('circles')
+        const create_front=document.getElementById('create-front')
+       
+        const allElements = document.querySelectorAll('label');
+        const title=document.getElementById('Title')
+        title.style.color='black'
+allElements.forEach(element => {
+    
+    element.style.color = 'black';
+});;
+        
+        area.style.background='#f8fafc';
+          const liElements = circles.querySelectorAll('li');
+          liElements.forEach((li, index) => {
+          li.style.background='black'
+    });
+        currentTheme = 'dark';
+        body.className = 'dark';
+        themeIcon.textContent = '☀️';
+             }
+
+        else{
+             const area=document.getElementById('area')
+        area.style.background='#222222';
+        const liElements = circles.querySelectorAll('li');
+          liElements.forEach((li, index) => {
+          li.style.background='rgba(255, 255, 255, 0.2)'
+    });
+        currentTheme = 'light';
+        body.className = 'light';
+        themeIcon.textContent = '🌙';
+        
+        const allElements = document.querySelectorAll('label');
+        const title=document.getElementById('Title')
+        title.style.color='white'
+allElements.forEach(element => {
+    element.style.color = 'white';
+});;
+        }
+
         socket.emit('joinRoom', data.user._id);
         const arr = data.user.joinedRequests;
         const array = [];
@@ -579,48 +685,6 @@ const themeToggle = document.getElementById('theme-toggle');
 
 
 
-        function toggleTheme() {
-    if (currentTheme === 'light') {
-        document.getElementById('border').style.border='2px solid black'
-        const area=document.getElementById('area')
-        const circles=document.getElementById('circles')
-        const create_front=document.getElementById('create-front')
-       
-        const allElements = document.querySelectorAll('label');
-        const title=document.getElementById('Title')
-        title.style.color='black'
-allElements.forEach(element => {
-    
-    element.style.color = 'black';
-});;
-        
-        area.style.background='#f8fafc';
-          const liElements = circles.querySelectorAll('li');
-          liElements.forEach((li, index) => {
-          li.style.background='black'
-    });
-        currentTheme = 'dark';
-        body.className = 'dark';
-        themeIcon.textContent = '☀️';
-    } else {
-        const area=document.getElementById('area')
-        area.style.background='#222222';
-        const liElements = circles.querySelectorAll('li');
-          liElements.forEach((li, index) => {
-          li.style.background='rgba(255, 255, 255, 0.2)'
-    });
-        currentTheme = 'light';
-        body.className = 'light';
-        themeIcon.textContent = '🌙';
-        
-        const allElements = document.querySelectorAll('label');
-        const title=document.getElementById('Title')
-        title.style.color='white'
-allElements.forEach(element => {
-    element.style.color = 'white';
-});;
-    }
-}
 
 // Add event listener to the button (better practice than onclick)
 themeToggle.addEventListener('click', toggleTheme);
