@@ -9,6 +9,7 @@
      <link rel="stylesheet" href="output.css">
       <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
     <style>
+      
         #heading {
     font-style: italic;
     
@@ -19,14 +20,10 @@
     overflow-y: scroll;
 }
 .chat-container {
-            width: 400px;
-            height: 600px;
-            background-color: #fff;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-            border-radius: 10px;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
+            width: 100%;
+    height: 100%;
+    min-height: 500px;
+    max-height: 500px
         }
         
         .chat-header {
@@ -188,10 +185,9 @@
             transition: transform 0.5s ease-in-out;
         }
         .area {
-
-            width: 100%;
-            height: 150vh;
-            overflow: hidden;
+           width: 100%;
+            min-height: 170vh;
+            overflow-x: hidden;
            
         }
         #right-div{
@@ -283,8 +279,100 @@
             backdrop-filter: blur(8px);
             background-color: rgba(255, 255, 255, 0.8);
         }
+        .custom-btn {
+            background-color: rgba(255, 255, 255, 0.25);
+           
+            color: #333;
+            padding: 10px 20px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(5px);
+            margin: 5px;
+           
+        }
         
-       
+        .custom-btn:hover {
+            background-color: rgba(255, 255, 255, 0.4);
+            border-color: rgba(255, 255, 255, 0.8);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        #Join{
+            background-color: rgba(72, 187, 120, 0.3);
+            border-color: rgba(72, 187, 120, 0.7);
+            color: #1e4620;
+        }
+        
+        #Join:hover {
+            background-color: rgba(72, 187, 120, 0.5);
+        }
+        
+        #Leave{
+            background-color: rgba(245, 101, 101, 0.3);
+            border-color: rgba(245, 101, 101, 0.7);
+            color: #742a2a;
+        }
+        
+        #Leave:hover {
+            background-color: rgba(245, 101, 101, 0.5);
+        }
+    #requests{
+    display: flex;
+    justify-content: center; /* Center the left and right divs horizontally */
+    align-items: center; /* Center the content vertically */
+    padding: 5px; /* Add some padding */
+    margin-bottom: 10px;
+    background-color: black;
+    border: 1px solid #ddd;
+    
+    border-radius: 8px;
+    box-sizing: border-box; /* Ensure padding is included in width and height */
+    gap: 2px; /* Add spacing between the left and right divs */
+     
+}
+#left {
+ 
+    display: flex;
+    flex-direction: row-reverse; /* Reverse the order of elements */
+    align-items: center; /* Vertically center the content */
+    gap: 10px; /* Add spacing between the name and the image */
+}
+
+#right {   
+    flex: 0 0 auto; /* Allow the right div to size itself based on its content */
+    display: flex;
+    justify-content: flex-end; /* Align content to the right */
+    align-items: center; /* Vertically center the content */
+   
+     
+}
+
+#requestImage {
+    width: 20px; /* Size of the image */
+    height: 20px; /* Size of the image */
+    border-radius: 50%; /* Make the image circular */
+    background-color: #f4f4f4;
+    
+}
+#requestName {
+    font-size: 10px; /* Adjust font size */
+    color: #333; /* Text color */
+    margin: 0; /* Remove default margin */
+}
+#notifications{
+    width: 250px;
+    margin: 20px auto; /* Reduced the top and bottom margin */
+    padding: 20px; /* Adjusted padding */
+    background-color: #ddd;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+}
+#notifications p {
+    margin-bottom: 0px; /* Reduce the gap between paragraphs */
+}
     </style>
     <link rel="stylesheet" href="EventDetails.css">
     
@@ -404,27 +492,53 @@
 				<li></li>
             
             
-			<div id="left-div" style="z-index: 10;">
-     <div class="font-std mb-10 w-full rounded-2xl bg-white p-10 font-normal leading-relaxed text-gray-900 shadow-xl max-w-7xl mx-auto">
-        <div class="flex flex-col md:flex-row">
-            <div class="md:w-1/3 text-center mb-8 md:mb-0">
-            </div>
-            <div class="md:w-2/3 md:pl-8">
-                <h1 class="text-2xl font-bold text-indigo-800 mb-2" id="profile-name">John Doe</h1>
-                <p class="text-gray-600 mb-6" id="creator">Software Developer</p>
-
-                <h2 class="text-xl font-semibold text-indigo-800 mb-4">Organization Information</h2>
-                <p class="text-gray-700 mb-6" id="EventDetails">
-                    Estep Bilişim / Software Developer
-                </p>
-              
-                <h2 class="text-xl font-semibold text-indigo-800 mb-4" id="players-required">Contact Information</h2>
-              
+			 <div id="left-div" style="z-index: 10;">
+    <div class="font-std mb-17 w-full rounded-2xl bg-white p-10 font-normal leading-relaxed text-gray-900 shadow-xl max-w-7xl mx-auto dark:bg-gray-800" id="innerdivs">
+        
+        <!-- First div - Takes entire first row -->
+        <div class="w-full mb-8 relative">
+            <div class="h-10 bg-gradient-to-r from-purple-500 to-pink-600 rounded-t-lg"></div>
+            <div class="bg-white rounded-b-lg px-6 py-2">
+                <h1 class="text-2xl font-bold text-gray-900 mb-1" id="profile-name">John Doe</h1>
+                <p class="text-gray-600" id="creator">Software Developer</p>
             </div>
         </div>
 
+        <!-- Second row - 3 divs horizontally -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            
+            <!-- Second div -->
+            <div class="p-6 bg-blue-50 rounded-lg border">
+                <h2 class="text-xl font-semibold text-indigo-800 mb-4">Event Information</h2>
+                <p class="text-gray-700 mb-6" id="EventDetails">
+                    Estep Bilişim / Software Developer
+                </p>
+            </div>
+
+            <!-- Third div -->
+            <div class="p-6 bg-green-50 rounded-lg border">
+                <h2 class="text-xl font-semibold text-indigo-800 mb-4">Venue</h2>
+                <p class="text-gray-700 mb-3" id="venue">Conference Hall A</p>
+            </div>
+
+            <!-- Fourth div -->
+            <div class="p-6 bg-yellow-50 rounded-lg border">
+                <h2 class="text-xl font-semibold text-indigo-800 mb-4">Date & Time</h2>
+                <p class="text-gray-700 mb-6" id="Date">June 15, 2025</p>
+                <p class="text-gray-700 mb-6" id="time">June 15, 2025</p>
+                <h2 class="text-xl font-semibold text-indigo-800 mb-4">playersRequired</h2>
+                <p class="text-gray-700 mb-3" id="players-required">19</p>
+            </div>
+        </div>
+
+        <!-- Buttons moved outside the grid and cleaned up -->
+        <div style="display: flex; justify-content: center; gap: 10px; margin-top: 20px; padding: 10px 0;" id="division">
+            <button class="custom-btn" id="Join">Join</button>
+            <button class="custom-btn" id="Leave">Leave</button>
+        </div>
     </div>
-    </div>
+</div>
+   
    <div id="right-div" style="position: relative; z-index:999;">
         
 
@@ -512,13 +626,7 @@
         </div>
 
         <!-- Pagination Dots -->
-        <div class="flex justify-center mb-16 space-x-2">
-            <button class="w-2.5 h-2.5 rounded-full bg-blue-500 focus:outline-none"></button>
-            <button class="w-2.5 h-2.5 rounded-full bg-gray-300 focus:outline-none hover:bg-blue-300"></button>
-            <button class="w-2.5 h-2.5 rounded-full bg-gray-300 focus:outline-none hover:bg-blue-300"></button>
-            <button class="w-2.5 h-2.5 rounded-full bg-gray-300 focus:outline-none hover:bg-blue-300"></button>
-        </div>
-
+        
         
         <!-- Footer -->
         <footer class="mt-20 text-center text-gray-500 text-sm">
@@ -666,27 +774,8 @@ const slider = document.getElementById('slider');
             });
         });
 
-        // Pagination dots functionality
-        const dots = document.querySelectorAll('.rounded-full');
-        dots.forEach((dot, index) => {
-            dot.addEventListener('click', () => {
-                // Reset all dots
-                dots.forEach(d => {
-                    d.classList.remove('bg-blue-500');
-                    d.classList.add('bg-gray-300');
-                });
-                
-                // Activate current dot
-                dot.classList.remove('bg-gray-300');
-                dot.classList.add('bg-blue-500');
-                
-                // Scroll to position
-                slider.scrollTo({
-                    left: index * cardWidth,
-                    behavior: 'smooth'
-                });
-            });
-        });
+       
+        
 
 
       </script>

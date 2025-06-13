@@ -69,18 +69,6 @@ body{
     overflow-x: hidden;
     overflow-y: auto;
 }
-#notifications{
-    width: 500px;
-    margin: 20px auto; /* Reduced the top and bottom margin */
-    padding: 20px; /* Adjusted padding */
-    background-color: #ddd;
-    border: 1px solid #ddd;
-    overflow-y: auto; /* Enable vertical scrolling */
-    border-radius: 8px;
-}
-#notifications p {
-    margin-bottom: 0px; /* Reduce the gap between paragraphs */
-}
 
 #notifications:hover {
     transform: translateY(-5px); /* Slightly move the div upwards */
@@ -229,18 +217,12 @@ body{
 }
 
 #Join, #Chat,#Leave, #Delete {
-    padding: 10px 20px;
-    background-color: #007BFF;
+    
     color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
+    
 }
 
-#Join:hover, #Chat:hover,#Leave:hover, #Delete:hover {
-    background-color: #0056b3;
-}
+
 .main-container {
     display: flex;
     gap: 2px; /* Adjust the gap value as needed */
@@ -330,15 +312,7 @@ body{
         height: 40px;
         z-index: 10;
     }
-    #notifications {
-        width: 90%; /* Adjust the width for smaller screens */
-        padding: 15px; /* Reduce padding for smaller screens */
-        margin: 15px auto; /* Adjust margin for smaller screens */
-    }
-
-    #notifications p {
-        font-size: 14px; /* Reduce font size for smaller screens */
-    }
+   
     .event-details {
         width: 90%; /* Adjust the width for smaller screens */
         margin: 20px auto; /* Reduce the margin for smaller screens */

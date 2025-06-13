@@ -437,7 +437,7 @@ fetch(`${url}/KickIt/joinRequests`, {
     .then(data => {
        console.log(data.user.mode)
        if(data.user.mode==='light'){
-                 
+         
 
         document.getElementById('border').style.border='2px solid black'
         const area=document.getElementById('area')

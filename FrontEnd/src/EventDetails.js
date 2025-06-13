@@ -170,8 +170,7 @@ fetch(`${url}/KickIt/getEventDetails`,{
             div.removeChild(deleteEvent)
             const join=document.getElementById('Join')
             join.innerHTML='Pending Request'
-            join.style.backgroundColor='grey'
-            join.style.color='black'
+            
             join.style.cursor='not-allowed'
          }
          else{
@@ -203,8 +202,7 @@ fetch(`${url}/KickIt/getEventDetails`,{
                 socket2.emit('sendRequest',data.creatorId,userName,user_id,event)
                 const join=document.getElementById('Join')
                 join.innerHTML='Pending Request'
-                join.style.backgroundColor='grey'
-                join.style.color='black'
+               
                 join.style.cursor='not-allowed'
                
             }).catch(err=>console.log(err))
@@ -298,3 +296,66 @@ socket.on('sendEvent',(x)=>{
             })
             
         }
+fetch(`${url}/KickIt/joinRequests`, {
+    credentials: 'include'
+})
+    .then(res => res.json())
+    .then(data => {
+       console.log(data.user.mode)
+
+        socket.emit('joinRoom', data.user._id);
+        const arr = data.user.joinedRequests;
+        const array = [];
+        const index = [];
+        const events = [];
+        for (let i = 0; i < arr.length; i++) {
+            const notificationDiv=document.getElementById('notification-div')
+            const requests = document.createElement('div');
+            const left=document.createElement('div');
+            left.id="left"
+            const right=document.createElement('div');
+            right.id="right"
+            requests.appendChild(left)
+            requests.appendChild(right)
+            
+           requests.id='requests'
+            const a = i;
+            array.push(requests);
+            index.push(data.user.joinedRequests[a]);
+            events.push(data.user.requestedEvents[a]);
+            requests.id = 'notifications';
+            const name = document.createElement('h1');
+            const image=document.createElement('img')
+            image.src=data.user.joinedRequests[i].image
+            image.id="requestImage"
+            name.id = "requestName";
+            requests.appendChild(name);
+            left.appendChild(image)
+            name.innerHTML = data.user.joinedRequests[i].username+" is waiting for you response"
+            
+            
+            notificationDiv.appendChild(requests);
+            requests.addEventListener('click', () => {
+                const options = {
+                    method: 'PATCH',
+                    credentials: 'include',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        requestedUser: data.user.joinedRequests[a],
+                        requestedEvents: data.user.requestedEvents[a]
+                    })
+                };
+                fetch(`${url}/KickIt/joinRequests`, options)
+                    .then(res => res.json())
+                    .then(data => {
+                        window.location = './acceptRequest.html';
+                    })
+                    .catch(err => console.log(err));
+            });
+        }
+    })
+    .catch(err => console.log(err));
+
+        

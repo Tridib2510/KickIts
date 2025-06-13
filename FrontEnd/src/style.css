@@ -204,7 +204,6 @@ body {
 }
 
 #right-div {
-   
     height: 600px;
     overflow-y: scroll;
 }
@@ -250,7 +249,7 @@ body {
   width: 32px;
   height: 32px;
 }
-#requests {
+#requests{
     display: flex;
     justify-content: center; /* Center the left and right divs horizontally */
     align-items: center; /* Center the content vertically */
@@ -261,39 +260,36 @@ body {
     border-radius: 8px;
     box-sizing: border-box; /* Ensure padding is included in width and height */
     gap: 2px; /* Add spacing between the left and right divs */
+    max-width: 2vh;
      
 }
-#left {
- 
+#left{
     display: flex;
     flex-direction: row-reverse; /* Reverse the order of elements */
     align-items: center; /* Vertically center the content */
     gap: 10px; /* Add spacing between the name and the image */
 }
 
-#right {
-    
+#right{  
     flex: 0 0 auto; /* Allow the right div to size itself based on its content */
     display: flex;
     justify-content: flex-end; /* Align content to the right */
-    align-items: center; /* Vertically center the content */
-   
-     
+    align-items: center; /* Vertically center the content */   
 }
 
-#requestImage {
+#requestImage{
     width: 20px; /* Size of the image */
     height: 20px; /* Size of the image */
     border-radius: 50%; /* Make the image circular */
     background-color: #f4f4f4;
     
 }
-#requestName {
+#requestName{
     font-size: 10px; /* Adjust font size */
     color: #333; /* Text color */
     margin: 0; /* Remove default margin */
 }
-.auth-buttons {
+.auth-buttons{
     display: flex;
     align-items: center;
     justify-content: flex-start; /* Keep other elements aligned to the left */
