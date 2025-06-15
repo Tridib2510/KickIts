@@ -457,7 +457,7 @@ body {
             left: 0;
             width: 100%;
           
-            min-height: 400vh;/*Now it covers more space*/
+            min-height: 485vh;/*Now it covers more space*/
             z-index: -1;
            
         }
@@ -583,3 +583,5 @@ body {
         .theme-toggle:hover .theme-icon {
             transform: rotate(20deg);
         }
+
+        

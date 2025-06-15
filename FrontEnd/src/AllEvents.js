@@ -341,6 +341,7 @@ function helper(text,params,isCalender) {
 
                    
                 } else {
+                    document.getElementById('getStarted').href="Login.html"
                     const createEventButton=document.getElementById('createEvent')
                     createEvent.textContent='Login'
                     
