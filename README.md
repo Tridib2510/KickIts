@@ -43,7 +43,7 @@ Why Kick It?
 
 💬 Stay Engaged – Chat, review, and track performance.
 
-🔗 Live Demo: https://kick-its.vercel.app 
+🔗 Live Demo: https://kickit-app.vercel.app
 
 📥 Contribute: PRs welcome! Check out CONTRIBUTING.md.
 
