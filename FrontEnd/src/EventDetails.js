@@ -165,9 +165,9 @@ fetch(`${url}/KickIt/getEventDetails`,{
          }
          else if(status.status==='requestNotYetAnswered'){
             const div=document.getElementById('division')
-            div.removeChild(chat)
+            //div.removeChild(chat)
             div.removeChild(leave)
-            div.removeChild(deleteEvent)
+           // div.removeChild(deleteEvent)
             const join=document.getElementById('Join')
             join.innerHTML='Pending Request'
             
@@ -179,9 +179,9 @@ fetch(`${url}/KickIt/getEventDetails`,{
             leftDiv.style.margin = 'auto';
             const div=document.getElementById('division')
            
-            div.removeChild(chat)
+          //  div.removeChild(chat)
             div.removeChild(leave)
-            div.removeChild(deleteEvent)
+         //   div.removeChild(deleteEvent)
             
         join.addEventListener('click',()=>{
             fetch(`${url}/KickIt/joinRequestToCreator`,{

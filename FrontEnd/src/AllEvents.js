@@ -162,7 +162,121 @@ forward.src = "https://img.icons8.com/ios-filled/50/000000/forward.png";
 
 
 navigationContainer.appendChild(forward);
+function helper2(text,params,isCalender){
+   
+Events=document.createElement('div')
+fetch(`${url}/KickIt/myEvents${text}${params}`,{
+   credentials:"include"
+})
+.then(res=>res.json())
+.then(data=>{
+  if(data.data.length===1 && isCalender && data.token!='default'){
+                 const options = {
+                        method: 'PATCH',
+                        credentials: 'include',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({
+                            data: data.data[0]
+                        })
+                    };
+                    fetch(`${url}/KickIt/getEventDetails`, options)
+                        .then(res => res.json())
+                        .then(data => {
+                            window.location.href = "EventDetails.html";
+                        })
+                        .catch(err => console.log(err));
+                    window.location.href='EventDetails.html'
+            }
+if(text==''){
+  
+   image.src=data.image
+      image.addEventListener('click',()=>{
+         window.location.href='profile.html'
+      })   
 
+      logout.addEventListener('click',()=>{
+         fetch(`${url}/KickIt/logout`,{
+            credentials:'include'
+        }).then(res=>res.json()).then(data=>{
+            console.log(data)
+            window.location.href="AllEvents.html"
+        }).catch(err=>console. log(err))
+      })
+    
+    
+   }
+if(data.status && data.status=='fail'){
+   document.body.events=false
+}
+   
+  for (let i = 0; i < data.data.length; i++) {
+                const div = document.createElement('div');
+                arr.push(div);
+                const link = document.createElement('a');
+                const a = i;
+                arr.push(div);
+                index.push(a);
+                const d = data.data[i];
+                const eventName = document.createElement('h2');
+                eventName.innerHTML = data.data[i].eventName;
+                eventName.className = "event-name";
+                div.className = 'event-details';
+                div.appendChild(eventName);
+                const eventDate = document.createElement('p');
+                eventDate.className = "event-date";
+                eventDate.innerHTML = `Date : ${data.data[i].date}`;
+                div.appendChild(eventDate);
+                const eventTime = document.createElement('p');
+                eventTime.innerHTML = `Time : ${data.data[i].time}`;
+                div.appendChild(eventTime);
+                document.body.events = true;
+                const active=document.createElement('h3')
+                active.innerHTML=`${data.data[i].active}`
+                div.appendChild(active)
+                if(data.data[i].active!='Inactive'){
+                Events.appendChild(div);
+                }
+                document.body.events = true;
+                if(data.data[i].active==='Filled'&&!data.data[i].playersJoined.includes(data.token)){
+                    div.style.cursor='not-allowed'
+                }
+                
+                if((data.data[i].active==='Filled'&&data.data[i].playersJoined.includes(data.token))||data.data[i].active==='Active'){
+                    if(data.token!='default')
+                div.addEventListener('click', () => {
+                    const options = {
+                        method: 'PATCH',
+                        credentials: 'include',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({
+                            data: data.data[a]
+                        })
+                    };
+                    fetch(`${url}/KickIt/getEventDetails`, options)
+                        .then(res => res.json())
+                        .then(data => {
+                            window.location.href = "EventDetails.html";
+                        })
+                        .catch(err => console.log(err));
+                });
+            }
+                totalDocuments=data.data.length
+                leftDiv.appendChild(Events);
+                leftDiv.appendChild(navigationContainer);
+            }
+          
+   totalDocuments=data.data.length
+   leftDiv.appendChild(Events);
+   leftDiv.appendChild(navigationContainer);
+            
+  
+})
+.catch(err=>console.log(err))
+}
 function helper(text,params,isCalender) {
 
 
@@ -176,7 +290,7 @@ function helper(text,params,isCalender) {
         .then(res => res.json())
         .then(data => {
             console.log(data.data.length)
-            if(data.data.length===1 && isCalender){
+            if(data.data.length===1 && isCalender && data.token!='default'){
                  const options = {
                         method: 'PATCH',
                         credentials: 'include',
@@ -659,8 +773,8 @@ function generateCalendar(year, month) {
             console.log(`${new Date().getFullYear()}-${new Date().getMonth()+1}-${day}`)
             const d=`${new Date().getFullYear()}-${new Date().getMonth()+1}-${day}`
             TEXT=`?date=${d}`
-            helper(TEXT,`&page=1&limit=5`,true)
-            window.location.href='#left-div'
+            helper2(TEXT,`&page=1&limit=5`,true)
+            window.location.href='#events'
          })
         // Check if this date is the current date
         const currentDate = new Date();
