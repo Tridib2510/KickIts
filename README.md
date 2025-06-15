@@ -22,6 +22,7 @@ Kick It is a full-stack event scheduling web app designed for sports enthusiasts
 
 
 🚀 Tech Stack
+
 🔹 Frontend:HTML,CSS ,Tailwind
 
 🔹 Backend: Node.js, Express.js
@@ -42,7 +43,7 @@ Why Kick It?
 
 💬 Stay Engaged – Chat, review, and track performance.
 
-🔗 Live Demo: https://kick-its.vercel.app 
+🔗 Live Demo: https://kickit-app.vercel.app
 
 📥 Contribute: PRs welcome! Check out CONTRIBUTING.md.
 
