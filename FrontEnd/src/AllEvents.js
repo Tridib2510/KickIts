@@ -163,7 +163,7 @@ forward.src = "https://img.icons8.com/ios-filled/50/000000/forward.png";
 
 navigationContainer.appendChild(forward);
 
-function helper(text,params) {
+function helper(text,params,isCalender) {
 
 
 
@@ -175,7 +175,26 @@ function helper(text,params) {
     })
         .then(res => res.json())
         .then(data => {
-            console.log(text+data.data.length)
+            console.log(data.data.length)
+            if(data.data.length===1 && isCalender){
+                 const options = {
+                        method: 'PATCH',
+                        credentials: 'include',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({
+                            data: data.data[0]
+                        })
+                    };
+                    fetch(`${url}/KickIt/getEventDetails`, options)
+                        .then(res => res.json())
+                        .then(data => {
+                            window.location.href = "EventDetails.html";
+                        })
+                        .catch(err => console.log(err));
+                    window.location.href='EventDetails.html'
+            }
             if(data.data.length!=0)TEXT=text
             socket.emit('joinRoom', 'i');
             socket.on('sendResponse', () => {
@@ -290,7 +309,7 @@ function helper(text,params) {
         })
         .catch(err => console.log(err));
 }
-await helper('','?page=1&limit=5');
+await helper('','?page=1&limit=5',false);
 
 
 
@@ -324,9 +343,9 @@ const button = document.getElementById('search-button').addEventListener('click'
         if(leftDiv.contains(Events))
                 leftDiv.removeChild(Events);
            }
-    helper(text1,'&page=1&limit=5')
-    helper(text2,'&page=1&limit=5')
-    helper(text3,'&page=1&limit=5')
+    helper(text1,'&page=1&limit=5',false)
+    helper(text2,'&page=1&limit=5',false)
+    helper(text3,'&page=1&limit=5',false)
     page=1
    
         }
@@ -343,7 +362,7 @@ const button = document.getElementById('search-button').addEventListener('click'
             if(leftDiv.contains(Events))
             leftDiv.removeChild(Events);
        }
-       helper('','?page=1&limit=5');
+       helper('','?page=1&limit=5',false);
     }
     else{
     const text1=`?activity=${searchBar.value}`
@@ -353,9 +372,9 @@ const button = document.getElementById('search-button').addEventListener('click'
         if(leftDiv.contains(Events))
                 leftDiv.removeChild(Events);
            }
-    helper(text1,'&page=1&limit=5')
-    helper(text2,'&page=1&limit=5')
-    helper(text3,'&page=1&limit=5')
+    helper(text1,'&page=1&limit=5',false)
+    helper(text2,'&page=1&limit=5',false)
+    helper(text3,'&page=1&limit=5',false)
     page=1
    
         }
@@ -372,9 +391,9 @@ backward.addEventListener('click',()=>{
     leftDiv.removeChild(Events)
   page--;
   if(TEXT==='')
-    helper(TEXT,`?page=${page}&limit=5`)
+    helper(TEXT,`?page=${page}&limit=5`,false)
   else{
-    helper(TEXT,`&page=${page}&limit=5`)
+    helper(TEXT,`&page=${page}&limit=5`,false)
   }
     }
     
@@ -392,12 +411,22 @@ forward.addEventListener('click',async ()=>{
         leftDiv.removeChild(Events)
   page++;
   console.log('hey',TEXT)
+  if(`TEXT.startsWith('?')`){
   if(TEXT==='')
-  await helper(TEXT,`?page=${page}&limit=5`)
+  await helper(TEXT,`?page=${page}&limit=5`,false)
 else {
-    console.log(TEXT+`&page=${page}&limit=5`)
-    await helper(TEXT,`&page=${page}&limit=5`)
+    console.log(TEXT+`&page=${page}&limit=5`,false)
+    await helper(TEXT,`&page=${page}&limit=5`,false)
 }
+  }
+  else{
+    if(TEXT==='')
+  await helper(TEXT,`?page=${page}&limit=5`,false)
+else {
+    console.log(TEXT+`&page=${page}&limit=5`,false)
+    await helper(TEXT,`&page=${page}&limit=5`,false)
+}
+  }
  leftDiv.scrollIntoView({ behavior: "smooth", block: "start", inline: "nearest" });
     }
 })
@@ -582,11 +611,6 @@ function isElementInViewport(element) {
 }
  
 
-}
-
-await getData();
-
-
 function generateCalendar(year, month) {
     const calendarElement = document.getElementById('calendar');
     const currentMonthElement = document.getElementById('currentMonth');
@@ -594,6 +618,10 @@ function generateCalendar(year, month) {
     // Create a date object for the first day of the specified month
     const firstDayOfMonth = new Date(year, month, 1);
     const daysInMonth = new Date(year, month + 1, 0).getDate();
+
+    
+
+
     
     // Clear the calendar
     calendarElement.innerHTML = '';
@@ -625,7 +653,15 @@ function generateCalendar(year, month) {
         const dayElement = document.createElement('div');
         dayElement.className = 'text-center py-2 border cursor-pointer';
         dayElement.innerText = day;
-
+         dayElement.addEventListener('click',()=>{
+             if(leftDiv.contains(Events))
+               leftDiv.removeChild(Events)
+            console.log(`${new Date().getFullYear()}-${new Date().getMonth()+1}-${day}`)
+            const d=`${new Date().getFullYear()}-${new Date().getMonth()+1}-${day}`
+            TEXT=`?date=${d}`
+            helper(TEXT,`&page=1&limit=5`,true)
+            window.location.href='#left-div'
+         })
         // Check if this date is the current date
         const currentDate = new Date();
         if (year === currentDate.getFullYear() && month === currentDate.getMonth() && day === currentDate.getDate()) {
@@ -669,6 +705,11 @@ dayElements.forEach(dayElement => {
         showModal(formattedDate);
     });
 });
+
+}
+
+await getData();
+
 
 // Event listener for closing the modal
 document.getElementById('closeModal').addEventListener('click', () => {

@@ -15,9 +15,7 @@ const logout = document.getElementById('Logout').addEventListener('click',()=>{
         window.location.href="AllEvents.html"
     }).catch(err=>console. log(err))
 });
-const MyEvents = document.getElementById('MyEvents').addEventListener('click',()=>{
-    window.location.href='myEvents.html'
-});
+
 // const AllEvents = document.getElementById('AllEvents').addEventListener('click',()=>{
 //     window.location.href='AllEvents.html'
 // });
@@ -68,7 +66,7 @@ const button=document.getElementById('createEvent').addEventListener('click',()=
             console.log(data.message)
             throw new Error(data.message);
         }
-    // window.location.href="AllEvents.html"
+     window.location.href="index.html"
     })
     .catch(err=>{
         errorContainer.textContent = `Error: ${err.message}`; // Display the error message
