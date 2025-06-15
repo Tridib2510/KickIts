@@ -163,6 +163,7 @@ forward.src = "https://img.icons8.com/ios-filled/50/000000/forward.png";
 
 navigationContainer.appendChild(forward);
 function helper2(text,params,isCalender){
+    
    
 Events=document.createElement('div')
 fetch(`${url}/KickIt/myEvents${text}${params}`,{
@@ -170,6 +171,9 @@ fetch(`${url}/KickIt/myEvents${text}${params}`,{
 })
 .then(res=>res.json())
 .then(data=>{
+    if(data.status && data.status==='error'){
+        window.location.href='Login.html'
+    }
   if(data.data.length===1 && isCalender && data.token!='default'){
                  const options = {
                         method: 'PATCH',
