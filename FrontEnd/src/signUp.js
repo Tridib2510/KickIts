@@ -11,7 +11,7 @@ async function handleSignUp(){
     account.createOAuth2Session(
         'google',
        `https://kickit-app.vercel.app/index.html`,
-        `https://kickit-app.vercel.app/index.html`
+       `https://kickit-app.vercel.app/index.html`
     )
    account.get()
   .then(user => {
