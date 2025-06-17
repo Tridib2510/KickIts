@@ -10,8 +10,8 @@ const client = new Appwrite.Client()
 async function handleSignUp(){
     account.createOAuth2Session(
         'google',
-       `${url}/FrontEnd/src/index.html`,
-        `${url}/FrontEnd/src/index.html`
+       `https://kickit-app.vercel.app/FrontEnd/src/index.html`,
+        `https://kickit-app.vercel.app/FrontEnd/src/index.html`
     )
    account.get()
   .then(user => {
