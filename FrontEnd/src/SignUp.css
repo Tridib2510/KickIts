@@ -3,8 +3,20 @@ body {
     background-color: #f4f4f4;
     margin: 0;
     padding: 0;
-    background-image: url('https://t3.ftcdn.net/jpg/02/78/42/76/360_F_278427683_zeS9ihPAO61QhHqdU1fOaPk2UClfgPcW.jpg');
+    overflow-x:hidden;
+   
 }
+
+.area {
+  background: #222222;
+  background: -webkit-linear-gradient(to left, #8f94fb, #4e54c8);
+  width: 100%;
+  min-height: 100vh;
+  position: absolute;
+  z-index: -1;
+ 
+}
+
 .container {
     width: 100%;
     max-width: 400px;
@@ -57,6 +69,30 @@ h2 {
 }
 .btn:hover {
     background-color: #218838;
+}
+#google-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px 32px; /* Larger padding */
+  font-size: 1.125rem; /* 18px font size */
+  font-weight: 300;
+  border-radius: 0.5rem; /* 8px */
+  min-width: 58vh;
+  height: 7vh;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#google-btn svg {
+  height: 32px;
+  width: 32px;
+  margin-right: 12px;
+}
+
+#google-btn:hover {
+  background-color: #f3f4f6; /* Tailwind's gray-100 */
 }
 .footer {
     text-align: center;
@@ -122,4 +158,33 @@ h2 {
     .footer {
         font-size: 11px; /* Further reduce footer font size */
     }
+}
+
+.google-btn {
+  display: inline-flex;
+  align-items: center;
+  background-color: white;
+  border: 1.5px solid #4285f4;
+  border-radius: 4px;
+  color: #4285f4;
+  font-weight: 600;
+  font-size: 16px;
+  padding: 10px 15px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  box-shadow: 0 2px 4px rgb(66 133 244 / 0.3);
+}
+
+.google-btn img {
+  height: 20px;
+  width: 20px;
+  margin-right: 10px;
+}
+
+.google-btn:hover {
+  background-color: #f5f7ff;
+}
+
+.google-btn:active {
+  background-color: #e8f0fe;
 }
