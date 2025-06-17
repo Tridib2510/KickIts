@@ -5,6 +5,8 @@ const socket2=io(`${url}`)
 const rightDiv=document.getElementById('right-div')
 const leftDiv=document.getElementById('left-div')
 const mainContainer=document.getElementById('main-container')
+const chat=document.getElementById('chat-dropdown')
+const chat_parent=chat.parentElement;
 
 const about = document.getElementById('About').addEventListener('click',()=>{
     window.location.href='About.html'
@@ -165,7 +167,8 @@ fetch(`${url}/KickIt/getEventDetails`,{
          }
          else if(status.status==='requestNotYetAnswered'){
             const div=document.getElementById('division')
-            //div.removeChild(chat)
+            if(chat_parent.contains(chat))
+            div.removeChild(chat)
             div.removeChild(leave)
            // div.removeChild(deleteEvent)
             const join=document.getElementById('Join')
@@ -178,8 +181,8 @@ fetch(`${url}/KickIt/getEventDetails`,{
            // rightDiv.removeChild(joinedUsers)
             leftDiv.style.margin = 'auto';
             const div=document.getElementById('division')
-           
-          //  div.removeChild(chat)
+             if(chat_parent.contains(chat))
+            chat_parent.removeChild(chat)
             div.removeChild(leave)
          //   div.removeChild(deleteEvent)
             
