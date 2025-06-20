@@ -165,11 +165,24 @@ fileInput.addEventListener('change', () => {
     const file = fileInput.files[0];
     formData.append('file', file);
    // profile.appendChild(update);
-   
+ 
+  
+
+
 
 
 
 });
+
+
+
+
+ 
+document.getElementById('changeProfilePicture').addEventListener('click', () => {
+     console.log('pookie')
+    document.getElementById('upload_profile').click();
+})
+
 
  document.body.style.overflowY = "hidden";
 
@@ -243,10 +256,6 @@ fileInput.addEventListener('change', () => {
 })
     .catch((err) => console.log(err));
 
-if(document.getElementById('changeProfilePicture')!=null)
-document.getElementById('changeProfilePicture').onclick = function() {
-  document.getElementById('file').click();
-};
 
 
 save.addEventListener('click', () => {
