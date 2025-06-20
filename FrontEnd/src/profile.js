@@ -2,20 +2,36 @@ import url from "./ApiUrl.js";
 let a = false;
 let b = false;
 let c = false;
-const profileContainer = document.getElementById('profile-container');
+const profileContainer = document.getElementById('container');
+
 const description = document.getElementById('description');
 const profile_details = document.getElementById('profile-details');
 const profile = document.getElementById('profile-header');
 const im = document.getElementById('nameContainer');
-const update = document.getElementById('update');
-const name = document.getElementById('name');
-const descriptionUpdate = document.getElementById('Description');
-const div = document.getElementById('image');
-const fileInput = document.getElementById('file');
+const update = document.getElementById('update')
+const name = document.getElementById('user-name');
+
+
+
 const ctx=document.getElementById('myChart') 
-const about = document.getElementById('About').addEventListener('click',()=>{
-    window.location.href='About.html'
- });
+// const about = document.getElementById('About').addEventListener('click',()=>{
+//     window.location.href='About.html'
+//  });
+ const cancel=document.getElementById('cancel').addEventListener('click',()=>{
+
+    document.body.appendChild(profileContainer)
+    document.body.removeChild(updateProfile)
+    document.body.style.overflowY = "auto";
+  
+ })
+
+
+ const save=document.getElementById('save')
+const parent_updateProfile=document.getElementById('update-profile').parentElement
+const updateProfile=document.getElementById('update-profile')
+parent_updateProfile.removeChild(updateProfile)
+
+
  let arr=[]
  let index=[]
 const rightDiv=document.getElementById('right-div')
@@ -27,151 +43,175 @@ for(let i=0;i<1000;i++){
 
 
 const formData = new FormData();
-const image = document.createElement('img');
+const image = document.getElementById('profile-pic')
 
-const createEvent=document.getElementById('createEvent').addEventListener('click',()=>{
-    window.location.href='./createEvents.html'
-})
+
+// const createEvent=document.getElementById('createEvent').addEventListener('click',()=>{
+//     window.location.href='./createEvents.html'
+// })
 const logout=document.getElementById('Logout').addEventListener('click',()=>{
     fetch(`${url}/KickIt/logout`,{
         credentials:'include'
     }).then(res=>res.json()).then(data=>{
-        console.log(data)
+       
         window.location.href="AllEvents.html"
     }).catch(err=>console. log(err))
 })
-const allEvents=document.getElementById('AllEvents').addEventListener('click',()=>{
-    window.location.href='./AllEvents.html'
-})
-const myEvents=document.getElementById('MyEvents').addEventListener('click',()=>{
-    window.location.href='./myEvents.html'
-})
+// const allEvents=document.getElementById('AllEvents').addEventListener('click',()=>{
+//     window.location.href='./AllEvents.html'
+// })
+// const myEvents=document.getElementById('MyEvents').addEventListener('click',()=>{
+//     window.location.href='./myEvents.html'
+// })
 
 
-div.removeChild(file);
+// div.removeChild(file);
 
-image.addEventListener('click', () => {
-    fileInput.click();
-});
+// image.addEventListener('click', () => {
+//     fileInput.click();
+// });
 
-fileInput.addEventListener('change', () => {
-    const file = fileInput.files[0];
-    formData.append('file', file);
-    profile.appendChild(update);
-});
+
 
 const descriptionContainer = document.getElementById('descriptionContainer');
 
-const changeProfile = document.getElementById('changeProfile');
- profile.removeChild(changeProfile);
- profile.removeChild(update);
-descriptionContainer.removeChild(descriptionUpdate);
 
-profile.addEventListener('click', () => {
-    console.log(a);
-    if (a == false) {
-        if (descriptionContainer.contains(descriptionUpdate)) {
-            descriptionContainer.removeChild(descriptionUpdate);
-        }
-        if (!descriptionContainer.contains(description)) {
-            descriptionContainer.appendChild(description);
-        }
-        if (!im.contains(name)) {
-            im.appendChild(name);
-        }
-        if (im.contains(changeProfile)) {
-            a++;
-            im.removeChild(changeProfile);
-        }
-    } else {
-        a = false;
-    }
-    if (profile.contains(update) && b == false) {
-        console.log('hola');
-        profile.removeChild(update);
-    }
-    b = false;
-});
+// profile.removeChild(changeProfile);
+// profile.removeChild(update);
+//descriptionContainer.removeChild(descriptionUpdate);
 
-description.addEventListener('click', () => {
-    console.log(c);
-    if (descriptionContainer.contains(description)) {
-        b = true;
-        descriptionContainer.removeChild(description);
-        profile.appendChild(update);
-    }
-    if (!descriptionContainer.contains(descriptionUpdate)) {
-        a = true;
-        descriptionContainer.appendChild(descriptionUpdate);
-    } else {
-        a = true;
-    }
-});
+// profile.addEventListener('click', () => {
+//     console.log(a);
+//     if (a == false) {
+//         if (descriptionContainer.contains(descriptionUpdate)) {
+//             descriptionContainer.removeChild(descriptionUpdate);
+//         }
+//         if (!descriptionContainer.contains(description)) {
+//             descriptionContainer.appendChild(description);
+//         }
+//         if (!im.contains(name)) {
+//             im.appendChild(name);
+//         }
+//         if (im.contains(changeProfile)) {
+//             a++;
+//             im.removeChild(changeProfile);
+//         }
+//     } else {
+//         a = false;
+//     }
+//     if (profile.contains(update) && b == false) {
+//         console.log('hola');
+//         profile.removeChild(update);
+//     }
+//     b = false;
+// });
 
-descriptionUpdate.addEventListener('click', () => {
-    b = true;
-    a = true;
-});
+// description.addEventListener('click', () => {
+//     console.log(c);
+//     if (descriptionContainer.contains(description)) {
+//         b = true;
+//         descriptionContainer.removeChild(description);
+//         profile.appendChild(update);
+//     }
+//     if (!descriptionContainer.contains(descriptionUpdate)) {
+//         a = true;
+//         descriptionContainer.appendChild(descriptionUpdate);
+//     } else {
+//         a = true;
+//     }
+// });
+
+// descriptionUpdate.addEventListener('click', () => {
+//     b = true;
+//     a = true;
+// });
 
 fetch(`${url}/KickIt/profile`, { credentials: 'include' })
     .then((res) => res.json())
     .then((data) => {
-        console.log(data);
-
-        name.innerHTML = 'Name: ' + data.user.username;
-        name.addEventListener('click', () => {
-            if (im.contains(name)) {
-                im.removeChild(name);
-                b = true;
-                profile.appendChild(update);
-            }
-            if (!im.contains(changeProfile)) {
-                a = true;
-                im.appendChild(changeProfile);
-            } else {
-                console.log('hello');
-                a = true;
-            }
-        });
+       
+            console.log(data.user.username)
+          
+        // name.addEventListener('click', () => {
+        //     if (im.contains(name)) {
+        //         im.removeChild(name);
+        //         b = true;
+        //         profile.appendChild(update);
+        //     }
+        //     if (!im.contains(changeProfile)) {
+        //         a = true;
+        //         im.appendChild(changeProfile);
+        //     } else {
+        //         console.log('hello');
+        //         a = true;
+        //     }
+        // });
 
         // changeProfile.addEventListener('click', () => {
         //     b = true;
         //     a = true;
         // });
+update.addEventListener('click', () => {
+    if(!parent_updateProfile.contains(document.getElementById('update-profile'))){
+    document.body.appendChild(updateProfile)
+    const container_parent= profileContainer.parentElement;
+    container_parent.removeChild(profileContainer)
+   
+   window.scrollTo({ top: 0, behavior: 'smooth' });
 
+    document.getElementById('pic').src=data.user.image;
+const fileInput = document.querySelector('#upload_profile');
+fileInput.addEventListener('change', () => {
+    const file = fileInput.files[0];
+    formData.append('file', file);
+   // profile.appendChild(update);
+   
+
+
+
+});
+
+ document.body.style.overflowY = "hidden";
+
+    }
+})
         const email = document.getElementById('email');
-        email.innerHTML = 'Email: ' + data.user.email;
+         email.innerHTML = data.user.email;
 
-        description.innerHTML = data.user.Description;
-         
-        image.src =data.user.image;
-        div.appendChild(image);
+         description.innerHTML = data.user.Description;
+         name.innerHTML =  data.user.username;
+         image.src =data.user.image;
+         console.log(data.user)
+         document.getElementById('nav-image').src=data.user.image;
+        // div.appendChild(image);
 
       const n=data.user.ratingsDate.length
       const start=data.user.ratingsDate.length-1-2>=0?data.user.ratingsDate.length-3:0
       
-new Chart(ctx, {
-    type: 'line',
-    data: {
-      labels:ratings_Date.slice(start,n),
-      datasets: [{
-        label: 'Ratings',
-        data: data.user.ratings.slice(start,n),
-        borderWidth: 1
-      }]
-    },
-    options: {
-      scales: {
-        y: {
-          beginAtZero: true
-        }
-      }
-    }
-  });
+// new Chart(ctx, {
+//     type: 'line',
+//     data: {
+//       labels:ratings_Date.slice(start,n),
+//       datasets: [{
+//         label: 'Ratings',
+//         data: data.user.ratings.slice(start,n),
+//         borderWidth: 1
+//       }]
+//     },
+//     options: {
+//       scales: {
+//         y: {
+//           beginAtZero: true
+//         }
+//       }
+//     }
+//   });
   const reviews=data.user.reviews
 
+  document.getElementById('total_reviews').innerHTML=`${data.user.reviews.length} reviews`
+
   for(let i=reviews.length-1;i>=0;i--){
-    console.log(reviews[i])
+    // console.log(reviews[i])
     const reviewDiv = document.createElement('div');
     reviewDiv.className = 'review';
 
@@ -190,7 +230,7 @@ new Chart(ctx, {
     reviewDiv.appendChild(createdAt)
     reviewDiv.appendChild(reviewText);
     
-    rightDiv.appendChild(reviewDiv);
+    
 
 
 
@@ -203,14 +243,23 @@ new Chart(ctx, {
 })
     .catch((err) => console.log(err));
 
-update.addEventListener('click', () => {
-    console.log(formData);
-    const username = changeProfile.value != '' ? changeProfile.value : name.innerHTML.substring(5);
-    const Description = descriptionUpdate.value != '' ? descriptionUpdate.value : description.innerHTML;
-    console.log(description.innerHTML);
+if(document.getElementById('changeProfilePicture')!=null)
+document.getElementById('changeProfilePicture').onclick = function() {
+  document.getElementById('file').click();
+};
+
+
+save.addEventListener('click', () => {
+    const changeProfile = document.getElementById('changeProfile');
+    const descriptionUpdate = document.getElementById('changeDescription');
+    const username = changeProfile.value != '' ? changeProfile.value : name.innerHTML;
+    const Description = changeDescription.value!=''?changeDescription.value : description.innerHTML;
+    console.log(changeProfile.value!='') 
+    console.log(name.innerHTML);
 
     formData.append('username', username);
     formData.append('Description', Description);
+ 
 
     fetch(`${url}/KickIt/profileUpdate`, {
         method: 'PATCH',
@@ -229,7 +278,9 @@ const container=document.getElementById('container')
 
 function helper(text,params){
 
-let Events=document.createElement('div')
+let parent_events=document.getElementById('events')
+parent_events.parentElement.removeChild(parent_events);
+
 
 fetch(`${url}/KickIt/myEvents${text}${params}`,{
    credentials:"include"
@@ -237,6 +288,7 @@ fetch(`${url}/KickIt/myEvents${text}${params}`,{
 .then(res=>res.json())
 .then(data=>{
  console.log(data)
+ 
 if(text==''){
   
    image.src=data.image
@@ -260,33 +312,40 @@ if(data.status && data.status=='fail'){
 }
    
    for(let i=0;i<data.data.length;i++){
-    const div=document.createElement('div')
-  arr.push(div)
-    const link=document.createElement('a')
+    let Events=parent_events.cloneNode(true);
+//     const div=document.createElement('div')
+ 
+//     const link=document.createElement('a')
   
-    const a=i
-    arr.push(div)
-    index.push(a)
-    const d=data.data[i]
-    const eventName=document.createElement('h2')
-      eventName.innerHTML=data.data[i].eventName
-      eventName.className="event-name"
-     div.className='event-details'
+//     const a=i
+//     arr.push(div)
+//     index.push(a)
+//     const d=data.data[i]
+      const eventName=Events.querySelector('#eventName')
+       eventName.innerHTML=data.data[i].eventName
+        document.getElementById('eventsJoined').innerHTML=`${data.data.length} events Joined`
+//  console.log(data.data[i])
+// document.getElementById('eventsCreated').innerHTML=data.data.length
+       Events.querySelector('#event-description').innerHTML=data.data[i].Description
+       Events.querySelector("#players").innerHTML=`${data.data[i].playersJoined.length} Players`
+       Events.querySelector("#date").innerHTML=`${data.data[i].date.substring(0,10)}`
+//       eventName.className="event-name"
+//      div.className='event-details'
     
-     div.appendChild(eventName)
+//      div.appendChild(eventName)
     
-     const eventDate=document.createElement('p')
-     eventDate.className="event-date"
-     eventDate.innerHTML=`Date : ${data.data[i].date}`
-     div.appendChild(eventDate)
+//      const eventDate=document.createElement('p')
+//      eventDate.className="event-date"
+//      eventDate.innerHTML=`Date : ${data.data[i].date}`
+//      div.appendChild(eventDate)
 
-     const eventTime=document.createElement('p')
-     eventTime.innerHTML=`Time : ${data.data[i].time}`
-     div.appendChild(eventTime)
-     document.body.events=true
-   Events.appendChild(div)
+//      const eventTime=document.createElement('p')
+//      eventTime.innerHTML=`Time : ${data.data[i].time}`
+//      div.appendChild(eventTime)
+//      document.body.events=true
+//    Events.appendChild(div)
    document.body.events=true
-   div.addEventListener('click',()=>{
+   Events.querySelector('#visit').addEventListener('click',()=>{
    
       console.log(a)
       const options = {
@@ -310,12 +369,13 @@ if(data.status && data.status=='fail'){
       .catch(err=>console.log(err))
        //New concept
    })
-   const leftDiv=document.getElementById('left-div')
-   leftDiv.appendChild(Events)
+   const leftDiv=document.getElementById('my-Events')
+//    console.log(Events)
+    leftDiv.appendChild(Events)
    }
-   totalDocuments=data.data.length
-   leftDiv.appendChild(Events);
-   leftDiv.appendChild(navigationContainer);
+//    totalDocuments=data.data.length
+//    leftDiv.appendChild(Events);
+//    leftDiv.appendChild(navigationContainer);
             
   
 })
