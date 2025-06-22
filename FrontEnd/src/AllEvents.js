@@ -415,7 +415,7 @@ function helper(text,params,isCalender) {
                     fetch(`${url}/KickIt/getEventDetails`, options)
                         .then(res => res.json())
                         .then(data => {
-                            window.location.href = "EventDetails.html";
+                             window.location.href = "EventDetails.html";
                         })
                         .catch(err => console.log(err));
                 });

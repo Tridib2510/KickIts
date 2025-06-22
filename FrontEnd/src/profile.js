@@ -326,7 +326,7 @@ if(data.status && data.status=='fail'){
  
 //     const link=document.createElement('a')
   
-//     const a=i
+     const a=i
 //     arr.push(div)
 //     index.push(a)
 //     const d=data.data[i]
@@ -354,30 +354,24 @@ if(data.status && data.status=='fail'){
 //      document.body.events=true
 //    Events.appendChild(div)
    document.body.events=true
-   Events.querySelector('#visit').addEventListener('click',()=>{
-   
-      console.log(a)
-      const options = {
-         method:'PATCH',
-          // This ensures cookies are included in the request
-          credentials:'include',
-      headers: {
-      'Content-Type': 'application/json',  // This was the problem We have to manually set headers to allow Content-Type:'application /json' otherwise we can not send it together with our credetials
-      
-  },
-  body:JSON.stringify({
-      data:data.data[a]
-  })
-     }
-      fetch(`${url}/KickIt/getEventDetails`,options)
-      .then(res=>res.json())
-      .then(data=>{
-      
-         window.location.href="EventDetails.html"
-      })
-      .catch(err=>console.log(err))
-       //New concept
-   })
+   Events.querySelector('#visit').addEventListener('click', () => {
+                    const options = {
+                        method: 'PATCH',
+                        credentials: 'include',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({
+                            data: data.data[a]
+                        })
+                    };
+                    fetch(`${url}/KickIt/getEventDetails`, options)
+                        .then(res => res.json())
+                        .then(data => {
+                            window.location.href = "EventDetails.html";
+                        })
+                        .catch(err => console.log(err));
+                });
    const leftDiv=document.getElementById('my-Events')
 //    console.log(Events)
     leftDiv.appendChild(Events)
