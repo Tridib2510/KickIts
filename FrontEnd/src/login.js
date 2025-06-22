@@ -8,66 +8,40 @@ const client = new Appwrite.Client()
 
 
 async function handleLogin(){
-    account.createOAuth2Session(
+    try{
+  await account.createOAuth2Session(
         'google',
         `https://kickit-app.vercel.app/index.html`,
        `https://kickit-app.vercel.app/index.html`
     )
-   account.get()
-  .then(user => {
+    const user=await account.get()
 
-    account.get()
-  .then(user => {
-
-   const data={
-    "email":`${user.email}`,
-     "password":`${user.$id}`,
-     
-     
-   }
+    const data={
+        email:user.email,
+        password:user.$id
+    }
      const options = {
-        method: 'POST',
-        credentials: 'include',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-            data:data
-        })
+      method: 'POST',
+      credentials: 'include',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ data }),
     };
-    fetch(`${url}/KickIt/login`,options).
-    then(res=>{
-   console.log(res)
-        
-        return res.json(); // Parse the JSON response
+    const res=await fetch(`${url}/KickIt/login`,options)
+    const resData=await res.json()
 
-    })
-    .then(data=>{
-        console.log(data)
-        if (data.status==='fail') {
-            console.log(data.message)
-            throw new Error(data.message);
-        }
-    window.location.href="index.html"
-    })
-    .catch(err=>{
-      
-        console.log(err.message)
-        errorContainer.textContent = `Error: ${err.message}`; // Display the error message
-    })
-     console.log(data)
-   
-  })
-  .catch(error => {
-    console.error('Failed to get user account:', error);
-  });
+    if(resData.status==='fail'){
+        throw new Error(resData.message)
+    }
+  
+   window.location.href="index.html"
+    
+}catch(err){
+      console.log(err.message);
+    errorContainer.textContent = `Error: ${err.message}`;
 
-   
-  })
-  .catch(error => {
-    console.error('Failed to get user account:', error);
-  });
-   
+}
 }
 
 document.getElementById('google-btn').addEventListener('click',()=>{
