@@ -489,8 +489,9 @@ button.addEventListener('click', () => {
  const search_bar=document.getElementById('search-bar')
  if(search_bar)
  search_bar.addEventListener('keypress', (event) => {
+event.preventDefault(); 
     if(event.key==='Enter' || event.key==='Next' || event.code === 'NumpadEnter'){
-         event.preventDefault(); 
+         
          const searchBar=document.getElementById('search-bar')
     if(searchBar.value===''){
        
