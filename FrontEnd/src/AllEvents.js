@@ -525,7 +525,7 @@ if(search_bar2)
   event.stopPropagation()
     if(event.key==='Enter' || event.key==='Next' || event.code === 'NumpadEnter'){
          event.preventDefault()
-         const searchBar=document.getElementById('search-bar')
+         const searchBar=document.getElementById('search-bar2')
     if(searchBar.value===''){
        
         if (document.body.events === true) {
