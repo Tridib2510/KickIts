@@ -548,6 +548,7 @@ if(search_bar2)
     page=1
    
         }
+        return false;
     }
  })
 
