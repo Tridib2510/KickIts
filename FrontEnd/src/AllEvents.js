@@ -521,7 +521,7 @@ button.addEventListener('click', () => {
  })
 if(search_bar2)
  search_bar2.addEventListener('keydown', (event) => {
-
+  event.preventDefault()
     if(event.key==='Enter' || event.key==='Next' || event.code === 'NumpadEnter'){
          
          const searchBar=document.getElementById('search-bar')
