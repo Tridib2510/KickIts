@@ -523,6 +523,7 @@ if(search_bar2)
  search_bar2.addEventListener('keydown', (event) => {
  
     if(event.key==='Enter'){
+        window.location.href='#calendar'
           event.preventDefault()
   event.stopPropagation()
          const search_bar2=document.getElementById('search-bar2')
