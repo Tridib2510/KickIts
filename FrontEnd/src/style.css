@@ -67,6 +67,7 @@ body {
     backdrop-filter: blur(5px);  
 
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    min-width: 10vh;
     
 }
 
@@ -319,6 +320,12 @@ body {
     flex-wrap: wrap;
 }
 @media (max-width: 768px) {
+    #left-div{
+        border:none;
+       
+        
+        
+    }
     .taskbar {
         flex-direction: column; /* Stack elements vertically */
         align-items: flex-start; /* Align items to the left */
@@ -338,22 +345,13 @@ body {
         width: 90%; /* Adjust the width for smaller screens */
         gap: 10px; /* Reduce the gap between the divs */
     }
-
-    .side-by-side-container > div {
-        flex: 1; /* Make both divs take equal space */
-        padding: 60px; /* Increase padding for larger content */
-        background-color: #333;
-        border: 1px solid #ddd;
-        border-radius: 8px;
-        overflow-y: auto; /* Enable vertical scrolling for content */
-        max-height: 80vh; /* Increase the height limit to 80% of the viewport */
-        box-sizing: border-box; /* Include padding and border in the total width/height */
-    }
+   
+    
     .event-details {
-        width: 90%; /* Adjust the width for smaller screens */
-        margin: 20px auto; /* Reduce the margin for smaller screens */
+        width: 95%; /* Adjust the width for smaller screens */
+        margin:0; /* Reduce the margin for smaller screens */
         padding: 15px; /* Adjust padding for smaller screens */
-           backdrop-filter: blur(5px);  
+        backdrop-filter: blur(5px);  
         
     }
 
@@ -583,5 +581,107 @@ body {
         .theme-toggle:hover .theme-icon {
             transform: rotate(20deg);
         }
+@media (max-width: 700px) {
+  #search-bar,
+  #search-bar:focus,
+  #search-button {
+    all: unset;
+    border-radius: 9999px !important; /* Fully rounded (pill shape) */
+    width: 100% !important;
+    box-sizing: border-box;
+    display: block;
+  }
+}
 
-        
+@media (max-width: 700px) {
+  #calender {
+    width: 100vw !important;
+    padding: 0 !important;
+  }
+  #calender .lg\:w-7\/12,
+  #calender .md\:w-9\/12,
+  #calender .sm\:w-10\/12,
+  #calender > div {
+    width: 100vw !important;
+    max-width: 100vw !important;
+    padding: 0 !important;
+  }
+  #calender .shadow-lg {
+    border-radius: 0 !important;
+  }
+  #calender .p-4,
+  #calender .px-6,
+  #calender .py-3,
+  #calender .p-4 {
+    padding-left: 8px !important;
+    padding-right: 8px !important;
+    padding-top: 8px !important;
+    padding-bottom: 8px !important;
+  }
+}
+@media (max-width: 700px) {
+  #create {
+    width: 100vw !important;
+    max-width: 100vw !important;
+    padding: 0 !important;
+    margin: 0 auto !important;
+  }
+  #create .p-8,
+  #create .p-1,
+  #create .xs\:p-8 {
+    padding: 8px !important;
+  }
+  #border {
+    padding: 8px !important;
+    width: 90% !important;
+    max-width: 100vw !important;
+    margin: 0 !important;
+  }
+  
+}
+
+@media (max-width: 700px) {
+  #calender {
+    width: 100vw !important;
+    max-width: 100vw !important;
+    padding: 0 !important;
+    margin: 0 auto !important;
+    background: none !important;
+    border: none !important;
+  }
+  #calender .lg\:w-7\/12,
+  #calender .md\:w-9\/12,
+  #calender .sm\:w-10\/12,
+  #calender > div {
+    width: 90vw !important;
+    max-width: 100vw !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+  #calender .shadow-lg {
+    border-radius: 0 !important;
+    box-shadow: none !important;
+  }
+  #calender .p-4,
+  #calender .px-6,
+  #calender .py-3 {
+    padding-left: 8px !important;
+    padding-right: 8px !important;
+    padding-top: 8px !important;
+    padding-bottom: 8px !important;
+  }
+  #calender .grid {
+    gap: 4px !important;
+  }
+  #calender .modal-container {
+    width: 98vw !important;
+    max-width: 98vw !important;
+    left: 1vw !important;
+    right: 1vw !important;
+    border-radius: 10px !important;
+    padding: 8px !important;
+  }
+  #calender .modal-content {
+    padding: 8px !important;
+  }
+}

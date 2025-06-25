@@ -71,7 +71,15 @@ allElements.forEach(element => {
 }
 
 async function getData(){
+    console.log(window.innerHeight)
 
+    if(window.innerHeight<=610){
+        console.log(true)
+        const parent_nav=document.querySelector('#top-nav').parentElement
+        const desktop_nav=document.querySelector('#top-nav')
+        // parent_nav.remove(desktop_nav)
+
+    }
 
 
 const buttons = document.getElementById('auth-buttons');
@@ -321,14 +329,16 @@ function helper(text,params,isCalender) {
             if (text == '') {   
                                                                                                                                    
                 if (data.token!='default') {
-                
+                   if(image){
                     image.src = data.image;
                     image.addEventListener('click', () => {
                         window.location.href = 'profile.html';
                     });
-                    if(buttons.contains(signUp))
+                }    
+                    
+                    if(buttons && buttons.contains(signUp))
                        buttons.removeChild(signUp);
-                  if(buttons.contains(login))
+                  if(buttons && buttons.contains(login))
                     buttons.removeChild(login);
 
                 const parent_SignUp=document.getElementById('SignUp');
@@ -421,8 +431,10 @@ function helper(text,params,isCalender) {
                 });
             }
                 totalDocuments=data.data.length
+                if(leftDiv){
                 leftDiv.appendChild(Events);
                 leftDiv.appendChild(navigationContainer);
+                }
             }
           
         })
@@ -444,7 +456,9 @@ let placeholder=''
 
 
 
-const button = document.getElementById('search-button').addEventListener('click', () => {
+const button = document.getElementById('search-button')
+if(button)
+button.addEventListener('click', () => {
     const searchBar=document.getElementById('search-bar')
     if(searchBar.value===''){
        
@@ -472,7 +486,9 @@ const button = document.getElementById('search-button').addEventListener('click'
  
  });
 
- document.getElementById('search-bar').addEventListener('keypress', (event) => {
+ const search_bar=document.getElementById('search-bar')
+ if(search_bar)
+ search_bar.addEventListener('keypress', (event) => {
     if(event.key==='Enter'){
          const searchBar=document.getElementById('search-bar')
     if(searchBar.value===''){
@@ -567,7 +583,7 @@ else {
 // const myEvents = document.getElementById('MyEvents').addEventListener('click', () => {
 //     window.location.href = 'myEvents.html';
 // });
-
+if(logout)
 logout.addEventListener('click',()=>{
     fetch(`${url}/KickIt/logout`,{
         credentials:'include'
@@ -719,7 +735,10 @@ function isElementInViewport(element) {
     }
     else{
         const topNav = document.getElementById('top-nav');
-        const parent = topNav.parentNode;
+        
+        let parent = null
+        if(topNav)
+            parent=topNav.parentElement
         
     }
 
@@ -743,10 +762,13 @@ function generateCalendar(year, month) {
 
     
     // Clear the calendar
+    if(calendarElement)
     calendarElement.innerHTML = '';
 
     // Set the current month text
+    
     const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+    if(currentMonthElement)
     currentMonthElement.innerText = `${monthNames[month]} ${year}`;
     
     // Calculate the day of the week for the first day of the month (0 - Sunday, 1 - Monday, ..., 6 - Saturday)

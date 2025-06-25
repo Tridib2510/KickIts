@@ -10,8 +10,10 @@ const profile = document.getElementById('profile-header');
 const im = document.getElementById('nameContainer');
 const update = document.getElementById('update')
 const name = document.getElementById('user-name');
+const showReviews= document.getElementById('showReviews');
+const showReviewsParent=showReviews.parentElement
 
-
+ showReviewsParent.removeChild(showReviews)
 
 const ctx=document.getElementById('myChart') 
 // const about = document.getElementById('About').addEventListener('click',()=>{
@@ -21,10 +23,20 @@ const ctx=document.getElementById('myChart')
 
     document.body.appendChild(profileContainer)
     document.body.removeChild(updateProfile)
+    
     document.body.style.overflowY = "auto";
   
  })
 
+ const reviews=document.getElementById('Reviews').addEventListener('click',()=>{
+ const container_parent= profileContainer.parentElement;
+    if(!showReviewsParent.contains(showReviews)){
+        showReviewsParent.appendChild(showReviews)
+         container_parent.removeChild(profileContainer)
+        
+    }
+
+})
 
  const save=document.getElementById('save')
 const parent_updateProfile=document.getElementById('update-profile').parentElement
@@ -225,23 +237,20 @@ document.getElementById('changeProfilePicture').addEventListener('click', () => 
 
   for(let i=reviews.length-1;i>=0;i--){
     // console.log(reviews[i])
-    const reviewDiv = document.createElement('div');
-    reviewDiv.className = 'review';
+   let revs=showReviews.querySelector('#newReviews')
 
-    const reviewerName = document.createElement('h4');
-    reviewerName.className = 'reviewer-name';
-    reviewerName.innerText = reviews[i].reviewer;
+let revClone=revs.cloneNode(true)
+const reviewerImage=revs.querySelector('#reviewerImage')
+const reviewerName=revs.querySelector('#reviewer-name')
 
-    const reviewText = document.createElement('p');
-    const createdAt=document.createElement('p');
-    createdAt.className = 'review-text';
-    createdAt.innerHTML=reviews[i].createdAt
-  //  reviewText.className = 'review-text';
-    reviewText.innerText = reviews[i].review;
-    
-    reviewDiv.appendChild(reviewerName);
-    reviewDiv.appendChild(createdAt)
-    reviewDiv.appendChild(reviewText);
+
+reviewerImage.src=reviews[i].User.image
+
+
+
+showReviews.appendChild(revClone)
+
+   console.log(reviews[i])
     
     
 

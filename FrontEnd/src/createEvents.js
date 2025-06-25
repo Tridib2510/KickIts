@@ -28,7 +28,7 @@ fetch(`${url}/KickIt/profile`,{
     credentials:'include'
  }).then(res=>res.json())
  .then(data=>{
-    if(image)
+    if(image && data.user)
 image.src=data.user.image
 image.addEventListener('click',()=>{
     window.location.href='profile.html'

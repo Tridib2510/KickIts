@@ -36,7 +36,8 @@
 </div>
 </div>
 <div id="data">
- <nav class="bg-gray-800 fixed top-0 left-0 right-0 z-49" id="top-nav">
+  
+ <nav class="hidden sm:block sm:bg-gray-800 fixed top-0 left-0 right-0 z-49" id="top-nav">
   <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
     <div class="relative flex h-16 items-center justify-between">
       <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
@@ -110,13 +111,27 @@
     </div>
   </div>
   <!-- Mobile menu, show/hide based on menu state. -->
-  <div class="sm:hidden" id="mobile-menu">
-    <div class="space-y-1 px-2 pb-3 pt-2">
-      <a href="#" class="block rounded-md bg-gray-900 px-3 py-2 text-base font-medium text-white no-underline" aria-current="page">Dashboard</a>
-      <a href="#" class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white no-underline">Team</a>
-      <a href="#" class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white no-underline">Projects</a>
-      <a href="#" class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white no-underline">Calendar</a>
-    </div>
+ 
+</nav>
+<!-- Bottom Navbar for Small Screens -->
+<nav class="fixed bottom-0 left-0 right-0 z-50 bg-gray-900 border-t border-gray-800 sm:hidden z-100" >
+  <div class="flex justify-around items-center h-14">
+    <a href="#events" class="flex flex-col items-center text-gray-400 hover:text-white no-underline">
+      <i class="fa-solid fa-calendar text-xl"></i>
+      <span class="text-xs">Events</span>
+    </a>
+    <a href="#create" class="flex flex-col items-center text-gray-400 hover:text-white no-underline">
+      <i class="fa-solid fa-plus-circle text-xl"></i>
+      <span class="text-xs">Create</span>
+    </a>
+    <a href="#calender" class="flex flex-col items-center text-gray-400 hover:text-white no-underline">
+      <i class="fa-solid fa-calendar-days text-xl"></i>
+      <span class="text-xs">Calendar</span>
+    </a>
+    <a href="./profile.html" class="flex flex-col items-center text-gray-400 hover:text-white no-underline">
+      <i class="fa-solid fa-user text-xl"></i>
+      <span class="text-xs">Profile</span>
+    </a>
   </div>
 </nav>
 
@@ -149,13 +164,12 @@
 </div>
 
       </div>
-		<div id="About" class="justify-center" style=" display:flex; align-self: center; justify-content: center;">
+		<div id="About" class="hidden sm:block justify-center" style=" display:flex; align-self: center; justify-content: center;">
     
     </div>
-    <div class="side-by-side-container justify-center" id="side-by-side-container" >
-
-        <div id="About" class="grid grid-cols-2 gap-6 w-full">
-        <div class="cards" id="cards">
+<div class="side-by-side-container " id="side-by-side-container">
+<div id="About" class="grid grid-cols-2 gap-6 w-full hidden sm:grid">
+          <div class="cards" id="cards">
       <section >
  <div class="max-w-screen-xl 2xl:max-w-screen-3xl px-8 md:px-12 mx-auto py-12 lg:py-24 space-y-24 flex flex-col justify-center">
   <div class="flex flex-col sm:flex-row mx-auto">
@@ -182,14 +196,37 @@
        </div>
        
        
+  
 
         <div id="left-div">
             <div class="search-container" id="events">
               
     <div>
+
+  <div class="sm:hidden relative">
+    <input
+    id="search-bar"
+      type="text"
+      placeholder="Search..."
+      class="glass bg-white/10 border border-white/20 text-white placeholder-white px-4 py-2 rounded-full w-40 focus:w-64 transition-width duration-500 ease-in-out focus:outline-none focus:ring-2 focus:ring-white/30"
+    />
+    <svg
+      class="absolute right-3 top-2.5 w-5 h-5 text-white pointer-events-none"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      viewBox="0 0 24 24"
+    >
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        d="M21 21l-4.35-4.35m0 0A7.5 7.5 0 1010.5 3a7.5 7.5 0 006.15 13.65z"
+      />
+    </svg>
+  </div>
         
             <label
-                class="mx-auto mt-8 relative bg-white min-w-sm max-w-2xl flex flex-col md:flex-row items-center justify-center border py-2 px-2 rounded-2xl gap-2 shadow-2xl focus-within:border-gray-300"
+                class="search-bar hidden sm:block mx-auto mt-8 relative bg-white min-w-sm max-w-2xl flex flex-col md:flex-row items-center justify-center border py-2 px-2 rounded-2xl gap-2 shadow-2xl focus-within:border-gray-300"
                 for="search-bar">
 
                 <input id="search-bar" placeholder="Search Events..." name="q"
@@ -221,7 +258,7 @@
        
     <div id="create" class="z-10" >
       <section class=" p-1 xs:p-8 ">
-  <div class=" text-blue-50 sm:max-w-4xl mx-auto border border-[#4D7C0F] rounded-lg p-8" id="border">
+  <div class=" text-blue-50 max-w-4xl mx-auto border border-[#4D7C0F] rounded-lg p-8" id="border">
     <h2 class="sm:text-xl text-[12px] font-bold mb-6" id="Title">Title</h2>
    
       <div class="space-y-6 " id="create-front">
@@ -310,7 +347,7 @@
      
     </div>
     
- <button class="theme-toggle" id="theme-toggle">
+ <button class="theme-toggle hidden sm:block" id="theme-toggle">
         <span class="theme-icon" id="themeIcon">🌙</span>
     </button>
 
@@ -349,11 +386,13 @@
     // Profile dropdown
     const profileBtn = document.getElementById('profile-pic');
     const profileDropdown = document.getElementById('auth-buttons');
+    if(profileBtn)
     profileBtn.addEventListener('click', function (e) {
       e.stopPropagation();
       profileDropdown.classList.toggle('hidden');
       notificationDropdown.classList.add('hidden');
     });
+    if(profileDropdown)
     profileDropdown.addEventListener('click', function (e) {
       e.stopPropagation();
     });
@@ -361,11 +400,13 @@
     // Notification dropdown
     const notificationBtn = document.getElementById('notification-button');
     const notificationDropdown = document.getElementById('notification-menu');
+    if(notificationBtn)
     notificationBtn.addEventListener('click', function (e) {
       e.stopPropagation();
       notificationDropdown.classList.toggle('hidden');
       profileDropdown.classList.add('hidden');
     });
+    if(notificationDropdown)
     notificationDropdown.addEventListener('click', function (e) {
       e.stopPropagation();
     });

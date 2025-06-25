@@ -81,6 +81,12 @@ fetch(`${url}/KickIt/getEventDetails`,{
                 window.location.href="./giveReview.html?userId="+data.event.playersJoined[a]._id+"&activity="+data.event.activity+"&event="+data.event._id
 
             })
+
+     playersParticipants.querySelector('#giveReviews').addEventListener('click',()=>{
+        console.log('ejs')
+         window.location.href="./giveReview.html?userId="+data.event.playersJoined[a]._id+"&activity="+data.event.activity+"&event="+data.event._id
+
+     })
     }
     socket2.emit('joinRoom',data.userId);
     console.log('data')
