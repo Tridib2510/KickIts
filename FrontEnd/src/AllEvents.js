@@ -490,6 +490,7 @@ button.addEventListener('click', () => {
  if(search_bar)
  search_bar.addEventListener('keypress', (event) => {
     if(event.key==='Enter' || event.key==='Next' || event.code === 'NumpadEnter'){
+         event.preventDefault(); 
          const searchBar=document.getElementById('search-bar')
     if(searchBar.value===''){
        
