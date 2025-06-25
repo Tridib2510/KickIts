@@ -487,9 +487,11 @@ button.addEventListener('click', () => {
  });
 
  const search_bar=document.getElementById('search-bar')
+ 
+ const search_bar2=document.getElementById('search-bar2')
  if(search_bar)
- search_bar.addEventListener('keypress', (event) => {
-event.preventDefault(); 
+ search_bar.addEventListener('keydown', (event) => {
+
     if(event.key==='Enter' || event.key==='Next' || event.code === 'NumpadEnter'){
          
          const searchBar=document.getElementById('search-bar')
@@ -517,7 +519,36 @@ event.preventDefault();
         }
     }
  })
+if(search_bar2)
+ search_bar2.addEventListener('keydown', (event) => {
 
+    if(event.key==='Enter' || event.key==='Next' || event.code === 'NumpadEnter'){
+         
+         const searchBar=document.getElementById('search-bar')
+    if(searchBar.value===''){
+       
+        if (document.body.events === true) {
+            if(leftDiv.contains(Events))
+            leftDiv.removeChild(Events);
+       }
+       helper('','?page=1&limit=5',false);
+    }
+    else{
+    const text1=`?activity=${searchBar.value}`
+    const text2=`?venue=${searchBar.value}`
+    const text3=`?eventName=${searchBar.value}`
+    if (document.body.events === true) {
+        if(leftDiv.contains(Events))
+                leftDiv.removeChild(Events);
+           }
+    helper(text1,'&page=1&limit=5',false)
+    helper(text2,'&page=1&limit=5',false)
+    helper(text3,'&page=1&limit=5',false)
+    page=1
+   
+        }
+    }
+ })
 
 backward.addEventListener('click',()=>{
     const c = document.getElementById('search-bar');
