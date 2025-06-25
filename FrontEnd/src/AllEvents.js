@@ -521,12 +521,12 @@ button.addEventListener('click', () => {
  })
 if(search_bar2)
  search_bar2.addEventListener('keydown', (event) => {
-  event.preventDefault()
-  event.stopPropagation()
+ 
     if(event.key==='Enter' || event.key==='Next' || event.code === 'NumpadEnter'){
-         
-         const searchBar=document.getElementById('search-bar2')
-    if(searchBar.value===''){
+          event.preventDefault()
+  event.stopPropagation()
+         const search_bar2=document.getElementById('search-bar2')
+    if(search_bar2.value===''){
        
         if (document.body.events === true) {
             if(leftDiv.contains(Events))
@@ -535,9 +535,9 @@ if(search_bar2)
        helper('','?page=1&limit=5',false);
     }
     else{
-    const text1=`?activity=${searchBar.value}`
-    const text2=`?venue=${searchBar.value}`
-    const text3=`?eventName=${searchBar.value}`
+    const text1=`?activity=${search_bar2.value}`
+    const text2=`?venue=${search_bar2.value}`
+    const text3=`?eventName=${search_bar2.value}`
     if (document.body.events === true) {
         if(leftDiv.contains(Events))
                 leftDiv.removeChild(Events);
