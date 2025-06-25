@@ -521,10 +521,10 @@ button.addEventListener('click', () => {
  })
 if(search_bar2)
  search_bar2.addEventListener('keydown', (event) => {
-  event.preventDefault()
+  
   event.stopPropagation()
     if(event.key==='Enter' || event.key==='Next' || event.code === 'NumpadEnter'){
-         
+         event.preventDefault()
          const searchBar=document.getElementById('search-bar')
     if(searchBar.value===''){
        
