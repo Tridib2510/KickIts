@@ -5,9 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Give a Review</title>
     <!-- Added Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
     <link rel="stylesheet" href="output.css">
     <style>
+        
         body {
             font-family: Arial, sans-serif;
             margin: 0;
@@ -81,27 +82,9 @@
             resize: none;
             height: 150px;
         }
+       
         
-        #imageContainer {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-bottom: 20px;
-        }
-        
-        #image {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            object-fit: cover;
-            background-color: #f4f4f4;
-        }
-        
-        .profile-details h3, 
-        .profile-details h2 {
-            margin-top: 20px;
-            margin-bottom: 10px;
-        }
+       
         
         /* Media Queries for Responsive Design */
         @media (max-width: 992px) {
@@ -126,52 +109,103 @@
             .form-group select {
                 font-size: 14px;
             }
-            
-            #image {
-                width: 120px;
-                height: 120px;
-            }
+          
         }
+        .area{
+             height: 120vh;
+        }
+        
     </style>
 </head>
 <body>
     <!-- Fixed and streamlined navbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">KickIt</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a id="AllEvents" class="nav-link active" aria-current="page" href="./AllEvents.html">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#" id="About">About</a>
-                    </li>
-                   
-                  
-                </ul>
-                
-                <ul class="navbar-nav ms-auto mb-2 mb-lg-0 profile-menu">
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            <img id="profileIcon" src="https://source.unsplash.com/250x250?profile" alt="Profile Picture" style="width: 32px; height: 32px; border-radius: 50%; object-fit: cover;">
-                        </a>
-                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" id="MyEvents" href="./myEvents.html">My Events</a></li>
-                            <li><a class="dropdown-item" href="#" id="createEvent">Create</a></li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="#" id="Logout">Log Out</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
+   <nav class="bg-gray-800 fixed top-0 left-0 right-0 z-50" id="top-nav">
+  <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
+    <div class="relative flex h-16 items-center justify-between">
+      <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
+        <!-- Mobile menu button-->
+        <button type="button" class="relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white" aria-controls="mobile-menu" aria-expanded="false">
+          
+          <span class="sr-only">Open main menu</span>
+          <svg class="block size-6" fill="none" viewBox="0 0 24 24" stroke-width="1" stroke="currentColor" aria-hidden="true" data-slot="icon">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+          </svg>
+          <svg class="hidden size-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+      <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
+        <div class="flex shrink-0 items-center">
+          <img  class="h-8 w-auto" src="https://res.cloudinary.com/dsloz7tfz/image/upload/v1749482895/ChatGPT_Image_Jun_9_2025_08_48_30_PM_omtdgs.png" alt="Your Company">
         </div>
-    </nav>
+        <div class="hidden sm:ml-6 sm:block">
+          <div class="flex space-x-4">
+            <a href="#About" class="rounded-md bg-gray-900 px-3 py-2 text-sm font-medium text-white no-underline" aria-current="page" >About</a>
+            <a href="#events"  class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white no-underline">Events</a>
+            <a href="#create"  class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white no-underline">Create</a>
+            <a href="#calender" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white no-underline">Calendar</a>
+          </div>
+        </div>
+      </div>
+      
+      <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+        <!-- Notification Dropdown -->
+        <div class="relative ml-3" id="notification-dropdown">
+          <div type="button" id="notification-button"
+            class="relative rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none"
+            aria-expanded="false" aria-haspopup="true">
+            <span class="absolute-inset-1.5"></span>
+            <span class="sr-only">View notifications</span>
+            <svg class="size-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round"
+                d="M14.857 17.082a23.848 23.848 0 0 0 5.454-1.31A8.967 8.967 0 0 1 18 9.75V9A6 6 0 0 0 6 9v.75a8.967 8.967 0 0 1-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 0 1-5.714 0m5.714 0a3 3 0 1 1-5.714 0" />
+            </svg>
+        </div>
+          
+          <div id="notification-menu"
+            class="absolute right-0 z-10 mt-2 w-80  rounded-md bg-white shadow-lg ring-1 ring-black/5 focus:outline-none hidden"
+            role="menu" aria-orientation="vertical"  aria-labelledby="notification-button" tabindex="-1">
+            <div class="px-2 text-sm text-gray-700 font-semibold " id="right-div">Notifications</div>
+            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">No new notifications</a>
+            <!-- Add more notification items here -->
+          </div>
+        </div>
+
+        <!-- Profile dropdown -->
+        <div class="relative ml-3" id="profile-dropdown">
+          <div>
+            <div type="button" id="profile-button"  class="rounded-full bg-gray-800 text-sm  focus:ring-2  focus:ring-offset-2 focus:ring-offset-gray-800">
+              <span class="relative"></span>
+              <span class="sr-only">Open user menu</span>
+              <img id="profileIcon" class=" size-8 relative flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
+            </div>
+             
+          </div>
+          <div id="auth-buttons" class="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black/5 focus:outline-none hidden" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
+            
+            <a href="#" class="block px-4 py-2 text-sm text-gray-700 no-underline" role="menuitem" tabindex="-1" id="Logout">Sign out</a>
+            <a href="./profile.html" class="block px-4 py-2 text-sm text-gray-700 no-underline" role="menuitem" tabindex="-1" id="Logout">Profile</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Mobile menu, show/hide based on menu state. -->
+  <div class="sm:hidden" id="mobile-menu">
+    <div class="space-y-1 px-2 pb-3 pt-2">
+      <a href="#" class="block rounded-md bg-gray-900 px-3 py-2 text-base font-medium text-white no-underline" aria-current="page">Dashboard</a>
+      <a href="#" class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white no-underline">Team</a>
+      <a href="#" class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white no-underline">Projects</a>
+      <a href="#" class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white no-underline">Calendar</a>
+    </div>
+  </div>
+</nav>
+         <div style="height: 100px; width: 100px;" id="gaps"></div>
+
+
       	<div class="area">
-			<ul class="circles bg-stone-500">
+			<ul class="circles">
 				<li></li>
 				<li></li>
 				<li></li>
@@ -183,97 +217,98 @@
 				<li></li>
 				<li></li>
 			</ul>
-		</div>
-    <div class="container">
-        <div class="left-div">
-            <div class="profile-details" id="profile-details">
-                <div id="imageContainer">
-                 
-                </div>
-                <h3 id="name" class="text-center">My Name</h3>
-                <h2>About Me</h2>
-                <div id="descriptionContainer">
-                    <p id="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam scelerisque leo nec magna fermentum, a facilisis ligula cursus.</p>
-                </div>
-                <h3>Contact</h3>
-                <p id="email">Email: john.doe@example.com</p>
+		
+   </div>
+            <!-- https://gist.github.com/goodreds/5b8a4a2bf11ff67557d38c5e727ea86c -->
+<div class='relative m-auto inset-0  lg:w-[45%] sm:w-[90%]  overflow-scroll  z-40 bg-white shadow-2xl rounded-lg flex-col flex justify-between' id="Review_section">
+          <div class='w-full my-2 flex flex-col gap-4'>
+          <div class="px-2 py-1 border-b border-gray-200 flex justify-between items-center">
+            <div class='flex-1 flex-col justify-center items-center flex translate-x-4'>
+              <p class='text-gray-900 text-lg font-extrabold' style="color:black">We would like to hear your Review. </p>
+              <p class='text-gray-500 text-xs'>please complete the form below </p>
             </div>
             
-        </div>
-        <div class="right-div">
-            <div class="p-4 mx-auto bg-white rounded-lg shadow-md max-w-4xl sm:p-6 grid grid-cols-1 lg:grid-cols-6 gap-6">
-  <div class="lg:col-span-4 col-span-1">
-    <form action="" method="POST" class="space-y-4">
-      <h2 class="text-2xl font-semibold text-gray-700 mb-4">
-        Write a review
-      </h2>
-      <div class="flex justify-start items-center space-x-1 mb-4">
-        <input type="radio" id="5-stars" name="rating" value="5" class="hidden">
-        <label for="5-stars" class="text-yellow-400 text-2xl cursor-pointer hover:scale-110">★</label>
-        <input type="radio" id="4-stars" name="rating" value="4" class="hidden">
-        <label for="4-stars" class="text-yellow-400 text-2xl cursor-pointer hover:scale-110">★</label>
-        <input type="radio" id="3-stars" name="rating" value="3" class="hidden">
-        <label for="3-stars" class="text-yellow-400 text-2xl cursor-pointer hover:scale-110">★</label>
-        <input type="radio" id="2-stars" name="rating" value="2" class="hidden">
-        <label for="2-stars" class="text-yellow-400 text-2xl cursor-pointer hover:scale-110">★</label>
-        <input type="radio" id="1-star" name="rating" value="1" class="hidden">
-        <label for="1-star" class="text-yellow-400 text-2xl cursor-pointer hover:scale-110">★</label>
-      </div>
-      <textarea id="review" name="review" rows="4" required="true" class="block w-full p-3 text-sm text-gray-900 bg-gray-50 rounded-md border border-gray-300 focus:ring-blue-500 focus:border-blue-500" placeholder="Write your review"></textarea>
-      <div class="text-right py-4">
-        <a href="/user"
-          class="text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-semibold rounded-lg text-sm px-5 py-3">Login
-          to Post Review</a>
-      </div>
-    </form>
-  </div>
-  <div class="lg:col-span-2 hidden lg:flex flex-col space-y-4">
-    <div class="flex items-center">
-      <span class="text-yellow-400 text-xl">★★★★★</span>
-      <p class="ml-2 text-sm font-medium text-gray-900">0 out of 0</p>
-    </div>
-    <p class="text-sm font-medium text-gray-500">0 global ratings</p>
-    <div class="flex items-center mt-2">
-      <span class="text-sm font-medium text-blue-600 hover:underline shrink-0">5 star</span>
-      <div class="w-3/4 h-4 mx-2 bg-gray-200 rounded">
-        <div class="h-4 bg-yellow-400 rounded" style="width: 50%"></div>
-      </div>
-      <span class="text-sm font-medium text-gray-500">0%</span>
-    </div>
-    <div class="flex items-center">
-      <span class="text-sm font-medium text-blue-600 hover:underline shrink-0">4 star</span>
-      <div class="w-3/4 h-4 mx-2 bg-gray-200 rounded">
-        <div class="h-4 bg-yellow-400 rounded" style="width: 25%"></div>
-      </div>
-      <span class="text-sm font-medium text-gray-500">0%</span>
-    </div>
-    <div class="flex items-center">
-      <span class="text-sm font-medium text-blue-600 hover:underline shrink-0">3 star</span>
-      <div class="w-3/4 h-4 mx-2 bg-gray-200 rounded">
-        <div class="h-4 bg-yellow-400 rounded" style="width: 10%"></div>
-      </div>
-      <span class="text-sm font-medium text-gray-500">0%</span>
-    </div>
-    <div class="flex items-center">
-      <span class="text-sm font-medium text-blue-600 hover:underline shrink-0">2 star</span>
-      <div class="w-3/4 h-4 mx-2 bg-gray-200 rounded">
-        <div class="h-4 bg-yellow-400 rounded" style="width: 5%"></div>
-      </div>
-      <span class="text-sm font-medium text-gray-500">0%</span>
-    </div>
-    <div class="flex items-center">
-      <span class="text-sm font-medium text-blue-600 hover:underline shrink-0">2 star</span>
-      <div class="w-3/4 h-4 mx-2 bg-gray-200 rounded">
-        <div class="h-4 bg-yellow-400 rounded" style="width: 10%"></div>
-      </div>
-      <span class="text-sm font-medium text-gray-500">0%</span>
-    </div>
-  </div>
+          </div>
+
+            <img id="Reviewee" src="https://github.com/thomas5.png?size=56" class="h-16 w-16 mx-auto rounded-full"/>
+            <div class='flex flex-col justify-center items-center '>
+              <p id="name" class='text-gray-500 text-sm'>Developer Name : <span class='text-gray-900 font-bold'> Ayman Reifoun</span></p>
+              <p id="description" class='text-gray-500 text-xs'>Role : <span class='text-gray-900 font-bold'> Full Stack</span></p>
+            </div>
+           <div class='flex-row w-full flex justify-center items-center my-2' id="star-rating">
+  <svg data-star="1" class="w-6 h-6 ms-1 text-yellow-300 cursor-pointer" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
+    <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/>
+  </svg>
+  <svg data-star="2" class="w-6 h-6 ms-1 text-yellow-300 cursor-pointer" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
+    <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/>
+  </svg>
+  <svg data-star="3" class="w-6 h-6 ms-1 text-yellow-300 cursor-pointer" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
+    <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/>
+  </svg>
+  <svg data-star="4" class="w-6 h-6 ms-1 text-yellow-300 cursor-pointer" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
+    <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/>
+  </svg>
+  <svg data-star="5" class="w-6 h-6 ms-1 text-yellow-300 cursor-pointer" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
+    <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/>
+  </svg>
 </div>
-    </div>
+          </div>
+          <form class='p-4 flex flex-col gap-4'>
+
+           
+
+
+            <label htmlFor="message" class="block my-1 text-sm font-medium text-gray-900 dark:text-white" style="color:black">Your message</label>
+            <textarea  id="review" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 " placeholder="Write your thoughts here..."></textarea>
+
+            <div class=''>
+              <button type="submit" id="submit" class=" transition duration-500 ease-linear w-full h-12 flex justify-center items-center border-2 border-blue-500 text-blue-600 hover:bg-blue-600 hover:text-white rounded font-extrabold"> Submit </button>
+            </div>
+          </form>
+
+
+      </div>
+    
    
     <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+     <script>
+         document.addEventListener('DOMContentLoaded', function () {
+    // Profile dropdown
+    const profileBtn = document.getElementById('profile-button');
+    const profileDropdown = document.getElementById('auth-buttons');
+    profileBtn.addEventListener('click', function (e) {
+      e.stopPropagation();
+      profileDropdown.classList.toggle('hidden');
+      notificationDropdown.classList.add('hidden');
+    });
+    profileDropdown.addEventListener('click', function (e) {
+      e.stopPropagation();
+    });
+
+    // Notification dropdown
+    const notificationBtn = document.getElementById('notification-button');
+    const notificationDropdown = document.getElementById('notification-menu');
+    notificationBtn.addEventListener('click', function (e) {
+      e.stopPropagation();
+      notificationDropdown.classList.toggle('hidden');
+      profileDropdown.classList.add('hidden');
+    });
+    notificationDropdown.addEventListener('click', function (e) {
+      e.stopPropagation();
+    });
+
+    // Hide both dropdowns when clicking outside
+    document.addEventListener('click', function () {
+      if (!profileDropdown.classList.contains('hidden')) {
+        profileDropdown.classList.add('hidden');
+      }
+      if (!notificationDropdown.classList.contains('hidden')) {
+        notificationDropdown.classList.add('hidden');
+      }
+    });
+  });
+
+  </script>
     <script type="module" defer src="./giveReview.js"></script>
 </body>
 </html>
