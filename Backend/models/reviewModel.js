@@ -38,6 +38,9 @@ const Schema=new mongoose.Schema({
   type:mongoose.Schema.ObjectId,
     ref:'users'
 },
+"reviewer_image":{
+  type:String
+},
 "reviewer":{
     type:String
 }
@@ -51,7 +54,9 @@ const Schema=new mongoose.Schema({
 Schema.pre(/^find/,function(next){
   this.populate({
     path:'User'
-  })
+  }).populate({
+    path: 'createdBy'
+  });
     next()
 })
 

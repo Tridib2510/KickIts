@@ -234,22 +234,42 @@ document.getElementById('changeProfilePicture').addEventListener('click', () => 
   const reviews=data.user.reviews
 
   document.getElementById('total_reviews').innerHTML=`${data.user.reviews.length} reviews`
+ 
+ let revs2=showReviews.querySelector('#newReviews')
+ const parent_rev2=revs2.parentElement
+ let revs=revs2.cloneNode(true)
+ parent_rev2.removeChild(revs2)
+ 
 
   for(let i=reviews.length-1;i>=0;i--){
     // console.log(reviews[i])
-   let revs=showReviews.querySelector('#newReviews')
+   
+     
 
-let revClone=revs.cloneNode(true)
-const reviewerImage=revs.querySelector('#reviewerImage')
-const reviewerName=revs.querySelector('#reviewer-name')
+let revClone=revs2.cloneNode(true)
+const reviewerImage=revClone.querySelector('#reviewerImage')
+const reviewerName=revClone.querySelector('#reviewer-name')
+const stars_container=revClone.querySelector('#stars_container')
+const stars=stars_container.querySelector("#stars")
+const review_description=revClone.querySelector('#review_description')
 
+review_description.innerHTML=reviews[i].review
 
-reviewerImage.src=reviews[i].User.image
+for(let j=0;j<reviews[i].rating;j++){
+    const clone_stars=stars.cloneNode(true)
+    stars_container.appendChild(clone_stars)
+}
 
+stars_container.removeChild(stars)
 
+reviewerImage.src=reviews[i].createdBy.image
+reviewerName.innerText=reviews[i].reviewer
+// reviewerEmail.innerText=reviews[i]
+
+console.log(reviews[i].User)
 
 showReviews.appendChild(revClone)
-
+   console.log('reviews')
    console.log(reviews[i])
     
     
@@ -257,6 +277,8 @@ showReviews.appendChild(revClone)
 
 
   }
+
+
 
   
 
@@ -389,7 +411,7 @@ if(data.status && data.status=='fail'){
 //    leftDiv.appendChild(Events);
 //    leftDiv.appendChild(navigationContainer);
             
-  
+  showReviews.removeChild(revs2)
 })
 .catch(err=>console.log(err))
 }
