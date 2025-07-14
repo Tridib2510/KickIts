@@ -1,6 +1,6 @@
 Kick It ⚽ – Connect. Compete. Play.
 A dynamic sports event platform where players and organizers meet.
-
+ 
 Kick It is a full-stack event scheduling web app designed for sports enthusiasts to create, discover, and join local games. Whether you're looking for a casual pickup match or competitive tournaments, Kick It brings athletes together seamlessly.
 
 
