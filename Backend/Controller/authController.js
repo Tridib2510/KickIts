@@ -28,7 +28,8 @@ exports.signUp=catchAsync(async(req,res,next)=>{
    
     res.status(200).json({
         status:"success",
-        token
+        token,
+       id:newUser._id
     })
 })
 
@@ -61,7 +62,8 @@ exports.login=catchAsync(async (req,res,next)=>{
 
    return res.status(200).json({
         status:"success",
-        token
+        token,
+        id:user._id
    })
 
     
